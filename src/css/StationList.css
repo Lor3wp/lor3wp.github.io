@@ -1,0 +1,42 @@
+.list-container {
+  width: 50vh;
+}
+.row-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.bi-geo-alt-fill {
+  margin: 0 4px 0 0;
+  width: 17px;
+  height: 24px;
+  fill: #AF3F32;
+}
+
+#kilometers {
+  margin: 0 8px 0 0;
+}
+
+.station-name {
+  text-align: start;
+}
+
+#cargobike, #trailer {
+  margin: 0 4px 0 4px;
+}
+.divider {
+  border-top: 1px solid #7BC1CB;
+}
+#station-checkbox {
+  margin-left: auto;
+}
+
+.btn-flat {
+  background-color: #008782;
+  color: white;
+}
+
+.btn-xxl {
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+}
