@@ -3,12 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { SuccessfulRental } from './pages/SuccessfulRental';
 
 function App() {
-
-  return (
-    <>
-    <SuccessfulRental />
-    </>
-  );
+  return <></>;
 }
 
 export default App;
