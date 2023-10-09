@@ -10,6 +10,7 @@ export const SuccessfulRental = () => {
     <Container>
       <Image
         className={styles.successIllustration}
+        draggable="false"
         src={SuccessIllustration}
         alt="success illustration"
         id="successIllustration"
