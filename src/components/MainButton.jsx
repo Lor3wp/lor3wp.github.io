@@ -1,14 +1,19 @@
 import Button from 'react-bootstrap/Button';
-import '../css/MainButton.css';
+import styles from '../css/MainButton.module.css';
+import PropTypes from 'prop-types';
 
-function MainButton({ buttonText }) {
+const MainButton = ({ buttonText }) => {
   return (
     <>
-      <Button variant="flat" size="l">
+      <Button variant="flat" size="l" className={styles.btn}>
         {buttonText}
       </Button>
     </>
   );
 }
+
+MainButton.propTypes = {
+  buttonText: PropTypes.string.isRequired,
+};
 
 export default MainButton;
