@@ -1,9 +1,15 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { SuccessfulRental } from './pages/SuccessfulRental';
+import Navigation from '../src/components/Navigation';
 
 function App() {
-  return <></>;
+
+  return (
+    <>
+   <div>
+      <Navigation />
+    </div>
+    </>
+  );
 }
 
 export default App;
