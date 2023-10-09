@@ -1,12 +1,12 @@
 import './App.css';
-import Navigation from '../src/components/Navigation';
+import FrontPage from './pages/Frontpage';
 
 function App() {
 
   return (
     <>
-   <div>
-      <Navigation />
+    <div>
+      <FrontPage />
     </div>
     </>
   );
