@@ -32,13 +32,5 @@
 }
 
 .btn-flat {
-  background-color: #008782;
-  color: white;
-  margin-top: 1rem;
-}
-
-.btn-xxl {
-  padding: 1rem 1.5rem;
-  font-size: 1.5rem;
-
+  margin-top: 2rem;
 }
