@@ -91,7 +91,7 @@ function StationList() {
         </ListGroup.Item>
       ))}
     </ListGroup>
-    <MainButton buttonText="Valitse päivämäärä"></MainButton>
+    <MainButton buttonText="Valitse päivämäärä" id="date-button"></MainButton>
     </div>
   );
 }
