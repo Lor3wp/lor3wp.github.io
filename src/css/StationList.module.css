@@ -1,0 +1,28 @@
+.listContainer {
+  width: 50vh;
+  margin-bottom: 2.5em;
+}
+.rowContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+#kilometers {
+  margin: 0 8px 0 0;
+}
+
+.stationName {
+  text-align: start;
+}
+
+#cargobike, #trailer {
+  margin: 0 4px 0 4px;
+}
+
+#stationCheckbox {
+  margin-left: auto;
+}
+
+.list-group-flush {
+  margin-bottom: 2em !important;
+}
