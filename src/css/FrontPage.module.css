@@ -70,7 +70,11 @@
   margin-left: 20px;
 }
 
-.highlighted-text {
+.infoList {
+  margin: 10px 0;
+}
+
+.highlightedText {
   color: #00aaa3;
 }
 
