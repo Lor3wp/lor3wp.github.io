@@ -1,11 +1,12 @@
 import './App.css';
-import StationList from './components/StationList'
+import RentForm from './pages/RentForm';
 
 function App() {
 
+
   return (
     <>
-    <StationList></StationList>
+    <RentForm></RentForm>
     </>
   );
 }
