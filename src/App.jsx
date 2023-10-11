@@ -1,14 +1,17 @@
+import { Route, Routes } from 'react-router-dom';
+import { FrontPage } from './pages/Frontpage';
+import { RentInfoPage } from './pages/RentInfo';
+import NotFoundPage from './pages/NotFound';
 import './App.css';
-import StationList from './components/StationList';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { SuccessfulRental } from './pages/SuccessfulRental';
 
 function App() {
-
   return (
-    <>
-    <SuccessfulRental />
-    </>
+    <Routes>
+      <Route path="/" element={<FrontPage />} />
+      <Route path="/rent-info" element={<RentInfoPage />} />
+      <Route path="*" element={<NotFoundPage />}></Route>
+    </Routes>
   );
 }
 
