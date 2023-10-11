@@ -42,7 +42,6 @@ const items2 = ['Täytä sähköinen varauslomake.', 'Tee varaus Sortti-aseman i
               <GoRentButton buttonText="Vuokraa tästä"></GoRentButton>
             </div>
         </div>
-          
         <div className={styles.frontInfoContainer}>
           <div>
             <h1 className={styles.headingInfo}>Säännöt Sortti-peräkärryn vuokraukseen ja käyttöön</h1>
