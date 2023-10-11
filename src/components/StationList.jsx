@@ -1,8 +1,8 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import MainButton from './MainButton';
 import styles from '../css/StationList.module.css';
-import Bike from '../Icons/cargobike.svg';
-import Trailer from '../Icons/trailer.svg';
+import Bike from '../assets/cargobike.svg';
+import Trailer from '../assets/trailer.svg';
 import {useState} from 'react';
 
 const StationList = () => {
@@ -90,7 +90,7 @@ const StationList = () => {
           </ListGroup.Item>
         ))}
       </ListGroup>
-    </div><MainButton buttonText="Valitse päivämäärä" id="date-button"></MainButton></>
+    </div><MainButton buttonText="Valitse päivämäärä" type="button" size="l" id="date-button"></MainButton></>
 
   );
 }

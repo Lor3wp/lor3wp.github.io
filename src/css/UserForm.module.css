@@ -1,0 +1,23 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.fieldContainer {
+  margin-bottom: 2rem;
+}
+form {
+  width: 70vh;
+}
+.feedbackText {
+  text-align: left;
+}
+#acceptTermsCheckbox {
+  text-align: left;
+}
+.checkboxContainer{
+  text-align: left;
+}
+button {
+  width: -webkit-fill-available;
+}
