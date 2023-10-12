@@ -15,10 +15,11 @@ const UserForm = () => {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      navigate("/payment");
     }
     console.log('submitted!');
     setValidated(true);
-    navigate("/payment");
   };
 
 
