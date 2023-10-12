@@ -4,7 +4,6 @@ import styles from '../css/FrontPage.module.css';
 import FrontPicture from '../assets/frontpagepicture.webp';
 import RentInfoBoxList from '../components/RentalInfo';
 
-// Frontpage
 const FrontPage = () => {
   const items = [
     'Peräkärryn vuokraus maksaa 5 € kolmelta tunnilta.',
@@ -24,53 +23,53 @@ const FrontPage = () => {
 
   return (
     <>
-    <body className={styles.frontPageBody}>
-    <div className={styles.frontPageContent}>
-      <menu>
-        <Navigation />
-      </menu>
+      <body className={styles.frontPageBody}>
+        <div className={styles.frontPageContent}>
+          <menu>
+            <Navigation />
+          </menu>
 
-      <header className={styles.frontHeader}>
-        <p className={styles.frontHeaderTxt}>
-          <span className={styles.lightGrayText}>Jätteet ja kierrätys</span>
-          <span className={styles.iconSpacing}>{' > '}</span>
-          Sortti-peräkärryn vuokraus
-        </p>
-      </header>
+          <header className={styles.frontHeader}>
+            <p className={styles.frontHeaderTxt}>
+              <span className={styles.lightGrayText}>Jätteet ja kierrätys</span>
+              <span className={styles.iconSpacing}>{' > '}</span>
+              Sortti-peräkärryn vuokraus
+            </p>
+          </header>
 
-      <main className={styles.frontMain}>
-        <div className={styles.containerInfo}>
-          <div className={styles.frontImgContainer}>
-            <img className={styles.frontPagePicture} src={FrontPicture} />
-            <div className={styles.infoTextContainer2}>
-              <h1 className={styles.headingInfo2}>Varaukset</h1>
-              <p>
-                Sortti-peräkärryn vuokrasopimus tehdään joko sähköisen varauksen
-                yhteydessä tai Sortti-asemalla. Tarkastamme asemalla vuokraajan
-                henkilöllisyyden.
-              </p>
-              <h2 className={styles.headingInfo3}>
-                Vaihtoehtoiset tavat varata Sortti-peräkärry:
-              </h2>
-              <RentInfoBoxList items={items2} />
-              <p>
-                Huomioithan, että kello 17 alkavissa varauksissa peräkärry pitää
-                noutaa Sortti-asemalta viimeistään klo 17.30.
-              </p>
-              <GoRentButton buttonText="Vuokraa tästä"></GoRentButton>
+          <main className={styles.frontMain}>
+            <div className={styles.containerInfo}>
+              <div className={styles.frontImgContainer}>
+                <img className={styles.frontPagePicture} src={FrontPicture} />
+                <div className={styles.infoTextContainer2}>
+                  <h1 className={styles.headingInfo2}>Varaukset</h1>
+                  <p>
+                    Sortti-peräkärryn vuokrasopimus tehdään joko sähköisen
+                    varauksen yhteydessä tai Sortti-asemalla. Tarkastamme
+                    asemalla vuokraajan henkilöllisyyden.
+                  </p>
+                  <h2 className={styles.headingInfo3}>
+                    Vaihtoehtoiset tavat varata Sortti-peräkärry:
+                  </h2>
+                  <RentInfoBoxList items={items2} />
+                  <p>
+                    Huomioithan, että kello 17 alkavissa varauksissa peräkärry
+                    pitää noutaa Sortti-asemalta viimeistään klo 17.30.
+                  </p>
+                  <GoRentButton buttonText="Vuokraa tästä"></GoRentButton>
+                </div>
+              </div>
+              <div className={styles.frontInfoContainer}>
+                <div>
+                  <h1 className={styles.headingInfo}>
+                    Säännöt Sortti-peräkärryn vuokraukseen ja käyttöön
+                  </h1>
+                </div>
+                <RentInfoBoxList items={items} />
+              </div>
             </div>
-          </div>
-          <div className={styles.frontInfoContainer}>
-            <div>
-              <h1 className={styles.headingInfo}>
-                Säännöt Sortti-peräkärryn vuokraukseen ja käyttöön
-              </h1>
-            </div>
-            <RentInfoBoxList items={items} />
-          </div>
+          </main>
         </div>
-      </main>
-      </div>
       </body>
     </>
   );
