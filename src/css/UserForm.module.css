@@ -1,8 +1,8 @@
 .formContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 0.2rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 0.2rem !important;
 }
 .fieldContainer {
   margin-bottom: 0.2rem;
@@ -16,7 +16,7 @@ form {
 #acceptTermsCheckbox {
   text-align: left;
 }
-.checkboxContainer{
+.checkboxContainer {
   text-align: left;
 }
 button {
