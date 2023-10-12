@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import RentInfoBoxList from '../components/RentalInfo';
 import styles from '../css/RentInfoModal.module.css';
+import { useNavigate } from "react-router-dom";
+
 
 const items = [
   'Peräkärryn vuokraus maksaa 5 € kolmelta tunnilta.',
@@ -15,6 +17,7 @@ const items = [
 
 const ModalInfo = ({ showModal, handleClose }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const navigate = useNavigate();
 
   const handleCheckChange = () => {
     setIsChecked(!isChecked);
@@ -22,8 +25,9 @@ const ModalInfo = ({ showModal, handleClose }) => {
 
   const handleRentClick = () => {
     if (isChecked) {
-      handleClose();
+      navigate("/stations");
     }
+
   };
 
   return (

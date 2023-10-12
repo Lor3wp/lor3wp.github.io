@@ -15,7 +15,6 @@ img {
   display: flex;
   flex-wrap: wrap;
   width: 50vw;
-  margin: auto;
 }
 .mobileGrid, .irlPayment {
   display: flex;
@@ -31,7 +30,8 @@ h3 {
 .bankContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  background-color: #F7F7F8 !important;
 }
 footer {
   height: 10vh;
@@ -43,6 +43,7 @@ footer {
   border-radius: 24px;
   box-shadow: none;
 }
-body {
-  background-color: #F7F7F8 !important;
+.cancelContainer {
+  display: flex;
+  flex-direction: column;
 }

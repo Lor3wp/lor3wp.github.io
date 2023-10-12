@@ -5,12 +5,20 @@ import NotFoundPage from './pages/NotFound';
 import { SuccessfulRentalPage } from './pages/SuccessfulRental';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import RentForm from './pages/RentForm';
+import Stations from './pages/Stations';
+import CalendarPage from './pages/CalendarPage';
+import Payment from './pages/Payment';
 //import 'bootstrap/dist/js/bootstrap.bundle.min'; // TODO: What exactly does this do?
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<FrontPage />} />
+      <Route path="/stations" element={<Stations />} />
+      <Route path="/calendar" element={<CalendarPage />} />
+      <Route path="/rent-form" element={<RentForm />} />
+      <Route path="/payment" element={<Payment />} />
       <Route path="/rent-info" element={<RentInfoPage />} />
       <Route path="/rent-successful" element={<SuccessfulRentalPage />} />
       <Route path="*" element={<NotFoundPage />}></Route>

@@ -1,6 +1,6 @@
 .listContainer {
   width: 50vh;
-  margin-bottom: 2.5em;
+  margin: 2.5em auto;
 }
 .rowContainer {
   display: flex;

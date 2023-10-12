@@ -10,7 +10,7 @@ const RentInfoPage = () => {
   const [rentEndTime, setRentEndTime] = useState('14:00');
   const [itemType, setItemType] = useState('Peräkärry');
   const [stationLocation, setStationLocation] = useState(
-    'Kivikon sortti asema',
+    'Kivikon Sortti-asema',
   );
   const [timeStarted, setTimeStarted] = useState(false);
 
@@ -43,7 +43,7 @@ const RentInfoPage = () => {
         {timeStarted ? (
           <Button variant="success">Palauta peräkärry</Button>
         ) : (
-          <Button variant="danger">Peruta varaus</Button>
+          <Button variant="danger">Peruuta varaus</Button>
         )}
       </Stack>
     </Container>
