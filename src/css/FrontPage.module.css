@@ -1,3 +1,10 @@
+/* :root {
+  max-width: max-content !important;
+  margin: none !important;
+  padding: 0rem !important;
+  text-align: center !important;
+} */
+
 .frontMain,
 .frontPagePicture {
   display: flex;

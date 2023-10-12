@@ -3,12 +3,11 @@ import FrontPage from './pages/Frontpage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-
   return (
     <>
-    <div>
-      <FrontPage />
-    </div>
+      <div>
+        <FrontPage />
+      </div>
     </>
   );
 }
