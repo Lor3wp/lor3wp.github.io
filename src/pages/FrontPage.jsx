@@ -28,14 +28,17 @@ const FrontPage = () => {
           <menu>
             <Navigation />
           </menu>
-
-          <header className={styles.frontHeader}>
-            <p className={styles.frontHeaderTxt}>
-              <span className={styles.lightGrayText}>Jätteet ja kierrätys</span>
-              <span className={styles.iconSpacing}>{' > '}</span>
-              Sortti-peräkärryn vuokraus
-            </p>
-          </header>
+          <div className={styles.headerContainer}>
+            <header className={styles.frontHeader}>
+              <p className={styles.frontHeaderTxt}>
+                <span className={styles.lightGrayText}>
+                  Jätteet ja kierrätys
+                </span>
+                <span className={styles.iconSpacing}>{' > '}</span>
+                Sortti-peräkärryn vuokraus
+              </p>
+            </header>
+          </div>
 
           <main className={styles.frontMain}>
             <div className={styles.containerInfo}>

@@ -106,3 +106,31 @@ body {
 .iconSpacing {
   padding: 0 10px; /* Adjust the padding values to control the space around the '>' symbol */
 }
+
+.headerContainer {
+  width: 100%;
+}
+
+/* Media rules*/
+
+@media (min-width: 2200px) {
+  .frontHeaderTxt {
+    width: 100%;
+    padding-bottom: 30px;
+    /* margin-left: 20px; */
+    position: relative;
+    right: 649px;
+  }
+  .headerContainer {
+    width: 400px;
+    align-content: center;
+    justify-content: center;
+    /* align-items: center; */
+    /* flex-wrap: nowrap; */
+    /* flex-direction: row; */
+    margin: auto;
+  }
+  .frontHeader {
+    padding-bottom: 0;
+  }
+}
