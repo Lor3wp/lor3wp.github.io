@@ -5,13 +5,27 @@
   text-align: center !important;
 } */
 
+body {
+  display: block !important;
+}
+
+.frontPageBody {
+  align-items: flex-start !important;
+  display: block !important;
+}
+
+.frontPageContent {
+  text-align: left !important;
+  margin: 0 auto;
+}
+
 .frontMain,
 .frontPagePicture {
-  display: flex;
-  justify-content: center;
-  height: 445px;
-  width: 100%;
-  object-fit: cover;
+  display: flex !important;
+  justify-content: center !important;
+  height: 445px !important;
+  width: 100% !important;
+  object-fit: cover !important;
 }
 
 .frontHeaderTxt {

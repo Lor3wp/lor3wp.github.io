@@ -10,7 +10,7 @@ const MainButton = ({ buttonText, type, size }) => {
       </Button>
     </>
   );
-}
+};
 
 MainButton.propTypes = {
   buttonText: PropTypes.string.isRequired,

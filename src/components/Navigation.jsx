@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "bootstrap-icons/font/bootstrap-icons.css";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Logo from '../assets/hsy_logo.png';
 import '../css/navigation.css';
@@ -21,17 +21,31 @@ const Navigation = () => {
         />
       </Navbar.Brand>
       <div className="dropdown show">
-        <a className="languageBtn btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a
+          className="languageBtn btn btn-secondary dropdown-toggle"
+          href="#"
+          role="button"
+          id="dropdownMenuLink"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
           <i className="bi bi-globe-americas"></i> Suomi
         </a>
 
         <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a className="dropdown-item" href="#"><img className="flags" src={FinnishFlag} width="30"
-          height="30" /> Suomi</a>
-          <a className="dropdown-item" href="#"><img className="flags" src={EnglishFlag} width="30"
-          height="30" />English</a>
-          <a className="dropdown-item" href="#"><img className="flags" src={SwedishFlag} width="30"
-          height="30" />Svenska</a>
+          <a className="dropdown-item" href="#">
+            <img className="flags" src={FinnishFlag} width="30" height="30" />{' '}
+            Suomi
+          </a>
+          <a className="dropdown-item" href="#">
+            <img className="flags" src={EnglishFlag} width="30" height="30" />
+            English
+          </a>
+          <a className="dropdown-item" href="#">
+            <img className="flags" src={SwedishFlag} width="30" height="30" />
+            Svenska
+          </a>
         </div>
       </div>
       <div className="container-fluid">
@@ -39,7 +53,7 @@ const Navigation = () => {
         <p>Jäteopas</p>
         <p>Asiakaspalvelu</p>
       </div>
-    </Navbar>    
+    </Navbar>
   );
 };
 
