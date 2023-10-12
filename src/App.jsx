@@ -1,12 +1,13 @@
 import './App.css';
+import FrontPage from './pages/Frontpage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { SuccessfulRental } from './pages/SuccessfulRental';
 
 function App() {
-
   return (
     <>
-    <SuccessfulRental />
+      <div>
+        <FrontPage />
+      </div>
     </>
   );
 }
