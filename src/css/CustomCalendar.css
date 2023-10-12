@@ -1,9 +1,20 @@
 .react-calendar__tile{
   /* display: none; */
    /* background-color: aqua; */
-   
    color: black;
 }
+.react-calendar {
+    width: 385px;
+    height: 385px;
+    margin-right: 15px;
+    border: none;
+}
+
+.react-calendar__month-view__days {
+  /* Your styles for the last div within each .child element */
+  height: 280px;
+}
+
 .react-calendar__tile--active{
     background: #7BC1CB !important;
 }
@@ -79,7 +90,7 @@ background-color: white;
 }
 
 .disabled-tile {
-  background-color: #af3f32 !important; 
-  color: grey !important; 
+  background-color: #ff6b5a !important; 
+  color: black !important; 
   pointer-events: none !important; 
 }
