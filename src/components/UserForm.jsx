@@ -19,7 +19,6 @@ const UserForm = () => {
     setValidated(true);
   }
 
-
   return (
     <>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>

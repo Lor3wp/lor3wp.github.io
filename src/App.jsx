@@ -1,12 +1,12 @@
 import './App.css';
-import FrontPage from './pages/Frontpage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UserForm from './components/UserForm';
 
 
 function App() {
   return (
     <>
-
+<UserForm></UserForm>
     </>
   );
 }

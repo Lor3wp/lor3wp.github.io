@@ -2,9 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-bottom: 0.2rem !important;
 }
 .fieldContainer {
-  margin-bottom: 2rem;
+  margin-bottom: 0.2rem;
 }
 form {
   width: 70vh;
@@ -20,4 +21,5 @@ form {
 }
 button {
   width: -webkit-fill-available;
+  margin-top: 1rem;
 }
