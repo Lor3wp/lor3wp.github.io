@@ -3,7 +3,15 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import styles from '../css/RentInfoCard.module.css';
 import PropTypes from 'prop-types';
+import {
+  InfoCircleFill,
+  TelephoneFill,
+  Calendar2Event,
+  ClockFill,
+  GeoAltFill,
+} from 'react-bootstrap-icons';
 
+// TODO: Change item icon depending on item type
 export const RentInfoCard = ({
   rentDate,
   rentStartTime,
@@ -14,18 +22,24 @@ export const RentInfoCard = ({
   return (
     <Card className={styles.card}>
       <Card.Header as="h5" className={styles.cardHeader}>
-        Varauksesi tiedot:
+        <InfoCircleFill /> Varauksesi tiedot:
       </Card.Header>
       <ListGroup className="list-group-flush">
-        <ListGroup.Item>{rentDate}</ListGroup.Item>
         <ListGroup.Item>
-          {rentStartTime}-{rentEndTime}
+          <Calendar2Event /> {rentDate}
+        </ListGroup.Item>
+        <ListGroup.Item>
+          <ClockFill /> {rentStartTime}-{rentEndTime}
         </ListGroup.Item>
         <ListGroup.Item>{itemType}</ListGroup.Item>
-        <ListGroup.Item>{stationLocation}</ListGroup.Item>
+        <ListGroup.Item>
+          <GeoAltFill /> {stationLocation}
+        </ListGroup.Item>
       </ListGroup>
       <Card.Body className={styles.btn}>
-        <Button variant="primary">Asiakaspalvelu</Button>
+        <Button variant="primary">
+          <TelephoneFill /> Asiakaspalvelu
+        </Button>
       </Card.Body>
     </Card>
   );
