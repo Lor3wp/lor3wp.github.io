@@ -24,24 +24,6 @@ export const CircularCountdownTimer = ({
   duration = DEFAULT_TIME_DURATION,
   timerText = 'Jäljellä',
 }) => {
-  // Some fun animation
-  /*const [strokeWidth, setStrokeWidth] = useState(130);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStrokeWidth((prevWidth) => {
-        if (prevWidth > 19) {
-          return prevWidth - 1;
-        } else {
-          return prevWidth;
-        }
-      });
-    }, 3);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);*/
-
   return (
     <CountdownCircleTimer
       isPlaying={isPlaying}
