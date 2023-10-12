@@ -4,6 +4,7 @@ import styles from '../css/StationList.module.css';
 import Bike from '../assets/cargobike.svg';
 import Trailer from '../assets/trailer.svg';
 import {useState} from 'react';
+import Checkbox from './Checkbox';
 
 const StationList = () => {
   const stations = [
@@ -78,19 +79,27 @@ const StationList = () => {
                 ) : (
                   <></>
                 )}
-                <input
-                  type="checkbox"
-                  id={styles.stationCheckbox}
-                  name="station-checkbox"
-                  value="station"
-                  checked={isChecked[index]}
-                  onChange={() => handleCheckbox(index)} />
-              </div>
+                <Checkbox
+                onChange={() => handleCheckbox(index)}
+                value="station"
+                checked={isChecked[index]}
+                isRequired={false}
+                id={styles.stationCheckbox}
+                className={styles.stationCheckboxContainer}
+                 ></Checkbox>
+              {/* <input
+                type="checkbox"
+                id={styles.stationCheckbox}
+                name="station-checkbox"
+                value="station"
+                checked={isChecked[index]}
+                onChange={() => handleCheckbox(index)} /> */}
             </div>
+          </div>
           </ListGroup.Item>
         ))}
-      </ListGroup>
-    </div><MainButton buttonText="Valitse päivämäärä" type="button" size="l" id="date-button"></MainButton></>
+    </ListGroup>
+    </div> <MainButton buttonText="Valitse päivämäärä" type="button" size="l" id="date-button"></MainButton></>
 
   );
 }

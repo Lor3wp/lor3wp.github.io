@@ -31,8 +31,8 @@ const UserForm = () => {
           <FormField controlId="streetName" label="Katuosoite" type="text" placeholder="Katuosoite" feedbackText="Syötä katuosoite" />
           <FormField controlId="postalCode" label="Postinumero" type="text" placeholder="Postinumero" feedbackText="Syötä postinumero" />
           <FormField controlId="cityName" label="Postitoimipaikka" type="text" placeholder="Postitoimipaikka" feedbackText="Syötä postitoimipaikka" />
-          <Checkbox label="Hyväksyn" routeName="/terms-and-conditions" linkText="käyttöehdot"></Checkbox>
-          <Checkbox label="Olen lukenut" routeName="/rental-contract" linkText="vuokrasopimuksen"></Checkbox>
+          <Checkbox label="Hyväksyn" routeName="/terms-and-conditions" linkText="käyttöehdot" isRequired={true} id={styles.acceptTermsCheckbox} className={styles.checkboxContainer}></Checkbox>
+          <Checkbox label="Olen lukenut" routeName="/rental-contract" linkText="vuokrasopimuksen" isRequired={true} id={styles.acceptTermsCheckbox} className={styles.checkboxContainer}></Checkbox>
           <MainButton buttonText="Siirry maksamaan" type="submit" size="l" id="proceedToPaymentButton"></MainButton>
         </div>
       </Form>
