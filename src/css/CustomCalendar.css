@@ -2,6 +2,7 @@
   /* display: none; */
    /* background-color: aqua; */
    color: black;
+   margin: 20px;
 }
 .react-calendar {
     width: 385px;

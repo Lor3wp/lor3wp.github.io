@@ -20,16 +20,16 @@ function RentForm() {
   return (
     <>
       <div className="rentBox">
+        <div className="productBox">
+          <SelectProduct></SelectProduct>
+        </div>
+        <hr />
         <div className="calendarBox">
           <h1 className="header">Valitse päivä</h1>
           <MyCalendar
             futureDates={futureDates}
             setSelectedDate={setSelectedDate}
           ></MyCalendar>
-        </div>
-        <hr />
-        <div className="productBox">
-          <SelectProduct></SelectProduct>
         </div>
         <hr className="hr" />
         <div className="selectTimeBox">
