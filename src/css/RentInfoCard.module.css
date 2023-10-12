@@ -1,0 +1,11 @@
+.cardHeader {
+  text-align: center;
+}
+.card {
+  width: 20rem;
+  text-align: left;
+}
+
+.btn {
+  text-align: center;
+}

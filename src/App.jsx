@@ -4,6 +4,7 @@ import { RentInfoPage } from './pages/RentInfo';
 import NotFoundPage from './pages/NotFound';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/js/bootstrap.bundle.min'; // TODO: What exactly does this do?
 
 function App() {
   return (
