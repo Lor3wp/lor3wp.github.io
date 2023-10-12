@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { FrontPage } from './pages/Frontpage';
+import FrontPage from './pages/Frontpage';
 import { RentInfoPage } from './pages/RentInfo';
 import NotFoundPage from './pages/NotFound';
 import './App.css';
