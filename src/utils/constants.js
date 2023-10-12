@@ -1,0 +1,3 @@
+const DEFAULT_TIME_DURATION = 60; //4 * 60 * 60;
+
+export { DEFAULT_TIME_DURATION };
