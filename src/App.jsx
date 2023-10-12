@@ -1,13 +1,17 @@
+import { Route, Routes } from 'react-router-dom';
+import { FrontPage } from './pages/Frontpage';
+import { RentInfoPage } from './pages/RentInfo';
+import NotFoundPage from './pages/NotFound';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import UserForm from './components/UserForm';
-
 
 function App() {
   return (
-    <>
-<UserForm></UserForm>
-    </>
+    <Routes>
+      <Route path="/" element={<FrontPage />} />
+      <Route path="/rent-info" element={<RentInfoPage />} />
+      <Route path="*" element={<NotFoundPage />}></Route>
+    </Routes>
   );
 }
 

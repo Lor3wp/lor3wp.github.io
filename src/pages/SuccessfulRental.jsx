@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import styles from '../css/successfulRental.module.css';
 
-export const SuccessfulRental = () => {
+export const SuccessfulRentalPage = () => {
   return (
     <Container>
       <Image
@@ -28,9 +28,7 @@ export const SuccessfulRental = () => {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Button className={styles.btn} variant="primary">
-        Varauksen tiedot
-      </Button>
+      <Button className={styles.btn}>Varauksen tiedot</Button>
     </Container>
   );
 };
