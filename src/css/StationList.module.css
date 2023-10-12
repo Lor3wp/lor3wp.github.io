@@ -26,3 +26,6 @@
 .list-group-flush {
   margin-bottom: 2em !important;
 }
+.stationCheckboxContainer {
+  margin-left: auto;
+}
