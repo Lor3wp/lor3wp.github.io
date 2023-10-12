@@ -10,9 +10,7 @@ function SelectProduct() {
     <>
       <h1 className="header">Valitse tuote</h1>
       <div className="selectProductBox">
-        <Button className="productButton">
-          <img src="../assets/react.svg" alt="Icon" />
-        </Button>
+        <Button className="productButton"></Button>
         <Button className="productButton">Pyöräkärry</Button>
         <Form className="adapterCheckBox">
           {['checkbox'].map((type) => (
