@@ -5,8 +5,13 @@
   text-align: center !important;
 } */
 
+body {
+  display: block !important;
+}
+
 .frontPageBody {
   align-items: flex-start !important;
+  display: block !important;
 }
 
 .frontPageContent {
