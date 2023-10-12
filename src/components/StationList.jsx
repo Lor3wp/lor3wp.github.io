@@ -69,12 +69,12 @@ const StationList = () => {
                 </svg>
                 <p id={styles.kilometers}>10km</p>
                 {station.cargoBike ? (
-                  <img src={Bike} alt="cargo bike icon" id={styles.cargobike} />
+                  <img src={Bike} alt="cargo bike icon" id={styles.cargobike} draggable={false} />
                 ) : (
                   <></>
                 )}
                 {station.trailer ? (
-                  <img src={Trailer} alt="trailer icon" id={styles.trailer} />
+                  <img src={Trailer} alt="trailer icon" id={styles.trailer} draggable={false}/>
                 ) : (
                   <></>
                 )}
