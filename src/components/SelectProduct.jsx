@@ -13,7 +13,7 @@ function SelectProduct() {
   };
   return (
     <>
-      <h1 className="header">Valitse tuote</h1>
+      <h2 className="header">Valitse tuote</h2>
       <div className="selectProductBox">
         <Button
           className={

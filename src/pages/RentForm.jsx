@@ -25,7 +25,7 @@ function RentForm() {
         </div>
         <hr />
         <div className="calendarBox">
-          <h1 className="header">Valitse päivä</h1>
+          <h2 className="header">Valitse päivä</h2>
           <MyCalendar
             futureDates={futureDates}
             setSelectedDate={setSelectedDate}
