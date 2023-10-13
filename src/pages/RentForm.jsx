@@ -55,4 +55,5 @@ function RentForm() {
   );
 }
 
+
 export default RentForm;

@@ -1,0 +1,19 @@
+.cardHeader {
+  text-align: center;
+}
+.card {
+  width: 20rem;
+  text-align: left;
+}
+
+.btn {
+  text-align: center;
+}
+.infoContainer {
+  align-self: center !important;
+  margin-top: 4rem;
+}
+.cancelRentButton {
+  align-self: center;
+  width: 50%;
+}

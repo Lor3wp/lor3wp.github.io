@@ -1,0 +1,112 @@
+.navbar {
+  width: 100%;
+  height: 115px;
+  top: 0;
+  margin: 0px;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.navbar-nav .nav-link {
+  color: rgb(0, 0, 0);
+}
+
+menu {
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  font-family: 'interstate-condensed', sans-serif;
+  font-style: normal;
+}
+.dropdown {
+  position: absolute;
+  right: 2em;
+}
+
+.logo {
+  width: 185px !important;
+  height: 118px !important;
+  object-fit: cover !important;
+  left: -61px !important;
+  position: relative !important;
+  bottom: 44px !important;
+  padding: 0px !important;
+  display: inline-block !important;
+}
+
+i.bi.bi-globe-americas {
+  color: #00aaa3;
+  margin-right: 2px;
+}
+
+.languageBtn {
+  background-color: white;
+  border: transparent;
+  color: #00aaa3;
+  font-size: 18px;
+}
+.languageBtn:hover {
+  background-color: white;
+  border: transparent;
+  color: #00aaa3;
+}
+.languageBtn:active {
+  background-color: white !important;
+  border: transparent;
+  color: #00aaa3;
+}
+
+.testi {
+  margin-top: 120px;
+}
+
+.dropdown {
+  top: 60px;
+}
+
+.dropdown:hover {
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.dropdown-menu.show {
+  right: -27px;
+  box-shadow: 0px 0px 4px 0px #888888;
+  border: none;
+}
+
+.flags {
+  margin-right: 20px;
+}
+
+.navbar > .container-fluid {
+  background-color: #00aaa3;
+  height: 55px;
+  justify-content: center;
+  display: flex;
+  align-items: flex-end;
+  box-shadow: inset 0px 7px 3px -3px rgb(120 120 120 / 44%);
+}
+
+.container-fluid > p {
+  padding-left: 20px;
+  padding-left: 20px;
+  color: white;
+  font-weight: 500;
+  font-size: large;
+}
+
+span.navbar-brand {
+  left: 0;
+  position: absolute;
+}
