@@ -19,10 +19,10 @@ form {
 .checkboxContainer {
   text-align: left;
 }
-button {
+/* button {
   width: -webkit-fill-available;
   margin-top: 1rem;
-}
+} */
 
 .userFormContainer {
   display: flex;

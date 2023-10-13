@@ -36,6 +36,8 @@ const Payment = () => {
     {logo: Saastopankki, bankName: "saastopankki"},
     {logo: Spankki, bankName: "spankki"}]
   const irlPayments = [{logo: HSY, bankName: "HSY"}]
+
+  
   return (
     <div className={styles.bankContainer}>
       <BankType

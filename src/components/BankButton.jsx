@@ -7,7 +7,7 @@ const BankButton = ({ logo, bankName }) => {
   
   const handleClick = (bankName) => {
     if (bankName !== "HSY") {
-      navigate("/rent-info");
+      navigate("/rent-successful");
     } else {
       navigate("/");
     }
