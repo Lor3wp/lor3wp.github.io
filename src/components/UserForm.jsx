@@ -4,7 +4,7 @@ import styles from '../css/UserForm.module.css';
 import FormField from './FormField';
 import MainButton from './MainButton';
 import Checkbox from './Checkbox';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import RentalConfirmation from './RentalConfirmation';
 import PropTypes from 'prop-types';
 
