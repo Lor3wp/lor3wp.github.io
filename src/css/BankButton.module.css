@@ -1,9 +1,14 @@
-.bankGrid button, .cardGrid button, .mobileGrid button, .irlPayment button {
+.bankGrid button,
+.cardGrid button,
+.mobileGrid button,
+.irlPayment button {
   height: 50px !important;
   width: 260px;
   margin: 0.5rem;
   background-color: white !important;
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2), 0 2px 60px 0 rgba(0,0,0,0);
+  box-shadow:
+    0 1px 4px 0 rgba(0, 0, 0, 0.2),
+    0 2px 60px 0 rgba(0, 0, 0, 0);
 }
 
 img {
@@ -16,7 +21,8 @@ img {
   flex-wrap: wrap;
   width: 50vw;
 }
-.mobileGrid, .irlPayment {
+.mobileGrid,
+.irlPayment {
   display: flex;
   flex-wrap: wrap;
   width: 50vw;
@@ -31,7 +37,7 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #F7F7F8 !important;
+  background-color: #f7f7f8 !important;
 }
 footer {
   height: 10vh;
@@ -39,11 +45,12 @@ footer {
 .cancelButton {
   margin-top: 2rem;
   background-color: transparent;
-  border: 1px rgb(154, 154, 154) solid; 
+  border: 1px rgb(154, 154, 154) solid;
   border-radius: 24px;
   box-shadow: none;
   height: 50px;
   width: 260px;
+  color: black;
 }
 .cancelContainer {
   display: flex;
