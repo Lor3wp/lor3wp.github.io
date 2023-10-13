@@ -5,11 +5,14 @@ import productStyle from '../css/SelectProduct.module.css';
 import timeStyle from '../css/SelectTime.module.css';
 import Bike from '../Icons/cargobike.svg';
 import Trailer from '../Icons/trailer.svg';
+
 function SelectProduct() {
   const [product, setProduct] = useState('');
+
   const handleButtonClick = (prd) => {
     setProduct(prd);
   };
+
   return (
     <>
       <h2 className={timeStyle.header}>Valitse tuote</h2>

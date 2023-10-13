@@ -4,8 +4,8 @@ import SelectTime from '../components/SelectTime';
 import timeStyle from '../css/SelectTime.module.css';
 import SelectProduct from '../components/SelectProduct';
 import rentStyle from '../css/RentForm.module.css';
-import MainButton from './MainButton';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 function TimeForm() {
   /* eslint-disable no-unused-vars */
@@ -66,12 +66,10 @@ function TimeForm() {
           stationName={'Aseman nimi'}
         ></SelectTime>
       </div>
-      <div className={rentStyle.userFormButton}>
-        <MainButton
-          buttonText="Täytä henkilötiedot"
-          size="lg"
-          onClick={handleClick}
-        ></MainButton>
+      <div className="userFormButton">
+        <Button size="lg" onClick={handleClick}>
+          Täytä henkilötiedot
+        </Button>
       </div>
       {/* <p>
           selecte date: {selectedDate.toLocaleDateString()} <br></br>selected

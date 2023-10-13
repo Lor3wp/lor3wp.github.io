@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import styles from '../css/UserForm.module.css';
 import FormField from './FormField';
-import MainButton from './MainButton';
+import Button from 'react-bootstrap/Button';
 import Checkbox from './Checkbox';
 import { useNavigate } from 'react-router-dom';
 import RentalConfirmation from './RentalConfirmation';
@@ -101,12 +101,9 @@ const UserForm = ({ confirmedRent, setConfirmRent }) => {
             id={styles.acceptTermsCheckbox}
             className={styles.checkboxContainer}
           ></Checkbox>
-          <MainButton
-            buttonText="Siirry maksamaan"
-            type="submit"
-            size="lg"
-            id="proceedToPaymentButton"
-          ></MainButton>
+          <Button type="submit" id="proceedToPaymentButton" size="lg">
+            Siirry maksamaan
+          </Button>
         </div>
       </Form>
     </>

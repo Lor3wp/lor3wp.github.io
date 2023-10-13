@@ -1,10 +1,3 @@
-/* :root {
-  max-width: max-content !important;
-  margin: none !important;
-  padding: 0rem !important;
-  text-align: center !important;
-} */
-
 .frontPageBody {
   align-items: flex-start !important;
   display: block !important;
@@ -105,6 +98,10 @@
 
 .headerContainer {
   width: 100%;
+}
+
+.rentButton {
+  width: 70%;
 }
 
 /* Media rules*/
