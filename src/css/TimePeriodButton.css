@@ -1,0 +1,15 @@
+.btn-flat {
+  background-color: #f1f1f1;
+  color: rgb(0, 0, 0);
+  margin-top: 15px;
+}
+.btn-flat:hover {
+  background-color: #f1f1f1;
+}
+.btn-flat:focus{
+  background-color: #7bc1cb;
+  outline: none;
+}
+/* .button:focus-visible{
+  background-color: aquamarine;
+} */

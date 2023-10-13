@@ -1,11 +1,18 @@
-import UserForm from '../components/UserForm';
-import styles from '../css/UserForm.module.css'
+import { useState } from 'react';
+import MyCalendar from '../components/Calendar';
+import SelectTime from '../components/SelectTime';
+import '../css/SelectTime.css'
+import SelectProduct from '../components/SelectProduct';
+import '../css/RentForm.css';
+import TimeForm from '../components/TimeForm';
 
-const RentForm = () => {
+function RentForm() {
   return (
-    <div className={styles.userFormContainer}>
-    <UserForm></UserForm>
-    </div>
+    <>
+      <TimeForm></TimeForm>
+    </>
   );
 }
+
+
 export default RentForm;
