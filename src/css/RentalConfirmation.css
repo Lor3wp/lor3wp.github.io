@@ -1,0 +1,56 @@
+.background{
+    background-color: rgba(102, 102, 102, 0.473);
+    width: 105vw;
+    height: 100vh;
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    position: fixed;
+    margin-left: -30vw;
+}
+.popUp{
+    background-color: white;
+    width: 50vw;
+    height: 54vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    padding: 10px;
+    border-radius: 8px;
+}
+.rentalInfo{
+flex: 1;
+}
+p{
+flex: 1;
+margin-top: 17px;
+}
+.info{
+    flex: 0 0 auto; 
+    width: 100%;
+    margin-bottom: 10%;
+    margin-top: 5%;
+}
+.confirmationButton{
+    background-color: #008782 !important;
+    height: 70px;
+    width: 160px;
+}
+.cancleButton{
+    
+    background-color: #af3f32 !important;
+    height: 70px;
+    width: 160px;
+}
+.confirmationButton:hover{
+    background-color: #00b8b1 !important;
+
+}
+.cancleButton:hover{
+    
+    background-color: #dd4f3f !important;
+
+}
+

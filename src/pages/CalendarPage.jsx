@@ -1,23 +1,23 @@
 import MainButton from "../components/MainButton";
 import { useNavigate } from "react-router-dom";
+import TimeForm from '../components/TimeForm';
 
 const CalendarPage = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/rent-form");
-
-  }
+    navigate('/rent-form');
+  };
   return (
     <>
-    {/* THIS IS JUST MOCKUP CODE PAVEL NEEDS TO FILL IN THIS FILE */}
-      <p>Here will be calendar</p>
+      <TimeForm />
       <MainButton
         buttonText="Täytä henkilötiedot"
         type="button"
         size="l"
-        onClick={()=> handleClick()}
-      ></MainButton>    </>
+        onClick={() => handleClick()}
+      ></MainButton>{' '}
+    </>
   );
-}
+};
 export default CalendarPage;
