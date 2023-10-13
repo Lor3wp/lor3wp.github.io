@@ -3,8 +3,18 @@ import Navigation from '../components/Navigation';
 import styles from '../css/FrontPage.module.css';
 import FrontPicture from '../assets/frontpagepicture.webp';
 import RentInfoBoxList from '../components/RentalInfo';
+import { applyVersionClass, removeVersionClass } from '../utils/BodyVersion';
+import { useEffect } from 'react';
 
 const FrontPage = () => {
+  // use body version 2
+  useEffect(() => {
+    applyVersionClass();
+    return () => {
+      removeVersionClass();
+    };
+  }, []);
+
   const items = [
     'Peräkärryn vuokraus maksaa 5 € kolmelta tunnilta.',
     'Peräkärry on tarkoitettu vain henkilöasiakkaille jätteen kuljettamiseen Sortti-asemille.',
