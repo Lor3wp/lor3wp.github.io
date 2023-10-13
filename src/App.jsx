@@ -9,6 +9,7 @@ import RentForm from './pages/RentForm';
 import Stations from './pages/Stations';
 import CalendarPage from './pages/CalendarPage';
 import Payment from './pages/Payment';
+import ReturnTrailer from './pages/ReturnTrailer';
 //import 'bootstrap/dist/js/bootstrap.bundle.min'; // TODO: What exactly does this do?
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Route path="/payment" element={<Payment />} />
       <Route path="/rent-info" element={<RentInfoPage />} />
       <Route path="/rent-successful" element={<SuccessfulRentalPage />} />
+      <Route path="/return-trailer" element={<ReturnTrailer />} />
       <Route path="*" element={<NotFoundPage />}></Route>
     </Routes>
   );
