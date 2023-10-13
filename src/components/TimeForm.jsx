@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import MyCalendar from '../components/Calendar';
 import SelectTime from '../components/SelectTime';
 import '../css/SelectTime.css';
 import SelectProduct from '../components/SelectProduct';
 import '../css/RentForm.css';
+import MainButton from './MainButton';
+import { useNavigate } from "react-router-dom";
 
 function TimeForm() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -16,6 +18,10 @@ function TimeForm() {
   for (let i = 1; i < 4; i++) {
     const randomDate = new Date(currentYear, currentMonth, currentDay + i);
     futureDates.push(randomDate);
+  }
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate("/rent-form")
   }
   return (
     <>
@@ -45,6 +51,9 @@ function TimeForm() {
             setSelectedTime={setSelectedTime}
             stationName={'Aseman nimi'}
           ></SelectTime>
+        </div>
+        <div className="userFormButton">
+          <MainButton buttonText="Täytä henkilötiedot" size="lg" onClick={handleClick}></MainButton>
         </div>
         {/* <p>
           selecte date: {selectedDate.toLocaleDateString()} <br></br>selected

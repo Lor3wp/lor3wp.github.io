@@ -38,3 +38,6 @@
 hr {
   border-color: #7bc1cb;
 }
+.userFormButton {
+  margin: 2rem auto;
+}

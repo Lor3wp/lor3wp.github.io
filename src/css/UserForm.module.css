@@ -9,6 +9,7 @@
 }
 form {
   width: 70vh;
+  margin: 2rem auto;
 }
 .feedbackText {
   text-align: left;
@@ -27,4 +28,5 @@ form {
 .userFormContainer {
   display: flex;
   justify-content: center;
+  align-content: center;
 }
