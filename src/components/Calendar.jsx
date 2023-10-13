@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import '../css/CustomCalendar.css'; 
+import '../css/CustomCalendar.css';
 import PropTypes from 'prop-types';
 
-const MyCalendar = (props) => {
+const RentCalendar = ({ futureDates, setSelectedDate }) => {
   const [date, setDate] = useState(null);
   const futureDates = props.futureDates;
   const setSelectedDate = props.setSelectedDate;
+
   useEffect(() => {
     const calendar = document.querySelector('.react-calendar');
     if (calendar) {
@@ -41,22 +42,19 @@ const MyCalendar = (props) => {
   };
 
   return (
-    <div>
-      <Calendar
-        onChange={handleChange}
-        value={date}
-        minDate={new Date()}
-        tileDisabled={tileDisabled}
-        tileClassName={tileClassName}
-      />
-    </div>
+    <Calendar
+      onChange={handleChange}
+      value={date}
+      minDate={new Date()}
+      tileDisabled={tileDisabled}
+      tileClassName={tileClassName}
+    />
   );
 };
 
-MyCalendar.propTypes = {
-  futureDates: PropTypes.array.isRequired,
-  setSelectedDate: PropTypes.date,
+RentCalendar.propTypes = {
+  futureDates: PropTypes.array,
+  setSelectedDate: PropTypes.func,
 };
 
-
-export default MyCalendar;
+export default RentCalendar;

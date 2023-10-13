@@ -4,6 +4,7 @@ import hsyLogo from '../assets/hsy-logo-valkoinen.png';
 import { applyVersionClass, removeVersionClass } from '../utils/BodyVersion';
 import { useEffect } from 'react';
 
+// Header of what? Could add a more descriptive name or comment the component.
 const Header = () => {
   // use body version 2
   useEffect(() => {
@@ -12,6 +13,7 @@ const Header = () => {
       removeVersionClass();
     };
   }, []);
+
   return (
     <div className={styles.customHeaderContainer}>
       <div className={styles.headerLogoContainer}>

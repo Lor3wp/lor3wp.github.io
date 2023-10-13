@@ -6,7 +6,7 @@
 .btn-flat:hover {
   background-color: #f1f1f1;
 }
-.btn-flat:focus{
+.btn-flat:focus {
   background-color: #7bc1cb;
   outline: none;
 }

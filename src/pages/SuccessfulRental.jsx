@@ -1,6 +1,5 @@
 import SuccessIllustration from '../assets/SuccessIllustration.svg';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import styles from '../css/successfulRental.module.css';
@@ -8,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import MainButton from '../components/MainButton';
 import Header from '../components/Header';
 
-export const SuccessfulRentalPage = () => {
+const SuccessfulRentalPage = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -49,3 +48,5 @@ export const SuccessfulRentalPage = () => {
     </>
   );
 };
+
+export default SuccessfulRentalPage;

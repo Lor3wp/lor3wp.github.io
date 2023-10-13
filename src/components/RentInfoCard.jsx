@@ -47,8 +47,8 @@ export const RentInfoCard = ({
 
 RentInfoCard.propTypes = {
   rentDate: PropTypes.instanceOf(Date).isRequired,
-  rentStartTime: PropTypes.number.isRequired,
-  rentEndTime: PropTypes.number.isRequired,
+  rentStartTime: PropTypes.instanceOf(Date).isRequired,
+  rentEndTime: PropTypes.instanceOf(Date).isRequired,
   itemType: PropTypes.string.isRequired,
   stationLocation: PropTypes.string.isRequired,
 };

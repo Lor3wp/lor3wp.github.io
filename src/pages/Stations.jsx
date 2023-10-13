@@ -1,7 +1,7 @@
 import StationList from '../components/StationList';
 import Header from '../components/Header';
 
-const Stations = () => {
+const StationsPages = () => {
   return (
     <>
       <Header></Header>
@@ -9,4 +9,4 @@ const Stations = () => {
     </>
   );
 };
-export default Stations;
+export default StationsPages;

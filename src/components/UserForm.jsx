@@ -4,7 +4,7 @@ import styles from '../css/UserForm.module.css';
 import FormField from './FormField';
 import MainButton from './MainButton';
 import Checkbox from './Checkbox';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const UserForm = () => {
   const [validated, setValidated] = useState(false);
@@ -16,12 +16,11 @@ const UserForm = () => {
       event.preventDefault();
       event.stopPropagation();
     } else {
-      navigate("/payment");
+      navigate('/payment');
     }
     console.log('submitted!');
     setValidated(true);
   };
-
 
   return (
     <>

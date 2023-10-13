@@ -1,9 +1,11 @@
-import TimePeriodButton from "./TimePeriodButton";
+import TimePeriodButton from './TimePeriodButton';
 import style from '../css/SelectTime.module.css';
 import PropTypes from 'prop-types';
+import '../css/SelectTime.css';
 
 function SelectTime({ setSelectedTime, stationName }) {
   const timeOptions = ['10-13', '11-14', '12-15', '13-16', '14-17', '15-18'];
+
   const itemElements = timeOptions.map((item, index) => (
     <TimePeriodButton
       buttonText={item}
@@ -11,6 +13,7 @@ function SelectTime({ setSelectedTime, stationName }) {
       key={index}
     ></TimePeriodButton>
   ));
+
   return (
     <>
       <div className={style.singleSelectTime}>
@@ -22,9 +25,8 @@ function SelectTime({ setSelectedTime, stationName }) {
 }
 
 SelectTime.propTypes = {
-  setSelectedTime: PropTypes.string.isRequired, // Expect a string prop, and it's required
-  stationName: PropTypes.string.isRequired, // Expect a string prop, and it's required
+  setSelectedTime: PropTypes.func,
+  stationName: PropTypes.string.isRequired,
 };
 
 export default SelectTime;
-

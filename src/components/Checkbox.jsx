@@ -36,6 +36,7 @@ const Checkbox = ({
     </div>
   );
 };
+
 Checkbox.propTypes = {
   label: PropTypes.string,
   routeName: PropTypes.string,
@@ -47,4 +48,5 @@ Checkbox.propTypes = {
   componentId: PropTypes.string,
   className: PropTypes.string,
 };
+
 export default Checkbox;
