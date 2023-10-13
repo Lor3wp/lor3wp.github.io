@@ -3,8 +3,18 @@ import Navigation from '../components/Navigation';
 import styles from '../css/FrontPage.module.css';
 import FrontPicture from '../assets/frontpagepicture.webp';
 import RentInfoBoxList from '../components/RentalInfo';
+import { applyVersionClass, removeVersionClass } from '../utils/BodyVersion';
+import { useEffect } from 'react';
 
 const FrontPage = () => {
+  // use body version 2
+  useEffect(() => {
+    applyVersionClass();
+    return () => {
+      removeVersionClass();
+    };
+  }, []);
+
   const items = [
     'Peräkärryn vuokraus maksaa 5 € kolmelta tunnilta.',
     'Peräkärry on tarkoitettu vain henkilöasiakkaille jätteen kuljettamiseen Sortti-asemille.',
@@ -28,14 +38,17 @@ const FrontPage = () => {
           <menu>
             <Navigation />
           </menu>
-
-          <header className={styles.frontHeader}>
-            <p className={styles.frontHeaderTxt}>
-              <span className={styles.lightGrayText}>Jätteet ja kierrätys</span>
-              <span className={styles.iconSpacing}>{' > '}</span>
-              Sortti-peräkärryn vuokraus
-            </p>
-          </header>
+          <div className={styles.headerContainer}>
+            <header className={styles.frontHeader}>
+              <p className={styles.frontHeaderTxt}>
+                <span className={styles.lightGrayText}>
+                  Jätteet ja kierrätys
+                </span>
+                <span className={styles.iconSpacing}>{' > '}</span>
+                Sortti-peräkärryn vuokraus
+              </p>
+            </header>
+          </div>
 
           <main className={styles.frontMain}>
             <div className={styles.containerInfo}>

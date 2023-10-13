@@ -1,0 +1,27 @@
+.customHeaderContainer {
+  background-color: white;
+  height: 70px;
+  width: 100%;
+  border-bottom: 1px solid #007377;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.headerLogoContainer {
+  width: 183px;
+  background-color: #007377;
+  clip-path: circle(83% at 73% -40%);
+  /* clip-path: circle(83% at 86% 20%); */
+  /* transform: rotate(351deg); */
+  /* width: 20%; */
+  height: auto;
+}
+
+.logo2 {
+  position: absolute;
+  right: 22px;
+  width: 85px;
+  height: 44px;
+  top: 10px;
+  object-fit: cover;
+}

@@ -3,6 +3,7 @@ import FrontPage from './pages/Frontpage';
 import RentInfoPage from './pages/RentInfo';
 import NotFoundPage from './pages/NotFound';
 import { SuccessfulRentalPage } from './pages/SuccessfulRental';
+import HeaderComponent from './pages/HeaderTestPage';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RentForm from './pages/RentForm';
@@ -21,6 +22,7 @@ function App() {
       <Route path="/payment" element={<Payment />} />
       <Route path="/rent-info" element={<RentInfoPage />} />
       <Route path="/rent-successful" element={<SuccessfulRentalPage />} />
+      <Route path="/header-test-page" element={<HeaderComponent />} />
       <Route path="*" element={<NotFoundPage />}></Route>
     </Routes>
   );
