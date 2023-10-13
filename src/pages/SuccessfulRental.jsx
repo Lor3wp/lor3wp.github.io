@@ -42,7 +42,7 @@ export const SuccessfulRentalPage = () => {
         <MainButton
           buttonText="Varauksen tiedot"
           type="button"
-          size="l"
+          size="lg"
           onClick={() => handleClick()}
         ></MainButton>
       </Container>
