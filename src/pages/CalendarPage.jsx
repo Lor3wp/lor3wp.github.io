@@ -2,6 +2,7 @@ import MainButton from "../components/MainButton";
 import { useNavigate } from "react-router-dom";
 import TimeForm from '../components/TimeForm';
 
+
 const CalendarPage = () => {
   const navigate = useNavigate();
 
@@ -11,6 +12,7 @@ const CalendarPage = () => {
   return (
     <>
       <TimeForm />
+
       <MainButton
         buttonText="Täytä henkilötiedot"
         type="button"
@@ -21,3 +23,4 @@ const CalendarPage = () => {
   );
 };
 export default CalendarPage;
+
