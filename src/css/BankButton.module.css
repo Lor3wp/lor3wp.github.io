@@ -1,4 +1,4 @@
-button {
+.bankGrid button, .cardGrid button, .mobileGrid button, .irlPayment button {
   height: 50px !important;
   width: 260px;
   margin: 0.5rem;
@@ -15,7 +15,6 @@ img {
   display: flex;
   flex-wrap: wrap;
   width: 50vw;
-  margin: auto;
 }
 .mobileGrid, .irlPayment {
   display: flex;
@@ -31,18 +30,22 @@ h3 {
 .bankContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  background-color: #F7F7F8 !important;
 }
 footer {
   height: 10vh;
 }
 .cancelButton {
   margin-top: 2rem;
-  background-color: transparent !important;
+  background-color: transparent;
   border: 1px rgb(154, 154, 154) solid; 
   border-radius: 24px;
   box-shadow: none;
+  height: 50px;
+  width: 260px;
 }
-body {
-  background-color: #F7F7F8 !important;
+.cancelContainer {
+  display: flex;
+  flex-direction: column;
 }

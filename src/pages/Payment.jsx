@@ -36,6 +36,8 @@ const Payment = () => {
     {logo: Saastopankki, bankName: "saastopankki"},
     {logo: Spankki, bankName: "spankki"}]
   const irlPayments = [{logo: HSY, bankName: "HSY"}]
+
+  
   return (
     <div className={styles.bankContainer}>
       <BankType
@@ -53,12 +55,14 @@ const Payment = () => {
         title="Pankkimaksutavat"
         arrayName={bankPayments}
         paymentName={styles.bankPayment}></BankType>
+        <div className={styles.cancelContainer}>
       <BankType
         gridName={styles.irlGrid}
         title="Maksu paikan päällä"
         arrayName={irlPayments}
         paymentName={styles.irlPayment}></BankType>
         <CancelButton buttonText="Peruuta maksu" className={styles.cancelButton}></CancelButton>
+        </div>
         <footer></footer>
     </div>
   );

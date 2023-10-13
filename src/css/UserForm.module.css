@@ -5,7 +5,7 @@
   margin-bottom: 0.2rem !important;
 }
 .fieldContainer {
-  margin-bottom: 0.2rem;
+  margin: 0.2rem auto;
 }
 form {
   width: 70vh;
@@ -19,7 +19,12 @@ form {
 .checkboxContainer {
   text-align: left;
 }
-button {
+/* button {
   width: -webkit-fill-available;
   margin-top: 1rem;
+} */
+
+.userFormContainer {
+  display: flex;
+  justify-content: center;
 }

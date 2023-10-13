@@ -4,19 +4,24 @@ import styles from '../css/UserForm.module.css';
 import FormField from './FormField';
 import MainButton from './MainButton';
 import Checkbox from './Checkbox';
+import { useNavigate } from "react-router-dom";
 
 const UserForm = () => {
   const [validated, setValidated] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      navigate("/payment");
     }
     console.log('submitted!');
     setValidated(true);
   };
+
 
   return (
     <>
@@ -26,49 +31,42 @@ const UserForm = () => {
             controlId="firstName"
             label="Etunimi"
             type="text"
-            placeholder="Etunimi"
             feedbackText="Syötä etunimi"
           />
           <FormField
             controlId="lastName"
             label="Sukunimi"
             type="text"
-            placeholder="Sukunimi"
             feedbackText="Syötä sukunimi"
           />
           <FormField
             controlId="phoneNumber"
             label="Puhelinnumero"
             type="text"
-            placeholder="Puhelinnumero"
             feedbackText="Syötä puhelinnumero"
           />
           <FormField
             controlId="emailAddress"
             label="Sähköposti"
             type="email"
-            placeholder="Sähköposti"
             feedbackText="Virheellinen sähköpostiosoite. Kirjoita muodossa nimi@esimerkki.com"
           />
           <FormField
             controlId="streetName"
             label="Katuosoite"
             type="text"
-            placeholder="Katuosoite"
             feedbackText="Syötä katuosoite"
           />
           <FormField
             controlId="postalCode"
             label="Postinumero"
             type="text"
-            placeholder="Postinumero"
             feedbackText="Syötä postinumero"
           />
           <FormField
             controlId="cityName"
             label="Postitoimipaikka"
             type="text"
-            placeholder="Postitoimipaikka"
             feedbackText="Syötä postitoimipaikka"
           />
           <Checkbox

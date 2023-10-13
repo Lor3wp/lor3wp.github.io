@@ -1,5 +1,5 @@
 .btn {
-  --bs-btn-bg: #008782 !important;
+  background-color: #008782 !important;
   color: white !important;
 }
 .btn:hover {

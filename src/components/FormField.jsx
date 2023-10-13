@@ -28,7 +28,6 @@ FormField.propTypes = {
   controlId: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
   feedbackText: PropTypes.string.isRequired,
 };
 

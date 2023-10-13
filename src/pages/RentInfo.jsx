@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { CircularCountdownTimer } from '../components/CircularCountdownTimer';
 import { Container, Button, Stack } from 'react-bootstrap';
 import { RentInfoCard } from '../components/RentInfoCard';
+import styles from '../css/RentInfoCard.module.css';
 
 const RentInfoPage = () => {
   // TODO: Maybe there's a better way instead of doing multiple states?
@@ -10,7 +11,7 @@ const RentInfoPage = () => {
   const [rentEndTime, setRentEndTime] = useState('14:00');
   const [itemType, setItemType] = useState('Peräkärry');
   const [stationLocation, setStationLocation] = useState(
-    'Kivikon sortti asema',
+    'Kivikon Sortti-asema',
   );
   const [timeStarted, setTimeStarted] = useState(false);
 
@@ -22,7 +23,7 @@ const RentInfoPage = () => {
   return (
     <Container>
       <Stack gap={5}>
-        <Stack direction="horizontal" gap={5}>
+        <Stack direction="horizontal" gap={5} className={styles.infoContainer}>
           <div>
             <CircularCountdownTimer
               isPlaying={timeStarted}
@@ -43,7 +44,7 @@ const RentInfoPage = () => {
         {timeStarted ? (
           <Button variant="success">Palauta peräkärry</Button>
         ) : (
-          <Button variant="danger">Peruta varaus</Button>
+          <Button variant="danger" className={styles.cancelRentButton}>Peruuta varaus</Button>
         )}
       </Stack>
     </Container>
