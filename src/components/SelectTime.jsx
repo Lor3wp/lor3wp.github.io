@@ -1,7 +1,6 @@
 import TimePeriodButton from './TimePeriodButton';
 import style from '../css/SelectTime.module.css';
 import PropTypes from 'prop-types';
-import '../css/SelectTime.css';
 
 function SelectTime({ setSelectedTime, stationName }) {
   const timeOptions = ['10-13', '11-14', '12-15', '13-16', '14-17', '15-18'];

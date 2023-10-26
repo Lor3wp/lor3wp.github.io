@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 
 const RentCalendar = ({ futureDates, setSelectedDate }) => {
   const [date, setDate] = useState(null);
-  const futureDates = props.futureDates;
-  const setSelectedDate = props.setSelectedDate;
 
   useEffect(() => {
     const calendar = document.querySelector('.react-calendar');

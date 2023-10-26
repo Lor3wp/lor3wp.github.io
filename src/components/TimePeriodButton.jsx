@@ -1,6 +1,5 @@
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
-import '../css/TimePeriodButton.css';
 
 function TimePeriodButton({ buttonText, setSelectedTime }) {
   const handleClick = () => {
