@@ -1,15 +1,17 @@
 import {useState} from 'react';
 import MyCalendar from '../components/Calendar';
 import SelectTime from '../components/SelectTime';
-import '../css/SelectTime.css';
+import timeStyle from '../css/SelectTime.module.css';
 import SelectProduct from '../components/SelectProduct';
-import '../css/RentForm.css';
+import rentStyle from '../css/RentForm.module.css';
 import MainButton from './MainButton';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function TimeForm() {
+  /* eslint-disable no-unused-vars */
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(null);
+  // values will be used in future
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth();
   const currentYear = currentDate.getFullYear();
@@ -19,26 +21,26 @@ function TimeForm() {
     const randomDate = new Date(currentYear, currentMonth, currentDay + i);
     futureDates.push(randomDate);
   }
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/rent-form")
-  }
+    navigate('/rent-form');
+  };
   return (
     <>
-      <div className="rentBox">
-        <div className="productBox">
+      <div className={rentStyle.rentBox}>
+        <div className={rentStyle.productBox}>
           <SelectProduct></SelectProduct>
         </div>
         <hr />
-        <div className="calendarBox">
-          <h2 className="header">Valitse päivä</h2>
+        <div className={rentStyle.calendarBox}>
+          <h2 className={timeStyle.header}>Valitse päivä</h2>
           <MyCalendar
             futureDates={futureDates}
             setSelectedDate={setSelectedDate}
           ></MyCalendar>
         </div>
-        <hr className="hr" />
-        <div className="selectTimeBox">
+        <hr className={rentStyle.hr} />
+        <div className={rentStyle.selectTimeBox}>
           <SelectTime
             setSelectedTime={setSelectedTime}
             stationName={'Kivikko'}
@@ -52,8 +54,12 @@ function TimeForm() {
             stationName={'Aseman nimi'}
           ></SelectTime>
         </div>
-        <div className="userFormButton">
-          <MainButton buttonText="Täytä henkilötiedot" size="lg" onClick={handleClick}></MainButton>
+        <div className={rentStyle.userFormButton}>
+          <MainButton
+            buttonText="Täytä henkilötiedot"
+            size="lg"
+            onClick={handleClick}
+          ></MainButton>
         </div>
         {/* <p>
           selecte date: {selectedDate.toLocaleDateString()} <br></br>selected

@@ -1,5 +1,5 @@
 import TimePeriodButton from "./TimePeriodButton";
-import '../css/SelectTime.css'
+import style from '../css/SelectTime.module.css';
 import PropTypes from 'prop-types';
 
 function SelectTime({ setSelectedTime, stationName }) {
@@ -13,9 +13,9 @@ function SelectTime({ setSelectedTime, stationName }) {
   ));
   return (
     <>
-      <div className="singleSelectTime">
-        <h2 className="header">{stationName}</h2>
-        <div className="timeBox">{itemElements}</div>
+      <div className={style.singleSelectTime}>
+        <h2 className={style.header}>{stationName}</h2>
+        <div className={style.timeBox}>{itemElements}</div>
       </div>
     </>
   );

@@ -1,5 +1,5 @@
-import { Button } from 'react-bootstrap';
-import '../css/RentalConfirmation.css';
+import Button from 'react-bootstrap/Button';
+import style from '../css/RentalConfirmation.module.css';
 import { RentInfoCard } from './RentInfoCard';
 
 function RentalConfirmation() {
@@ -13,9 +13,9 @@ function RentalConfirmation() {
 
   return (
     <>
-      <div className="background">
-        <div className="popUp">
-          <div className="rentalInfo">
+      <div className={style.background}>
+        <div className={style.popUp}>
+          <div className={style.rentalInfo}>
             <RentInfoCard
               rentDate={rentData.date}
               rentStartTime={rentData.timeStart}
@@ -30,13 +30,13 @@ function RentalConfirmation() {
             kanssa 150 cm Peräkärryn omapaino 195 kg Kantavuus 555 kg
             Kokonaispaino 750 kg Peräkärryssä ei ole jarruja eikä talvirenkaita.
           </p>
-          <p className="info">
+          <p className={style.info}>
             Vahvista peräkärrynvuokraus Sortti-aseman INFOssa näyttämällä
             henkilöllisyystodistuksesi. Henkilökuntamme opastaa, mistä kärry
             asemalla noudetaan.
           </p>
-          <Button className="cancleButton">Peruta</Button>
-          <Button className="confirmationButton">Vahvista</Button>
+          <Button className={style.cancleButton}>Peruta</Button>
+          <Button className={style.confirmationButton}>Vahvista</Button>
         </div>
       </div>
     </>
