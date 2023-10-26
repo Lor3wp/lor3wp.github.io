@@ -4,26 +4,43 @@ import styles from '../css/UserForm.module.css';
 import FormField from './FormField';
 import MainButton from './MainButton';
 import Checkbox from './Checkbox';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import RentalConfirmation from './RentalConfirmation';
+import PropTypes from 'prop-types';
 
-const UserForm = () => {
+const UserForm = ({ confirmedRent, setConfirmRent }) => {
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
-
+  console.log(confirmedRent);
   const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     } else {
       navigate('/payment');
+      setConfirmRent(true);
     }
-    console.log('submitted!');
     setValidated(true);
+    console.log('submitted!');
+  };
+  const navigateForward = () => {
+    navigate('/payment');
   };
 
   return (
     <>
+      {confirmedRent && (
+        <>
+          <RentalConfirmation
+            setConfirmRent={setConfirmRent}
+            navigateForward={navigateForward}
+          />
+        </>
+      )}
+
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <div className={styles.fieldContainer}>
           <FormField
@@ -94,6 +111,11 @@ const UserForm = () => {
       </Form>
     </>
   );
+};
+
+UserForm.propTypes = {
+  confirmedRent: PropTypes.func.isRequired,
+  setConfirmRent: PropTypes.func.isRequired,
 };
 
 export default UserForm;
