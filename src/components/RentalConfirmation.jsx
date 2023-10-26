@@ -1,8 +1,12 @@
 import Button from 'react-bootstrap/Button';
 import style from '../css/RentalConfirmation.module.css';
 import { RentInfoCard } from './RentInfoCard';
+import PropTypes from 'prop-types';
 
-function RentalConfirmation() {
+function RentalConfirmation({ setConfirmRent, navigateForward }) {
+  const handleClick = () => {
+    setConfirmRent(false);
+  };
   const rentData = {
     date: '12.03.2023',
     timeStart: '13',
@@ -10,7 +14,6 @@ function RentalConfirmation() {
     product: 'trailer',
     location: 'kivikon sorttiasema',
   };
-
   return (
     <>
       <div className={style.background}>
@@ -35,12 +38,22 @@ function RentalConfirmation() {
             henkilöllisyystodistuksesi. Henkilökuntamme opastaa, mistä kärry
             asemalla noudetaan.
           </p>
-          <Button className={style.cancleButton}>Peruta</Button>
-          <Button className={style.confirmationButton}>Vahvista</Button>
+          <Button className={style.cancleButton} onClick={handleClick}>
+            Peruta
+          </Button>
+          <Button
+            className={style.confirmationButton}
+            onClick={navigateForward}
+          >
+            Vahvista
+          </Button>
         </div>
       </div>
     </>
   );
 }
-
+RentalConfirmation.propTypes = {
+  setConfirmRent: PropTypes.func.isRequired,
+  navigateForward: PropTypes.func.isRequired,
+};
 export default RentalConfirmation;
