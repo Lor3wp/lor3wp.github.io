@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import RentalConfirmation from './RentalConfirmation';
 import PropTypes from 'prop-types';
 
-const UserForm = ({ confirmedRent, setConfirmRent }) => {
+const UserForm = ({ onSubmit, confirmedRent, setConfirmRent }) => {
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
   console.log(confirmedRent);
@@ -20,12 +20,21 @@ const UserForm = ({ confirmedRent, setConfirmRent }) => {
       event.preventDefault();
       event.stopPropagation();
     } else {
-      navigate('/payment');
+      onSubmit({
+        firstName: form.elements.firstName.value,
+        lastName: form.elements.lastName.value,
+        phoneNumber: form.elements.phoneNumber.value,
+        emailAddress: form.elements.emailAddress.value,
+        streetName: form.elements.streetName.value,
+        postalCode: form.elements.postalCode.value,
+        cityName: form.elements.cityName.value,
+      });
       setConfirmRent(true);
     }
     setValidated(true);
     console.log('submitted!');
   };
+
   const navigateForward = () => {
     navigate('/payment');
   };
@@ -92,7 +101,7 @@ const UserForm = ({ confirmedRent, setConfirmRent }) => {
             isRequired={true}
             id={styles.acceptTermsCheckbox}
             className={styles.checkboxContainer}
-          ></Checkbox>
+          />
           <Checkbox
             label="Olen lukenut"
             routeName="/rental-contract"
@@ -100,7 +109,8 @@ const UserForm = ({ confirmedRent, setConfirmRent }) => {
             isRequired={true}
             id={styles.acceptTermsCheckbox}
             className={styles.checkboxContainer}
-          ></Checkbox>
+          />
+
           <Button type="submit" id="proceedToPaymentButton" size="lg">
             Siirry maksamaan
           </Button>
@@ -111,6 +121,7 @@ const UserForm = ({ confirmedRent, setConfirmRent }) => {
 };
 
 UserForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
   confirmedRent: PropTypes.func.isRequired,
   setConfirmRent: PropTypes.func.isRequired,
 };

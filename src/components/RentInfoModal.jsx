@@ -24,7 +24,7 @@ const ModalInfo = ({ showModal, handleClose }) => {
 
   const handleRentClick = () => {
     if (isChecked) {
-      navigate('/select-stations');
+      navigate('/rent-process');
     }
   };
 

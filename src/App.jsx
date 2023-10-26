@@ -3,12 +3,9 @@ import FrontPage from './pages/FrontPage';
 import RentInfoPage from './pages/RentInfo';
 import NotFoundPage from './pages/NotFound';
 import SuccessfulRentalPage from './pages/SuccessfulRental';
-import RentForm from './pages/RentForm';
-import StationsPages from './pages/Stations';
-import CalendarPage from './pages/CalendarPage';
-import Payment from './pages/Payment';
 import ReturnItemPage from './pages/ReturnTrailer';
 import HeaderComponent from './pages/HeaderTestPage';
+import RentProcess from './pages/RentProcess';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import './theme.css';
@@ -18,10 +15,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<FrontPage />} />
-      <Route path="/select-stations" element={<StationsPages />} />
-      <Route path="/calendar" element={<CalendarPage />} />
-      <Route path="/rent-form" element={<RentForm />} />
-      <Route path="/payment" element={<Payment />} />
+      <Route path="/rent-process" element={<RentProcess />} />
       <Route path="/rent-successful" element={<SuccessfulRentalPage />} />
       <Route path="/rent-info" element={<RentInfoPage />} />
       <Route path="/return-item" element={<ReturnItemPage />} />
