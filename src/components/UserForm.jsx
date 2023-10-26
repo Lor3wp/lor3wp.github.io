@@ -88,7 +88,7 @@ const UserForm = () => {
           <MainButton
             buttonText="Siirry maksamaan"
             type="submit"
-            size="l"
+            size="lg"
             id="proceedToPaymentButton"
           ></MainButton>
         </div>

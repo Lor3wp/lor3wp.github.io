@@ -1,18 +1,13 @@
-import { useState } from 'react';
-import MyCalendar from '../components/Calendar';
-import SelectTime from '../components/SelectTime';
-import '../css/SelectTime.css'
-import SelectProduct from '../components/SelectProduct';
-import '../css/RentForm.css';
-import TimeForm from '../components/TimeForm';
+import Header from '../components/Header';
+import UserForm from '../components/UserForm';
 
 function RentForm() {
   return (
     <>
-      <TimeForm></TimeForm>
+      <Header></Header>
+      <UserForm></UserForm>
     </>
   );
 }
-
 
 export default RentForm;

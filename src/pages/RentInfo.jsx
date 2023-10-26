@@ -3,6 +3,7 @@ import { CircularCountdownTimer } from '../components/CircularCountdownTimer';
 import { Container, Button, Stack } from 'react-bootstrap';
 import { RentInfoCard } from '../components/RentInfoCard';
 import styles from '../css/RentInfoCard.module.css';
+import Header from '../components/Header';
 
 const RentInfoPage = () => {
   // TODO: Maybe there's a better way instead of doing multiple states?
@@ -21,33 +22,42 @@ const RentInfoPage = () => {
   };
 
   return (
-    <Container>
-      <Stack gap={5}>
-        <Stack direction="horizontal" gap={5} className={styles.infoContainer}>
-          <div>
-            <CircularCountdownTimer
-              isPlaying={timeStarted}
-              rentStartTime={timeUntilRentStart()}
-            />
-          </div>
-          <div>
-            <RentInfoCard
-              rentDate={rentDate}
-              rentStartTime={rentStartTime}
-              rentEndTime={rentEndTime}
-              itemType={itemType}
-              stationLocation={stationLocation}
-            />
-          </div>
-        </Stack>
+    <>
+      <Header></Header>
+      <Container>
+        <Stack gap={5}>
+          <Stack
+            direction="horizontal"
+            gap={5}
+            className={styles.infoContainer}
+          >
+            <div>
+              <CircularCountdownTimer
+                isPlaying={timeStarted}
+                rentStartTime={timeUntilRentStart()}
+              />
+            </div>
+            <div>
+              <RentInfoCard
+                rentDate={rentDate}
+                rentStartTime={rentStartTime}
+                rentEndTime={rentEndTime}
+                itemType={itemType}
+                stationLocation={stationLocation}
+              />
+            </div>
+          </Stack>
 
-        {timeStarted ? (
-          <Button variant="success">Palauta peräkärry</Button>
-        ) : (
-          <Button variant="danger" className={styles.cancelRentButton}>Peruuta varaus</Button>
-        )}
-      </Stack>
-    </Container>
+          {timeStarted ? (
+            <Button variant="success">Palauta peräkärry</Button>
+          ) : (
+            <Button variant="danger" className={styles.cancelRentButton}>
+              Peruuta varaus
+            </Button>
+          )}
+        </Stack>
+      </Container>
+    </>
   );
 };
 
