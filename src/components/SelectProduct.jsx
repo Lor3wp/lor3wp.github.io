@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import cargoBikeIcon from '../Icons/cargobike.svg';
-import trailerIcon from '../Icons/trailer.svg';
-import '../css/SelectProduct.css';
-import '../css/SelectTime.css';
+
+import productStyle from '../css/SelectProduct.module.css';
+import timeStyle from '../css/SelectTime.module.css';
 import Bike from '../Icons/cargobike.svg';
 import Trailer from '../Icons/trailer.svg';
 function SelectProduct() {
@@ -13,27 +12,31 @@ function SelectProduct() {
   };
   return (
     <>
-      <h2 className="header">Valitse tuote</h2>
-      <div className="selectProductBox">
+      <h2 className={timeStyle.header}>Valitse tuote</h2>
+      <div className={productStyle.selectProductBox}>
         <Button
-          className={
-            product == 'trailer' ? 'activeProductButton' : 'productButton'
-          }
+          className={`${
+            product == 'trailer'
+              ? productStyle.activeProductButton
+              : productStyle.productButton
+          }`}
           onClick={() => handleButtonClick('trailer')}
         >
           <img src={Trailer} alt="trailer icon" />
         </Button>
         <Button
-          className={
-            product == 'bike' ? 'activeProductButton' : 'productButton'
-          }
+          className={`${
+            product == 'bike'
+              ? productStyle.activeProductButton
+              : productStyle.productButton
+          }`}
           onClick={() => handleButtonClick('bike')}
         >
           <img src={Bike} alt="cargobike icon" />
         </Button>
-        <Form className="adapterCheckBox">
+        <Form className={productStyle.adapterCheckBox}>
           {['checkbox'].map((type) => (
-            <div key={`default-${type}`} className="mb-3">
+            <div key={`default-${type}`}>
               <Form.Check // prettier-ignore
                 type={type}
                 id={`default-${type}`}
