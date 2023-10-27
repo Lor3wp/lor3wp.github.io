@@ -33,3 +33,5 @@
 .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(38, 153, 149, 0.5);
 }
+
+/* TODO: customize outlined buttons */

@@ -1,13 +1,13 @@
+import { useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import styles from '../css/StationList.module.css';
 import Bike from '../Icons/cargobike.svg';
 import Trailer from '../Icons/trailer.svg';
-import { useState } from 'react';
 import Checkbox from './Checkbox';
-import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
 
-const StationList = () => {
+const StationList = ({ onStationSelected }) => {
   const stations = [
     {
       stationName: 'Ruskeasanta',
@@ -43,17 +43,21 @@ const StationList = () => {
 
   // array of states to track checkbox status for each station
   const [isChecked, setIsChecked] = useState(stations.map(() => false));
-  const navigate = useNavigate();
+
+  // handle the button click for selecting a station
+  const handleSubmit = () => {
+    if (isChecked.some((checked) => checked)) {
+      onStationSelected();
+    } else {
+      alert('Valitse vähintään yksi asema ennen kuin jatkat.');
+    }
+  };
 
   // handling the checkbox changes for a specific station
   const handleCheckbox = (index) => {
     const updatedChecked = [...isChecked];
     updatedChecked[index] = !updatedChecked[index];
     setIsChecked(updatedChecked);
-  };
-
-  const handleClick = () => {
-    navigate('/calendar');
   };
 
   return (
@@ -114,11 +118,15 @@ const StationList = () => {
           </ListGroup.Item>
         ))}
       </ListGroup>
-      <Button size="lg" id="date-button" onClick={handleClick}>
+      <Button size="lg" id="date-button" onClick={handleSubmit}>
         Valitse päivämäärä
       </Button>
     </div>
   );
+};
+
+StationList.propTypes = {
+  onStationSelected: PropTypes.func.isRequired,
 };
 
 export default StationList;
