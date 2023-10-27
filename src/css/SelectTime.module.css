@@ -1,0 +1,13 @@
+.timeBox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 297px;
+  justify-content: space-between;
+}
+.header {
+  margin-bottom: 10px;
+  width: fit-content;
+}
+.singleSelectTime {
+  margin-right: 30px;
+}

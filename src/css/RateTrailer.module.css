@@ -1,0 +1,27 @@
+.checkMark {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  background-color: #48c35f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+#checkIcon {
+  color: white !important;
+  font-size: 7rem;
+}
+.ratingInput {
+  width: 100%;
+  margin: 5rem auto;
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100vh;
+  margin: auto;
+}
+.sendButton {
+  margin-top: 1rem;
+}
