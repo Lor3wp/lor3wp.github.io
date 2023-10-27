@@ -10,7 +10,8 @@ import { useNavigate } from 'react-router-dom';
 function TimeForm() {
   /* eslint-disable no-unused-vars */
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedTime, setSelectedTime] = useState('');
+  const [selectedStation, setSelectedStation] = useState('');
   // values will be used in future
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth();
@@ -43,14 +44,23 @@ function TimeForm() {
         <div className={rentStyle.selectTimeBox}>
           <SelectTime
             setSelectedTime={setSelectedTime}
+            selectedStation={selectedStation}
+            setSelectedStation={setSelectedStation}
+            selectedTime={selectedTime}
             stationName={'Kivikko'}
           ></SelectTime>
           <SelectTime
+            selectedTime={selectedTime}
+            setSelectedStation={setSelectedStation}
+            selectedStation={selectedStation}
             setSelectedTime={setSelectedTime}
             stationName={'Konala'}
           ></SelectTime>
           <SelectTime
+            selectedTime={selectedTime}
+            setSelectedStation={setSelectedStation}
             setSelectedTime={setSelectedTime}
+            selectedStation={selectedStation}
             stationName={'Aseman nimi'}
           ></SelectTime>
         </div>
