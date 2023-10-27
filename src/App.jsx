@@ -4,7 +4,6 @@ import RentInfoPage from './pages/RentInfo';
 import NotFoundPage from './pages/NotFound';
 import SuccessfulRentalPage from './pages/SuccessfulRental';
 import ReturnItemPage from './pages/ReturnTrailer';
-import HeaderComponent from './pages/HeaderTestPage';
 import RentProcess from './pages/RentProcess';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -19,7 +18,6 @@ function App() {
       <Route path="/rent-successful" element={<SuccessfulRentalPage />} />
       <Route path="/rent-info" element={<RentInfoPage />} />
       <Route path="/return-item" element={<ReturnItemPage />} />
-      <Route path="/header-test-page" element={<HeaderComponent />} />
       <Route path="*" element={<NotFoundPage />}></Route>
     </Routes>
   );
