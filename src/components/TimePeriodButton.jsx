@@ -34,6 +34,7 @@ function TimePeriodButton({
     </>
   );
 }
+
 TimePeriodButton.propTypes = {
   buttonText: PropTypes.string.isRequired,
   selectedStation: PropTypes.string.isRequired,
@@ -42,4 +43,5 @@ TimePeriodButton.propTypes = {
   setSelectedTime: PropTypes.func.isRequired,
   setSelectedStation: PropTypes.func.isRequired,
 };
+
 export default TimePeriodButton;

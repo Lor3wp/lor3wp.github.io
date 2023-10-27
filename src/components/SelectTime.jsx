@@ -1,4 +1,4 @@
-import TimePeriodButton from "./TimePeriodButton";
+import TimePeriodButton from './TimePeriodButton';
 import style from '../css/SelectTime.module.css';
 import PropTypes from 'prop-types';
 
@@ -10,6 +10,7 @@ function SelectTime({
   selectedStation,
 }) {
   const timeOptions = ['10-13', '11-14', '12-15', '13-16', '14-17', '15-18'];
+
   const itemElements = timeOptions.map((item, index) => (
     <TimePeriodButton
       buttonText={item}
@@ -21,6 +22,7 @@ function SelectTime({
       selectedStation={selectedStation}
     ></TimePeriodButton>
   ));
+
   return (
     <>
       <div className={style.singleSelectTime}>
@@ -40,4 +42,3 @@ SelectTime.propTypes = {
 };
 
 export default SelectTime;
-

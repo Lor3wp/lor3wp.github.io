@@ -1,17 +1,13 @@
-
 import Header from '../components/Header';
 import TimeForm from '../components/TimeForm';
 
 const CalendarPage = () => {
-
-
   return (
     <>
-
-    <Header />
-    <TimeForm></TimeForm>
+      <Header />
+      <TimeForm></TimeForm>
     </>
   );
 };
-export default CalendarPage;
 
+export default CalendarPage;

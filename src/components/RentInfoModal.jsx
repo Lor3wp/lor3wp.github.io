@@ -3,8 +3,7 @@ import { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import RentInfoBoxList from '../components/RentalInfo';
 import styles from '../css/RentInfoModal.module.css';
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom';
 
 const items = [
   'Peräkärryn vuokraus maksaa 5 € kolmelta tunnilta.',
@@ -25,9 +24,8 @@ const ModalInfo = ({ showModal, handleClose }) => {
 
   const handleRentClick = () => {
     if (isChecked) {
-      navigate("/stations");
+      navigate('/select-stations');
     }
-
   };
 
   return (
@@ -73,8 +71,8 @@ const ModalInfo = ({ showModal, handleClose }) => {
 };
 
 ModalInfo.propTypes = {
-  showModal: PropTypes.string.isRequired,
-  handleClose: PropTypes.string.isRequired,
+  showModal: PropTypes.bool,
+  handleClose: PropTypes.bool,
 };
 
 export default ModalInfo;

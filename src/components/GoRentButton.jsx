@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from '../css/GorentButton.module.css';
 import { useState } from 'react';
 import ModalInfo from '../components/RentInfoModal';
+import Container from 'react-bootstrap/Container';
 
 const GoRentButton = ({ buttonText }) => {
   const [showModal, setShowModal] = useState(false);
@@ -11,7 +12,7 @@ const GoRentButton = ({ buttonText }) => {
   const handleCloseModal = () => setShowModal(false);
 
   return (
-    <>
+    <Container>
       <Button
         className={styles.gotorentbutton}
         variant="flat"
@@ -22,7 +23,7 @@ const GoRentButton = ({ buttonText }) => {
       </Button>
 
       <ModalInfo showModal={showModal} handleClose={handleCloseModal} />
-    </>
+    </Container>
   );
 };
 

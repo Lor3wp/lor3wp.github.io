@@ -20,6 +20,7 @@ const UserForm = ({ confirmedRent, setConfirmRent }) => {
       event.preventDefault();
       event.stopPropagation();
     } else {
+      navigate('/payment');
       setConfirmRent(true);
     }
     setValidated(true);

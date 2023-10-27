@@ -1,22 +1,22 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import styles from '../css/RateTrailer.module.css';
-import {InputGroup, Form} from 'react-bootstrap';
+import { InputGroup, Form } from 'react-bootstrap';
 import MainButton from './MainButton';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const RateTrailer = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/")
-  }
+    navigate('/');
+  };
+
   return (
     <>
       <div className={styles.checkMark}>
         <i className="bi bi-check-lg" id={styles.checkIcon}></i>
       </div>
-      <div className={styles.stars}>
-      </div>
+      <div className={styles.stars}></div>
       <div className={styles.ratingInput}>
         <InputGroup>
           <div className={styles.inputContainer}>
@@ -25,10 +25,16 @@ const RateTrailer = () => {
           </div>
         </InputGroup>
         <div className={styles.sendButton}>
-          <MainButton buttonText="Lähetä" type="submit" size="lg" onClick={handleClick}></MainButton>
+          <MainButton
+            buttonText="Lähetä"
+            type="submit"
+            size="lg"
+            onClick={handleClick}
+          ></MainButton>
         </div>
       </div>
     </>
   );
-}
+};
+
 export default RateTrailer;

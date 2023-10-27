@@ -1,5 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // TODO: Why does the one in App.jsx not work here?
+import 'bootstrap-icons/font/bootstrap-icons.css'; // TODO: Should throw this in index.css or somewhere sensible.
 import Navbar from 'react-bootstrap/Navbar';
 import Logo from '../assets/hsy_logo.png';
 import '../css/navigation.css';
@@ -7,8 +7,7 @@ import FinnishFlag from '../assets/finland-flag-icon.svg';
 import EnglishFlag from '../assets/united-kingdom-flag-icon.svg';
 import SwedishFlag from '../assets/sweden-flag-icon.svg';
 
-// Navigation component function
-const Navigation = () => {
+const FrontPageNavBar = () => {
   return (
     <Navbar bg="white" variant="dark" expand="lg">
       <Navbar.Brand>
@@ -57,4 +56,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default FrontPageNavBar;
