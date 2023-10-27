@@ -1,12 +1,19 @@
-import GoRentButton from '../components/GoRentButton';
+import { useState } from 'react';
 import FrontPageNavBar from '../components/Navigation';
 import styles from '../css/FrontPage.module.css';
 import FrontPicture from '../assets/frontpagepicture.webp';
 import RentInfoBoxList from '../components/RentalInfo';
+import ModalInfo from '../components/RentInfoModal';
 import { applyVersionClass, removeVersionClass } from '../utils/BodyVersion';
 import { useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 
 const FrontPage = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
   // use body version 2
   useEffect(() => {
     applyVersionClass();
@@ -66,7 +73,14 @@ const FrontPage = () => {
                   Huomioithan, että kello 17 alkavissa varauksissa peräkärry
                   pitää noutaa Sortti-asemalta viimeistään klo 17.30.
                 </p>
-                <GoRentButton buttonText="Vuokraa tästä"></GoRentButton>
+                <Button
+                  size="lg"
+                  variant="primary"
+                  className={styles.rentButton}
+                  onClick={handleOpenModal}
+                >
+                  Vuokraa tästä
+                </Button>
               </div>
             </div>
             <div className={styles.frontInfoContainer}>
@@ -80,6 +94,7 @@ const FrontPage = () => {
           </div>
         </main>
       </div>
+      <ModalInfo showModal={showModal} handleClose={handleCloseModal} />
     </div>
   );
 };

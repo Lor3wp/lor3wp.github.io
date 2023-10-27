@@ -1,7 +1,8 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import styles from '../css/RateTrailer.module.css';
 import { InputGroup, Form } from 'react-bootstrap';
-import MainButton from './MainButton';
+import Button from 'react-bootstrap/Button';
+
 import { useNavigate } from 'react-router-dom';
 
 const RateTrailer = () => {
@@ -25,12 +26,14 @@ const RateTrailer = () => {
           </div>
         </InputGroup>
         <div className={styles.sendButton}>
-          <MainButton
-            buttonText="Lähetä"
+          <Button
             type="submit"
+            id="proceedToPaymentButton"
             size="lg"
             onClick={handleClick}
-          ></MainButton>
+          >
+            Lähetä
+          </Button>
         </div>
       </div>
     </>

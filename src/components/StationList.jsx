@@ -1,11 +1,11 @@
 import ListGroup from 'react-bootstrap/ListGroup';
-import MainButton from './MainButton';
 import styles from '../css/StationList.module.css';
 import Bike from '../Icons/cargobike.svg';
 import Trailer from '../Icons/trailer.svg';
 import { useState } from 'react';
 import Checkbox from './Checkbox';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const StationList = () => {
   const stations = [
@@ -78,25 +78,21 @@ const StationList = () => {
                   <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
                 </svg>
                 <p id={styles.kilometers}>10km</p>
-                {station.cargoBike ? (
+                {station.cargoBike && (
                   <img
                     src={Bike}
                     alt="cargo bike icon"
                     id={styles.cargobike}
                     draggable={false}
                   />
-                ) : (
-                  <></>
                 )}
-                {station.trailer ? (
+                {station.trailer && (
                   <img
                     src={Trailer}
                     alt="trailer icon"
                     id={styles.trailer}
                     draggable={false}
                   />
-                ) : (
-                  <></>
                 )}
                 <Checkbox
                   onChange={() => handleCheckbox(index)}
@@ -118,13 +114,9 @@ const StationList = () => {
           </ListGroup.Item>
         ))}
       </ListGroup>
-      <MainButton
-        buttonText="Valitse päivämäärä"
-        type="button"
-        size="l"
-        id="date-button"
-        onClick={() => handleClick()}
-      ></MainButton>
+      <Button size="lg" id="date-button" onClick={handleClick}>
+        Valitse päivämäärä
+      </Button>
     </div>
   );
 };

@@ -9,8 +9,9 @@ import CalendarPage from './pages/CalendarPage';
 import Payment from './pages/Payment';
 import ReturnItemPage from './pages/ReturnTrailer';
 import HeaderComponent from './pages/HeaderTestPage';
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import './theme.css';
 //import 'bootstrap/dist/js/bootstrap.bundle.min'; // TODO: What exactly does this do?
 function App() {
   return (
@@ -28,4 +29,5 @@ function App() {
     </Routes>
   );
 }
+
 export default App;

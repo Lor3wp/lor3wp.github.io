@@ -1,6 +1,7 @@
 import Form from 'react-bootstrap/Form';
 import PropTypes from 'prop-types';
 
+// TODO: No idea why this has to be it's own component...
 const Checkbox = ({
   label,
   routeName,
@@ -12,14 +13,8 @@ const Checkbox = ({
   componentId,
   className,
 }) => {
-  const bootstrapClasses = {
-    'mb-3': 'mb-3',
-  };
   return (
-    <div
-      key="default-checkbox"
-      className={`${className} ${bootstrapClasses['mb-3']}`}
-    >
+    <div key="default-checkbox" className={`${className} ${'mb-4'}`}>
       <Form.Check
         required={isRequired ? true : false}
         type="checkbox"

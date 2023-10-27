@@ -4,8 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import styles from '../css/successfulRental.module.css';
 import { useNavigate } from 'react-router-dom';
-import MainButton from '../components/MainButton';
 import Header from '../components/Header';
+import Button from 'react-bootstrap/Button';
 
 const SuccessfulRentalPage = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const SuccessfulRentalPage = () => {
 
   return (
     <>
-      <Header></Header>
+      <Header />
       <Container>
         <Image
           className={styles.successIllustration}
@@ -38,12 +38,15 @@ const SuccessfulRentalPage = () => {
             </Card.Text>
           </Card.Body>
         </Card>
-        <MainButton
-          buttonText="Varauksen tiedot"
-          type="button"
+
+        <Button
+          type="submit"
+          id="proceedToPaymentButton"
           size="lg"
-          onClick={() => handleClick()}
-        ></MainButton>
+          onClick={handleClick}
+        >
+          Varauksen tiedot
+        </Button>
       </Container>
     </>
   );
