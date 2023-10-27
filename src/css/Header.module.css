@@ -2,14 +2,14 @@
   background-color: white;
   height: 70px;
   width: 100%;
-  border-bottom: 1px solid #007377;
+  border-bottom: 1px solid #00aaa3;
   display: flex;
   justify-content: flex-end;
 }
 
 .headerLogoContainer {
   width: 183px;
-  background-color: #007377;
+  background-color: #00aaa3;
   clip-path: circle(83% at 73% -40%);
   /* clip-path: circle(83% at 86% 20%); */
   /* transform: rotate(351deg); */
@@ -19,9 +19,17 @@
 
 .logo2 {
   position: absolute;
-  right: 22px;
-  width: 85px;
-  height: 44px;
-  top: 10px;
+  right: 13px;
+  width: 103px;
+  height: 50px;
+  top: 8px;
   object-fit: cover;
+}
+
+.textContainer {
+  display: flex;
+  position: absolute;
+  left: 26px;
+  top: -1px;
+  font-size: 24px;
 }

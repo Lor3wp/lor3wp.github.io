@@ -14,6 +14,9 @@ const Header = () => {
   }, []);
   return (
     <div className={styles.customHeaderContainer}>
+      <div className={styles.textContainer}>
+        <p>VUOKRAUS</p>
+      </div>
       <div className={styles.headerLogoContainer}>
         <div className={styles.logoContainer}>
           <img

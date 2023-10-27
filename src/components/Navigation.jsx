@@ -49,9 +49,11 @@ const Navigation = () => {
         </div>
       </div>
       <div className="container-fluid">
-        <p>Sorttiasemat</p>
-        <p>Jäteopas</p>
-        <p>Asiakaspalvelu</p>
+        <div className="container-txt">
+          <p>Sorttiasemat</p>
+          <p>Jäteopas</p>
+          <p>Asiakaspalvelu</p>
+        </div>
       </div>
     </Navbar>
   );

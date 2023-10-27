@@ -1,0 +1,66 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 0;
+  top: 472px;
+  width: 100%;
+}
+
+.footerContainer {
+  background-color: rgba(100, 195, 205, 0.08);
+  color: #006b67;
+}
+
+.customInfoText {
+  font-size: 14px !important;
+}
+
+.customFooter {
+  background-color: rgba(100, 195, 205, 0.08);
+  color: #006b67;
+}
+
+.customFooterText {
+  color: #006b67;
+}
+
+.customSvg > svg {
+  height: 20px;
+}
+
+.socialLinks {
+  margin: auto;
+  margin-top: 20px;
+}
+
+.customFooterText {
+  background-color: rgba(100, 195, 205, 0.08);
+}
+
+.footerLogo {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px !important;
+}
+
+.logoContainer {
+  position: relative;
+  width: 50%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.textMargin {
+  margin-top: 65px !important;
+}
+
+@media (min-width: 1400px) {
+  .container2 {
+    max-width: 2001px !important;
+  }
+}

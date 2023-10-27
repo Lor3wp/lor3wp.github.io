@@ -3,6 +3,7 @@ import Navigation from '../components/Navigation';
 import styles from '../css/FrontPage.module.css';
 import FrontPicture from '../assets/frontpagepicture.webp';
 import RentInfoBoxList from '../components/RentalInfo';
+import Footer from '../components/Footer';
 import { applyVersionClass, removeVersionClass } from '../utils/BodyVersion';
 import { useEffect } from 'react';
 
@@ -83,6 +84,7 @@ const FrontPage = () => {
             </div>
           </main>
         </div>
+        <Footer />
       </body>
     </>
   );
