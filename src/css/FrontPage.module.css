@@ -1,6 +1,13 @@
+/* CSS Rules for Frontpage*/
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
+}
+
 .frontPageBody {
-  align-items: flex-start !important;
-  display: block !important;
+  flex-grow: 1; /* Allow the front page content to grow and take up the available space */
 }
 
 .frontPageContent {
@@ -12,13 +19,12 @@
 .frontPagePicture {
   display: flex !important;
   justify-content: center !important;
-  height: 445px !important;
   width: 100% !important;
   object-fit: cover !important;
 }
 
 .frontHeaderTxt {
-  margin-left: 12%;
+  margin-left: 17%;
   display: flex;
   align-items: center;
   margin-bottom: 0;
@@ -61,11 +67,7 @@
 }
 
 .frontImgContainer {
-  display: flex;
-  width: 50%;
-  justify-content: center;
-  margin-top: auto;
-  flex-direction: column;
+  width: 40%;
 }
 
 .frontInfoContainer {

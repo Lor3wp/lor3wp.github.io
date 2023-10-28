@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from '../css/FrontPage.module.css';
 
+/* Frontpage's rental info text highlight */
 const RentInfoBoxList = ({ items }) => {
   const highlightText = (text) => {
     const replacements = [

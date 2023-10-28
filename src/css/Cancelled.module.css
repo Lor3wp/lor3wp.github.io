@@ -1,0 +1,24 @@
+/* CSS Rules for cancelled reservation page */
+
+.backgroundImage {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: auto;
+}
+
+.contentContainer {
+  background-color: #191919a8;
+  color: white;
+  font-size: 30px;
+  width: 491px;
+  height: 300px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 55px;
+  text-shadow: 3px 0px 15px black;
+}

@@ -5,6 +5,7 @@ import RentInfoBoxList from '../components/RentalInfo';
 import styles from '../css/RentInfoModal.module.css';
 import { useNavigate } from 'react-router-dom';
 
+/* Rental info rules pop-up modal */
 const items = [
   'Peräkärryn vuokraus maksaa 5 € kolmelta tunnilta.',
   'Peräkärry on tarkoitettu vain henkilöasiakkaille jätteen kuljettamiseen Sortti-asemille.',

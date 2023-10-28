@@ -1,3 +1,6 @@
+/* CSS Rules for Rental info modal
+   Same modal is in use for cancellation warning modal */
+
 .headingInfo2 {
   font-size: 24px;
   color: #00aaa3 !important;
@@ -6,6 +9,7 @@
 
 .modalPadding {
   padding-left: 63px !important;
+  align-items: flex-start !important;
 }
 
 .modalFooter {
@@ -14,4 +18,14 @@
 
 .rentButton {
   width: 200px;
+}
+
+.backButton {
+  width: 150px;
+  background-color: black !important;
+  border-color: black !important;
+}
+
+.cancelOptionButton {
+  width: 150px;
 }
