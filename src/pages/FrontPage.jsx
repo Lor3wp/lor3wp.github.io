@@ -4,24 +4,28 @@ import styles from '../css/FrontPage.module.css';
 import FrontPicture from '../assets/frontpagepicture.webp';
 import RentInfoBoxList from '../components/RentalInfo';
 import ModalInfo from '../components/RentInfoModal';
+import Footer from '../components/Footer';
 import { applyVersionClass, removeVersionClass } from '../utils/BodyVersion';
 import { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 
+/*Frontpage component */
+
 const FrontPage = () => {
   const [showModal, setShowModal] = useState(false);
 
+  // Event handlers for opening and closing the modal
   const handleOpenModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
 
-  // use body version 2
+  // Use the "useEffect" hook to apply and remove body version class
   useEffect(() => {
     applyVersionClass();
     return () => {
       removeVersionClass();
     };
   }, []);
-
+  // Arrays for lists
   const items = [
     'Peräkärryn vuokraus maksaa 5 € kolmelta tunnilta.',
     'Peräkärry on tarkoitettu vain henkilöasiakkaille jätteen kuljettamiseen Sortti-asemille.',
@@ -39,62 +43,68 @@ const FrontPage = () => {
   ];
 
   return (
-    <div className={styles.frontPageBody}>
-      <div className={styles.frontPageContent}>
-        <menu>
-          <FrontPageNavBar />
-        </menu>
-        <div className={styles.headerContainer}>
-          <header className={styles.frontHeader}>
-            <p className={styles.frontHeaderTxt}>
-              <span className={styles.lightGrayText}>Jätteet ja kierrätys</span>
-              <span className={styles.iconSpacing}>{' > '}</span>
-              Sortti-peräkärryn vuokraus
-            </p>
-          </header>
+    <div className={styles.pageContainer}>
+      <div className={styles.frontPageBody}>
+        <div className={styles.frontPageContent}>
+          <menu>
+            <FrontPageNavBar />
+          </menu>
+          <div className={styles.headerContainer}>
+            <header className={styles.frontHeader}>
+              <p className={styles.frontHeaderTxt}>
+                <span className={styles.lightGrayText}>
+                  Jätteet ja kierrätys
+                </span>
+                <span className={styles.iconSpacing}>{' > '}</span>
+                Sortti-peräkärryn vuokraus
+              </p>
+            </header>
+          </div>
+
+          <main className={styles.frontMain}>
+            <div className={styles.containerInfo}>
+              <div className={styles.frontImgContainer}>
+                <img className={styles.frontPagePicture} src={FrontPicture} />
+                <div className={styles.infoTextContainer2}>
+                  <h1 className={styles.headingInfo2}>Varaukset</h1>
+                  <p>
+                    Sortti-peräkärryn vuokrasopimus tehdään joko sähköisen
+                    varauksen yhteydessä tai Sortti-asemalla. Tarkastamme
+                    asemalla vuokraajan henkilöllisyyden.
+                  </p>
+                  <h2 className={styles.headingInfo3}>
+                    Vaihtoehtoiset tavat varata Sortti-peräkärry:
+                  </h2>
+                  <RentInfoBoxList items={items2} />
+                  <p>
+                    Huomioithan, että kello 17 alkavissa varauksissa peräkärry
+                    pitää noutaa Sortti-asemalta viimeistään klo 17.30.
+                  </p>
+                  <Button
+                    size="lg"
+                    variant="primary"
+                    className={styles.rentButton}
+                    onClick={handleOpenModal}
+                  >
+                    Vuokraa tästä
+                  </Button>
+                </div>
+              </div>
+              <div className={styles.frontInfoContainer}>
+                <div>
+                  <h1 className={styles.headingInfo}>
+                    Säännöt Sortti-peräkärryn vuokraukseen ja käyttöön
+                  </h1>
+                </div>
+                <RentInfoBoxList items={items} />
+              </div>
+            </div>
+          </main>
         </div>
 
-        <main className={styles.frontMain}>
-          <div className={styles.containerInfo}>
-            <div className={styles.frontImgContainer}>
-              <img className={styles.frontPagePicture} src={FrontPicture} />
-              <div className={styles.infoTextContainer2}>
-                <h1 className={styles.headingInfo2}>Varaukset</h1>
-                <p>
-                  Sortti-peräkärryn vuokrasopimus tehdään joko sähköisen
-                  varauksen yhteydessä tai Sortti-asemalla. Tarkastamme asemalla
-                  vuokraajan henkilöllisyyden.
-                </p>
-                <h2 className={styles.headingInfo3}>
-                  Vaihtoehtoiset tavat varata Sortti-peräkärry:
-                </h2>
-                <RentInfoBoxList items={items2} />
-                <p>
-                  Huomioithan, että kello 17 alkavissa varauksissa peräkärry
-                  pitää noutaa Sortti-asemalta viimeistään klo 17.30.
-                </p>
-                <Button
-                  size="lg"
-                  variant="primary"
-                  className={styles.rentButton}
-                  onClick={handleOpenModal}
-                >
-                  Vuokraa tästä
-                </Button>
-              </div>
-            </div>
-            <div className={styles.frontInfoContainer}>
-              <div>
-                <h1 className={styles.headingInfo}>
-                  Säännöt Sortti-peräkärryn vuokraukseen ja käyttöön
-                </h1>
-              </div>
-              <RentInfoBoxList items={items} />
-            </div>
-          </div>
-        </main>
+        <ModalInfo showModal={showModal} handleClose={handleCloseModal} />
+        <Footer />
       </div>
-      <ModalInfo showModal={showModal} handleClose={handleCloseModal} />
     </div>
   );
 };

@@ -1,3 +1,5 @@
+/* CSS Rules for navigation bar*/
+
 .navbar {
   width: 100%;
   height: 115px;
@@ -98,15 +100,19 @@ i.bi.bi-globe-americas {
   box-shadow: inset 0px 7px 3px -3px rgb(120 120 120 / 44%);
 }
 
-.container-fluid > p {
+.container-txt > p {
   padding-left: 20px;
   padding-left: 20px;
-  color: white;
-  font-weight: 500;
-  font-size: large;
 }
 
 span.navbar-brand {
   left: 0;
   position: absolute;
+}
+
+.container-txt {
+  color: white;
+  font-weight: 500;
+  font-size: large;
+  display: flex;
 }

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { CircularCountdownTimer } from '../components/CircularCountdownTimer';
 import { Container, Button, Stack } from 'react-bootstrap';
 import { RentInfoCard } from '../components/RentInfoCard';
+import ModalInfo from '../components/PopUpWarningModal';
 import styles from '../css/RentInfoCard.module.css';
 import Header from '../components/Header';
 
@@ -20,6 +21,12 @@ const RentInfoPage = () => {
   const timeUntilRentStart = () => {
     return '3h';
   };
+
+  const [showModal, setShowModal] = useState(false);
+
+  // Event handlers for opening and closing the modal
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
 
   return (
     <>
@@ -51,12 +58,17 @@ const RentInfoPage = () => {
           {timeStarted ? (
             <Button variant="success">Palauta peräkärry</Button>
           ) : (
-            <Button variant="danger" className={styles.cancelRentButton}>
+            <Button
+              variant="danger"
+              className={styles.cancelRentButton}
+              onClick={handleOpenModal}
+            >
               Peruuta varaus
             </Button>
           )}
         </Stack>
       </Container>
+      <ModalInfo showModal={showModal} handleClose={handleCloseModal} />
     </>
   );
 };
