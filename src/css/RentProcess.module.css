@@ -1,0 +1,32 @@
+.rentProcessContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: calc(100vh - 70px);
+}
+
+.bgImage1 {
+  background-image: url('../assets/bg_image1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.6;
+}
+
+.contentContainer {
+  width: 60rem;
+}
+
+.contentContainerLastStep {
+  width: 60rem;
+  background-color: #f7f7f8;
+}
+
+.bgImage2 {
+  background-image: url('../assets/bg_image2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.6;
+}
+
+.colorBg {
+  background-color: #f7f7f8;
+}

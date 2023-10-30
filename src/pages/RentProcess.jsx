@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CustomStepper } from '../components/CustomStepper';
 import ProductAndTime from '../components/TimeForm';
 import StationList from '../components/StationList';
 import Button from 'react-bootstrap/Button';
 import Header from '../components/Header';
 import UserForm from '../components/UserForm';
+import PageStyles from '../css/RentProcess.module.css';
 
 import MobilePay from '../assets/mobilepay.png';
 import VisaBlue from '../assets/visablue.png';
@@ -67,6 +68,10 @@ const RentProcess = () => {
   ];
   const irlPayments = [{ logo: HSY, bankName: 'HSY' }];
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const renderPaymentComponents = () => {
     return (
       <div className={styles.bankContainer}>
@@ -88,14 +93,12 @@ const RentProcess = () => {
           arrayName={bankPayments}
           paymentName={styles.bankPayment}
         ></BankType>
-        {/* <div className={styles.cancelContainer}> */}
         <BankType
           gridName={styles.irlGrid}
           title="Maksu paikan päällä"
           arrayName={irlPayments}
           paymentName={styles.irlPayment}
         ></BankType>
-        {/* </div> */}
       </div>
     );
   };
@@ -124,24 +127,39 @@ const RentProcess = () => {
     }
   };
 
+  // TODO: Minor bug: when the form errors are shown, the images change size
   return (
     <>
       <Header />
-      <div
-        style={{
-          backgroundColor: activeStep == steps.length - 1 ? '#f7f7f8' : 'white',
-        }}
-      >
-        <CustomStepper steps={steps} activeStep={activeStep} />
-        {renderSectionComponent()}
-        {activeStep !== 0 && (
-          <Button
-            variant="outline-primary"
-            onClick={() => setActiveStep(activeStep - 1)}
-          >
-            Takaisin
-          </Button>
-        )}
+      <div className={PageStyles.rentProcessContainer}>
+        <div
+          className={
+            activeStep === 3 ? PageStyles.colorBg : PageStyles.bgImage1
+          }
+        />
+        <div
+          className={
+            activeStep === 3
+              ? PageStyles.contentContainerLastStep
+              : PageStyles.contentContainer
+          }
+        >
+          <CustomStepper steps={steps} activeStep={activeStep} />
+          {renderSectionComponent()}
+          {activeStep !== 0 && (
+            <Button
+              variant="outline-primary"
+              onClick={() => setActiveStep(activeStep - 1)}
+            >
+              Edellinen
+            </Button>
+          )}
+        </div>
+        <div
+          className={
+            activeStep === 3 ? PageStyles.colorBg : PageStyles.bgImage2
+          }
+        />
       </div>
     </>
   );
