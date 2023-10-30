@@ -30,7 +30,8 @@ const RentInfoPage = () => {
 
   return (
     <>
-      <Header></Header>
+      {/*  TODO: probably best to put this in root file and change the header based on the page. */}
+      <Header />
       <Container>
         <Stack gap={5}>
           <Stack
