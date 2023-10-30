@@ -8,7 +8,7 @@ import EnglishFlag from '../assets/united-kingdom-flag-icon.svg';
 import SwedishFlag from '../assets/sweden-flag-icon.svg';
 
 /* Navigation component */
-const Navigation = () => {
+const FrontPageNavBar = () => {
   return (
     <Navbar bg="white" variant="dark" expand="lg">
       <Navbar.Brand>
@@ -59,4 +59,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default FrontPageNavBar;

@@ -5,7 +5,6 @@ import StationList from '../components/StationList';
 import Button from 'react-bootstrap/Button';
 import Header from '../components/Header';
 import UserForm from '../components/UserForm';
-import Footer from '../components/Footer';
 
 import MobilePay from '../assets/mobilepay.png';
 import VisaBlue from '../assets/visablue.png';
@@ -143,7 +142,6 @@ const RentProcess = () => {
             Takaisin
           </Button>
         )}
-        <Footer />
       </div>
     </>
   );

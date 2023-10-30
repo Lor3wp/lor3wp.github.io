@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { CircularCountdownTimer } from '../components/CircularCountdownTimer';
 import { Container, Button, Stack } from 'react-bootstrap';
 import { RentInfoCard } from '../components/RentInfoCard';
-import ModalInfo from '../components/CancelReservationModal';
+import ModalInfo from '../components/PopUpWarningModal';
 import styles from '../css/RentInfoCard.module.css';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 const RentInfoPage = () => {
   // TODO: Maybe there's a better way instead of doing multiple states?
@@ -70,7 +69,6 @@ const RentInfoPage = () => {
         </Stack>
       </Container>
       <ModalInfo showModal={showModal} handleClose={handleCloseModal} />
-      <Footer />
     </>
   );
 };

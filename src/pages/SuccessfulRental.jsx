@@ -6,7 +6,6 @@ import styles from '../css/successfulRental.module.css';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Button from 'react-bootstrap/Button';
-import Footer from '../components/Footer';
 
 const SuccessfulRentalPage = () => {
   const navigate = useNavigate();
@@ -49,7 +48,6 @@ const SuccessfulRentalPage = () => {
           Varauksen tiedot
         </Button>
       </Container>
-      <Footer />
     </>
   );
 };
