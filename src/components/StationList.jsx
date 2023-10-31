@@ -7,6 +7,7 @@ import Checkbox from './Checkbox';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 
+// Station list component
 const StationList = ({ onStationSelected }) => {
   const stations = [
     {
@@ -118,7 +119,12 @@ const StationList = ({ onStationSelected }) => {
           </ListGroup.Item>
         ))}
       </ListGroup>
-      <Button size="lg" id="date-button" onClick={handleSubmit}>
+      <Button
+        className={styles.dateButton}
+        size="lg"
+        id="date-button"
+        onClick={handleSubmit}
+      >
         Valitse päivämäärä
       </Button>
     </div>

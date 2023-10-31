@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FrontPageNavBar from '../components/Navigation';
 import styles from '../css/FrontPage.module.css';
-import FrontPicture from '../assets/frontpagepicture.webp';
+import FrontPicture from '../assets/frontpagepicture.jpg';
 import RentInfoBoxList from '../components/RentalInfo';
 import ModalInfo from '../components/RentInfoModal';
 import Footer from '../components/Footer';
