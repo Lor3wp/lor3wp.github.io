@@ -34,4 +34,33 @@
   box-shadow: 0 0 0 0.2rem rgba(38, 153, 149, 0.5);
 }
 
-/* TODO: customize outlined buttons */
+.btn-outline-primary {
+  color: #008782;
+  border-color: #008782;
+}
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: #008782;
+  border-color: #008782;
+}
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 135, 130, 0.5);
+}
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled {
+  color: #008782;
+  background-color: transparent;
+}
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #008782;
+  border-color: #008782;
+}
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 135, 130, 0.5);
+}

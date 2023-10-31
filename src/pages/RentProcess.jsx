@@ -5,6 +5,7 @@ import StationList from '../components/StationList';
 import Button from 'react-bootstrap/Button';
 import Header from '../components/Header';
 import UserForm from '../components/UserForm';
+import PageStyles from '../css/RentProcess.module.css';
 
 import MobilePay from '../assets/mobilepay.png';
 import VisaBlue from '../assets/visablue.png';
@@ -38,6 +39,10 @@ const RentProcess = () => {
   const handleFormSubmit = (data) => {
     console.log(data);
     setActiveStep(3);
+  };
+
+  const handlePrevStep = () => {
+    setActiveStep(activeStep - 1);
   };
 
   const steps = [
@@ -88,14 +93,12 @@ const RentProcess = () => {
           arrayName={bankPayments}
           paymentName={styles.bankPayment}
         ></BankType>
-        {/* <div className={styles.cancelContainer}> */}
         <BankType
           gridName={styles.irlGrid}
           title="Maksu paikan päällä"
           arrayName={irlPayments}
           paymentName={styles.irlPayment}
         ></BankType>
-        {/* </div> */}
       </div>
     );
   };
@@ -108,10 +111,13 @@ const RentProcess = () => {
         return (
           <ProductAndTime
             onProductAndTimeSelected={handleProductAndTimeSelected}
+            onPrevStep={handlePrevStep}
           />
         );
       case 2:
-        return <UserForm onSubmit={handleFormSubmit} />;
+        return (
+          <UserForm onSubmit={handleFormSubmit} onPrevStep={handlePrevStep} />
+        );
       case 3:
         return (
           <>
@@ -124,24 +130,31 @@ const RentProcess = () => {
     }
   };
 
+  // TODO: Minor bug: when the form errors are shown, the images change size
   return (
     <>
       <Header />
-      <div
-        style={{
-          backgroundColor: activeStep == steps.length - 1 ? '#f7f7f8' : 'white',
-        }}
-      >
-        <CustomStepper steps={steps} activeStep={activeStep} />
-        {renderSectionComponent()}
-        {activeStep !== 0 && (
-          <Button
-            variant="outline-primary"
-            onClick={() => setActiveStep(activeStep - 1)}
-          >
-            Takaisin
-          </Button>
-        )}
+      <div className={PageStyles.rentProcessContainer}>
+        <div
+          className={
+            activeStep === 3 ? PageStyles.colorBg : PageStyles.bgImage1
+          }
+        />
+        <div
+          className={
+            activeStep === 3
+              ? PageStyles.contentContainerLastStep
+              : PageStyles.contentContainer
+          }
+        >
+          <CustomStepper steps={steps} activeStep={activeStep} />
+          {renderSectionComponent()}
+        </div>
+        <div
+          className={
+            activeStep === 3 ? PageStyles.colorBg : PageStyles.bgImage2
+          }
+        />
       </div>
     </>
   );

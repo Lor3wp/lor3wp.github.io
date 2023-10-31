@@ -2,7 +2,7 @@
 
 .listContainer {
   width: 50vh;
-  margin: 2.5em auto;
+  margin: auto;
 }
 .rowContainer {
   display: flex;
@@ -33,6 +33,11 @@
 .stationCheckboxContainer {
   margin-left: auto;
 }
-.dateButton {
-  margin-top: 55px;
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1em 0 1em 0;
+  width: 100%;
 }

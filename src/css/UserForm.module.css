@@ -2,14 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 0.2rem !important;
 }
 .fieldContainer {
   margin: 0.2rem auto;
 }
 form {
   width: 70vh;
-  margin: 2rem auto;
+  margin: auto;
 }
 .feedbackText {
   text-align: left;
@@ -20,13 +19,22 @@ form {
 .checkboxContainer {
   text-align: left;
 }
-/* button {
-  width: -webkit-fill-available;
-  margin-top: 1rem;
-} */
 
 .userFormContainer {
   display: flex;
   justify-content: center;
   align-content: center;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1em 0 1em 0;
+}
+
+.leftButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }

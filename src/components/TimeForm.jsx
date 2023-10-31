@@ -6,8 +6,11 @@ import SelectProduct from '../components/SelectProduct';
 import rentStyle from '../css/RentForm.module.css';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router';
+import { ChevronCompactLeft } from 'react-bootstrap-icons';
+import { ChevronCompactRight } from 'react-bootstrap-icons';
 
-const ProductAndTime = ({ onProductAndTimeSelected }) => {
+const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState('');
   const [selectedStation, setSelectedStation] = useState('');
@@ -18,6 +21,8 @@ const ProductAndTime = ({ onProductAndTimeSelected }) => {
   const currentYear = currentDate.getFullYear();
   const currentDay = currentDate.getDate();
   const futureDates = [];
+
+  const navigate = useNavigate();
 
   for (let i = 1; i < 4; i++) {
     const randomDate = new Date(currentYear, currentMonth, currentDay + i);
@@ -32,6 +37,13 @@ const ProductAndTime = ({ onProductAndTimeSelected }) => {
       onProductAndTimeSelected();
     }
   };
+
+  const frontPage = () => {
+    if (confirm('Oletko varma?')) {
+      navigate('/', { replace: true });
+    }
+  };
+
   return (
     <div className={rentStyle.rentBox}>
       <div className={rentStyle.productBox}>
@@ -69,11 +81,22 @@ const ProductAndTime = ({ onProductAndTimeSelected }) => {
           stationName={'Aseman nimi'}
         ></SelectTime>
       </div>
-      <div className="userFormButton">
+      <div className={rentStyle.buttonsContainer}>
+        <div className={rentStyle.leftButtons}>
+          <Button variant="outline-primary" onClick={onPrevStep}>
+            <ChevronCompactLeft />
+            Edellinen
+          </Button>
+          <Button variant="outline-danger" onClick={frontPage}>
+            Peruuta
+          </Button>
+        </div>
         <Button size="lg" onClick={handleSubmit}>
           Täytä henkilötiedot
+          <ChevronCompactRight />
         </Button>
       </div>
+
       {/* <p>
           selecte date: {selectedDate.toLocaleDateString()} <br></br>selected
           time: {selectedTime}
@@ -84,6 +107,7 @@ const ProductAndTime = ({ onProductAndTimeSelected }) => {
 
 ProductAndTime.propTypes = {
   onProductAndTimeSelected: PropTypes.func.isRequired,
+  onPrevStep: PropTypes.func.isRequired,
 };
 
 export default ProductAndTime;
