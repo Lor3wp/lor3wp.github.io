@@ -7,10 +7,14 @@ import Checkbox from './Checkbox';
 import { useNavigate } from 'react-router-dom';
 import RentalConfirmation from './RentalConfirmation';
 import PropTypes from 'prop-types';
+import { ChevronCompactLeft } from 'react-bootstrap-icons';
+import { ChevronCompactRight } from 'react-bootstrap-icons';
 
-const UserForm = ({ onSubmit, confirmedRent, setConfirmRent }) => {
+const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
   const [validated, setValidated] = useState(false);
+
   const navigate = useNavigate();
+
   console.log(confirmedRent);
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -32,11 +36,16 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent }) => {
       setConfirmRent(true);
     }
     setValidated(true);
-    console.log('submitted!');
   };
 
   const navigateForward = () => {
     navigate('/payment');
+  };
+
+  const frontPage = () => {
+    if (confirm('Oletko varma?')) {
+      navigate('/', { replace: true });
+    }
   };
 
   return (
@@ -111,9 +120,21 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent }) => {
             className={styles.checkboxContainer}
           />
 
-          <Button type="submit" id="proceedToPaymentButton" size="lg">
-            Siirry maksamaan
-          </Button>
+          <div className={styles.buttonsContainer}>
+            <div className={styles.leftButtons}>
+              <Button variant="outline-primary" onClick={onPrevStep}>
+                <ChevronCompactLeft />
+                Edellinen
+              </Button>
+              <Button variant="outline-danger" onClick={frontPage}>
+                Peruuta
+              </Button>
+            </div>
+            <Button type="submit" id="proceedToPaymentButton" size="lg">
+              Siirry maksamaan
+              <ChevronCompactRight />
+            </Button>
+          </div>
         </div>
       </Form>
     </>
@@ -124,6 +145,7 @@ UserForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   confirmedRent: PropTypes.func.isRequired,
   setConfirmRent: PropTypes.func.isRequired,
+  onPrevStep: PropTypes.func.isRequired,
 };
 
 export default UserForm;

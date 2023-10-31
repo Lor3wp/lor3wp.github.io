@@ -6,6 +6,8 @@ import Trailer from '../Icons/trailer.svg';
 import Checkbox from './Checkbox';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router';
+import { ChevronCompactRight } from 'react-bootstrap-icons';
 
 // Station list component
 const StationList = ({ onStationSelected }) => {
@@ -45,12 +47,20 @@ const StationList = ({ onStationSelected }) => {
   // array of states to track checkbox status for each station
   const [isChecked, setIsChecked] = useState(stations.map(() => false));
 
+  const navigate = useNavigate();
+
   // handle the button click for selecting a station
   const handleSubmit = () => {
     if (isChecked.some((checked) => checked)) {
       onStationSelected();
     } else {
       alert('Valitse vähintään yksi asema ennen kuin jatkat.');
+    }
+  };
+
+  const frontPage = () => {
+    if (confirm('Oletko varma?')) {
+      navigate('/', { replace: true });
     }
   };
 
@@ -107,26 +117,20 @@ const StationList = ({ onStationSelected }) => {
                   id={styles.stationCheckbox}
                   className={styles.stationCheckboxContainer}
                 ></Checkbox>
-                {/* <input
-                type="checkbox"
-                id={styles.stationCheckbox}
-                name="station-checkbox"
-                value="station"
-                checked={isChecked[index]}
-                onChange={() => handleCheckbox(index)} /> */}
               </div>
             </div>
           </ListGroup.Item>
         ))}
       </ListGroup>
-      <Button
-        className={styles.dateButton}
-        size="lg"
-        id="date-button"
-        onClick={handleSubmit}
-      >
-        Valitse päivämäärä
-      </Button>
+      <div className={styles.buttonsContainer}>
+        <Button variant="outline-danger" onClick={frontPage}>
+          Peruuta
+        </Button>
+        <Button size="lg" id="date-button" onClick={handleSubmit}>
+          Valitse päivämäärä
+          <ChevronCompactRight />
+        </Button>
+      </div>
     </div>
   );
 };

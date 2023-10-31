@@ -25,3 +25,16 @@ form {
   justify-content: center;
   align-content: center;
 }
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1em 0 1em 0;
+}
+
+.leftButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}

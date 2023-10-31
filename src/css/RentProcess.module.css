@@ -4,11 +4,15 @@
   height: calc(100vh - 70px);
 }
 
-.bgImage1 {
-  background-image: url('../assets/bg_image1.png');
+.bgImage1,
+.bgImage2 {
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.6;
+}
+
+.bgImage1 {
+  background-image: url('../assets/bg_image1.png');
 }
 
 .contentContainer {
@@ -22,9 +26,6 @@
 
 .bgImage2 {
   background-image: url('../assets/bg_image2.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.6;
 }
 
 .colorBg {

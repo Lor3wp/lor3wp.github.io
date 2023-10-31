@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { CustomStepper } from '../components/CustomStepper';
 import ProductAndTime from '../components/TimeForm';
 import StationList from '../components/StationList';
@@ -41,6 +41,10 @@ const RentProcess = () => {
     setActiveStep(3);
   };
 
+  const handlePrevStep = () => {
+    setActiveStep(activeStep - 1);
+  };
+
   const steps = [
     { label: 'Valitse asemat', onClick: () => setActiveStep(0) },
     { label: 'Tuotevalinta & Päivämäärä', onClick: () => setActiveStep(1) },
@@ -67,10 +71,6 @@ const RentProcess = () => {
     { logo: Spankki, bankName: 'spankki' },
   ];
   const irlPayments = [{ logo: HSY, bankName: 'HSY' }];
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const renderPaymentComponents = () => {
     return (
@@ -111,10 +111,13 @@ const RentProcess = () => {
         return (
           <ProductAndTime
             onProductAndTimeSelected={handleProductAndTimeSelected}
+            onPrevStep={handlePrevStep}
           />
         );
       case 2:
-        return <UserForm onSubmit={handleFormSubmit} />;
+        return (
+          <UserForm onSubmit={handleFormSubmit} onPrevStep={handlePrevStep} />
+        );
       case 3:
         return (
           <>
@@ -146,14 +149,6 @@ const RentProcess = () => {
         >
           <CustomStepper steps={steps} activeStep={activeStep} />
           {renderSectionComponent()}
-          {activeStep !== 0 && (
-            <Button
-              variant="outline-primary"
-              onClick={() => setActiveStep(activeStep - 1)}
-            >
-              Edellinen
-            </Button>
-          )}
         </div>
         <div
           className={

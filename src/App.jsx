@@ -9,7 +9,6 @@ import Cancelled from './pages/CancelledPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import './theme.css';
-//import 'bootstrap/dist/js/bootstrap.bundle.min'; // TODO: What exactly does this do?
 
 function App() {
   return (
