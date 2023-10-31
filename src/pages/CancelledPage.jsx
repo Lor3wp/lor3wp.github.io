@@ -1,4 +1,4 @@
-import bgImage from '../assets/frontpagepicture.webp';
+import bgImage from '../assets/frontpagepicture.jpg';
 import { Button, Col, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { applyVersionClass, removeVersionClass } from '../utils/BodyVersion';

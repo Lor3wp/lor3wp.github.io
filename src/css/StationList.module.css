@@ -1,3 +1,5 @@
+/* CSS Rules for station list */
+
 .listContainer {
   width: 50vh;
   margin: 2.5em auto;
@@ -9,6 +11,7 @@
 
 #kilometers {
   margin: 0 8px 0 0;
+  flex: 0;
 }
 
 .stationName {
@@ -29,4 +32,7 @@
 }
 .stationCheckboxContainer {
   margin-left: auto;
+}
+.dateButton {
+  margin-top: 55px;
 }

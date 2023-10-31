@@ -1,6 +1,8 @@
+/* CSS Rules for trailer return view*/
+
 .returnButton {
-  width: 200px !important;
-  height: 200px !important;
+  width: 150px !important;
+  height: 150px !important;
   border-radius: 100% !important;
   background-color: #008782 !important;
   color: white !important;
@@ -10,7 +12,9 @@
 }
 .returnContainer {
   width: 50vw;
-  margin: 5rem auto;
+  margin: 1rem auto;
+  border: none !important;
+  padding: 0;
 }
 .dividerLine {
   flex: 1;
@@ -47,6 +51,35 @@
 .paginationContainer {
   display: flex;
   align-items: center;
-  width: 50vw;
+  width: 30vw;
   margin: 5rem auto;
+  margin-top: 40px;
+}
+.returnCardHeader {
+  background-color: #008782;
+  color: white;
+  font-size: 20px;
+}
+.logoBackgroundContainer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 256px;
+  height: 245px;
+}
+.backgroundLogo {
+  transform: scale(2);
+  opacity: 0.28;
+}
+.backButton {
+  position: absolute;
+  left: 20px;
+  top: 90px;
+}
+.returnCard {
+  border: none !important;
+  box-shadow: 0px 0px 20px #e4e4e4;
+}
+.returnContainer {
+  margin-top: -30px !important;
 }
