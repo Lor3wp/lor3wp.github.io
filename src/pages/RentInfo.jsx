@@ -5,7 +5,9 @@ import { RentInfoCard } from '../components/RentInfoCard';
 import ModalInfo from '../components/PopUpWarningModal';
 import styles from '../css/RentInfoCard.module.css';
 import Header from '../components/Header';
+import GoogleMap from '../components/GoogleMaps';
 
+//Rent-info page
 const RentInfoPage = () => {
   // TODO: Maybe there's a better way instead of doing multiple states?
   const [rentDate, setRentDate] = useState('17.09.2023');
@@ -13,7 +15,7 @@ const RentInfoPage = () => {
   const [rentEndTime, setRentEndTime] = useState('14:00');
   const [itemType, setItemType] = useState('Peräkärry');
   const [stationLocation, setStationLocation] = useState(
-    'Kivikon Sortti-asema',
+    'Kivikon Sortti-asema', //Jorvaksen Sortti-asema, Konalan Sortti-asema, Ruskeasannan Sortti-asema, Ämmässuon Sortti-asema, Koivukylän Sortti-pienasema
   );
   const [timeStarted, setTimeStarted] = useState(false);
 
@@ -30,9 +32,9 @@ const RentInfoPage = () => {
 
   return (
     <>
-      {/*  TODO: probably best to put this in root file and change the header based on the page. */}
       <Header />
-      <Container>
+      <Container className={styles.infoCardContainer}>
+        <h1 className={styles.headerInfo}>Varauksesi</h1>
         <Stack gap={5}>
           <Stack
             direction="horizontal"
@@ -55,7 +57,6 @@ const RentInfoPage = () => {
               />
             </div>
           </Stack>
-
           {timeStarted ? (
             <Button variant="success">Palauta peräkärry</Button>
           ) : (
@@ -69,6 +70,10 @@ const RentInfoPage = () => {
           )}
         </Stack>
       </Container>
+      <GoogleMap
+        stationLocation={stationLocation}
+        className={styles.mapContainer}
+      />
       <ModalInfo showModal={showModal} handleClose={handleCloseModal} />
     </>
   );
