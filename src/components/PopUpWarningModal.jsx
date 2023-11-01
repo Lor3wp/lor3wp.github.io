@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 import styles from '../css/PopUpWarningModal.module.css';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const PopUpWarningModal = (props) => {
   const navigate = useNavigate();
 
   const frontPage = () => {
-    //TODO: Add a toast message to confirm the return
     navigate('/');
+    toast.success('Varaus peruutettu!');
   };
 
   return (
