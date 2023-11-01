@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CircularCountdownTimer } from '../components/CircularCountdownTimer';
 import { Container, Button, Stack } from 'react-bootstrap';
 import { RentInfoCard } from '../components/RentInfoCard';
 import ModalInfo from '../components/PopUpWarningModal';
+import { applyVersionClass2, removeVersionClass2 } from '../utils/BodyVersion';
 import styles from '../css/RentInfoCard.module.css';
 import Header from '../components/Header';
 import GoogleMap from '../components/GoogleMaps';
@@ -29,6 +30,14 @@ const RentInfoPage = () => {
   // Event handlers for opening and closing the modal
   const handleOpenModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
+
+  // Use the "useEffect" hook to apply and remove body version class
+  useEffect(() => {
+    applyVersionClass2(); // Apply version 3 to the body
+    return () => {
+      removeVersionClass2(); // Remove version 3 from the body when the component unmounts
+    };
+  }, []);
 
   return (
     <>

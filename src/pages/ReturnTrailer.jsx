@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { applyVersionClass2, removeVersionClass2 } from '../utils/BodyVersion';
 import ReturnCard from '../components/ReturnCard';
 import ReturnPagination from '../components/ReturnPagination';
 import HsyLogo from '../assets/hsy-drops.svg';
@@ -13,6 +14,14 @@ const ReturnItemPage = () => {
   const handleClick = () => {
     setClicked(!clicked);
   };
+
+  // Use the "useEffect" hook to apply and remove body version class
+  useEffect(() => {
+    applyVersionClass2(); // Apply version 3 to the body
+    return () => {
+      removeVersionClass2(); // Remove version 3 from the body when the component unmounts
+    };
+  }, []);
 
   return (
     <>
