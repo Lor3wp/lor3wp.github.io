@@ -58,7 +58,6 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
           />
         </>
       )}
-
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <div className={styles.fieldContainer}>
           <FormField

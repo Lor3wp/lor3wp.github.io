@@ -40,6 +40,7 @@ const SuccessfulRentalPage = () => {
         </Card>
 
         <Button
+          className="proceedToPaymentButton"
           type="submit"
           id="proceedToPaymentButton"
           size="lg"

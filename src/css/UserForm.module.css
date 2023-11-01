@@ -2,13 +2,29 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
 }
 .fieldContainer {
   margin: 0.2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
 }
 form {
   width: 70vh;
   margin: auto;
+}
+.customInput {
+  width: 55vh;
+  margin: auto;
+  border-color: #008782;
+}
+.formLabel {
+  font-weight: 500;
+  color: #04625e;
 }
 .feedbackText {
   text-align: left;
@@ -19,22 +35,28 @@ form {
 .checkboxContainer {
   text-align: left;
 }
-
 .userFormContainer {
   display: flex;
   justify-content: center;
   align-content: center;
 }
-
 .buttonsContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 1em 0 1em 0;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 .leftButtons {
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  margin-right: 24px;
+}
+.spanLabel {
+  color: #3f9093;
+}
+.spanLabel:hover {
+  color: #59c3b9;
 }

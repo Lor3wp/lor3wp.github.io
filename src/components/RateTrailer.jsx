@@ -11,6 +11,7 @@ const RateTrailer = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
+    window.alert('Viestisi on lähetetty!');
     navigate('/');
   };
 

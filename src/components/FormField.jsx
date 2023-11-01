@@ -14,8 +14,8 @@ const FormField = ({ controlId, label, type, feedbackText }) => {
         md="100"
         controlId={controlId}
       >
-        <Form.Label>{label}</Form.Label>
-        <Form.Control required type={type} />
+        <Form.Label className={styles.formLabel}>{label}</Form.Label>
+        <Form.Control required type={type} className={styles.customInput} />
         <Form.Control.Feedback type="invalid" className={styles.feedbackText}>
           {feedbackText}
         </Form.Control.Feedback>
