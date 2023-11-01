@@ -10,10 +10,11 @@ import {
   Calendar2Event,
   ClockFill,
   GeoAltFill,
+  TruckFrontFill,
 } from 'react-bootstrap-icons';
 import { PopUpInfoModal } from './PopUpInfoModal';
 
-// TODO: Change item icon depending on item type
+//Rent-info card component
 export const RentInfoCard = ({
   rentDate,
   rentStartTime,
@@ -23,24 +24,24 @@ export const RentInfoCard = ({
 }) => {
   const [modalShow, setModalShow] = useState(false);
 
+  //Rent-info modal
   const modalBodyContent = (
     <div>
-      <p>Vedenjakelun vikapäivystys ja automaattiset tiedotteet</p>
-      <p>häiriötilanteista: p. 09 1561 3000 palvelee 24/7</p>
-      <p>Palvelu puhelimitse 09 1561 2110 </p>
-      Vaihteen aukioloaika: arkisin klo 8.30–15.30 Asiakaspalvelun aukioloajat:
+      <p>
+        Vedenjakelun vikapäivystys ja automaattiset tiedotteet
+        häiriötilanteissa: p. 09 1561 3000, palvelee 24/7.
+      </p>
+      <p>Asiakaspalvelu puhelimitse: p. 09 1561 2110. </p>
+      Asiakaspalvelun aukioloajat:
       <ul>
-        <li> ma klo 8.30–15.30 </li>
-        <li>ti klo 8.30–11.00 </li>
-        <li>ke klo 8.30–15.30 </li>
-        <li>to klo 13.00–15.30 </li>
-        <li>pe klo 8.30–15.30</li>
+        <li>Ma klo 8.30–15.30 </li>
+        <li>Ti klo 8.30–11.00 </li>
+        <li>Ke klo 8.30–15.30 </li>
+        <li>To klo 13.00–15.30 </li>
+        <li>Pe klo 8.30–15.30</li>
       </ul>
       <p>
-        Miten toimia jos kärry meni rikki, tai jos kolaroit. Horem ipsum dolor
-        sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit
-        interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
-        torquent per conubia nostra, per inceptos himenaeos.
+        Jos peräkärry menee rikki tai joudut kolariin, soita asiakaspalveluun.{' '}
       </p>
     </div>
   );
@@ -56,18 +57,22 @@ export const RentInfoCard = ({
       />
       <Card className={styles.card}>
         <Card.Header as="h5" className={styles.cardHeader}>
-          <InfoCircleFill /> Varauksesi tiedot:
+          <InfoCircleFill className={styles.infoCircleIcon} /> Varauksesi
+          tiedot:
         </Card.Header>
         <ListGroup className="list-group-flush">
           <ListGroup.Item>
-            <Calendar2Event /> {rentDate}
+            <Calendar2Event className={styles.icons} /> {rentDate}
           </ListGroup.Item>
           <ListGroup.Item>
-            <ClockFill /> {rentStartTime}-{rentEndTime}
+            <ClockFill className={styles.icons} /> {rentStartTime}-{rentEndTime}
           </ListGroup.Item>
-          <ListGroup.Item>{itemType}</ListGroup.Item>
           <ListGroup.Item>
-            <GeoAltFill /> {stationLocation}
+            <TruckFrontFill className={styles.icons} />
+            {itemType}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <GeoAltFill className={styles.icons} /> {stationLocation}
           </ListGroup.Item>
         </ListGroup>
         <Card.Body className={styles.btn}>
