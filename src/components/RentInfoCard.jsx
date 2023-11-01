@@ -10,11 +10,10 @@ import {
   Calendar2Event,
   ClockFill,
   GeoAltFill,
-  TruckFrontFill,
 } from 'react-bootstrap-icons';
 import { PopUpInfoModal } from './PopUpInfoModal';
 
-//Rent-info card component
+//TODO: change icon depending on the item type
 export const RentInfoCard = ({
   rentDate,
   rentStartTime,
@@ -67,10 +66,7 @@ export const RentInfoCard = ({
           <ListGroup.Item>
             <ClockFill className={styles.icons} /> {rentStartTime}-{rentEndTime}
           </ListGroup.Item>
-          <ListGroup.Item>
-            <TruckFrontFill className={styles.icons} />
-            {itemType}
-          </ListGroup.Item>
+          <ListGroup.Item>{itemType}</ListGroup.Item>
           <ListGroup.Item>
             <GeoAltFill className={styles.icons} /> {stationLocation}
           </ListGroup.Item>

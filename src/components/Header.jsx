@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { applyVersionClass, removeVersionClass } from '../utils/BodyVersion';
 import { useEffect } from 'react';
 
-/* Header component */
+// TODO: make the header title dynamic
 const Header = () => {
   // use body version 2
   useEffect(() => {

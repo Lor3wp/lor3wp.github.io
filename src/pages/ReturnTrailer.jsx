@@ -6,8 +6,6 @@ import HsyLogo from '../assets/hsy-drops.svg';
 import styles from '../css/ReturnTrailer.module.css';
 import Header from '../components/Header';
 
-//Return trailer page
-
 const ReturnItemPage = () => {
   const [clicked, setClicked] = useState(false);
 

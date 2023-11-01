@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import './theme.css';
 
+// TODO: "cancelled" page is useless, add successful modal and redirect to front page instead
 function App() {
   return (
     <Routes>
