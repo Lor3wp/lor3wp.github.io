@@ -8,7 +8,7 @@ const PopUpWarningModal = (props) => {
   const navigate = useNavigate();
 
   const frontPage = () => {
-    navigate('/');
+    navigate('/', { replace: true });
     toast.success('Varaus peruutettu!');
   };
 
