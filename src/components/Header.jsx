@@ -14,10 +14,11 @@ const Header = () => {
       removeVersionClass();
     };
   }, []);
+
   return (
     <div className={styles.customHeaderContainer}>
       <div className={styles.textContainer}>
-        <p>VUOKRAUSPALVELU</p>
+        <h2>VUOKRAUSPALVELU</h2>
       </div>
       <div className={styles.headerLogoContainer}>
         <div className={styles.logoContainer}>
