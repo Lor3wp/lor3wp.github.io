@@ -35,6 +35,18 @@ body.version2 {
   display: block !important;
 }
 
+body.version3 {
+  display: block !important;
+  background-color: #b5d2d60a;
+  background-image: linear-gradient(
+    118deg,
+    #95c1c60a 0%,
+    #e4fffe17 50%,
+    #0a8b7f30 100%
+  );
+  height: auto;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;

@@ -1,7 +1,7 @@
 /* CSS Rules for header*/
 
 .customHeaderContainer {
-  background-color: white;
+  background-color: transparent;
   height: 70px;
   width: 100%;
   border-bottom: 1px solid #00aaa3;

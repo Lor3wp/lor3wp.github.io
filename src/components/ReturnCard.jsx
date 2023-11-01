@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import RateTrailer from './RateTrailer';
 import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { ChevronCompactLeft } from 'react-bootstrap-icons';
 
 // Return trailer component
 
@@ -20,8 +21,13 @@ const ReturnCard = ({ clicked, onClick }) => {
       <Container className={styles.returnContainer}>
         {!clicked ? (
           <div className={styles.returnContainer}>
-            <Button className={styles.backButton} onClick={goToRentInfo}>
-              Takaisin
+            <Button
+              className={styles.backButton}
+              variant="outline-primary"
+              onClick={goToRentInfo}
+            >
+              <ChevronCompactLeft />
+              Edellinen
             </Button>
             <Card className={styles.returnCard}>
               <Card.Header className={styles.returnCardHeader}>
