@@ -3,7 +3,6 @@ import { CustomStepper } from '../components/CustomStepper';
 import ProductAndTime from '../components/TimeForm';
 import StationList from '../components/StationList';
 import Button from 'react-bootstrap/Button';
-import Header from '../components/Header';
 import UserForm from '../components/UserForm';
 import PageStyles from '../css/RentProcess.module.css';
 
@@ -25,7 +24,7 @@ import HSY from '../assets/hsy_logo.png';
 import styles from '../css/BankButton.module.css';
 import BankType from '../components/BankType';
 
-const RentProcess = () => {
+const RentProcessPage = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   const handleStationSelected = () => {
@@ -133,7 +132,6 @@ const RentProcess = () => {
   // TODO: Minor bug: when the form errors are shown, the images change size
   return (
     <>
-      <Header />
       <div className={PageStyles.rentProcessContainer}>
         <div
           className={
@@ -160,4 +158,4 @@ const RentProcess = () => {
   );
 };
 
-export default RentProcess;
+export default RentProcessPage;

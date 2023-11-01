@@ -4,9 +4,10 @@ import hsyLogo from '../assets/hsy-logo-valkoinen.png';
 import { Link } from 'react-router-dom';
 import { applyVersionClass, removeVersionClass } from '../utils/BodyVersion';
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 // TODO: make the header title dynamic
-const Header = () => {
+const Header = ({ title }) => {
   // use body version 2
   useEffect(() => {
     applyVersionClass();
@@ -18,7 +19,7 @@ const Header = () => {
   return (
     <div className={styles.customHeaderContainer}>
       <div className={styles.textContainer}>
-        <h2>VUOKRAUSPALVELU</h2>
+        <h2>{title}</h2>
       </div>
       <div className={styles.headerLogoContainer}>
         <div className={styles.logoContainer}>
@@ -35,6 +36,10 @@ const Header = () => {
       </div>
     </div>
   );
+};
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
 };
 
 export default Header;

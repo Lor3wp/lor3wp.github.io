@@ -67,7 +67,7 @@ const RulesModal = ({ showModal, handleClose, handleCheckBox, isChecked }) => {
 
 RulesModal.propTypes = {
   showModal: PropTypes.bool,
-  handleClose: PropTypes.bool,
+  handleClose: PropTypes.func,
   handleCheckBox: PropTypes.func,
   isChecked: PropTypes.bool,
 };

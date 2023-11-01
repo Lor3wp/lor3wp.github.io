@@ -5,7 +5,6 @@ import { RentInfoCard } from '../components/RentInfoCard';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 import { applyVersionClass2, removeVersionClass2 } from '../utils/BodyVersion';
 import styles from '../css/RentInfoCard.module.css';
-import Header from '../components/Header';
 import GoogleMap from '../components/GoogleMaps';
 import { useNavigate } from 'react-router-dom';
 
@@ -54,7 +53,6 @@ const RentInfoPage = () => {
         backButton="Takaisin"
         acceptButton="Kyllä"
       />
-      <Header />
       <Container className={styles.infoCardContainer}>
         <h1 className={styles.headerInfo}>Varauksesi</h1>
         <Stack gap={5}>
