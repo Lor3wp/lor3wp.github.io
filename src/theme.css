@@ -1,3 +1,4 @@
+/* Default primary button */
 .btn-primary {
   color: #fff;
   background-color: #008782;
@@ -34,6 +35,7 @@
   box-shadow: 0 0 0 0.2rem rgba(38, 153, 149, 0.5);
 }
 
+/* Outlined primary button */
 .btn-outline-primary {
   color: #008782;
   border-color: #008782;
