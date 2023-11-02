@@ -3,6 +3,7 @@ import styles from '../css/RateTrailer.module.css';
 import { InputGroup, Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import StarRating from '../components/StarRating';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 // Rating trailer component
@@ -11,7 +12,13 @@ const RateTrailer = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    window.alert('Viestisi on lähetetty!');
+    toast.success('Viestisi on lähetetty!', {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
     navigate('/');
   };
 
