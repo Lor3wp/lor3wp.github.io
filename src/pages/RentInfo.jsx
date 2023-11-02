@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { CircularCountdownTimer } from '../components/CircularCountdownTimer';
 import { Container, Button, Stack } from 'react-bootstrap';
 import { RentInfoCard } from '../components/RentInfoCard';
-import ModalInfo from '../components/PopUpWarningModal';
+import PopUpWarningModal from '../components/PopUpWarningModal';
 import { applyVersionClass2, removeVersionClass2 } from '../utils/BodyVersion';
 import styles from '../css/RentInfoCard.module.css';
-import Header from '../components/Header';
 import GoogleMap from '../components/GoogleMaps';
+import { useNavigate } from 'react-router-dom';
 
 //Rent-info page
 const RentInfoPage = () => {
@@ -19,17 +19,17 @@ const RentInfoPage = () => {
     'Kivikon Sortti-asema', //Jorvaksen Sortti-asema, Konalan Sortti-asema, Ruskeasannan Sortti-asema, Ämmässuon Sortti-asema, Koivukylän Sortti-pienasema
   );
   const [timeStarted, setTimeStarted] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const navigate = useNavigate();
 
   // TODO: Write a logic to calculate time until rent starts using the date/time from api extracted from current date/time.
   const timeUntilRentStart = () => {
     return '3h';
   };
 
-  const [showModal, setShowModal] = useState(false);
-
   // Event handlers for opening and closing the modal
   const handleOpenModal = () => setShowModal(true);
-  const handleCloseModal = () => setShowModal(false);
 
   // Use the "useEffect" hook to apply and remove body version class
   useEffect(() => {
@@ -39,9 +39,20 @@ const RentInfoPage = () => {
     };
   }, []);
 
+  const returnItemPage = () => {
+    navigate('/return-item');
+  };
+
   return (
     <>
-      <Header />
+      <PopUpWarningModal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        title="Peruuta varaus"
+        body="Oletko varma, että haluat peruuttaa varauksen?"
+        backButton="Takaisin"
+        acceptButton="Kyllä"
+      />
       <Container className={styles.infoCardContainer}>
         <h1 className={styles.headerInfo}>Varauksesi</h1>
         <Stack gap={5}>
@@ -67,7 +78,9 @@ const RentInfoPage = () => {
             </div>
           </Stack>
           {timeStarted ? (
-            <Button variant="success">Palauta peräkärry</Button>
+            <Button variant="success" onClick={returnItemPage}>
+              Palauta peräkärry
+            </Button>
           ) : (
             <Button
               variant="danger"
@@ -83,7 +96,6 @@ const RentInfoPage = () => {
         stationLocation={stationLocation}
         className={styles.mapContainer}
       />
-      <ModalInfo showModal={showModal} handleClose={handleCloseModal} />
     </>
   );
 };

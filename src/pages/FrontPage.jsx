@@ -3,20 +3,28 @@ import FrontPageNavBar from '../components/Navigation';
 import styles from '../css/FrontPage.module.css';
 import FrontPicture from '../assets/frontpagepicture.jpg';
 import RentInfoBoxList from '../components/RentalInfo';
-import ModalInfo from '../components/RentInfoModal';
 import Footer from '../components/Footer';
 import { applyVersionClass, removeVersionClass } from '../utils/BodyVersion';
 import { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
-
-/*Frontpage component */
+import RulesModal from '../components/RulesModal';
 
 const FrontPage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
-  // Event handlers for opening and closing the modal
+  // Event handlers for opening
   const handleOpenModal = () => setShowModal(true);
-  const handleCloseModal = () => setShowModal(false);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setIsChecked(false);
+  };
+
+  // Check box handler
+  const handleCheckChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   // Use the "useEffect" hook to apply and remove body version class
   useEffect(() => {
@@ -25,7 +33,7 @@ const FrontPage = () => {
       removeVersionClass();
     };
   }, []);
-  // Arrays for lists
+
   const items = [
     'Peräkärryn vuokraus maksaa 5 € kolmelta tunnilta.',
     'Peräkärry on tarkoitettu vain henkilöasiakkaille jätteen kuljettamiseen Sortti-asemille.',
@@ -102,7 +110,12 @@ const FrontPage = () => {
           </main>
         </div>
 
-        <ModalInfo showModal={showModal} handleClose={handleCloseModal} />
+        <RulesModal
+          showModal={showModal}
+          handleClose={handleCloseModal}
+          handleCheckBox={handleCheckChange}
+          isChecked={isChecked}
+        />
         <Footer />
       </div>
     </div>

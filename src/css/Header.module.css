@@ -2,11 +2,11 @@
 
 .customHeaderContainer {
   background-color: transparent;
-  height: 70px;
   width: 100%;
   border-bottom: 1px solid #00aaa3;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .headerLogoContainer {
@@ -20,19 +20,18 @@
 }
 
 .logo2 {
-  position: absolute;
-  right: 13px;
-  width: 103px;
+  right: 1rem;
+  width: 7rem;
   height: 50px;
-  top: 8px;
+  margin-top: 0.5rem;
   object-fit: cover;
+  margin-bottom: 0.5rem;
+  margin-left: 2rem;
 }
 
 .textContainer {
   display: flex;
   position: absolute;
-  left: 26px;
-  top: -1px;
-  font-size: 24px;
+  left: 2rem;
   color: #00615d;
 }

@@ -1,58 +1,51 @@
 import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
-import styles from '../css/RentInfoModal.module.css';
+import styles from '../css/PopUpWarningModal.module.css';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-//Reservation cancellation modal component
-
-const ModalCancellation = ({ showModal, handleClose }) => {
+const PopUpWarningModal = (props) => {
   const navigate = useNavigate();
 
-  const handleCancellationClick = () => {
-    navigate('/cancelled');
+  const frontPage = () => {
+    navigate('/', { replace: true });
+    toast.success('Varaus peruutettu!');
   };
 
   return (
     <Modal
-      show={showModal}
-      onHide={handleClose}
-      backdrop="static"
-      keyboard={false}
+      {...props}
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header className={styles.modalPadding} closeButton>
-        <Modal.Title className={styles.headingInfo2}>
-          Peruuta varaus
-        </Modal.Title>
+      <Modal.Header className={styles.modalHeader} closeButton>
+        <Modal.Title>{props.title}</Modal.Title>
       </Modal.Header>
-      <Modal.Body className={styles.modalPadding}>
-        <p>Oletko varma, että haluat peruuttaa varauksen?</p>
-      </Modal.Body>
-      <Modal.Footer className={styles.modalFooter}>
+      <Modal.Body>{props.body}</Modal.Body>
+      <Modal.Footer>
         <Button
-          className={styles.backButton}
-          variant="primary"
-          onClick={handleClose}
+          className={styles.btn}
+          variant="outline-primary"
+          onClick={props.onHide}
         >
-          Takaisin
+          {props.backButton}
         </Button>
-        <Button
-          className={styles.cancelOptionButton}
-          variant="primary"
-          onClick={handleCancellationClick}
-        >
-          Kyllä
+        <Button className={styles.btn} variant="danger" onClick={frontPage}>
+          {props.acceptButton}
         </Button>
       </Modal.Footer>
     </Modal>
   );
 };
 
-ModalCancellation.propTypes = {
-  showModal: PropTypes.bool,
-  handleClose: PropTypes.bool,
+PopUpWarningModal.propTypes = {
+  show: PropTypes.bool,
+  onHide: PropTypes.bool,
+  title: PropTypes.string,
+  body: PropTypes.string,
+  backButton: PropTypes.string,
+  acceptButton: PropTypes.string,
 };
 
-export default ModalCancellation;
+export default PopUpWarningModal;
