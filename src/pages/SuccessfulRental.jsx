@@ -36,17 +36,16 @@ const SuccessfulRentalPage = () => {
         </Card.Body>
       </Card>
 
-        <Button
-          className="proceedToPaymentButton"
-          type="submit"
-          id="proceedToPaymentButton"
-          size="lg"
-          onClick={handleClick}
-        >
-          Varauksen tiedot
-        </Button>
-      </Container>
-    </>
+      <Button
+        className="proceedToPaymentButton"
+        type="submit"
+        id="proceedToPaymentButton"
+        size="lg"
+        onClick={handleClick}
+      >
+        Varauksen tiedot
+      </Button>
+    </Container>
   );
 };
 
