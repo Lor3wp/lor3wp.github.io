@@ -48,7 +48,7 @@ const RentProcessPage = () => {
     { label: 'Valitse asemat', onClick: () => setActiveStep(0) },
     { label: 'Tuotevalinta & Päivämäärä', onClick: () => setActiveStep(1) },
     { label: 'Käyttäjän tiedot', onClick: () => setActiveStep(2) },
-    { label: 'Maksu', onClick: () => setActiveStep(3) },
+    { label: 'Maksaminen', onClick: () => setActiveStep(3) },
   ];
 
   const mobileBanks = [{ logo: MobilePay, bankName: 'mobilepay' }];
