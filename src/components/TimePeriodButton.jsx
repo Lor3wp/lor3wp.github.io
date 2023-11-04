@@ -25,7 +25,7 @@ function TimePeriodButton({
         className={`${
           selectedTime == buttonText && selectedStation == stationName
             ? style.selectedButton
-            : ''
+            : style.unselectedButton
         }`}
         onClick={handleClick}
       >

@@ -75,7 +75,10 @@ const StationList = ({ onStationSelected }) => {
     <div className={styles.listContainer}>
       <ListGroup variant="flush" className={styles.listElement}>
         {stations.map((station, index) => (
-          <ListGroup.Item key={station.stationName}>
+          <ListGroup.Item
+            key={station.stationName}
+            className={styles.customBorder}
+          >
             <div className={styles.listitemContainer}>
               <p className={styles.stationName}>{station.stationName}</p>
               <div className={styles.rowContainer}>
