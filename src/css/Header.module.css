@@ -39,10 +39,6 @@
 /* Mobile Rules */
 
 @media screen and (max-width: 500px) {
-  .textContainer > h2 {
-    font-size: 22px;
-    left: 1rem;
-  }
   .textContainer {
     left: 1rem;
   }
