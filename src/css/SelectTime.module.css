@@ -1,13 +1,21 @@
+/* CSS Rules for rental time view*/
+
 .timeBox {
   display: flex;
   flex-wrap: wrap;
   width: 297px;
   justify-content: space-between;
+  margin-bottom: 30px;
+  margin-left: 65px;
+  margin-right: 65px;
 }
 .header {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   width: fit-content;
+  color: #008782;
+  margin-left: auto;
+  margin-right: auto;
 }
-.singleSelectTime {
-  margin-right: 30px;
+.me {
+  margin-right: 40px;
 }

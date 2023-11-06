@@ -78,7 +78,28 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
           setSelectedStation={setSelectedStation}
           setSelectedTime={setSelectedTime}
           selectedStation={selectedStation}
-          stationName={'Aseman nimi'}
+          stationName={'Ruskeasanta'}
+        ></SelectTime>
+        <SelectTime
+          selectedTime={selectedTime}
+          setSelectedStation={setSelectedStation}
+          setSelectedTime={setSelectedTime}
+          selectedStation={selectedStation}
+          stationName={'Jorvas'}
+        ></SelectTime>
+        <SelectTime
+          selectedTime={selectedTime}
+          setSelectedStation={setSelectedStation}
+          setSelectedTime={setSelectedTime}
+          selectedStation={selectedStation}
+          stationName={'Ämmässuo'}
+        ></SelectTime>
+        <SelectTime
+          selectedTime={selectedTime}
+          setSelectedStation={setSelectedStation}
+          setSelectedTime={setSelectedTime}
+          selectedStation={selectedStation}
+          stationName={'Koivukylä'}
         ></SelectTime>
       </div>
       <div className={rentStyle.buttonsContainer}>
