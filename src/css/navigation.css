@@ -32,7 +32,7 @@ body {
 }
 .dropdown {
   position: absolute;
-  right: 2em;
+  right: 17px;
 }
 
 .logo {
@@ -47,25 +47,21 @@ body {
 }
 
 i.bi.bi-globe-americas {
-  color: #00aaa3;
+  color: #ffffff;
   margin-right: 2px;
 }
-
 .languageBtn {
-  background-color: white;
+  background-color: #00000047;
   border: transparent;
-  color: #00aaa3;
+  color: #ffffff;
   font-size: 18px;
 }
 .languageBtn:hover {
-  background-color: white;
+  background-color: #00000078;
   border: transparent;
-  color: #00aaa3;
 }
 .languageBtn:active {
-  background-color: white !important;
-  border: transparent;
-  color: #00aaa3;
+  background-color: #00000078 !important;
 }
 
 .testi {
@@ -82,9 +78,10 @@ i.bi.bi-globe-americas {
 }
 
 .dropdown-menu.show {
-  right: -27px;
-  box-shadow: 0px 0px 4px 0px #888888;
+  right: -14px;
+  box-shadow: 0px 0px 4px 0px #c7c7c7;
   border: none;
+  margin-top: 14px;
 }
 
 .flags {
@@ -98,6 +95,8 @@ i.bi.bi-globe-americas {
   display: flex;
   align-items: flex-end;
   box-shadow: inset 0px 7px 3px -3px rgb(120 120 120 / 44%);
+  align-items: center;
+  align-content: center;
 }
 
 .container-txt > p {
@@ -115,4 +114,32 @@ span.navbar-brand {
   font-weight: 500;
   font-size: large;
   display: flex;
+}
+
+/* Mobile rules */
+
+@media (max-width: 800px) {
+  .hide-on-small-screens {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .container-txt > p {
+    padding-left: 8px;
+    padding-right: 9px;
+  }
+}
+@media (max-width: 470px) {
+  .navbar > .container-fluid {
+    justify-content: flex-start;
+    display: flex;
+    align-items: flex-start;
+    box-shadow: inset 0px 7px 3px -3px rgb(120 120 120 / 44%);
+    align-content: flex-start;
+    padding-left: 0;
+    align-content: center;
+  }
+  .container-txt {
+    font-size: 15px;
+  }
 }

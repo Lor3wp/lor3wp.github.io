@@ -30,7 +30,8 @@ const FrontPageNavBar = () => {
           aria-haspopup="true"
           aria-expanded="false"
         >
-          <i className="bi bi-globe-americas"></i> Suomi
+          <i className="bi bi-globe-americas"></i>{' '}
+          <span className="hide-on-small-screens">Suomi</span>
         </a>
 
         <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">

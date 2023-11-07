@@ -62,7 +62,20 @@ footer {
   margin-top: 65px !important;
 }
 
-@media (min-width: 1400px) {
+/* Media rules */
+
+@media screen and (max-width: 767px) {
+  .footerLogo {
+    margin: auto !important;
+  }
+  .textMargin {
+    margin-top: 1rem !important;
+  }
+  .mx-auto {
+    padding: 0 !important;
+  }
+}
+@media screen and (min-width: 1400px) {
   .container2 {
     max-width: 2001px !important;
   }
