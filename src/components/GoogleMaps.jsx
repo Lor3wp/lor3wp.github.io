@@ -30,7 +30,7 @@ const GoogleMap = ({ stationLocation }) => {
         <iframe
           src={mapSrc}
           width="70%"
-          height="300"
+          height="400"
           style={{ border: 0 }}
           allowFullScreen=""
           loading="lazy"

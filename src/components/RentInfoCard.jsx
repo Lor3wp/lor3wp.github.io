@@ -66,7 +66,9 @@ export const RentInfoCard = ({
           <ListGroup.Item>
             <ClockFill className={styles.icons} /> {rentStartTime}-{rentEndTime}
           </ListGroup.Item>
-          <ListGroup.Item>{itemType}</ListGroup.Item>
+          <ListGroup.Item className={styles.rentItem}>
+            {itemType}
+          </ListGroup.Item>
           <ListGroup.Item>
             <GeoAltFill className={styles.icons} /> {stationLocation}
           </ListGroup.Item>
