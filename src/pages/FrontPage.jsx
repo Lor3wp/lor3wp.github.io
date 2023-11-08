@@ -106,6 +106,14 @@ const FrontPage = () => {
                 </div>
                 <RentInfoBoxList items={items} />
               </div>
+              <Button
+                size="lg"
+                variant="primary"
+                className={styles.rentButton2}
+                onClick={handleOpenModal}
+              >
+                Vuokraa tästä
+              </Button>
             </div>
           </main>
         </div>

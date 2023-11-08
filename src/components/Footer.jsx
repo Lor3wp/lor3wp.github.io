@@ -115,12 +115,12 @@ const Footer = () => {
             >
               <h6 className="text-uppercase fw-bold mb-4">Asiakaspalvelu</h6>
               <p>
-                <a href="#!" className={`text-reset ${styles.customLink}`}>
+                <a className={`text-reset ${styles.customLink}`}>
                   Asiakaspalvelun palveluajat puhelimitse
                 </a>
               </p>
               <p>
-                <a href="#!" className={`text-reset ${styles.customInfoText}`}>
+                <a className={`text-reset ${styles.customInfoText}`}>
                   Ma, ke ja pe klo 8.30–15.30, <br></br>ti klo 8.30–11.00,
                   <br></br>to klo 13.00–15.30
                 </a>
@@ -131,7 +131,7 @@ const Footer = () => {
             >
               <h6 className="text-uppercase fw-bold mb-4">Yhteystiedot</h6>
               <p>
-                <a href="#!" className={`text-reset ${styles.customInfoText}`}>
+                <a className={`text-reset ${styles.customInfoText}`}>
                   Puh. 09 1561 2110<br></br>Ilmalantori 1, 00240 Helsinki PL
                   100,<br></br> 00066 HSY
                 </a>
