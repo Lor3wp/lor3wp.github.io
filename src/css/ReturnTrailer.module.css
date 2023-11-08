@@ -66,6 +66,7 @@
   right: 0;
   width: 256px;
   height: 245px;
+  z-index: -1;
 }
 .backgroundLogo {
   transform: scale(2);
@@ -80,6 +81,24 @@
   border: none !important;
   box-shadow: 0px 0px 20px #e4e4e4;
 }
-.returnContainer {
-  margin-top: -30px !important;
+
+/* Mobile rules */
+
+@media screen and (max-width: 520px) {
+  .paginationContainer {
+    width: 65vw;
+  }
+  .returnContainer {
+    margin-top: 100px !important;
+  }
+}
+@media screen and (min-width: 521px) and (max-width: 1499px) {
+  .paginationContainer {
+    width: 400px;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .paginationContainer {
+    width: 500px;
+  }
 }
