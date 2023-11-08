@@ -74,8 +74,8 @@
 }
 .backButton {
   position: absolute;
-  left: 20px;
-  top: 90px;
+  left: 6px;
+  top: 76px;
 }
 .returnCard {
   border: none !important;
@@ -84,12 +84,23 @@
 
 /* Mobile rules */
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 650px) {
   .paginationContainer {
     width: 65vw;
   }
   .returnContainer {
     margin-top: 100px !important;
+    width: 80vw;
+  }
+  .returnButton {
+    width: 120px !important;
+    height: 120px !important;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  .backButton {
+    left: 40px;
+    top: 625px;
   }
 }
 @media screen and (min-width: 521px) and (max-width: 1499px) {
