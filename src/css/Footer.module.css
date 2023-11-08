@@ -3,12 +3,13 @@
 footer {
   color: #006b67;
   text-align: center;
-  padding: 20px 0;
+  padding-top: 20px;
 }
 
 .footerContainer {
   background-color: rgba(100, 195, 205, 0.08);
   color: #006b67;
+  overflow-x: hidden;
 }
 
 .customInfoText {

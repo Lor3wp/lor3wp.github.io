@@ -124,8 +124,8 @@ const FrontPage = () => {
           handleCheckBox={handleCheckChange}
           isChecked={isChecked}
         />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };
