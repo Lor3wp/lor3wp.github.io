@@ -32,7 +32,6 @@
   background-color: #f7f7f8;
 }
 
-
 @media screen and (max-width: 600px) {
   .contentContainerLastStep {
     width: 100vw;
@@ -51,7 +50,10 @@
   .rentProcessContainer {
     overflow-x: hidden;
   }
-}  
+  .contentContainer {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 930px) {
   .contentContainer {
     width: 100vw;
@@ -61,5 +63,5 @@
   .contentContainerLastStep {
     width: 100vw;
   }
-
+}
 }
