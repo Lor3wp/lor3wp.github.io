@@ -1,4 +1,5 @@
 import { Stepper } from 'react-form-stepper';
+import styles from '../css/RentProcess.module.css';
 
 export const CustomStepper = (props) => {
   return (
@@ -18,6 +19,7 @@ export const CustomStepper = (props) => {
         completedTextColor: '#ffffff',
         inactiveTextColor: '#444',
       }}
+      className={styles.stepper}
     />
   );
 };
