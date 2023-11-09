@@ -55,3 +55,20 @@ hr {
   justify-content: space-between;
   gap: 20px;
 }
+@media screen and (max-width: 600px) {
+  .rentBox, .calendarBox {
+    margin: 1rem auto;
+    width: 90vw;
+
+  }
+  .buttonsContainer {
+    margin: 0;
+    width: 90vw;
+    justify-content: center;
+  }
+  .buttonsContainer button {
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
+    
+  }
+}

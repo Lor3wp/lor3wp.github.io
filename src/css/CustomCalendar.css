@@ -126,3 +126,9 @@ abbr[title] {
 .react-calendar__tile--active {
   background: #7bc1cbc4 !important;
 }
+
+@media screen and (max-width: 600px) {
+  .react-calendar {
+    margin-right: 0;
+  }
+} 

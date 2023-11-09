@@ -16,7 +16,7 @@
 }
 
 .contentContainer {
-  width: 60rem;
+  width: 70vw;
 }
 
 .contentContainerLastStep {
@@ -40,10 +40,26 @@
   .stepper {
     padding: 0px !important;
     margin-top: 2rem;
+    width: 100vw;
+  }
+  .bgImage1 {
+    background-image: none;
+  }
+  .bgImage2 {
+    background-image: none;
+  }
+  .rentProcessContainer {
+    overflow-x: hidden;
   }
 }  
+@media screen and (max-width: 930px) {
+  .contentContainer {
+    width: 100vw;
+  }
+}
 @media screen and (min-width: 600px) and (max-width: 800px) {
   .contentContainerLastStep {
     width: 100vw;
   }
+
 }

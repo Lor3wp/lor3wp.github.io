@@ -94,3 +94,16 @@
   align-items: center;
   margin-top: 10px;
 }
+
+@media screen and (max-width: 600px) {
+  .selectProductBox {
+    width: 50vw;
+    justify-content: center;
+  }
+  .selectProductBox button {
+    margin: 1rem;
+  }
+  .adapterCheckBox {
+    justify-content: center;
+  }
+}
