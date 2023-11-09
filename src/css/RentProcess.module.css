@@ -39,6 +39,16 @@
   .stepper {
     padding: 0px !important;
     margin-top: 2rem;
+    width: 100vw;
+  }
+  .bgImage1 {
+    background-image: none;
+  }
+  .bgImage2 {
+    background-image: none;
+  }
+  .rentProcessContainer {
+    overflow-x: hidden;
   }
   .contentContainer {
     width: 100%;
@@ -53,4 +63,5 @@
   .contentContainerLastStep {
     width: 100vw;
   }
+}
 }

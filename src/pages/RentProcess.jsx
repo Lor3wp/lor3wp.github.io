@@ -5,7 +5,6 @@ import StationList from '../components/StationList';
 import Button from 'react-bootstrap/Button';
 import UserForm from '../components/UserForm';
 import PageStyles from '../css/RentProcess.module.css';
-
 import MobilePay from '../assets/mobilepay.png';
 import VisaBlue from '../assets/visablue.png';
 import VisaBlack from '../assets/visablack.png';
