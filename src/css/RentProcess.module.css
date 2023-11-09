@@ -20,7 +20,7 @@
 }
 
 .contentContainerLastStep {
-  width: 60rem;
+  width: 60vw;
   background-color: #f7f7f8;
 }
 
@@ -31,3 +31,13 @@
 .colorBg {
   background-color: #f7f7f8;
 }
+
+
+@media screen and (max-width: 600px) {
+  .contentContainerLastStep {
+    width: 100vw;
+  }
+  .stepper {
+    display: none !important;
+  }
+}  

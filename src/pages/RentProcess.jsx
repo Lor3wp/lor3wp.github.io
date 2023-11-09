@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CustomStepper } from '../components/CustomStepper';
 import ProductAndTime from '../components/TimeForm';
 import StationList from '../components/StationList';
@@ -26,6 +26,7 @@ import BankType from '../components/BankType';
 
 const RentProcessPage = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   const handleStationSelected = () => {
     setActiveStep(1);
@@ -43,6 +44,20 @@ const RentProcessPage = () => {
   const handlePrevStep = () => {
     setActiveStep(activeStep - 1);
   };
+
+   // when window gets smaller than 600, setIsMobile is set
+   useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < 600);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const steps = [
     { label: 'Valitse asemat', onClick: () => setActiveStep(0) },
