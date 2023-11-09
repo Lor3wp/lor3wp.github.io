@@ -28,7 +28,7 @@ const RulesModal = ({ showModal, handleClose, handleCheckBox, isChecked }) => {
       onHide={handleClose}
       backdrop="static"
       keyboard={false}
-      size="xl"
+      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >

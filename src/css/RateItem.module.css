@@ -1,4 +1,10 @@
-/* CSS Rules for rate/feedback on trailer*/
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 .checkMark {
   width: 125px;
@@ -10,36 +16,27 @@
   align-items: center;
   margin: auto;
 }
+
 #checkIcon {
-  color: white !important;
+  color: white;
   font-size: 5rem;
 }
-.ratingInput {
-  width: 100%;
-}
+
 .inputGroupContainer {
   display: flex;
   justify-content: center;
 }
-.inputContainer {
-  display: flex;
-  flex-direction: column;
-  width: 100vh;
-  margin: auto;
-  max-width: 400px;
-  align-items: center;
-}
+
 .textArea {
-  height: 120px;
+  height: 10rem;
+  width: 30rem;
   border-color: #c3dedc;
 }
+
 .sendButton {
   margin-top: 1rem;
-  margin-bottom: 1rem;
 }
-.sendFeedbackBtn {
-  margin-bottom: 10px;
-}
+
 .starRatingContainer {
   text-align: center;
   margin-top: 37px;
@@ -59,11 +56,28 @@
 .starRatingButton {
   margin-top: 10px;
 }
+
 .returnTitle {
   font-size: 20px;
   margin-top: -65px;
   margin-bottom: 30px;
   color: #025f56;
+}
+
+/* Background */
+
+.logoBackgroundContainer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 256px;
+  height: 245px;
+  z-index: -1;
+}
+
+.backgroundLogo {
+  transform: scale(2);
+  opacity: 0.28;
 }
 
 /* Mobile rules */
