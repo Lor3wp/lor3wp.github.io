@@ -22,7 +22,7 @@
   margin-right: 9px;
   color: #008782;
 }
-.itemType {
+.rentItem {
   padding-left: 45px;
 }
 .btn {
@@ -43,4 +43,33 @@ iFrame {
   margin-top: 30px;
   margin-bottom: 30px;
   box-shadow: 1px 0pc 14px 0px #dadada;
+  width: 900px;
+}
+
+/* Mobile Rules */
+
+@media screen and (max-width: 700px) {
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+  .infoCardContainer {
+    margin-top: 1rem;
+  }
+  .headerInfo {
+    font-size: 38px;
+  }
+  .cancelRentButton {
+    width: 40%;
+  }
+  iFrame {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1300px) {
+  iFrame {
+    width: 90%;
+  }
 }

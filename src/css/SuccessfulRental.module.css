@@ -16,3 +16,13 @@
 .cardTitle {
   margin-top: 10px;
 }
+
+/* Mobile rules*/
+
+@media screen and (max-width: 500px) {
+  .successIllustration {
+    width: 313px;
+    align-items: center;
+    margin-top: 57px;
+  }
+}

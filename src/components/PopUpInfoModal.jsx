@@ -3,6 +3,10 @@ import Modal from 'react-bootstrap/Modal';
 import PropTypes from 'prop-types';
 
 export const PopUpInfoModal = (props) => {
+  const titleStyle = {
+    color: '#028882',
+  };
+
   return (
     <Modal
       {...props}
@@ -11,7 +15,7 @@ export const PopUpInfoModal = (props) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Title id="contained-modal-title-vcenter" style={titleStyle}>
           {props.title}
         </Modal.Title>
       </Modal.Header>

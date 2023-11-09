@@ -36,4 +36,10 @@
   color: #00615d;
 }
 
+/* Mobile Rules */
 
+@media screen and (max-width: 500px) {
+  .textContainer {
+    left: 1rem;
+  }
+}

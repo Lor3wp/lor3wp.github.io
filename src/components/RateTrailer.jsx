@@ -30,7 +30,7 @@ const RateTrailer = () => {
       </div>
       <StarRating />
       <div className={styles.ratingInput}>
-        <InputGroup>
+        <InputGroup className={styles.inputGroupContainer}>
           <div className={styles.inputContainer}>
             <label>Anna palautetta</label>
             <Form.Control
@@ -42,6 +42,7 @@ const RateTrailer = () => {
         </InputGroup>
         <div className={styles.sendButton}>
           <Button
+            className={styles.sendFeedbackBtn}
             type="submit"
             id="proceedToPaymentButton"
             size="lg"

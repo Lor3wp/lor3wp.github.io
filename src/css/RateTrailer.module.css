@@ -17,12 +17,17 @@
 .ratingInput {
   width: 100%;
 }
+.inputGroupContainer {
+  display: flex;
+  justify-content: center;
+}
 .inputContainer {
   display: flex;
   flex-direction: column;
   width: 100vh;
   margin: auto;
   max-width: 400px;
+  align-items: center;
 }
 .textArea {
   height: 120px;
@@ -32,11 +37,15 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-
+.sendFeedbackBtn {
+  margin-bottom: 10px;
+}
 .starRatingContainer {
   text-align: center;
   margin-top: 37px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .starRatingTitle {
@@ -55,4 +64,16 @@
   margin-top: -65px;
   margin-bottom: 30px;
   color: #025f56;
+}
+
+/* Mobile rules */
+
+@media screen and (max-width: 520px) {
+  .checkMark {
+    width: 105px;
+    height: 105px;
+  }
+  .textArea {
+    width: 285px;
+  }
 }
