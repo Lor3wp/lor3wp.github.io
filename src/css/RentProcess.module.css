@@ -38,6 +38,12 @@
     width: 100vw;
   }
   .stepper {
-    display: none !important;
+    padding: 0px !important;
+    margin-top: 2rem;
   }
 }  
+@media screen and (min-width: 600px) and (max-width: 800px) {
+  .contentContainerLastStep {
+    width: 100vw;
+  }
+}

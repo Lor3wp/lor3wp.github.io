@@ -26,7 +26,7 @@ import BankType from '../components/BankType';
 
 const RentProcessPage = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 820);
 
   const handleStationSelected = () => {
     setActiveStep(1);
@@ -45,25 +45,25 @@ const RentProcessPage = () => {
     setActiveStep(activeStep - 1);
   };
 
-   // when window gets smaller than 600, setIsMobile is set
+   // when window gets smaller than 820, setIsMobile is set
    useEffect(() => {
     function handleResize() {
-      setIsMobile(window.innerWidth < 600);
+      setIsMobile(window.innerWidth < 820);
     }
-
+    // listening the window size
     window.addEventListener('resize', handleResize);
-
-    // Clean up the event listener when the component unmounts
     return () => {
+      // removing event listener when size gets back
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
+
   const steps = [
-    { label: 'Valitse asemat', onClick: () => setActiveStep(0) },
-    { label: 'Tuotevalinta & Päivämäärä', onClick: () => setActiveStep(1) },
-    { label: 'Käyttäjän tiedot', onClick: () => setActiveStep(2) },
-    { label: 'Maksaminen', onClick: () => setActiveStep(3) },
+    { label: isMobile ? '' : 'Valitse asemat', onClick: () => setActiveStep(0) },
+    { label: isMobile ? '' : 'Tuotevalinta & Päivämäärä', onClick: () => setActiveStep(1) },
+    { label: isMobile ? '' : 'Käyttäjän tiedot', onClick: () => setActiveStep(2) },
+    { label: isMobile ? '' : 'Maksaminen', onClick: () => setActiveStep(3) },
   ];
 
   const mobileBanks = [{ logo: MobilePay, bankName: 'mobilepay' }];
