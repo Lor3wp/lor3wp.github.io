@@ -59,9 +59,7 @@ const StationList = ({ onStationSelected }) => {
   };
 
   const frontPage = () => {
-    if (confirm('Oletko varma?')) {
-      navigate('/', { replace: true });
-    }
+    navigate('/', { replace: true });
   };
 
   // handling the checkbox changes for a specific station
