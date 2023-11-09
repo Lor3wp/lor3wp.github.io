@@ -16,7 +16,7 @@
 }
 
 .contentContainer {
-  width: 60rem;
+  width: 70vw;
 }
 
 .contentContainerLastStep {
@@ -32,7 +32,6 @@
   background-color: #f7f7f8;
 }
 
-
 @media screen and (max-width: 600px) {
   .contentContainerLastStep {
     width: 100vw;
@@ -41,7 +40,15 @@
     padding: 0px !important;
     margin-top: 2rem;
   }
-}  
+  .contentContainer {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 930px) {
+  .contentContainer {
+    width: 100vw;
+  }
+}
 @media screen and (min-width: 600px) and (max-width: 800px) {
   .contentContainerLastStep {
     width: 100vw;
