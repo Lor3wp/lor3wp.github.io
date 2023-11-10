@@ -54,7 +54,7 @@ const RentInfoPage = () => {
   const modalBodyContent = timeStarted ? (
     <p>
       Tuotteen tulee olla Sortti-asemalla! Myöhästyneestä palautuksesta
-      veloitetaan sopimusehtojen mukaisesti{' '}
+      veloitetaan sopimusehtojen mukaisesti
       <span style={{ color: '#008782' }}>40€</span> myöhästymismaksu.
     </p>
   ) : (
