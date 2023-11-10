@@ -3,7 +3,7 @@ import FrontPage from './pages/FrontPage';
 import RentInfoPage from './pages/RentInfo';
 import NotFoundPage from './pages/NotFound';
 import SuccessfulRentalPage from './pages/SuccessfulRental';
-import ReturnItemPage from './pages/ReturnTrailer';
+import RateItemPage from './pages/RateItem';
 import RentProcessPage from './pages/RentProcess';
 import Header from './components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -44,11 +44,11 @@ function App() {
         }
       />
       <Route
-        path="/return-item"
+        path="/rate-item"
         element={
           <>
-            <Header title="Palauta peräkärry" />
-            <ReturnItemPage />
+            <Header title="Palaute" />
+            <RateItemPage />
           </>
         }
       />
