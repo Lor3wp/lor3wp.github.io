@@ -3,6 +3,10 @@ import { Modal, Button } from 'react-bootstrap';
 import styles from '../css/PopUpWarningModal.module.css';
 
 const PopUpWarningModal = (props) => {
+  const titleStyle = {
+    color: '#028882',
+  };
+
   return (
     <Modal
       {...props}
@@ -11,7 +15,7 @@ const PopUpWarningModal = (props) => {
       centered
     >
       <Modal.Header className={styles.modalHeader} closeButton>
-        <Modal.Title>{props.title}</Modal.Title>
+        <Modal.Title style={titleStyle}>{props.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>{props.body}</Modal.Body>
       <Modal.Footer>

@@ -47,9 +47,7 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
   };
 
   const frontPage = () => {
-    if (confirm('Oletko varma?')) {
-      navigate('/', { replace: true });
-    }
+    navigate('/', { replace: true });
   };
 
   // TODO: Fill in the details of the rental dynamically
@@ -215,7 +213,7 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
             controlId="emailAddress"
             label="Sähköposti"
             type="email"
-            feedbackText="Virheellinen sähköpostiosoite. Kirjoita muodossa nimi@esimerkki.com"
+            feedbackText="Kirjoita sähköposti muodossa nimi@esimerkki.com"
           />
           <FormField
             controlId="streetName"
