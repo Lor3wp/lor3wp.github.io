@@ -13,7 +13,7 @@ const RateItemPage = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    toast.success('Palaute lähtetetty!');
+    toast.success('Palaute lähetetty!');
     navigate('/', { replace: true });
   };
 

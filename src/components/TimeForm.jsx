@@ -5,6 +5,9 @@ import timeStyle from '../css/SelectTime.module.css';
 import SelectProduct from '../components/SelectProduct';
 import rentStyle from '../css/RentForm.module.css';
 import Button from 'react-bootstrap/Button';
+import PopUpWarningModal from '../components/PopUpWarningModal';
+import PopUpInfoModal from '../components/PopUpWarningModal';
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 import { ChevronCompactLeft } from 'react-bootstrap-icons';
@@ -14,6 +17,8 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState('');
   const [selectedStation, setSelectedStation] = useState('');
+  const [showWarningModal, setShowWarningModal] = useState(false);
+  const [showInfoModal, setShowInfoModal] = useState(false);
 
   // values will be used in future
   const currentDate = new Date();
@@ -32,97 +37,129 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
   // handling the button click for selecting a time and date
   const handleSubmit = () => {
     if (selectedTime === null || selectedDate === null) {
-      alert('Valitse aika ja päivämäärä ennen kuin jatkat.');
+      handleOpenInfoModal();
     } else {
       onProductAndTimeSelected();
     }
   };
 
   const frontPage = () => {
-    if (confirm('Oletko varma?')) {
-      navigate('/', { replace: true });
-    }
+    navigate('/', { replace: true });
+    toast.success('Varaus peruutettu!');
+  };
+
+  const handleOpenWarningModal = () => {
+    setShowWarningModal(true);
+  };
+
+  const handleOpenInfoModal = () => {
+    setShowInfoModal(true);
   };
 
   return (
-    <div className={rentStyle.rentBox}>
-      <div className={rentStyle.productBox}>
-        <SelectProduct />
-      </div>
-      <hr />
-      <div className={rentStyle.calendarBox}>
-        <h2 className={timeStyle.header}>Valitse päivä</h2>
-        <RentCalendar
-          futureDates={futureDates}
-          setSelectedDate={setSelectedDate}
-        />
-      </div>
-      <hr className={rentStyle.hr} />
-      <div className={rentStyle.selectTimeBox}>
-        <SelectTime
-          setSelectedTime={setSelectedTime}
-          selectedStation={selectedStation}
-          setSelectedStation={setSelectedStation}
-          selectedTime={selectedTime}
-          stationName={'Kivikko'}
-        ></SelectTime>
-        <SelectTime
-          selectedTime={selectedTime}
-          setSelectedStation={setSelectedStation}
-          selectedStation={selectedStation}
-          setSelectedTime={setSelectedTime}
-          stationName={'Konala'}
-        ></SelectTime>
-        <SelectTime
-          selectedTime={selectedTime}
-          setSelectedStation={setSelectedStation}
-          setSelectedTime={setSelectedTime}
-          selectedStation={selectedStation}
-          stationName={'Ruskeasanta'}
-        ></SelectTime>
-        <SelectTime
-          selectedTime={selectedTime}
-          setSelectedStation={setSelectedStation}
-          setSelectedTime={setSelectedTime}
-          selectedStation={selectedStation}
-          stationName={'Jorvas'}
-        ></SelectTime>
-        <SelectTime
-          selectedTime={selectedTime}
-          setSelectedStation={setSelectedStation}
-          setSelectedTime={setSelectedTime}
-          selectedStation={selectedStation}
-          stationName={'Ämmässuo'}
-        ></SelectTime>
-        <SelectTime
-          selectedTime={selectedTime}
-          setSelectedStation={setSelectedStation}
-          setSelectedTime={setSelectedTime}
-          selectedStation={selectedStation}
-          stationName={'Koivukylä'}
-        ></SelectTime>
-      </div>
-      <div className={rentStyle.buttonsContainer}>
-        <div className={rentStyle.leftButtons}>
-          <Button variant="outline-primary" onClick={onPrevStep}>
-            <ChevronCompactLeft />
-            Edellinen
-          </Button>
-          <Button variant="outline-danger" onClick={frontPage}>
-            Peruuta
+    <>
+      <PopUpWarningModal
+        show={showWarningModal}
+        onHide={() => setShowWarningModal(false)}
+        title="Peruuta varaus"
+        body="Oletko varma, että haluat peruuttaa varauksen?"
+        backButton="Takaisin"
+        acceptButton="Kyllä"
+        acceptButtonVariant="danger"
+        onPrimaryButtonClick={() => {
+          setShowWarningModal(false);
+          frontPage();
+        }}
+      />
+      <PopUpInfoModal
+        show={showInfoModal}
+        onHide={() => setShowInfoModal(false)}
+        body="Valitse tuote, ajankohta ja asema ennen kuin jatkat."
+        acceptButton="Takaisin"
+        acceptButtonVariant="danger"
+        onPrimaryButtonClick={() => {
+          setShowInfoModal(false);
+        }}
+      />
+      <div className={rentStyle.rentBox}>
+        <div className={rentStyle.productBox}>
+          <SelectProduct />
+        </div>
+        <hr />
+        <div className={rentStyle.calendarBox}>
+          <h2 className={timeStyle.header}>Valitse päivä</h2>
+          <RentCalendar
+            futureDates={futureDates}
+            setSelectedDate={setSelectedDate}
+          />
+        </div>
+        <hr className={rentStyle.hr} />
+        <div className={rentStyle.selectTimeBox}>
+          <SelectTime
+            setSelectedTime={setSelectedTime}
+            selectedStation={selectedStation}
+            setSelectedStation={setSelectedStation}
+            selectedTime={selectedTime}
+            stationName={'Kivikko'}
+          ></SelectTime>
+          <SelectTime
+            selectedTime={selectedTime}
+            setSelectedStation={setSelectedStation}
+            selectedStation={selectedStation}
+            setSelectedTime={setSelectedTime}
+            stationName={'Konala'}
+          ></SelectTime>
+          <SelectTime
+            selectedTime={selectedTime}
+            setSelectedStation={setSelectedStation}
+            setSelectedTime={setSelectedTime}
+            selectedStation={selectedStation}
+            stationName={'Ruskeasanta'}
+          ></SelectTime>
+          <SelectTime
+            selectedTime={selectedTime}
+            setSelectedStation={setSelectedStation}
+            setSelectedTime={setSelectedTime}
+            selectedStation={selectedStation}
+            stationName={'Jorvas'}
+          ></SelectTime>
+          <SelectTime
+            selectedTime={selectedTime}
+            setSelectedStation={setSelectedStation}
+            setSelectedTime={setSelectedTime}
+            selectedStation={selectedStation}
+            stationName={'Ämmässuo'}
+          ></SelectTime>
+          <SelectTime
+            selectedTime={selectedTime}
+            setSelectedStation={setSelectedStation}
+            setSelectedTime={setSelectedTime}
+            selectedStation={selectedStation}
+            stationName={'Koivukylä'}
+          ></SelectTime>
+        </div>
+        <div className={rentStyle.buttonsContainer}>
+          <div className={rentStyle.leftButtons}>
+            <Button variant="outline-primary" onClick={onPrevStep}>
+              <ChevronCompactLeft />
+              Edellinen
+            </Button>
+            <Button variant="outline-danger" onClick={handleOpenWarningModal}>
+              Peruuta
+            </Button>
+          </div>
+          <Button size="lg" onClick={handleSubmit}>
+            Täytä henkilötiedot
+            <ChevronCompactRight />
           </Button>
         </div>
-        <Button size="lg" onClick={handleSubmit}>
-          Täytä henkilötiedot
-          <ChevronCompactRight />
-        </Button>
-      </div>
 
-      {/* <p>
+        {/* <p>
           selecte date: {selectedDate.toLocaleDateString()} <br></br>selected
           time: {selectedTime}
         </p> */}
-    </div>
+      </div>
+    </>
   );
 };
 

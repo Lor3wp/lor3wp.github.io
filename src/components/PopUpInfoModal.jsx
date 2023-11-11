@@ -1,12 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import PropTypes from 'prop-types';
+import styles from '../css/PopUpWarningModal.module.css';
 
 export const PopUpInfoModal = (props) => {
-  const titleStyle = {
-    color: '#028882',
-  };
-
   return (
     <Modal
       {...props}
@@ -15,7 +12,10 @@ export const PopUpInfoModal = (props) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter" style={titleStyle}>
+        <Modal.Title
+          id="contained-modal-title-vcenter"
+          className={styles.modalTitle}
+        >
           {props.title}
         </Modal.Title>
       </Modal.Header>

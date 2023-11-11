@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import SuccessIllustration from '../assets/SuccessIllustration.svg';
+import { applyVersionClass2, removeVersionClass2 } from '../utils/BodyVersion';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
@@ -12,6 +14,14 @@ const SuccessfulRentalPage = () => {
   const handleClick = () => {
     navigate('/rent-info');
   };
+
+  // Use the "useEffect" hook to apply and remove body version class
+  useEffect(() => {
+    applyVersionClass2(); // Apply version 3 to the body
+    return () => {
+      removeVersionClass2(); // Remove version 3 from the body when the component unmounts
+    };
+  }, []);
 
   return (
     <Container>

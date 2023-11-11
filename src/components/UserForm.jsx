@@ -10,11 +10,14 @@ import PropTypes from 'prop-types';
 import { ChevronCompactLeft } from 'react-bootstrap-icons';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
 import { PopUpInfoModal } from './PopUpInfoModal';
+import PopUpWarningModal from '../components/PopUpWarningModal';
+import { toast } from 'react-toastify';
 import hsyLogo from '../assets/hsy_logo_dark.png';
 
 const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
   const [validated, setValidated] = useState(false);
   const [modalShow, setModalShow] = useState(false);
+  const [showWarningModal, setShowWarningModal] = useState(false);
   const [isTos, setIsTos] = useState(false);
 
   const navigate = useNavigate();
@@ -48,6 +51,7 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
 
   const frontPage = () => {
     navigate('/', { replace: true });
+    toast.success('Varaus peruutettu!');
   };
 
   // TODO: Fill in the details of the rental dynamically
@@ -171,6 +175,10 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
     setModalShow(true);
   };
 
+  const handleOpenWarningModal = () => {
+    setShowWarningModal(true);
+  };
+
   return (
     <>
       <PopUpInfoModal
@@ -180,6 +188,20 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
         size="xl"
         buttonTxt="Sulje"
         onHide={() => setModalShow(false)}
+      />
+
+      <PopUpWarningModal
+        show={showWarningModal}
+        onHide={() => setShowWarningModal(false)}
+        title="Peruuta varaus"
+        body="Oletko varma, että haluat peruuttaa varauksen?"
+        backButton="Takaisin"
+        acceptButton="Kyllä"
+        acceptButtonVariant="danger"
+        onPrimaryButtonClick={() => {
+          setShowWarningModal(false);
+          frontPage();
+        }}
       />
       {confirmedRent && (
         <>
@@ -257,7 +279,7 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
                 <ChevronCompactLeft />
                 Edellinen
               </Button>
-              <Button variant="outline-danger" onClick={frontPage}>
+              <Button variant="outline-danger" onClick={handleOpenWarningModal}>
                 Peruuta
               </Button>
             </div>
