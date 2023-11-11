@@ -11,17 +11,19 @@ const PopUpWarningModal = (props) => {
       centered
     >
       <Modal.Header className={styles.modalHeader} closeButton>
-        <Modal.Title>{props.title}</Modal.Title>
+        <Modal.Title className={styles.modalTitle}>{props.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>{props.body}</Modal.Body>
       <Modal.Footer>
-        <Button
-          className={styles.btn}
-          variant="outline-primary"
-          onClick={props.onHide}
-        >
-          {props.backButton}
-        </Button>
+        {props.backButton && (
+          <Button
+            className={styles.btn}
+            variant="outline-primary"
+            onClick={props.onHide}
+          >
+            {props.backButton}
+          </Button>
+        )}
         <Button
           className={styles.btn}
           variant={props.acceptButtonVariant}

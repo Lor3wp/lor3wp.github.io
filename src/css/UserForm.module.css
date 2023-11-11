@@ -1,3 +1,5 @@
+/* CSS Rules for user form */
+
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -9,16 +11,16 @@
   margin: 0.2rem auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   flex-wrap: wrap;
   align-content: center;
 }
+.checkboxContainer {
+  text-align: left;
+}
 form {
-  width: 70vh;
   margin: auto;
 }
 .customInput {
-  width: 55vh;
   margin: auto;
   border-color: #008782;
 }
@@ -30,9 +32,6 @@ form {
   text-align: left;
 }
 #acceptTermsCheckbox {
-  text-align: left;
-}
-.checkboxContainer {
   text-align: left;
 }
 .userFormContainer {
@@ -59,4 +58,46 @@ form {
 }
 .spanLabel:hover {
   color: #59c3b9;
+}
+#proceedToPaymentButton {
+  padding: 8px;
+}
+
+/* Mobile rules */
+
+@media screen and (max-width: 600px) {
+  form {
+    width: 50vw;
+    margin-top: 2rem;
+  }
+  .mainContainer {
+    display: flex;
+    justify-content: center;
+  }
+  .formContainer {
+    margin: auto;
+  }
+  .fieldContainer {
+    align-items: flex-start;
+  }
+  .emailField {
+    margin-left: 20px !important;
+  }
+  .customInput {
+    width: 70vw;
+  }
+  .checkboxContainer {
+    text-align: left;
+    width: 70vw;
+    margin: auto;
+  }
+  .buttonsContainer {
+    width: 100vw;
+  }
+  .leftButtons {
+    margin-right: 0;
+  }
+  #proceedToPaymentButton {
+    margin-right: 6px;
+  }
 }

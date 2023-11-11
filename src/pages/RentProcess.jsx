@@ -44,8 +44,8 @@ const RentProcessPage = () => {
     setActiveStep(activeStep - 1);
   };
 
-   // when window gets smaller than 820, setIsMobile is set
-   useEffect(() => {
+  // when window gets smaller than 820, setIsMobile is set
+  useEffect(() => {
     function handleResize() {
       setIsMobile(window.innerWidth < 820);
     }
@@ -57,11 +57,19 @@ const RentProcessPage = () => {
     };
   }, []);
 
-
   const steps = [
-    { label: isMobile ? '' : 'Valitse asemat', onClick: () => setActiveStep(0) },
-    { label: isMobile ? '' : 'Tuotevalinta & Päivämäärä', onClick: () => setActiveStep(1) },
-    { label: isMobile ? '' : 'Käyttäjän tiedot', onClick: () => setActiveStep(2) },
+    {
+      label: isMobile ? '' : 'Valitse asemat',
+      onClick: () => setActiveStep(0),
+    },
+    {
+      label: isMobile ? '' : 'Tuotevalinta & Päivämäärä',
+      onClick: () => setActiveStep(1),
+    },
+    {
+      label: isMobile ? '' : 'Käyttäjän tiedot',
+      onClick: () => setActiveStep(2),
+    },
     { label: isMobile ? '' : 'Maksaminen', onClick: () => setActiveStep(3) },
   ];
 
@@ -135,7 +143,9 @@ const RentProcessPage = () => {
         return (
           <>
             {renderPaymentComponents()}
-            <Button className={styles.cancelButton}>Peruuta maksu</Button>
+            <Button className={styles.cancelButton} onClick={handlePrevStep}>
+              Peruuta maksu
+            </Button>
           </>
         );
       default:
