@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
-import { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import RentInfoBoxList from '../components/RentalInfo';
-import styles from '../css/RentInfoModal.module.css';
+import RentInfoBoxList from './RentalInfo';
+import styles from '../css/RulesModal.module.css';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
 const items = [
@@ -14,13 +13,8 @@ const items = [
   'Jos maksat paikan päällä, käy vahvistamassa peräkärrynvuokrauksen aloitus Sortti-aseman INFOssa näyttämällä henkilöllisyystodistuksesi. Henkilökuntamme opastaa, mistä kärry asemalla noudetaan.',
 ];
 
-const ModalInfo = ({ showModal, handleClose }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const RulesModal = ({ showModal, handleClose, handleCheckBox, isChecked }) => {
   const navigate = useNavigate();
-
-  const handleCheckChange = () => {
-    setIsChecked(!isChecked);
-  };
 
   const handleRentClick = () => {
     if (isChecked) {
@@ -34,7 +28,7 @@ const ModalInfo = ({ showModal, handleClose }) => {
       onHide={handleClose}
       backdrop="static"
       keyboard={false}
-      size="xl"
+      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -53,7 +47,8 @@ const ModalInfo = ({ showModal, handleClose }) => {
           type="checkbox"
           label="Olen lukenut ja ymmärtänyt säännöt"
           checked={isChecked}
-          onChange={handleCheckChange}
+          onChange={handleCheckBox}
+          style={{ fontWeight: 'bold' }}
         />
       </Modal.Body>
       <Modal.Footer className={styles.modalFooter}>
@@ -70,9 +65,11 @@ const ModalInfo = ({ showModal, handleClose }) => {
   );
 };
 
-ModalInfo.propTypes = {
+RulesModal.propTypes = {
   showModal: PropTypes.bool,
-  handleClose: PropTypes.bool,
+  handleClose: PropTypes.func,
+  handleCheckBox: PropTypes.func,
+  isChecked: PropTypes.bool,
 };
 
-export default ModalInfo;
+export default RulesModal;

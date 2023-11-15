@@ -1,6 +1,13 @@
+/* CSS Rules for Frontpage*/
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
+}
+
 .frontPageBody {
-  align-items: flex-start !important;
-  display: block !important;
+  flex-grow: 1; /* Allow the front page content to grow and take up the available space */
 }
 
 .frontPageContent {
@@ -12,13 +19,12 @@
 .frontPagePicture {
   display: flex !important;
   justify-content: center !important;
-  height: 445px !important;
   width: 100% !important;
   object-fit: cover !important;
 }
 
 .frontHeaderTxt {
-  margin-left: 12%;
+  margin-left: 17%;
   display: flex;
   align-items: center;
   margin-bottom: 0;
@@ -61,11 +67,7 @@
 }
 
 .frontImgContainer {
-  display: flex;
-  width: 50%;
-  justify-content: center;
-  margin-top: auto;
-  flex-direction: column;
+  width: 40%;
 }
 
 .frontInfoContainer {
@@ -103,27 +105,77 @@
 .rentButton {
   width: 70%;
 }
+.rentButton2 {
+  width: 70%;
+}
 
 /* Media rules*/
 
-@media (min-width: 2200px) {
-  .frontHeaderTxt {
-    width: 100%;
-    padding-bottom: 30px;
-    /* margin-left: 20px; */
-    position: relative;
-    right: 649px;
+@media screen and (max-width: 700px) {
+  .containerInfo {
+    flex-direction: column;
   }
-  .headerContainer {
-    width: 400px;
-    align-content: center;
+  .frontImgContainer {
+    width: 100%;
+  }
+  .frontHeaderTxt {
     justify-content: center;
-    /* align-items: center; */
-    /* flex-wrap: nowrap; */
-    /* flex-direction: row; */
     margin: auto;
   }
-  .frontHeader {
-    padding-bottom: 0;
+  .frontInfoContainer {
+    width: 90%;
+    margin: auto;
+  }
+  .rentButton {
+    display: none;
+  }
+  .rentButton2 {
+    margin-top: 20px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .infoTextContainer2 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media screen and (min-width: 701px) {
+  .rentButton2 {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 701px) and (max-width: 900px) {
+  .frontImgContainer {
+    width: 60%;
+  }
+  .frontInfoContainer {
+    width: 50%;
+    margin-right: 10px;
+  }
+  .infoTextContainer2 {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .frontHeaderTxt {
+    margin-left: 1%;
+  }
+}
+@media screen and (min-width: 901px) {
+  .frontImgContainer {
+    width: 530px;
+  }
+  .frontInfoContainer {
+    width: 345px;
+    margin-right: 10px;
+  }
+  .infoTextContainer2 {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .frontHeaderTxt {
+    justify-content: center;
+    margin: auto;
   }
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
@@ -10,8 +11,9 @@ import {
   ClockFill,
   GeoAltFill,
 } from 'react-bootstrap-icons';
+import { PopUpInfoModal } from './PopUpInfoModal';
 
-// TODO: Change item icon depending on item type
+//TODO: change icon depending on the item type
 export const RentInfoCard = ({
   rentDate,
   rentStartTime,
@@ -19,29 +21,65 @@ export const RentInfoCard = ({
   itemType,
   stationLocation,
 }) => {
+  const [modalShow, setModalShow] = useState(false);
+
+  //Rent-info modal
+  const modalBodyContent = (
+    <div>
+      <p>
+        Vedenjakelun vikapäivystys ja automaattiset tiedotteet
+        häiriötilanteissa: p. 09 1561 3000, palvelee 24/7.
+      </p>
+      <p>Asiakaspalvelu puhelimitse: p. 09 1561 2110. </p>
+      Asiakaspalvelun aukioloajat:
+      <ul>
+        <li>Ma klo 8.30–15.30 </li>
+        <li>Ti klo 8.30–11.00 </li>
+        <li>Ke klo 8.30–15.30 </li>
+        <li>To klo 13.00–15.30 </li>
+        <li>Pe klo 8.30–15.30</li>
+      </ul>
+      <p>
+        Jos peräkärry menee rikki tai joudut kolariin, soita asiakaspalveluun.{' '}
+      </p>
+    </div>
+  );
+
   return (
-    <Card className={styles.card}>
-      <Card.Header as="h5" className={styles.cardHeader}>
-        <InfoCircleFill /> Varauksesi tiedot:
-      </Card.Header>
-      <ListGroup className="list-group-flush">
-        <ListGroup.Item>
-          <Calendar2Event /> {rentDate}
-        </ListGroup.Item>
-        <ListGroup.Item>
-          <ClockFill /> {rentStartTime}-{rentEndTime}
-        </ListGroup.Item>
-        <ListGroup.Item>{itemType}</ListGroup.Item>
-        <ListGroup.Item>
-          <GeoAltFill /> {stationLocation}
-        </ListGroup.Item>
-      </ListGroup>
-      <Card.Body className={styles.btn}>
-        <Button variant="primary">
-          <TelephoneFill /> Asiakaspalvelu
-        </Button>
-      </Card.Body>
-    </Card>
+    <>
+      <PopUpInfoModal
+        show={modalShow}
+        title="Asiakaspalvelu"
+        body={modalBodyContent}
+        buttonTxt="Sulje"
+        onHide={() => setModalShow(false)}
+      />
+      <Card className={styles.card}>
+        <Card.Header as="h5" className={styles.cardHeader}>
+          <InfoCircleFill className={styles.infoCircleIcon} /> Varauksesi
+          tiedot:
+        </Card.Header>
+        <ListGroup className="list-group-flush">
+          <ListGroup.Item>
+            <Calendar2Event className={styles.icons} /> {rentDate}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <ClockFill className={styles.icons} /> {rentStartTime}-{rentEndTime}
+          </ListGroup.Item>
+          <ListGroup.Item className={styles.rentItem}>
+            {itemType}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <GeoAltFill className={styles.icons} /> {stationLocation}
+          </ListGroup.Item>
+        </ListGroup>
+        <Card.Body className={styles.btn}>
+          <Button variant="primary" onClick={() => setModalShow(true)}>
+            <TelephoneFill /> Asiakaspalvelu
+          </Button>
+        </Card.Body>
+      </Card>
+    </>
   );
 };
 

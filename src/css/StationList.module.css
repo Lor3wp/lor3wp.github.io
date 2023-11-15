@@ -1,32 +1,58 @@
+/* CSS Rules for station list */
+
 .listContainer {
   width: 50vh;
-  margin: 2.5em auto;
+  margin: auto;
 }
 .rowContainer {
   display: flex;
   flex-direction: row;
 }
-
 #kilometers {
   margin: 0 8px 0 0;
+  flex: 0;
+  color: #009688;
 }
-
 .stationName {
   text-align: start;
+  color: #008782;
+  font-weight: 500;
+  font-size: 18px;
 }
-
 #cargobike,
 #trailer {
   margin: 0 4px 0 4px;
+  height: 24px;
+  margin: 0 4px 0 4px;
+  width: 33px;
+  filter: drop-shadow(3px 2px 3px rgb(0 0 0 / 0.2));
 }
-
 #stationCheckbox {
   margin-left: auto;
 }
-
 .list-group-flush {
   margin-bottom: 2em !important;
 }
 .stationCheckboxContainer {
   margin-left: auto;
+  color: #008782;
+}
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1em 0 1em 0;
+  width: 100%;
+}
+
+/* Mobile Rules */
+
+@media screen and (max-width: 600px) {
+  .listContainer {
+    width: 100vw;
+  }
+  .buttonsContainer {
+    padding: 1rem;
+    margin: 0;
+  }
 }

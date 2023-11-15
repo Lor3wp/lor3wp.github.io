@@ -1,8 +1,8 @@
+/* CSS Rules for product and time choose view */
 
 .rentBox {
   display: flex;
   flex-wrap: wrap;
-  width: 50vw;
   margin-left: auto;
   margin-right: auto;
   max-width: 1000px;
@@ -19,9 +19,9 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
-.timeButtonBox {
-}
+
 .productBox {
   flex: 1;
   margin-left: 15px;
@@ -40,4 +40,35 @@ hr {
 }
 .userFormButton {
   margin: 2rem auto;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1em 2em 1em 2em;
+  width: 100%;
+}
+
+.leftButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+@media screen and (max-width: 600px) {
+  .rentBox, .calendarBox {
+    margin: 1rem auto;
+    width: 90vw;
+
+  }
+  .buttonsContainer {
+    margin: 0;
+    width: 90vw;
+    justify-content: center;
+  }
+  .buttonsContainer button {
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
+    
+  }
 }

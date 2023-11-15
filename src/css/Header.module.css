@@ -1,15 +1,17 @@
+/* CSS Rules for header*/
+
 .customHeaderContainer {
-  background-color: white;
-  height: 70px;
+  background-color: transparent;
   width: 100%;
-  border-bottom: 1px solid #007377;
+  border-bottom: 1px solid #00aaa3;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .headerLogoContainer {
   width: 183px;
-  background-color: #007377;
+  background-color: #00aaa3;
   clip-path: circle(83% at 73% -40%);
   /* clip-path: circle(83% at 86% 20%); */
   /* transform: rotate(351deg); */
@@ -18,10 +20,26 @@
 }
 
 .logo2 {
-  position: absolute;
-  right: 22px;
-  width: 85px;
-  height: 44px;
-  top: 10px;
+  right: 1rem;
+  width: 7rem;
+  height: 50px;
+  margin-top: 0.5rem;
   object-fit: cover;
+  margin-bottom: 0.5rem;
+  margin-left: 2rem;
+}
+
+.textContainer {
+  display: flex;
+  position: absolute;
+  left: 2rem;
+  color: #00615d;
+}
+
+/* Mobile Rules */
+
+@media screen and (max-width: 500px) {
+  .textContainer {
+    left: 1rem;
+  }
 }

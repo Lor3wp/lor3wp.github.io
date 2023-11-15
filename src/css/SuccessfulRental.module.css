@@ -1,7 +1,7 @@
 .successIllustration,
 .card,
 .btn {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .successIllustration {
@@ -10,8 +10,19 @@
 
 .card {
   box-shadow: 0px 0px 8px 0px rgba(46, 46, 46, 0.212);
+  border: none;
 }
 
 .cardTitle {
   margin-top: 10px;
+}
+
+/* Mobile rules*/
+
+@media screen and (max-width: 500px) {
+  .successIllustration {
+    width: 313px;
+    align-items: center;
+    margin-top: 57px;
+  }
 }

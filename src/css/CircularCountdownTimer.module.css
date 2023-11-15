@@ -1,3 +1,5 @@
+/* CSS Rules for timer*/
+
 .timer {
   font-size: 30px;
 }
@@ -8,4 +10,13 @@
 
 .rentStartText {
   font-size: 20px;
+}
+
+/* Mobile rules */
+
+@media screen and (max-width: 700px) {
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+  }
 }

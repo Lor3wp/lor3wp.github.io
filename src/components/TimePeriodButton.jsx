@@ -6,15 +6,11 @@ function TimePeriodButton({
   buttonText,
   setSelectedTime,
   selectedTime,
-  setSelectedStation,
   stationName,
-  selectedStation,
 }) {
   const handleClick = () => {
     setSelectedTime(buttonText);
-    setSelectedStation(stationName);
     console.log(buttonText);
-    console.log(selectedStation);
     console.log(selectedTime);
     console.log(stationName);
   };
@@ -22,11 +18,11 @@ function TimePeriodButton({
     <>
       <Button
         variant="flat"
-        className={`${
-          selectedTime == buttonText && selectedStation == stationName
+        className={
+          selectedTime == buttonText
             ? style.selectedButton
-            : ''
-        }`}
+            : style.unselectedButton
+        }
         onClick={handleClick}
       >
         {buttonText}

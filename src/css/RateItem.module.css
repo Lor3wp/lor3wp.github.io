@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.checkMark {
+  width: 125px;
+  height: 125px;
+  border-radius: 100%;
+  background-color: #008782;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+#checkIcon {
+  color: white;
+  font-size: 5rem;
+}
+
+.inputGroupContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.textArea {
+  height: 10rem;
+  width: 30rem;
+  border-color: #c3dedc;
+}
+
+.sendButton {
+  margin-top: 1rem;
+}
+
+.starRatingContainer {
+  text-align: center;
+  margin-top: 37px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.starRatingTitle {
+  font-size: 24px;
+}
+
+.star-rating p {
+  font-size: 20px;
+}
+
+.starRatingButton {
+  margin-top: 10px;
+}
+
+.returnTitle {
+  font-size: 20px;
+  margin-top: -65px;
+  margin-bottom: 30px;
+  color: #025f56;
+}
+
+/* Background */
+
+.logoBackgroundContainer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 256px;
+  height: 245px;
+  z-index: -1;
+}
+
+.backgroundLogo {
+  transform: scale(2);
+  opacity: 0.28;
+}
+
+/* Mobile rules */
+
+@media screen and (max-width: 520px) {
+  .checkMark {
+    width: 105px;
+    height: 105px;
+  }
+  .textArea {
+    width: 285px;
+  }
+}

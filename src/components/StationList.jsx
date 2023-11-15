@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import styles from '../css/StationList.module.css';
 import Bike from '../Icons/cargobike.svg';
@@ -6,8 +5,13 @@ import Trailer from '../Icons/trailer.svg';
 import Checkbox from './Checkbox';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router';
+import { ChevronCompactRight } from 'react-bootstrap-icons';
+import { useStepper } from '../hooks/useStepper';
+import PopUpWarningModal from './PopUpWarningModal';
+import { useState } from 'react';
 
-const StationList = ({ onStationSelected }) => {
+const StationList = ({ onStationSelected, handleWarningModal }) => {
   const stations = [
     {
       stationName: 'Ruskeasanta',
@@ -40,93 +44,118 @@ const StationList = ({ onStationSelected }) => {
       trailer: false,
     },
   ];
+  const [showWarningModal, setShowWarningModal] = useState(false);
 
-  // array of states to track checkbox status for each station
-  const [isChecked, setIsChecked] = useState(stations.map(() => false));
+  const { selectedStations, setSelectedStations } = useStepper();
+
+  const navigate = useNavigate();
 
   // handle the button click for selecting a station
   const handleSubmit = () => {
-    if (isChecked.some((checked) => checked)) {
+    if (selectedStations.some((checked) => checked)) {
       onStationSelected();
     } else {
-      alert('Valitse vähintään yksi asema ennen kuin jatkat.');
+      handleWarningModal();
     }
+  };
+
+  const frontPage = () => {
+    navigate('/', { replace: true });
+  };
+
+  const handleOpenWarningModal = () => {
+    setShowWarningModal(true);
   };
 
   // handling the checkbox changes for a specific station
   const handleCheckbox = (index) => {
-    const updatedChecked = [...isChecked];
+    const updatedChecked = [...selectedStations];
     updatedChecked[index] = !updatedChecked[index];
-    setIsChecked(updatedChecked);
+    setSelectedStations(updatedChecked);
   };
 
   return (
-    <div className={styles.listContainer}>
-      <ListGroup variant="flush" className={styles.listElement}>
-        {stations.map((station, index) => (
-          <ListGroup.Item key={station.stationName}>
-            <div className={styles.listitemContainer}>
-              <p className={styles.stationName}>{station.stationName}</p>
-              <div className={styles.rowContainer}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="bi bi-geo-alt-fill"
-                  viewBox="0 0 16 16"
-                  style={{
-                    marginRight: '4px',
-                    width: '17px',
-                    height: '24px',
-                    fill: '#AF3F32',
-                  }}
-                >
-                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-                </svg>
-                <p id={styles.kilometers}>10km</p>
-                {station.cargoBike && (
-                  <img
-                    src={Bike}
-                    alt="cargo bike icon"
-                    id={styles.cargobike}
-                    draggable={false}
-                  />
-                )}
-                {station.trailer && (
-                  <img
-                    src={Trailer}
-                    alt="trailer icon"
-                    id={styles.trailer}
-                    draggable={false}
-                  />
-                )}
-                <Checkbox
-                  onChange={() => handleCheckbox(index)}
-                  value="station"
-                  checked={isChecked[index]}
-                  isRequired={false}
-                  id={styles.stationCheckbox}
-                  className={styles.stationCheckboxContainer}
-                ></Checkbox>
-                {/* <input
-                type="checkbox"
-                id={styles.stationCheckbox}
-                name="station-checkbox"
-                value="station"
-                checked={isChecked[index]}
-                onChange={() => handleCheckbox(index)} /> */}
+    <>
+      <PopUpWarningModal
+        show={showWarningModal}
+        onHide={() => setShowWarningModal(false)}
+        title="Peruuta varaus"
+        body="Oletko varma, että haluat peruuttaa varauksen?"
+        backButton="Takaisin"
+        acceptButton="Kyllä"
+        acceptButtonVariant="danger"
+        onPrimaryButtonClick={frontPage}
+      />
+      <div className={styles.listContainer}>
+        <ListGroup variant="flush" className={styles.listElement}>
+          {stations.map((station, index) => (
+            <ListGroup.Item
+              key={station.stationName}
+              className={styles.customBorder}
+            >
+              <div className={styles.listitemContainer}>
+                <p className={styles.stationName}>{station.stationName}</p>
+                <div className={styles.rowContainer}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="bi bi-geo-alt-fill"
+                    viewBox="0 0 16 16"
+                    style={{
+                      marginRight: '4px',
+                      width: '17px',
+                      height: '24px',
+                      fill: '#AF3F32',
+                    }}
+                  >
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                  </svg>
+                  <p id={styles.kilometers}>10km</p>
+                  {station.cargoBike && (
+                    <img
+                      src={Bike}
+                      alt="cargo bike icon"
+                      id={styles.cargobike}
+                      draggable={false}
+                    />
+                  )}
+                  {station.trailer && (
+                    <img
+                      src={Trailer}
+                      alt="trailer icon"
+                      id={styles.trailer}
+                      draggable={false}
+                    />
+                  )}
+                  <Checkbox
+                    onChange={() => handleCheckbox(index)}
+                    value="station"
+                    checked={selectedStations[index]}
+                    isRequired={false}
+                    id={styles.stationCheckbox}
+                    className={styles.stationCheckboxContainer}
+                  ></Checkbox>
+                </div>
               </div>
-            </div>
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
-      <Button size="lg" id="date-button" onClick={handleSubmit}>
-        Valitse päivämäärä
-      </Button>
-    </div>
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+        <div className={styles.buttonsContainer}>
+          <Button variant="outline-danger" onClick={handleOpenWarningModal}>
+            Peruuta
+          </Button>
+          <Button size="lg" id="date-button" onClick={handleSubmit}>
+            Valitse päivämäärä
+            <ChevronCompactRight />
+          </Button>
+        </div>
+      </div>
+    </>
   );
 };
 
 StationList.propTypes = {
   onStationSelected: PropTypes.func.isRequired,
+  handleWarningModal: PropTypes.func,
 };
 
 export default StationList;
