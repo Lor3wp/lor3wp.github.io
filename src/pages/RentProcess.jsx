@@ -1,7 +1,9 @@
+// RentProcessPage.jsx
 import { useEffect, useState } from 'react';
 import { CustomStepper } from '../components/CustomStepper';
 import ProductAndTime from '../components/TimeForm';
 import StationList from '../components/StationList';
+import ReservationTimer from '../components/ReservationTimer';
 import Button from 'react-bootstrap/Button';
 import UserForm from '../components/UserForm';
 import PageStyles from '../css/RentProcess.module.css';
@@ -24,10 +26,21 @@ import styles from '../css/BankButton.module.css';
 import BankType from '../components/BankType';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 
+/* Rent process page */
+/* eslint-disable no-unused-vars */
 const RentProcessPage = () => {
+  const countdownDuration = 20 * 60 * 1000;
   const [activeStep, setActiveStep] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 820);
   const [showInfoModal, setShowInfoModal] = useState(false);
+  const [reservationDeadline, setReservationDeadline] = useState(
+    calculateReservationDeadline(),
+  );
+
+  function calculateReservationDeadline() {
+    return new Date().getTime() + countdownDuration;
+  }
+
 
   const handleStationSelected = () => {
     setActiveStep(1);
@@ -163,6 +176,7 @@ const RentProcessPage = () => {
             <Button className={styles.cancelButton} onClick={handlePrevStep}>
               Peruuta maksu
             </Button>
+            <ReservationTimer reservationDeadline={reservationDeadline} />{' '}
           </>
         );
       default:
@@ -207,6 +221,9 @@ const RentProcessPage = () => {
           />
           <CustomStepper steps={steps} activeStep={activeStep} />
           {renderSectionComponent()}
+          {activeStep === 2 && (
+            <ReservationTimer reservationDeadline={reservationDeadline} />
+          )}
         </div>
         <div
           className={
