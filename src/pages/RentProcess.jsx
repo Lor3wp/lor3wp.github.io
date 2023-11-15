@@ -26,13 +26,12 @@ import styles from '../css/BankButton.module.css';
 import BankType from '../components/BankType';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 
-/* Rent process page */
-/* eslint-disable no-unused-vars */
 const RentProcessPage = () => {
   const countdownDuration = 20 * 60 * 1000;
   const [activeStep, setActiveStep] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 820);
   const [showInfoModal, setShowInfoModal] = useState(false);
+
   const [reservationDeadline, setReservationDeadline] = useState(
     calculateReservationDeadline(),
   );
@@ -40,7 +39,6 @@ const RentProcessPage = () => {
   function calculateReservationDeadline() {
     return new Date().getTime() + countdownDuration;
   }
-
 
   const handleStationSelected = () => {
     setActiveStep(1);
