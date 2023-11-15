@@ -12,13 +12,14 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 import { ChevronCompactLeft } from 'react-bootstrap-icons';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
+import { useStepper } from '../hooks/useStepper';
 
 const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedTime, setSelectedTime] = useState('');
-  const [selectedStation, setSelectedStation] = useState('');
   const [showWarningModal, setShowWarningModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
+
+  const { selectedDate, setSelectedDate, selectedTime, setSelectedTime } =
+    useStepper();
 
   // values will be used in future
   const currentDate = new Date();
@@ -29,6 +30,7 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
 
   const navigate = useNavigate();
 
+  // TODO: Where do we need that? Seems unnecessary.
   for (let i = 1; i < 4; i++) {
     const randomDate = new Date(currentYear, currentMonth, currentDay + i);
     futureDates.push(randomDate);
@@ -36,7 +38,7 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
 
   // handling the button click for selecting a time and date
   const handleSubmit = () => {
-    if (selectedTime === null || selectedDate === null) {
+    if (selectedTime === '' || selectedDate === null) {
       handleOpenInfoModal();
     } else {
       onProductAndTimeSelected();
@@ -97,12 +99,10 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
         <div className={rentStyle.selectTimeBox}>
           <SelectTime
             setSelectedTime={setSelectedTime}
-            selectedStation={selectedStation}
-            setSelectedStation={setSelectedStation}
             selectedTime={selectedTime}
             stationName={'Kivikko'}
           ></SelectTime>
-          <SelectTime
+          {/* <SelectTime
             selectedTime={selectedTime}
             setSelectedStation={setSelectedStation}
             selectedStation={selectedStation}
@@ -110,33 +110,33 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
             stationName={'Konala'}
           ></SelectTime>
           <SelectTime
-            selectedTime={selectedTime}
+            selectedTime={selectedTimeSlot}
             setSelectedStation={setSelectedStation}
-            setSelectedTime={setSelectedTime}
+            setSelectedTime={setSelectedTimeSlot}
             selectedStation={selectedStation}
             stationName={'Ruskeasanta'}
           ></SelectTime>
           <SelectTime
-            selectedTime={selectedTime}
+            selectedTime={selectedTimeSlot}
             setSelectedStation={setSelectedStation}
-            setSelectedTime={setSelectedTime}
+            setSelectedTime={setSelectedTimeSlot}
             selectedStation={selectedStation}
             stationName={'Jorvas'}
           ></SelectTime>
           <SelectTime
-            selectedTime={selectedTime}
+            selectedTime={selectedTimeSlot}
             setSelectedStation={setSelectedStation}
-            setSelectedTime={setSelectedTime}
+            setSelectedTime={setSelectedTimeSlot}
             selectedStation={selectedStation}
             stationName={'Ämmässuo'}
           ></SelectTime>
           <SelectTime
-            selectedTime={selectedTime}
+            selectedTime={selectedTimeSlot}
             setSelectedStation={setSelectedStation}
-            setSelectedTime={setSelectedTime}
+            setSelectedTime={setSelectedTimeSlot}
             selectedStation={selectedStation}
             stationName={'Koivukylä'}
-          ></SelectTime>
+          ></SelectTime> */}
         </div>
         <div className={rentStyle.buttonsContainer}>
           <div className={rentStyle.leftButtons}>

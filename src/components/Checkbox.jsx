@@ -2,7 +2,6 @@ import Form from 'react-bootstrap/Form';
 import PropTypes from 'prop-types';
 import styles from '../css/UserForm.module.css';
 
-// TODO: No idea why this has to be it's own component...
 const Checkbox = ({
   label,
   onClick,

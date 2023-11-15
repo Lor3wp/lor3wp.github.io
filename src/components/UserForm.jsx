@@ -13,12 +13,15 @@ import { PopUpInfoModal } from './PopUpInfoModal';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 import { toast } from 'react-toastify';
 import hsyLogo from '../assets/hsy_logo_dark.png';
+import { useStepper } from '../hooks/useStepper';
 
 const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
   const [validated, setValidated] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [showWarningModal, setShowWarningModal] = useState(false);
   const [isTos, setIsTos] = useState(false);
+
+  const { userData, setUserData, acceptTerms, setAcceptTerms } = useStepper();
 
   const navigate = useNavigate();
 
@@ -179,6 +182,13 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
     setShowWarningModal(true);
   };
 
+  const handleFieldChange = (name, value) => {
+    setUserData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
   return (
     <>
       <PopUpInfoModal
@@ -203,6 +213,7 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
           frontPage();
         }}
       />
+      {/* TODO: Seems unnecessary */}
       {confirmedRent && (
         <>
           <RentalConfirmation
@@ -218,51 +229,71 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
             label="Etunimi"
             type="text"
             feedbackText="Syötä etunimi"
+            value={userData.firstName}
+            onChange={(e) => handleFieldChange('firstName', e.target.value)}
           />
           <FormField
             controlId="lastName"
             label="Sukunimi"
             type="text"
             feedbackText="Syötä sukunimi"
+            value={userData.lastName}
+            onChange={(e) => handleFieldChange('lastName', e.target.value)}
           />
           <FormField
             controlId="phoneNumber"
             label="Puhelinnumero"
             type="text"
             feedbackText="Syötä puhelinnumero"
+            value={userData.phoneNumber}
+            onChange={(e) => handleFieldChange('phoneNumber', e.target.value)}
           />
           <FormField
             controlId="emailAddress"
             label="Sähköposti"
             type="email"
             feedbackText="Kirjoita sähköposti muodossa nimi@esimerkki.com"
+            value={userData.emailAddress}
+            onChange={(e) => handleFieldChange('emailAddress', e.target.value)}
           />
           <FormField
             controlId="streetName"
             label="Katuosoite"
             type="text"
             feedbackText="Syötä katuosoite"
+            value={userData.streetName}
+            onChange={(e) => handleFieldChange('streetName', e.target.value)}
           />
           <FormField
             controlId="postalCode"
             label="Postinumero"
             type="text"
             feedbackText="Syötä postinumero"
+            value={userData.postalCode}
+            onChange={(e) => handleFieldChange('postalCode', e.target.value)}
           />
           <FormField
             controlId="cityName"
             label="Postitoimipaikka"
             type="text"
             feedbackText="Syötä postitoimipaikka"
+            value={userData.cityName}
+            onChange={(e) => handleFieldChange('cityName', e.target.value)}
           />
           <Checkbox
             label="Hyväksyn"
-            routeName="/terms-and-conditions"
             linkText="yleiset sopimusehdot"
             isRequired={true}
             onClick={handleOpenTosModal}
             id={styles.acceptTermsCheckbox}
             className={styles.checkboxContainer}
+            checked={acceptTerms.tos}
+            onChange={() =>
+              setAcceptTerms((prevState) => ({
+                ...prevState,
+                tos: !prevState.tos,
+              }))
+            }
           />
           <Checkbox
             label="Olen lukenut"
@@ -271,6 +302,13 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
             isRequired={true}
             id={styles.acceptTermsCheckbox}
             className={styles.checkboxContainer}
+            checked={acceptTerms.lease}
+            onChange={() =>
+              setAcceptTerms((prevState) => ({
+                ...prevState,
+                lease: !prevState.lease,
+              }))
+            }
           />
 
           <div className={styles.buttonsContainer}>

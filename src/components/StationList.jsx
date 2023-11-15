@@ -9,8 +9,8 @@ import PopUpInfoModal from '../components/PopUpWarningModal';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
+import { useStepper } from '../hooks/useStepper';
 
-// Station list component
 const StationList = ({ onStationSelected }) => {
   const stations = [
     {
@@ -45,8 +45,7 @@ const StationList = ({ onStationSelected }) => {
     },
   ];
 
-  // array of states to track checkbox status for each station
-  const [isChecked, setIsChecked] = useState(stations.map(() => false));
+  const { selectedStations, setSelectedStations } = useStepper();
 
   const [showInfoModal, setShowInfoModal] = useState(false);
 
@@ -54,10 +53,10 @@ const StationList = ({ onStationSelected }) => {
 
   // handle the button click for selecting a station
   const handleSubmit = () => {
-    if (isChecked.some((checked) => checked)) {
+    if (selectedStations.some((checked) => checked)) {
       onStationSelected();
     } else {
-      handleOpenInfoModal();
+      setShowInfoModal(true);
     }
   };
 
@@ -65,17 +64,14 @@ const StationList = ({ onStationSelected }) => {
     navigate('/', { replace: true });
   };
 
-  const handleOpenInfoModal = () => {
-    setShowInfoModal(true);
-  };
-
   // handling the checkbox changes for a specific station
   const handleCheckbox = (index) => {
-    const updatedChecked = [...isChecked];
+    const updatedChecked = [...selectedStations];
     updatedChecked[index] = !updatedChecked[index];
-    setIsChecked(updatedChecked);
+    setSelectedStations(updatedChecked);
   };
 
+  // TODO: Raise the PopupInfoModal up one level
   return (
     <>
       <PopUpInfoModal
@@ -131,7 +127,7 @@ const StationList = ({ onStationSelected }) => {
                   <Checkbox
                     onChange={() => handleCheckbox(index)}
                     value="station"
-                    checked={isChecked[index]}
+                    checked={selectedStations[index]}
                     isRequired={false}
                     id={styles.stationCheckbox}
                     className={styles.stationCheckboxContainer}

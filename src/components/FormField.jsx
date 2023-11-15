@@ -2,7 +2,15 @@ import Form from 'react-bootstrap/Form';
 import styles from '../css/UserForm.module.css';
 import PropTypes from 'prop-types';
 
-const FormField = ({ controlId, label, type, feedbackText }) => {
+const FormField = ({
+  controlId,
+  label,
+  type,
+  feedbackText,
+  onChange,
+  value,
+}) => {
+  // TODO: Why?
   const bootstrapClasses = {
     'mb-3': 'mb-3',
   };
@@ -15,7 +23,13 @@ const FormField = ({ controlId, label, type, feedbackText }) => {
         controlId={controlId}
       >
         <Form.Label className={styles.formLabel}>{label}</Form.Label>
-        <Form.Control required type={type} className={styles.customInput} />
+        <Form.Control
+          required
+          type={type}
+          className={styles.customInput}
+          onChange={onChange}
+          value={value}
+        />
         <Form.Control.Feedback type="invalid" className={styles.feedbackText}>
           {feedbackText}
         </Form.Control.Feedback>
@@ -29,6 +43,8 @@ FormField.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   feedbackText: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
 };
 
 export default FormField;
