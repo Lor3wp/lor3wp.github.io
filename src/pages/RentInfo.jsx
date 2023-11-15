@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import styles from '../css/RentInfoCard.module.css';
 
 // TODO: Change the info inside the circle when the time is up
-const RentInfoPage = () => {
+const RentInfoPage = ({ handleItemReturned }) => {
   const rentInfo = {
     rentDate: '17.09.2023',
     rentStartTime: '13:00',
@@ -42,6 +42,7 @@ const RentInfoPage = () => {
 
   const rateItemPage = () => {
     toast.success('Tuote palautettu!');
+    handleItemReturned();
     navigate('/rate-item', { replace: true });
   };
 
