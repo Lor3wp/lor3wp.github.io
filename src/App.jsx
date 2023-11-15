@@ -9,6 +9,7 @@ import Header from './components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import './theme.css';
+import { StepperProvider } from './context/StepperContext';
 
 // TODO: Some routes needs to be protected
 function App() {
@@ -20,8 +21,10 @@ function App() {
         title="Test"
         element={
           <>
-            <Header title="Peräkärryn vuokraus" />
-            <RentProcessPage />
+            <StepperProvider>
+              <Header title="Peräkärryn vuokraus" />
+              <RentProcessPage />
+            </StepperProvider>
           </>
         }
       />

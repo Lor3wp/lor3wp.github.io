@@ -11,14 +11,14 @@ import styles from '../css/RentInfoCard.module.css';
 
 // TODO: Change the info inside the circle when the time is up
 const RentInfoPage = () => {
-  // TODO: Maybe there's a better way instead of doing multiple states?
-  const [rentDate, setRentDate] = useState('17.09.2023');
-  const [rentStartTime, setRentStartTime] = useState('13:00');
-  const [rentEndTime, setRentEndTime] = useState('14:00');
-  const [itemType, setItemType] = useState('Peräkärry');
-  const [stationLocation, setStationLocation] = useState(
-    'Kivikon Sortti-asema', //Jorvaksen Sortti-asema, Konalan Sortti-asema, Ruskeasannan Sortti-asema, Ämmässuon Sortti-asema, Koivukylän Sortti-pienasema
-  );
+  const rentInfo = {
+    rentDate: '17.09.2023',
+    rentStartTime: '13:00',
+    rentEndTime: '14:00',
+    itemType: 'Peräkärry',
+    stationLocation: 'Kivikon Sortti-asema',
+  };
+
   const [timeStarted, setTimeStarted] = useState(true);
   const [showModal, setShowModal] = useState(false);
 
@@ -89,11 +89,11 @@ const RentInfoPage = () => {
             </div>
             <div>
               <RentInfoCard
-                rentDate={rentDate}
-                rentStartTime={rentStartTime}
-                rentEndTime={rentEndTime}
-                itemType={itemType}
-                stationLocation={stationLocation}
+                rentDate={rentInfo.rentDate}
+                rentStartTime={rentInfo.rentStartTime}
+                rentEndTime={rentInfo.rentEndTime}
+                itemType={rentInfo.itemType}
+                stationLocation={rentInfo.stationLocation}
               />
             </div>
           </Stack>
@@ -116,7 +116,7 @@ const RentInfoPage = () => {
           )}
         </Stack>
       </Container>
-      <GoogleMap stationLocation={stationLocation} />
+      <GoogleMap stationLocation={rentInfo.stationLocation} />
     </>
   );
 };

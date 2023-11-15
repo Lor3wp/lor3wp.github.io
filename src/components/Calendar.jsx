@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import '../css/CustomCalendar.css';
 import PropTypes from 'prop-types';
+import { useStepper } from '../hooks/useStepper';
 
 const RentCalendar = ({ futureDates, setSelectedDate }) => {
-  const [date, setDate] = useState(null);
+  const { selectedDate } = useStepper();
 
   useEffect(() => {
     const calendar = document.querySelector('.react-calendar');
@@ -26,7 +27,6 @@ const RentCalendar = ({ futureDates, setSelectedDate }) => {
 
   const handleChange = (date) => {
     setSelectedDate(date);
-    setDate(date);
   };
 
   const tileDisabled = ({ date }) => {
@@ -42,7 +42,7 @@ const RentCalendar = ({ futureDates, setSelectedDate }) => {
   return (
     <Calendar
       onChange={handleChange}
-      value={date}
+      value={selectedDate}
       minDate={new Date()}
       tileDisabled={tileDisabled}
       tileClassName={tileClassName}

@@ -1,17 +1,17 @@
-import { useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import styles from '../css/StationList.module.css';
 import Bike from '../Icons/cargobike.svg';
 import Trailer from '../Icons/trailer.svg';
 import Checkbox from './Checkbox';
 import Button from 'react-bootstrap/Button';
-import PopUpInfoModal from '../components/PopUpWarningModal';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
+import { useStepper } from '../hooks/useStepper';
+import PopUpWarningModal from './PopUpWarningModal';
+import { useState } from 'react';
 
-// Station list component
-const StationList = ({ onStationSelected }) => {
+const StationList = ({ onStationSelected, handleWarningModal }) => {
   const stations = [
     {
       stationName: 'Ruskeasanta',
@@ -44,20 +44,18 @@ const StationList = ({ onStationSelected }) => {
       trailer: false,
     },
   ];
+  const [showWarningModal, setShowWarningModal] = useState(false);
 
-  // array of states to track checkbox status for each station
-  const [isChecked, setIsChecked] = useState(stations.map(() => false));
-
-  const [showInfoModal, setShowInfoModal] = useState(false);
+  const { selectedStations, setSelectedStations } = useStepper();
 
   const navigate = useNavigate();
 
   // handle the button click for selecting a station
   const handleSubmit = () => {
-    if (isChecked.some((checked) => checked)) {
+    if (selectedStations.some((checked) => checked)) {
       onStationSelected();
     } else {
-      handleOpenInfoModal();
+      handleWarningModal();
     }
   };
 
@@ -65,28 +63,28 @@ const StationList = ({ onStationSelected }) => {
     navigate('/', { replace: true });
   };
 
-  const handleOpenInfoModal = () => {
-    setShowInfoModal(true);
+  const handleOpenWarningModal = () => {
+    setShowWarningModal(true);
   };
 
   // handling the checkbox changes for a specific station
   const handleCheckbox = (index) => {
-    const updatedChecked = [...isChecked];
+    const updatedChecked = [...selectedStations];
     updatedChecked[index] = !updatedChecked[index];
-    setIsChecked(updatedChecked);
+    setSelectedStations(updatedChecked);
   };
 
   return (
     <>
-      <PopUpInfoModal
-        show={showInfoModal}
-        onHide={() => setShowInfoModal(false)}
-        body="Valitse vähintään yksi asema ennen kuin jatkat."
-        acceptButton="Takaisin"
+      <PopUpWarningModal
+        show={showWarningModal}
+        onHide={() => setShowWarningModal(false)}
+        title="Peruuta varaus"
+        body="Oletko varma, että haluat peruuttaa varauksen?"
+        backButton="Takaisin"
+        acceptButton="Kyllä"
         acceptButtonVariant="danger"
-        onPrimaryButtonClick={() => {
-          setShowInfoModal(false);
-        }}
+        onPrimaryButtonClick={frontPage}
       />
       <div className={styles.listContainer}>
         <ListGroup variant="flush" className={styles.listElement}>
@@ -131,7 +129,7 @@ const StationList = ({ onStationSelected }) => {
                   <Checkbox
                     onChange={() => handleCheckbox(index)}
                     value="station"
-                    checked={isChecked[index]}
+                    checked={selectedStations[index]}
                     isRequired={false}
                     id={styles.stationCheckbox}
                     className={styles.stationCheckboxContainer}
@@ -142,7 +140,7 @@ const StationList = ({ onStationSelected }) => {
           ))}
         </ListGroup>
         <div className={styles.buttonsContainer}>
-          <Button variant="outline-danger" onClick={frontPage}>
+          <Button variant="outline-danger" onClick={handleOpenWarningModal}>
             Peruuta
           </Button>
           <Button size="lg" id="date-button" onClick={handleSubmit}>
@@ -157,6 +155,7 @@ const StationList = ({ onStationSelected }) => {
 
 StationList.propTypes = {
   onStationSelected: PropTypes.func.isRequired,
+  handleWarningModal: PropTypes.func,
 };
 
 export default StationList;

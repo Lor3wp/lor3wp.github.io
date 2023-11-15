@@ -2,7 +2,6 @@ import Form from 'react-bootstrap/Form';
 import PropTypes from 'prop-types';
 import styles from '../css/UserForm.module.css';
 
-// TODO: No idea why this has to be it's own component...
 const Checkbox = ({
   label,
   onClick,
@@ -15,7 +14,7 @@ const Checkbox = ({
   className,
 }) => {
   return (
-    <div key="default-checkbox" className={`${className}`}>
+    <div key="default-checkbox" className={className}>
       <Form.Check
         required={isRequired ? true : false}
         type="checkbox"
