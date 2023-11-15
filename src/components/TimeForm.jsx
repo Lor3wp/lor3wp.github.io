@@ -6,20 +6,26 @@ import SelectProduct from '../components/SelectProduct';
 import rentStyle from '../css/RentForm.module.css';
 import Button from 'react-bootstrap/Button';
 import PopUpWarningModal from '../components/PopUpWarningModal';
-import PopUpInfoModal from '../components/PopUpWarningModal';
-import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 import { ChevronCompactLeft } from 'react-bootstrap-icons';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
 import { useStepper } from '../hooks/useStepper';
 
-const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
+const ProductAndTime = ({
+  onProductAndTimeSelected,
+  onPrevStep,
+  handleWarningModal,
+}) => {
   const [showWarningModal, setShowWarningModal] = useState(false);
-  const [showInfoModal, setShowInfoModal] = useState(false);
 
-  const { selectedDate, setSelectedDate, selectedTime, setSelectedTime } =
-    useStepper();
+  const {
+    selectedDate,
+    setSelectedDate,
+    selectedTime,
+    setSelectedTime,
+    selectedProduct,
+  } = useStepper();
 
   // values will be used in future
   const currentDate = new Date();
@@ -38,8 +44,12 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
 
   // handling the button click for selecting a time and date
   const handleSubmit = () => {
-    if (selectedTime === '' || selectedDate === null) {
-      handleOpenInfoModal();
+    if (
+      selectedTime === '' ||
+      selectedDate === null ||
+      selectedProduct === ''
+    ) {
+      handleWarningModal();
     } else {
       onProductAndTimeSelected();
     }
@@ -47,15 +57,10 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
 
   const frontPage = () => {
     navigate('/', { replace: true });
-    toast.success('Varaus peruutettu!');
   };
 
   const handleOpenWarningModal = () => {
     setShowWarningModal(true);
-  };
-
-  const handleOpenInfoModal = () => {
-    setShowInfoModal(true);
   };
 
   return (
@@ -68,20 +73,7 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
         backButton="Takaisin"
         acceptButton="Kyllä"
         acceptButtonVariant="danger"
-        onPrimaryButtonClick={() => {
-          setShowWarningModal(false);
-          frontPage();
-        }}
-      />
-      <PopUpInfoModal
-        show={showInfoModal}
-        onHide={() => setShowInfoModal(false)}
-        body="Valitse tuote, ajankohta ja asema ennen kuin jatkat."
-        acceptButton="Takaisin"
-        acceptButtonVariant="danger"
-        onPrimaryButtonClick={() => {
-          setShowInfoModal(false);
-        }}
+        onPrimaryButtonClick={frontPage}
       />
       <div className={rentStyle.rentBox}>
         <div className={rentStyle.productBox}>
@@ -101,7 +93,7 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
             setSelectedTime={setSelectedTime}
             selectedTime={selectedTime}
             stationName={'Kivikko'}
-          ></SelectTime>
+          />
           {/* <SelectTime
             selectedTime={selectedTime}
             setSelectedStation={setSelectedStation}
@@ -153,11 +145,6 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
             <ChevronCompactRight />
           </Button>
         </div>
-
-        {/* <p>
-          selecte date: {selectedDate.toLocaleDateString()} <br></br>selected
-          time: {selectedTime}
-        </p> */}
       </div>
     </>
   );
@@ -166,6 +153,7 @@ const ProductAndTime = ({ onProductAndTimeSelected, onPrevStep }) => {
 ProductAndTime.propTypes = {
   onProductAndTimeSelected: PropTypes.func.isRequired,
   onPrevStep: PropTypes.func.isRequired,
+  handleWarningModal: PropTypes.func,
 };
 
 export default ProductAndTime;

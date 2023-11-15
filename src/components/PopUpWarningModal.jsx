@@ -38,7 +38,7 @@ const PopUpWarningModal = (props) => {
 
 PopUpWarningModal.propTypes = {
   show: PropTypes.bool,
-  onHide: PropTypes.bool,
+  onHide: PropTypes.func,
   title: PropTypes.string,
   body: PropTypes.string,
   backButton: PropTypes.string,

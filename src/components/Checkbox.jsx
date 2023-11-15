@@ -14,7 +14,7 @@ const Checkbox = ({
   className,
 }) => {
   return (
-    <div key="default-checkbox" className={`${className}`}>
+    <div key="default-checkbox" className={className}>
       <Form.Check
         required={isRequired ? true : false}
         type="checkbox"

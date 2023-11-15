@@ -11,7 +11,6 @@ import { ChevronCompactLeft } from 'react-bootstrap-icons';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
 import { PopUpInfoModal } from './PopUpInfoModal';
 import PopUpWarningModal from '../components/PopUpWarningModal';
-import { toast } from 'react-toastify';
 import hsyLogo from '../assets/hsy_logo_dark.png';
 import { useStepper } from '../hooks/useStepper';
 
@@ -54,7 +53,6 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
 
   const frontPage = () => {
     navigate('/', { replace: true });
-    toast.success('Varaus peruutettu!');
   };
 
   // TODO: Fill in the details of the rental dynamically
@@ -208,12 +206,9 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
         backButton="Takaisin"
         acceptButton="Kyllä"
         acceptButtonVariant="danger"
-        onPrimaryButtonClick={() => {
-          setShowWarningModal(false);
-          frontPage();
-        }}
+        onPrimaryButtonClick={frontPage}
       />
-      {/* TODO: Seems unnecessary */}
+      {/* TODO: Maybe this should show after filling user info */}
       {confirmedRent && (
         <>
           <RentalConfirmation

@@ -18,11 +18,11 @@ function TimePeriodButton({
     <>
       <Button
         variant="flat"
-        className={`${
+        className={
           selectedTime == buttonText
             ? style.selectedButton
             : style.unselectedButton
-        }`}
+        }
         onClick={handleClick}
       >
         {buttonText}

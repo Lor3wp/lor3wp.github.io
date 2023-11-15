@@ -10,15 +10,10 @@ const FormField = ({
   onChange,
   value,
 }) => {
-  // TODO: Why?
-  const bootstrapClasses = {
-    'mb-3': 'mb-3',
-  };
-
   return (
     <>
       <Form.Group
-        className={`${styles.formContainer} ${bootstrapClasses['mb-3']}`}
+        className={`${styles.formContainer} ${'mb-3'}`}
         md="100"
         controlId={controlId}
       >

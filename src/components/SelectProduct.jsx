@@ -6,7 +6,7 @@ import Trailer from '../Icons/trailer.svg';
 import { useStepper } from '../hooks/useStepper';
 import Checkbox from './Checkbox';
 
-function SelectProduct() {
+const SelectProduct = () => {
   const {
     selectedProduct,
     setSelectedProduct,
@@ -19,21 +19,21 @@ function SelectProduct() {
       <h2 className={timeStyle.header}>Valitse tuote</h2>
       <div className={productStyle.selectProductBox}>
         <Button
-          className={`${
+          className={
             selectedProduct === 'trailer'
               ? productStyle.activeProductButton
               : productStyle.productButton
-          }`}
+          }
           onClick={() => setSelectedProduct('trailer')}
         >
           <img src={Trailer} alt="trailer icon" />
         </Button>
         <Button
-          className={`${
+          className={
             selectedProduct === 'bike'
               ? productStyle.activeProductButton
               : productStyle.productButton
-          }`}
+          }
           onClick={() => setSelectedProduct('bike')}
         >
           <img src={Bike} alt="cargobike icon" />
@@ -48,6 +48,6 @@ function SelectProduct() {
       </div>
     </>
   );
-}
+};
 
 export default SelectProduct;

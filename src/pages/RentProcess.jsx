@@ -22,10 +22,12 @@ import OsuusPankki from '../assets/op.png';
 import HSY from '../assets/hsy_logo.png';
 import styles from '../css/BankButton.module.css';
 import BankType from '../components/BankType';
+import PopUpWarningModal from '../components/PopUpWarningModal';
 
 const RentProcessPage = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 820);
+  const [showInfoModal, setShowInfoModal] = useState(false);
 
   const handleStationSelected = () => {
     setActiveStep(1);
@@ -42,6 +44,10 @@ const RentProcessPage = () => {
 
   const handlePrevStep = () => {
     setActiveStep(activeStep - 1);
+  };
+
+  const handleWarningModal = () => {
+    setShowInfoModal(true);
   };
 
   // when window gets smaller than 820, setIsMobile is set
@@ -101,25 +107,25 @@ const RentProcessPage = () => {
           title="Mobiilimaksutavat"
           arrayName={mobileBanks}
           paymentName={styles.mobilePayment}
-        ></BankType>
+        />
         <BankType
           gridName={styles.cardGrid}
           title="Korttimaksutavat"
           arrayName={cardPayments}
           paymentName={styles.cardPayment}
-        ></BankType>
+        />
         <BankType
           gridName={styles.bankGrid}
           title="Pankkimaksutavat"
           arrayName={bankPayments}
           paymentName={styles.bankPayment}
-        ></BankType>
+        />
         <BankType
           gridName={styles.irlGrid}
           title="Maksu paikan päällä"
           arrayName={irlPayments}
           paymentName={styles.irlPayment}
-        ></BankType>
+        />
       </div>
     );
   };
@@ -127,17 +133,28 @@ const RentProcessPage = () => {
   const renderSectionComponent = () => {
     switch (activeStep) {
       case 0:
-        return <StationList onStationSelected={handleStationSelected} />;
+        return (
+          <StationList
+            handleWarningModal={handleWarningModal}
+            onStationSelected={handleStationSelected}
+          />
+        );
+
       case 1:
         return (
           <ProductAndTime
+            handleWarningModal={handleWarningModal}
             onProductAndTimeSelected={handleProductAndTimeSelected}
             onPrevStep={handlePrevStep}
           />
         );
       case 2:
         return (
-          <UserForm onSubmit={handleFormSubmit} onPrevStep={handlePrevStep} />
+          <UserForm
+            handleWarningModal={handleWarningModal}
+            onSubmit={handleFormSubmit}
+            onPrevStep={handlePrevStep}
+          />
         );
       case 3:
         return (
@@ -150,6 +167,17 @@ const RentProcessPage = () => {
         );
       default:
         return null;
+    }
+  };
+
+  const PopUpWarningBody = () => {
+    switch (activeStep) {
+      case 0:
+        return 'Valitse vähintään yksi asema ennen kuin jatkat.';
+      case 1:
+        return 'Valitse tuote, ajankohta ja asema ennen kuin jatkat.';
+      default:
+        return '';
     }
   };
 
@@ -169,6 +197,14 @@ const RentProcessPage = () => {
               : PageStyles.contentContainer
           }
         >
+          <PopUpWarningModal
+            show={showInfoModal}
+            onHide={() => setShowInfoModal(false)}
+            body={PopUpWarningBody()}
+            acceptButton="Takaisin"
+            acceptButtonVariant="primary"
+            onPrimaryButtonClick={() => setShowInfoModal(false)}
+          />
           <CustomStepper steps={steps} activeStep={activeStep} />
           {renderSectionComponent()}
         </div>

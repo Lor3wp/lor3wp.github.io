@@ -1,17 +1,17 @@
-import { useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import styles from '../css/StationList.module.css';
 import Bike from '../Icons/cargobike.svg';
 import Trailer from '../Icons/trailer.svg';
 import Checkbox from './Checkbox';
 import Button from 'react-bootstrap/Button';
-import PopUpInfoModal from '../components/PopUpWarningModal';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
 import { useStepper } from '../hooks/useStepper';
+import PopUpWarningModal from './PopUpWarningModal';
+import { useState } from 'react';
 
-const StationList = ({ onStationSelected }) => {
+const StationList = ({ onStationSelected, handleWarningModal }) => {
   const stations = [
     {
       stationName: 'Ruskeasanta',
@@ -44,10 +44,9 @@ const StationList = ({ onStationSelected }) => {
       trailer: false,
     },
   ];
+  const [showWarningModal, setShowWarningModal] = useState(false);
 
   const { selectedStations, setSelectedStations } = useStepper();
-
-  const [showInfoModal, setShowInfoModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -56,12 +55,16 @@ const StationList = ({ onStationSelected }) => {
     if (selectedStations.some((checked) => checked)) {
       onStationSelected();
     } else {
-      setShowInfoModal(true);
+      handleWarningModal();
     }
   };
 
   const frontPage = () => {
     navigate('/', { replace: true });
+  };
+
+  const handleOpenWarningModal = () => {
+    setShowWarningModal(true);
   };
 
   // handling the checkbox changes for a specific station
@@ -71,18 +74,17 @@ const StationList = ({ onStationSelected }) => {
     setSelectedStations(updatedChecked);
   };
 
-  // TODO: Raise the PopupInfoModal up one level
   return (
     <>
-      <PopUpInfoModal
-        show={showInfoModal}
-        onHide={() => setShowInfoModal(false)}
-        body="Valitse vähintään yksi asema ennen kuin jatkat."
-        acceptButton="Takaisin"
+      <PopUpWarningModal
+        show={showWarningModal}
+        onHide={() => setShowWarningModal(false)}
+        title="Peruuta varaus"
+        body="Oletko varma, että haluat peruuttaa varauksen?"
+        backButton="Takaisin"
+        acceptButton="Kyllä"
         acceptButtonVariant="danger"
-        onPrimaryButtonClick={() => {
-          setShowInfoModal(false);
-        }}
+        onPrimaryButtonClick={frontPage}
       />
       <div className={styles.listContainer}>
         <ListGroup variant="flush" className={styles.listElement}>
@@ -138,7 +140,7 @@ const StationList = ({ onStationSelected }) => {
           ))}
         </ListGroup>
         <div className={styles.buttonsContainer}>
-          <Button variant="outline-danger" onClick={frontPage}>
+          <Button variant="outline-danger" onClick={handleOpenWarningModal}>
             Peruuta
           </Button>
           <Button size="lg" id="date-button" onClick={handleSubmit}>
@@ -153,6 +155,7 @@ const StationList = ({ onStationSelected }) => {
 
 StationList.propTypes = {
   onStationSelected: PropTypes.func.isRequired,
+  handleWarningModal: PropTypes.func,
 };
 
 export default StationList;
