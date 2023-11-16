@@ -8,29 +8,61 @@ import GoogleMap from '../components/GoogleMaps';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import styles from '../css/RentInfoCard.module.css';
+import PropTypes from 'prop-types';
+import { PopUpInfoModal } from '../components/PopUpInfoModal';
 
 // TODO: Change the info inside the circle when the time is up
+// TODO: Get the rentStartTime from the api and start the countdown from there
 const RentInfoPage = ({ handleItemReturned }) => {
   const rentInfo = {
-    rentDate: '17.09.2023',
-    rentStartTime: '13:00',
-    rentEndTime: '14:00',
+    rentDate: '2023-09-17',
+    rentStartTime: '2023-11-16T23:00:00',
+    rentEndTime: '2023-11-17T23:00:00',
     itemType: 'Peräkärry',
     stationLocation: 'Kivikon Sortti-asema',
   };
 
-  const [timeStarted, setTimeStarted] = useState(true);
+  const [timeStarted, setTimeStarted] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showInfoModal, setShowInfoModal] = useState(false);
+
+  const [canCancelRent, setCanCancelRent] = useState(true);
 
   const navigate = useNavigate();
+
+  const currentTime = new Date();
+
+  const endTimeMillis = new Date(rentInfo.rentEndTime).getTime();
+  const currentTimeMillis = currentTime.getTime();
+
+  // Rent time in hours and minutes
+  const startTimeHours = new Date(rentInfo.rentStartTime).getHours();
+  const startTimeMins = new Date(rentInfo.rentStartTime).getMinutes();
+  const endTimeHours = new Date(rentInfo.rentEndTime).getHours();
+  const endTimeMins = new Date(rentInfo.rentEndTime).getMinutes();
+
+  const remainingTimeHours =
+    (endTimeMillis - currentTimeMillis) / (1000 * 60 * 60);
+
+  useEffect(() => {
+    if (remainingTimeHours <= 24) {
+      setCanCancelRent(false);
+    }
+  }, [remainingTimeHours]);
 
   // TODO: Write a logic to calculate time until rent starts using the date/time from api extracted from current date/time.
   const timeUntilRentStart = () => {
     return '3h';
   };
 
-  // Event handlers for opening and closing the modal
-  const handleOpenModal = () => setShowModal(true);
+  // Handles opening and closing modals
+  const handleOpenModal = () => {
+    if (!timeStarted && !canCancelRent) {
+      setShowInfoModal(true);
+    } else {
+      setShowModal(true);
+    }
+  };
 
   // Use the "useEffect" hook to apply and remove body version class
   useEffect(() => {
@@ -62,6 +94,11 @@ const RentInfoPage = ({ handleItemReturned }) => {
     <p>Oletko varma, että haluat peruuttaa varauksen?</p>
   );
 
+  // TODO: Change the text to be more informative
+  const infoModalBodyContent = (
+    <p>Peruutus ei onnistu jos varaukseen on 24h tai alle</p>
+  );
+
   return (
     <>
       <PopUpWarningModal
@@ -73,6 +110,13 @@ const RentInfoPage = ({ handleItemReturned }) => {
         acceptButton={timeStarted ? 'Ymmärän' : 'Kyllä'}
         acceptButtonVariant={timeStarted ? 'success' : 'danger'}
         onPrimaryButtonClick={timeStarted ? rateItemPage : frontPage}
+      />
+      <PopUpInfoModal
+        show={showInfoModal}
+        title="Varauksen peruutus"
+        body={infoModalBodyContent}
+        buttonTxt="Sulje"
+        onHide={() => setShowInfoModal(false)}
       />
       <Container className={styles.rentInfoContainer}>
         <h1 className={styles.headerInfo}>Varauksesi</h1>
@@ -91,8 +135,8 @@ const RentInfoPage = ({ handleItemReturned }) => {
             <div>
               <RentInfoCard
                 rentDate={rentInfo.rentDate}
-                rentStartTime={rentInfo.rentStartTime}
-                rentEndTime={rentInfo.rentEndTime}
+                rentStartTime={`${startTimeHours}:${startTimeMins}`}
+                rentEndTime={`${endTimeHours}:${endTimeMins}`}
                 itemType={rentInfo.itemType}
                 stationLocation={rentInfo.stationLocation}
               />
@@ -120,6 +164,10 @@ const RentInfoPage = ({ handleItemReturned }) => {
       <GoogleMap stationLocation={rentInfo.stationLocation} />
     </>
   );
+};
+
+RentInfoPage.propTypes = {
+  handleItemReturned: PropTypes.func,
 };
 
 export default RentInfoPage;
