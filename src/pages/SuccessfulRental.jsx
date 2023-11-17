@@ -4,7 +4,7 @@ import { applyVersionClass2, removeVersionClass2 } from '../utils/BodyVersion';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
-import styles from '../css/successfulRental.module.css';
+import styles from '../css/SuccessfulRental.module.css';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
