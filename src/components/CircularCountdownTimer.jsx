@@ -1,7 +1,7 @@
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import Container from 'react-bootstrap/Container';
 import { DEFAULT_TIME_DURATION } from '../utils/constants';
-import styles from '../css/circularCountdownTimer.module.css';
+import styles from '../css/CircularCountdownTimer.module.css';
 import PropTypes from 'prop-types';
 
 // Formats remaining time to hours:minutes or seconds if hours and minutes are 0
