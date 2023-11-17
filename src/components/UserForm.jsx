@@ -191,11 +191,11 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
     <>
       <PopUpInfoModal
         show={modalShow}
+        onHide={() => setModalShow(false)}
         title={isTos ? 'Yleiset sopimusehdot' : 'Vuokrasopimus'}
         body={modalBodyContent}
         size="xl"
         buttonTxt="Sulje"
-        onHide={() => setModalShow(false)}
       />
 
       <PopUpWarningModal
@@ -208,7 +208,7 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
         acceptButtonVariant="danger"
         onPrimaryButtonClick={frontPage}
       />
-      {/* TODO: Maybe this should show after filling user info */}
+      {/* TODO: Change this to a bootstrap modal and show it after the user filled their info */}
       {confirmedRent && (
         <>
           <RentalConfirmation

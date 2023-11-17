@@ -11,18 +11,17 @@ import styles from '../css/RentInfoCard.module.css';
 import PropTypes from 'prop-types';
 import { PopUpInfoModal } from '../components/PopUpInfoModal';
 
-// TODO: Get the rentStartTime from the api and start the countdown from there
-// TODO: Start showing how much time left until rent start 24h before rent starts
+// TODO: Timer circle restarting from the beginning if page refreshed
 const RentInfoPage = ({ handleItemReturned }) => {
   const rentInfo = {
     rentDate: '2023-09-17',
-    rentStartTime: '2023-11-16T23:00:00',
-    rentEndTime: '2023-11-17T23:00:00',
+    rentStartTime: new Date(),
+    rentEndTime: '2023-11-17T23:30:00',
     itemType: 'Peräkärry',
     stationLocation: 'Kivikon Sortti-asema',
   };
 
-  const [timeStarted, setTimeStarted] = useState(true);
+  const [timeStarted, setTimeStarted] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
 
@@ -31,18 +30,37 @@ const RentInfoPage = ({ handleItemReturned }) => {
   const navigate = useNavigate();
 
   const currentTime = new Date();
+  const rentStartTime = rentInfo.rentStartTime;
+  const endTime = new Date(rentInfo.rentEndTime);
+
+  const differenceInMilliseconds = endTime - currentTime;
+  const differenceInHours = differenceInMilliseconds / (1000 * 60 * 60);
+  const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
 
   const endTimeMillis = new Date(rentInfo.rentEndTime).getTime();
   const currentTimeMillis = currentTime.getTime();
 
+  const remainingTimeHours =
+    (endTimeMillis - currentTimeMillis) / (1000 * 60 * 60);
+
   // Rent time in hours and minutes
-  const startTimeHours = new Date(rentInfo.rentStartTime).getHours();
-  const startTimeMins = new Date(rentInfo.rentStartTime).getMinutes();
+  const startTimeHours = rentInfo.rentStartTime.getHours();
+  const startTimeMins = rentInfo.rentStartTime.getMinutes();
   const endTimeHours = new Date(rentInfo.rentEndTime).getHours();
   const endTimeMins = new Date(rentInfo.rentEndTime).getMinutes();
 
-  const remainingTimeHours =
-    (endTimeMillis - currentTimeMillis) / (1000 * 60 * 60);
+  const timeUntilRentStart = () => {
+    const dayUntil = Math.floor(differenceInDays).toString();
+    const hoursUntil = Math.round(differenceInHours).toString();
+
+    if (differenceInDays >= 1) {
+      return `Alkaa ${dayUntil} päivän päästä!`;
+    } else {
+      return hoursUntil == 0
+        ? 'Varauksesi alkaa pian!'
+        : `Alkaa ${hoursUntil} tunnin päästä!`;
+    }
+  };
 
   useEffect(() => {
     if (remainingTimeHours <= 24) {
@@ -50,10 +68,11 @@ const RentInfoPage = ({ handleItemReturned }) => {
     }
   }, [remainingTimeHours]);
 
-  // TODO: Write a logic to calculate time until rent starts using the date/time from api extracted from current date/time.
-  const timeUntilRentStart = () => {
-    return '3h';
-  };
+  setInterval(() => {
+    if (currentTime.getTime() === rentStartTime.getTime()) {
+      setTimeStarted(true);
+    }
+  }, 1000);
 
   // Handles opening and closing modals
   const handleOpenModal = () => {
@@ -96,7 +115,10 @@ const RentInfoPage = ({ handleItemReturned }) => {
 
   // TODO: Change the text to be more informative
   const infoModalBodyContent = (
-    <p>Peruutus ei onnistu jos varaukseen on 24h tai alle</p>
+    <p>
+      Varauksen peruutus ei onnistu, jos vuokran alkamiseen on 24 tuntia tai
+      vähemmän.
+    </p>
   );
 
   return (
@@ -107,16 +129,16 @@ const RentInfoPage = ({ handleItemReturned }) => {
         title={timeStarted ? 'Ennen palautusta' : 'Peruuta varaus'}
         body={modalBodyContent}
         backButton="Takaisin"
-        acceptButton={timeStarted ? 'Ymmärän' : 'Kyllä'}
+        acceptButton={timeStarted ? 'Ymmärrän' : 'Kyllä, poista varaus'}
         acceptButtonVariant={timeStarted ? 'success' : 'danger'}
         onPrimaryButtonClick={timeStarted ? rateItemPage : frontPage}
       />
       <PopUpInfoModal
         show={showInfoModal}
+        onHide={() => setShowInfoModal(false)}
         title="Varauksen peruutus"
         body={infoModalBodyContent}
         buttonTxt="Sulje"
-        onHide={() => setShowInfoModal(false)}
       />
       <Container className={styles.rentInfoContainer}>
         <h1 className={styles.headerInfo}>Varauksesi</h1>
@@ -129,7 +151,8 @@ const RentInfoPage = ({ handleItemReturned }) => {
             <div>
               <CircularCountdownTimer
                 isPlaying={timeStarted}
-                rentStartTime={timeUntilRentStart()}
+                timeUntilRentStart={timeUntilRentStart()}
+                duration={differenceInMilliseconds / 1000}
               />
             </div>
             <div>
@@ -156,7 +179,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
               className={styles.btn}
               onClick={handleOpenModal}
             >
-              Peruuta varaus
+              Peru peräkärryn varaus
             </Button>
           )}
         </Stack>

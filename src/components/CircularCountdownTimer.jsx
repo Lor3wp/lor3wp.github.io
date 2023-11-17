@@ -20,7 +20,7 @@ const formatRemainingTime = (remainingTime) => {
 
 export const CircularCountdownTimer = ({
   isPlaying = false,
-  rentStartTime,
+  timeUntilRentStart,
   duration = DEFAULT_TIME_DURATION,
   timerText = 'Jäljellä',
 }) => {
@@ -39,9 +39,7 @@ export const CircularCountdownTimer = ({
             <div className={styles.timerText}>{timerText}</div>
           </>
         ) : (
-          <div className={styles.rentStartText}>
-            Alkaa {rentStartTime} päästä
-          </div>
+          <div className={styles.rentStartText}>{timeUntilRentStart}</div>
         )}
       </Container>
     );
@@ -63,7 +61,7 @@ export const CircularCountdownTimer = ({
 
 CircularCountdownTimer.propTypes = {
   isPlaying: PropTypes.bool,
-  rentStartTime: PropTypes.instanceOf(Date),
+  timeUntilRentStart: PropTypes.string,
   duration: PropTypes.number,
   timerText: PropTypes.string,
 };
