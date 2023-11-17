@@ -11,8 +11,8 @@ import styles from '../css/RentInfoCard.module.css';
 import PropTypes from 'prop-types';
 import { PopUpInfoModal } from '../components/PopUpInfoModal';
 
-// TODO: Change the info inside the circle when the time is up
 // TODO: Get the rentStartTime from the api and start the countdown from there
+// TODO: Start showing how much time left until rent start 24h before rent starts
 const RentInfoPage = ({ handleItemReturned }) => {
   const rentInfo = {
     rentDate: '2023-09-17',
@@ -22,7 +22,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
     stationLocation: 'Kivikon Sortti-asema',
   };
 
-  const [timeStarted, setTimeStarted] = useState(false);
+  const [timeStarted, setTimeStarted] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
 

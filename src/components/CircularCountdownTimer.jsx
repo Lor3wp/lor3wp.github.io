@@ -24,6 +24,29 @@ export const CircularCountdownTimer = ({
   duration = DEFAULT_TIME_DURATION,
   timerText = 'Jäljellä',
 }) => {
+  const renderTime = ({ remainingTime }) => {
+    if (remainingTime === 0) {
+      return <div className={styles.timerInfoText}>Varaus aika päättyi!</div>;
+    }
+
+    return (
+      <Container>
+        {isPlaying ? (
+          <>
+            <div className={styles.timer}>
+              {formatRemainingTime(remainingTime)}
+            </div>
+            <div className={styles.timerText}>{timerText}</div>
+          </>
+        ) : (
+          <div className={styles.rentStartText}>
+            Alkaa {rentStartTime} päästä
+          </div>
+        )}
+      </Container>
+    );
+  };
+
   return (
     <CountdownCircleTimer
       isPlaying={isPlaying}
@@ -31,28 +54,9 @@ export const CircularCountdownTimer = ({
       colors="#008782"
       size={250}
       strokeWidth={19}
-      onComplete={() => {
-        return { shouldRepeat: false };
-      }}
+      onComplete={() => ({ shouldRepeat: false })}
     >
-      {({ remainingTime }) => {
-        return (
-          <Container>
-            {isPlaying ? (
-              <>
-                <div className={styles.timer}>
-                  {formatRemainingTime(remainingTime)}
-                </div>
-                <div className={styles.timerText}>{timerText}</div>
-              </>
-            ) : (
-              <div className={styles.rentStartText}>
-                Alkaa {rentStartTime} päästä
-              </div>
-            )}
-          </Container>
-        );
-      }}
+      {renderTime}
     </CountdownCircleTimer>
   );
 };
