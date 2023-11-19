@@ -15,64 +15,66 @@ import { PopUpInfoModal } from '../components/PopUpInfoModal';
 const RentInfoPage = ({ handleItemReturned }) => {
   const rentInfo = {
     rentDate: '2023-09-17',
-    rentStartTime: new Date(),
-    rentEndTime: '2023-11-17T23:30:00',
+    //rentStartTime: new Date(),
+    rentStartTime: '2023-11-19T23:26:00',
+    rentEndTime: '2023-11-19T23:28:00',
     itemType: 'Peräkärry',
     stationLocation: 'Kivikon Sortti-asema',
   };
 
   const [timeStarted, setTimeStarted] = useState(false);
+  const [canCancelRent, setCanCancelRent] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
-
-  const [canCancelRent, setCanCancelRent] = useState(true);
+  const [timerInfoText, setTimerInfoText] = useState('');
 
   const navigate = useNavigate();
 
   const currentTime = new Date();
-  const rentStartTime = rentInfo.rentStartTime;
-  const endTime = new Date(rentInfo.rentEndTime);
+  const rentEndTime = new Date(rentInfo.rentEndTime);
 
-  const differenceInMilliseconds = endTime - currentTime;
-  const differenceInHours = differenceInMilliseconds / (1000 * 60 * 60);
-  const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+  const differenceInMillisecondsUntilRentEnd = rentEndTime - currentTime;
 
-  const endTimeMillis = new Date(rentInfo.rentEndTime).getTime();
-  const currentTimeMillis = currentTime.getTime();
-
-  const remainingTimeHours =
-    (endTimeMillis - currentTimeMillis) / (1000 * 60 * 60);
-
-  // Rent time in hours and minutes
-  const startTimeHours = rentInfo.rentStartTime.getHours();
-  const startTimeMins = rentInfo.rentStartTime.getMinutes();
+  // Rent start and end time in hours and minutes
+  const startTimeHours = new Date(rentInfo.rentStartTime).getHours();
+  const startTimeMins = new Date(rentInfo.rentStartTime).getMinutes();
   const endTimeHours = new Date(rentInfo.rentEndTime).getHours();
   const endTimeMins = new Date(rentInfo.rentEndTime).getMinutes();
 
-  const timeUntilRentStart = () => {
-    const dayUntil = Math.floor(differenceInDays).toString();
-    const hoursUntil = Math.round(differenceInHours).toString();
-
-    if (differenceInDays >= 1) {
-      return `Alkaa ${dayUntil} päivän päästä!`;
-    } else {
-      return hoursUntil == 0
-        ? 'Varauksesi alkaa pian!'
-        : `Alkaa ${hoursUntil} tunnin päästä!`;
-    }
-  };
-
   useEffect(() => {
-    if (remainingTimeHours <= 24) {
-      setCanCancelRent(false);
-    }
-  }, [remainingTimeHours]);
+    const interval = setInterval(() => {
+      const currentTime = new Date();
+      const rentStartTime = new Date(rentInfo.rentStartTime);
 
-  setInterval(() => {
-    if (currentTime.getTime() === rentStartTime.getTime()) {
-      setTimeStarted(true);
-    }
-  }, 1000);
+      const differenceInMillisecondsUntilRentStart =
+        rentStartTime - currentTime;
+      const remainingHoursUntilRentStart =
+        differenceInMillisecondsUntilRentStart / (1000 * 60 * 60);
+      const differenceInDaysUntilRentStart =
+        differenceInMillisecondsUntilRentStart / (1000 * 60 * 60 * 24);
+
+      const hoursUntil = Math.round(remainingHoursUntilRentStart).toString();
+      const dayUntil = Math.round(differenceInDaysUntilRentStart).toString();
+
+      let timerInfoText;
+      if (differenceInDaysUntilRentStart >= 1) {
+        timerInfoText = `Alkaa ${dayUntil} päivän päästä!`;
+      } else {
+        timerInfoText =
+          hoursUntil == 0
+            ? 'Varauksesi alkaa pian!'
+            : `Alkaa ${hoursUntil} tunnin päästä!`;
+      }
+
+      setCanCancelRent(!(remainingHoursUntilRentStart <= 24));
+      setTimeStarted(currentTime.getTime() >= rentStartTime.getTime());
+      setTimerInfoText(timerInfoText);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   // Handles opening and closing modals
   const handleOpenModal = () => {
@@ -98,8 +100,8 @@ const RentInfoPage = ({ handleItemReturned }) => {
   };
 
   const frontPage = () => {
-    navigate('/', { replace: true });
     toast.success('Varaus peruutettu!');
+    navigate('/', { replace: true });
   };
 
   // Warning popup modal
@@ -151,8 +153,8 @@ const RentInfoPage = ({ handleItemReturned }) => {
             <div>
               <CircularCountdownTimer
                 isPlaying={timeStarted}
-                timeUntilRentStart={timeUntilRentStart()}
-                duration={differenceInMilliseconds / 1000}
+                timerInfoText={timerInfoText}
+                duration={differenceInMillisecondsUntilRentEnd / 1000}
               />
             </div>
             <div>
