@@ -1,4 +1,3 @@
-// RentProcessPage.jsx
 import { useEffect, useState } from 'react';
 import { CustomStepper } from '../components/CustomStepper';
 import ProductAndTime from '../components/TimeForm';
@@ -109,6 +108,18 @@ const RentProcessPage = () => {
     { logo: Spankki, bankName: 'spankki' },
   ];
   const irlPayments = [{ logo: HSY, bankName: 'HSY' }];
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', alertUser);
+    return () => {
+      window.removeEventListener('beforeunload', alertUser);
+    };
+  }, []);
+
+  const alertUser = (e) => {
+    e.preventDefault();
+    e.returnValue = '';
+  };
 
   const renderPaymentComponents = () => {
     return (
