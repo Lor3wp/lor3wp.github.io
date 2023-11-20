@@ -22,13 +22,41 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
   const [rentConfirmation, setRentConfirmation] = useState(false);
   const [submitEvent, setSubmitEvent] = useState(null);
 
-  const { userData, setUserData, acceptTerms, setAcceptTerms } = useStepper();
+  const {
+    selectedDate,
+    selectedTime,
+    selectedProduct,
+    selectedStations,
+    userData,
+    setUserData,
+    acceptTerms,
+    setAcceptTerms,
+  } = useStepper();
 
   const navigate = useNavigate();
 
   const tosInfoTitle = 'Yleiset sopimusehdot';
   const leaseInfoTitle = 'Vuokrasopimus';
   const confirmInfoTitle = 'Vahvista vuokraus';
+
+  const stations = [
+    'Ruskeasanta',
+    'Konala',
+    'Kivikko',
+    'Jorvas',
+    'Ämmässuo',
+    'Koivusuo',
+  ];
+
+  // Maps selected stations to their names, filters out unselected stations.
+  const selectedStationNames = selectedStations
+    .map((isSelected, index) => {
+      if (isSelected) {
+        const station = stations[index];
+        return station;
+      }
+    })
+    .filter(Boolean);
 
   const tosInfoBody = (
     <div>
@@ -143,7 +171,6 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
     </div>
   );
 
-  // TODO: Fill in the details of the rental dynamically
   const confirmInfoBody = (
     <div>
       <p>
@@ -153,11 +180,18 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
         Peräkärryssä ei ole jarruja eikä talvirenkaita.
       </p>
       <p>
-        Vahvista peräkärrynvuokraus Sortti-aseman INFOssa näyttämällä
+        Vahvista peräkärrynvuokraus Sortti-aseman INFO:ssa näyttämällä
         henkilöllisyystodistuksesi. Henkilökuntamme opastaa, mistä kärry
         asemalla noudetaan.
       </p>
-      <p>***rent info here***</p>
+      <ul>
+        <li>
+          Varauksen päivämäärä: {new Date(selectedDate).toLocaleDateString()}
+        </li>
+        <li>Aika: {selectedTime}</li>
+        <li>Tuote: {selectedProduct}</li>
+        <li>Asema: {selectedStationNames.join(', ')}</li>
+      </ul>
     </div>
   );
 
