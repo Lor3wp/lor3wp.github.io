@@ -5,7 +5,6 @@ import FormField from './FormField';
 import Button from 'react-bootstrap/Button';
 import Checkbox from './Checkbox';
 import { useNavigate } from 'react-router-dom';
-import RentalConfirmation from './RentalConfirmation';
 import PropTypes from 'prop-types';
 import { ChevronCompactLeft } from 'react-bootstrap-icons';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
@@ -14,49 +13,52 @@ import PopUpWarningModal from '../components/PopUpWarningModal';
 import hsyLogo from '../assets/hsy_logo_dark.png';
 import { useStepper } from '../hooks/useStepper';
 
-const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
+const UserForm = ({ onSubmit, onPrevStep }) => {
   const [validated, setValidated] = useState(false);
-  const [modalShow, setModalShow] = useState(false);
+  const [showInfoModal, setShowInfoModal] = useState(false);
   const [showWarningModal, setShowWarningModal] = useState(false);
-  const [isTos, setIsTos] = useState(false);
+  const [infoModalBody, setInfoModalBody] = useState();
+  const [infoModalTitle, setInfoModalTitle] = useState();
+  const [rentConfirmation, setRentConfirmation] = useState(false);
+  const [submitEvent, setSubmitEvent] = useState(null);
 
-  const { userData, setUserData, acceptTerms, setAcceptTerms } = useStepper();
+  const {
+    selectedDate,
+    selectedTime,
+    selectedProduct,
+    selectedStations,
+    userData,
+    setUserData,
+    acceptTerms,
+    setAcceptTerms,
+  } = useStepper();
 
   const navigate = useNavigate();
 
-  console.log(confirmedRent);
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const tosInfoTitle = 'Yleiset sopimusehdot';
+  const leaseInfoTitle = 'Vuokrasopimus';
+  const confirmInfoTitle = 'Vahvista vuokraus';
 
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    } else {
-      onSubmit({
-        firstName: form.elements.firstName.value,
-        lastName: form.elements.lastName.value,
-        phoneNumber: form.elements.phoneNumber.value,
-        emailAddress: form.elements.emailAddress.value,
-        streetName: form.elements.streetName.value,
-        postalCode: form.elements.postalCode.value,
-        cityName: form.elements.cityName.value,
-      });
-      setConfirmRent(true);
-    }
-    setValidated(true);
-  };
+  const stations = [
+    'Ruskeasanta',
+    'Konala',
+    'Kivikko',
+    'Jorvas',
+    'Ämmässuo',
+    'Koivusuo',
+  ];
 
-  const navigateForward = () => {
-    navigate('/payment');
-  };
+  // Maps selected stations to their names, filters out unselected stations.
+  const selectedStationNames = selectedStations
+    .map((isSelected, index) => {
+      if (isSelected) {
+        const station = stations[index];
+        return station;
+      }
+    })
+    .filter(Boolean);
 
-  const frontPage = () => {
-    navigate('/', { replace: true });
-  };
-
-  // TODO: Fill in the details of the rental dynamically
-  const modalBodyContent = isTos ? (
+  const tosInfoBody = (
     <div>
       <h3>Peräkärryn vuokrauksen sopimusehdot</h3>
       <ol>
@@ -108,7 +110,17 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
         </p>
       </ol>
     </div>
-  ) : (
+  );
+
+  const rentStart = `${new Date(selectedDate).toLocaleDateString()} ${
+    selectedTime[0]
+  }${selectedTime[1]}:00`;
+  const rentEnd = `${new Date(selectedDate).toLocaleDateString()} ${
+    selectedTime[3]
+  }${selectedTime[4]}:00`;
+
+  // TODO: Station location missing.
+  const leaseInfoBody = (
     <div>
       <img className={styles.frontPagePicture} src={hsyLogo} />
       <p />
@@ -121,19 +133,19 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
       </p>
       <h2>Vuokrauspaikka</h2>
       <p>
-        Aseman nimi <br />
-        aseman paikka
+        Asema: {selectedStationNames.join(', ')} <br />
+        **aseman paikka**
       </p>
       <h2>Vuokralleottajan tiedot</h2>
       <p>
-        Nimi Nimi
+        {userData.firstName} {userData.lastName}
         <br />
-        Katuosoite <br />
-        postinum postitoimipaikka
+        {userData.streetName} <br />
+        {userData.postalCode} {userData.cityName}
       </p>
       <p>
-        Puhelin:
-        <br /> Sähköposti:
+        Puhelin: {userData.phoneNumber}
+        <br /> Sähköposti: {userData.emailAddress}
       </p>
       <h2>Vuokraesine</h2>
       <p>
@@ -143,7 +155,8 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
       <h3>Perävaunu</h3>
       <p>
         Vuokra-aika: 3 tuntia
-        <br /> Nouto: <br /> Palautus:
+        <br /> Nouto: {rentStart}
+        <br /> Palautus: {rentEnd}
       </p>
       <p>Vuokrauksen hinta 5 €</p>
       <p>
@@ -166,14 +179,79 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
     </div>
   );
 
-  const handleOpenLaModal = () => {
-    setIsTos(false);
-    setModalShow(true);
+  const confirmInfoBody = (
+    <div>
+      <p>
+        Ulkomitat: pituus 418 cm, leveys 167 cm Tavaratilan mitat: tilavuus 5 m3
+        pituus 265 cm, leveys 125 cm korkeus 50 cm, korkeus kuomun kanssa 150 cm
+        Peräkärryn omapaino 195 kg Kantavuus 555 kg Kokonaispaino 750 kg
+        Peräkärryssä ei ole jarruja eikä talvirenkaita.
+      </p>
+      <p>
+        Vahvista peräkärrynvuokraus Sortti-aseman INFO:ssa näyttämällä
+        henkilöllisyystodistuksesi. Henkilökuntamme opastaa, mistä kärry
+        asemalla noudetaan.
+      </p>
+      <ul>
+        <li>
+          Varauksen päivämäärä: {new Date(selectedDate).toLocaleDateString()}
+        </li>
+        <li>Aika: {selectedTime}</li>
+        <li>Tuote: {selectedProduct}</li>
+        <li>Asema: {selectedStationNames.join(', ')}</li>
+      </ul>
+    </div>
+  );
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      setSubmitEvent(form);
+      handleOpenConfirmInfoModal();
+    }
+    setValidated(true);
+  };
+
+  const frontPage = () => {
+    navigate('/', { replace: true });
+  };
+
+  const handleConfirmRentInfo = () => {
+    onSubmit({
+      firstName: submitEvent.elements.firstName.value,
+      lastName: submitEvent.elements.lastName.value,
+      phoneNumber: submitEvent.elements.phoneNumber.value,
+      emailAddress: submitEvent.elements.emailAddress.value,
+      streetName: submitEvent.elements.streetName.value,
+      postalCode: submitEvent.elements.postalCode.value,
+      cityName: submitEvent.elements.cityName.value,
+    });
   };
 
   const handleOpenTosModal = () => {
-    setIsTos(true);
-    setModalShow(true);
+    setInfoModalTitle(tosInfoTitle);
+    setInfoModalBody(tosInfoBody);
+    setRentConfirmation(false);
+    setShowInfoModal(true);
+  };
+
+  const handleOpenLeaseModal = () => {
+    setInfoModalTitle(leaseInfoTitle);
+    setInfoModalBody(leaseInfoBody);
+    setRentConfirmation(false);
+    setShowInfoModal(true);
+  };
+
+  const handleOpenConfirmInfoModal = () => {
+    setInfoModalTitle(confirmInfoTitle);
+    setInfoModalBody(confirmInfoBody);
+    setRentConfirmation(true);
+    setShowInfoModal(true);
   };
 
   const handleOpenWarningModal = () => {
@@ -190,14 +268,16 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
   return (
     <>
       <PopUpInfoModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        title={isTos ? 'Yleiset sopimusehdot' : 'Vuokrasopimus'}
-        body={modalBodyContent}
+        show={showInfoModal}
+        onHide={() => setShowInfoModal(false)}
+        title={infoModalTitle}
+        body={infoModalBody}
         size="xl"
-        buttonTxt="Sulje"
+        backButtonTxt={rentConfirmation && 'Takaisin'}
+        buttonTxt={rentConfirmation ? 'Vahvista' : 'Sulje'}
+        rentConfirmation={rentConfirmation}
+        onPrimaryButtonClick={handleConfirmRentInfo}
       />
-
       <PopUpWarningModal
         show={showWarningModal}
         onHide={() => setShowWarningModal(false)}
@@ -208,15 +288,7 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
         acceptButtonVariant="danger"
         onPrimaryButtonClick={frontPage}
       />
-      {/* TODO: Change this to a bootstrap modal and show it after the user filled their info */}
-      {confirmedRent && (
-        <>
-          <RentalConfirmation
-            setConfirmRent={setConfirmRent}
-            navigateForward={navigateForward}
-          />
-        </>
-      )}
+
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <div className={styles.fieldContainer}>
           <FormField
@@ -292,7 +364,7 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
           />
           <Checkbox
             label="Olen lukenut"
-            onClick={handleOpenLaModal}
+            onClick={handleOpenLeaseModal}
             linkText="vuokrasopimuksen"
             isRequired={true}
             id={styles.acceptTermsCheckbox}
@@ -329,8 +401,7 @@ const UserForm = ({ onSubmit, confirmedRent, setConfirmRent, onPrevStep }) => {
 
 UserForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  confirmedRent: PropTypes.func.isRequired,
-  setConfirmRent: PropTypes.func.isRequired,
+  handleInfoModal: PropTypes.func,
   onPrevStep: PropTypes.func.isRequired,
 };
 

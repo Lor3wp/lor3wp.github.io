@@ -29,7 +29,7 @@ const RentProcessPage = () => {
   const countdownDuration = 20 * 60 * 1000;
   const [activeStep, setActiveStep] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 820);
-  const [showInfoModal, setShowInfoModal] = useState(false);
+  const [showWarningModal, setShowWarningModal] = useState(false);
 
   const [reservationDeadline, setReservationDeadline] = useState(
     calculateReservationDeadline(),
@@ -57,7 +57,7 @@ const RentProcessPage = () => {
   };
 
   const handleWarningModal = () => {
-    setShowInfoModal(true);
+    setShowWarningModal(true);
   };
 
   // when window gets smaller than 820, setIsMobile is set
@@ -109,6 +109,7 @@ const RentProcessPage = () => {
   ];
   const irlPayments = [{ logo: HSY, bankName: 'HSY' }];
 
+  // Warns the user from leaving the page
   useEffect(() => {
     window.addEventListener('beforeunload', alertUser);
     return () => {
@@ -193,7 +194,7 @@ const RentProcessPage = () => {
     }
   };
 
-  const PopUpWarningBody = () => {
+  const popUpWarningBody = () => {
     switch (activeStep) {
       case 0:
         return 'Valitse vähintään yksi asema ennen kuin jatkat.';
@@ -221,12 +222,12 @@ const RentProcessPage = () => {
           }
         >
           <PopUpWarningModal
-            show={showInfoModal}
-            onHide={() => setShowInfoModal(false)}
-            body={PopUpWarningBody()}
+            show={showWarningModal}
+            onHide={() => setShowWarningModal(false)}
+            body={popUpWarningBody()}
             acceptButton="Takaisin"
             acceptButtonVariant="primary"
-            onPrimaryButtonClick={() => setShowInfoModal(false)}
+            onPrimaryButtonClick={() => setShowWarningModal(false)}
           />
           <CustomStepper steps={steps} activeStep={activeStep} />
           {renderSectionComponent()}
