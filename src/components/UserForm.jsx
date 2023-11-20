@@ -112,7 +112,14 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
     </div>
   );
 
-  // TODO: Fill in the details of the rental dynamically
+  const rentStart = `${new Date(selectedDate).toLocaleDateString()} ${
+    selectedTime[0]
+  }${selectedTime[1]}:00`;
+  const rentEnd = `${new Date(selectedDate).toLocaleDateString()} ${
+    selectedTime[3]
+  }${selectedTime[4]}:00`;
+
+  // TODO: Station location missing.
   const leaseInfoBody = (
     <div>
       <img className={styles.frontPagePicture} src={hsyLogo} />
@@ -126,19 +133,19 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
       </p>
       <h2>Vuokrauspaikka</h2>
       <p>
-        Aseman nimi <br />
-        aseman paikka
+        Asema: {selectedStationNames.join(', ')} <br />
+        **aseman paikka**
       </p>
       <h2>Vuokralleottajan tiedot</h2>
       <p>
-        Nimi Nimi
+        {userData.firstName} {userData.lastName}
         <br />
-        Katuosoite <br />
-        postinum postitoimipaikka
+        {userData.streetName} <br />
+        {userData.postalCode} {userData.cityName}
       </p>
       <p>
-        Puhelin:
-        <br /> Sähköposti:
+        Puhelin: {userData.phoneNumber}
+        <br /> Sähköposti: {userData.emailAddress}
       </p>
       <h2>Vuokraesine</h2>
       <p>
@@ -148,7 +155,8 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
       <h3>Perävaunu</h3>
       <p>
         Vuokra-aika: 3 tuntia
-        <br /> Nouto: <br /> Palautus:
+        <br /> Nouto: {rentStart}
+        <br /> Palautus: {rentEnd}
       </p>
       <p>Vuokrauksen hinta 5 €</p>
       <p>
