@@ -6,3 +6,5 @@ export default defineConfig({
   base: '/HsyTrailer/',
   plugins: [react()],
 });
+
+// buildpush
