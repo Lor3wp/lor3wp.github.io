@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import FinnishFlag from '../assets/finland-flag-icon.svg';
 import EnglishFlag from '../assets/united-kingdom-flag-icon.svg';
 import SwedishFlag from '../assets/sweden-flag-icon.svg';
@@ -6,15 +7,33 @@ import SwedishFlag from '../assets/sweden-flag-icon.svg';
 export const LanguageSelector = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('Suomi');
 
+  const { i18n } = useTranslation();
+
   const languageOptions = [
     { language: 'Suomi', flag: FinnishFlag },
     { language: 'English', flag: EnglishFlag },
     { language: 'Svenska', flag: SwedishFlag },
   ];
 
+  const languageCodes = {
+    Suomi: 'fi',
+    English: 'en',
+    Svenska: 'sv',
+  };
+
   const handleLanguageChange = (language) => {
+    const languageCode = languageCodes[language];
+    i18n.changeLanguage(languageCode);
     setSelectedLanguage(language);
   };
+
+  useEffect(() => {
+    const currentLanguageCode = i18n.language;
+    const currentLanguage = Object.keys(languageCodes).find(
+      (language) => languageCodes[language] === currentLanguageCode,
+    );
+    setSelectedLanguage(currentLanguage);
+  }, []);
 
   return (
     <div className="dropdown show">
@@ -34,8 +53,10 @@ export const LanguageSelector = () => {
       <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
         {languageOptions.map((option, index) => (
           <a
-            className="dropdown-item"
-            href="#"
+            className={`dropdown-item ${
+              option.language === selectedLanguage ? 'active' : ''
+            }`}
+            href={'#' + i18n.language}
             key={index}
             onClick={() => handleLanguageChange(option.language)}
           >
@@ -45,7 +66,7 @@ export const LanguageSelector = () => {
               width="30"
               height="30"
               alt={option.language}
-            />{' '}
+            />
             {option.language}
           </a>
         ))}
