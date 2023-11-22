@@ -8,10 +8,13 @@ import { applyVersionClass, removeVersionClass } from '../utils/BodyVersion';
 import { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import RulesModal from '../components/RulesModal';
+import { useTranslation } from 'react-i18next';
 
 const FrontPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+
+  const { t } = useTranslation();
 
   // Event handlers for opening
   const handleOpenModal = () => setShowModal(true);
@@ -61,7 +64,7 @@ const FrontPage = () => {
             <header className={styles.frontHeader}>
               <p className={styles.frontHeaderTxt}>
                 <span className={styles.lightGrayText}>
-                  Jätteet ja kierrätys
+                  {t('Jätteet ja kierrätys')}
                 </span>
                 <span className={styles.iconSpacing}>{' > '}</span>
                 Sortti-peräkärryn vuokraus
