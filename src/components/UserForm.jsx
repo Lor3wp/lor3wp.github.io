@@ -12,6 +12,7 @@ import { PopUpInfoModal } from './PopUpInfoModal';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 import hsyLogo from '../assets/hsy_logo_dark.png';
 import { useStepper } from '../hooks/useStepper';
+import { useTranslation } from 'react-i18next';
 
 const UserForm = ({ onSubmit, onPrevStep }) => {
   const [validated, setValidated] = useState(false);
@@ -32,6 +33,8 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
     acceptTerms,
     setAcceptTerms,
   } = useStepper();
+
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 

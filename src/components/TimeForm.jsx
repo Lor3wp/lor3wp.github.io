@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router';
 import { ChevronCompactLeft } from 'react-bootstrap-icons';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
 import { useStepper } from '../hooks/useStepper';
+import { useTranslation } from 'react-i18next';
 
 const ProductAndTime = ({
   onProductAndTimeSelected,
@@ -18,6 +19,8 @@ const ProductAndTime = ({
   handleWarningModal,
 }) => {
   const [showWarningModal, setShowWarningModal] = useState(false);
+
+  const { t } = useTranslation();
 
   const {
     selectedDate,
@@ -68,10 +71,10 @@ const ProductAndTime = ({
       <PopUpWarningModal
         show={showWarningModal}
         onHide={() => setShowWarningModal(false)}
-        title="Peruuta varaus"
-        body="Oletko varma, että haluat peruuttaa varauksen?"
-        backButton="Takaisin"
-        acceptButton="Kyllä"
+        title={t('Peruuta varaus')}
+        body={t('Oletko varma, että haluat peruuttaa varauksen?')}
+        backButton={t('Takaisin')}
+        acceptButton={t('Kyllä')}
         acceptButtonVariant="danger"
         onPrimaryButtonClick={frontPage}
       />
@@ -81,7 +84,7 @@ const ProductAndTime = ({
         </div>
         <hr />
         <div className={rentStyle.calendarBox}>
-          <h2 className={timeStyle.header}>Valitse päivä</h2>
+          <h2 className={timeStyle.header}>{t('Valitse päivä')}</h2>
           <RentCalendar
             futureDates={futureDates}
             setSelectedDate={setSelectedDate}
@@ -134,14 +137,14 @@ const ProductAndTime = ({
           <div className={rentStyle.leftButtons}>
             <Button variant="outline-primary" onClick={onPrevStep}>
               <ChevronCompactLeft />
-              Edellinen
+              {t('Edellinen')}
             </Button>
             <Button variant="outline-danger" onClick={handleOpenWarningModal}>
-              Peruuta
+              {t('Peruuta')}
             </Button>
           </div>
           <Button size="lg" onClick={handleSubmit}>
-            Täytä henkilötiedot
+            {t('Täytä henkilötiedot')}
             <ChevronCompactRight />
           </Button>
         </div>

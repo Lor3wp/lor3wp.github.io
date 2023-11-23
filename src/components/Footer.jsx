@@ -1,16 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../css/Footer.module.css';
 import Logo from '../assets/hsy_logo.png';
+import { useTranslation } from 'react-i18next';
 
 /*Footer component */
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className={`text-center text-lg-start text-muted`}>
       <section
         className={`d-flex justify-content-center justify-content-lg-between ${styles.customFooter}`}
       >
         <div className={styles.socialLinks}>
-          <p>Seuraa HSY:tä sosiaalisessa mediassa</p>
+          <p>{t('Seuraa HSY:tä sosiaalisessa mediassa')}</p>
           <div className={styles.icons}>
             <a
               href="https://www.facebook.com/helsinginseudunymparistopalvelut"
@@ -107,33 +110,38 @@ const Footer = () => {
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">
                 <img src={Logo} className={styles.footerLogo} />
-                Helsingin seudun ympäristöpalvelut HSY
+                {t('Helsingin seudun ympäristöpalvelut HSY')}
               </h6>
             </div>
             <div
               className={`col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 ${styles.textMargin}`}
             >
-              <h6 className="text-uppercase fw-bold mb-4">Asiakaspalvelu</h6>
+              <h6 className="text-uppercase fw-bold mb-4">
+                {t('Asiakaspalvelu')}
+              </h6>
               <p>
                 <a className={`text-reset ${styles.customLink}`}>
-                  Asiakaspalvelun palveluajat puhelimitse
+                  {t('Asiakaspalvelun palveluajat puhelimitse')}
                 </a>
               </p>
               <p>
                 <a className={`text-reset ${styles.customInfoText}`}>
-                  Ma, ke ja pe klo 8.30–15.30, <br></br>ti klo 8.30–11.00,
-                  <br></br>to klo 13.00–15.30
+                  {t('ma, ke ja pe klo 8.30–15.30')}
+                  <br></br> {t('ti klo 8.30–11.00')}
+                  <br></br> {t('to klo 13.00–15.30')}
                 </a>
               </p>
             </div>
             <div
               className={`col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 ${styles.textMargin}`}
             >
-              <h6 className="text-uppercase fw-bold mb-4">Yhteystiedot</h6>
+              <h6 className="text-uppercase fw-bold mb-4">
+                {t('Yhteystiedot')}
+              </h6>
               <p>
                 <a className={`text-reset ${styles.customInfoText}`}>
-                  Puh. 09 1561 2110<br></br>Ilmalantori 1, 00240 Helsinki PL
-                  100,<br></br> 00066 HSY
+                  {t('Puh.')} 09 1561 2110<br></br>Ilmalantori 1, 00240 Helsinki
+                  PL 100,<br></br> 00066 HSY
                 </a>
               </p>
             </div>

@@ -24,9 +24,11 @@ import HSY from '../assets/hsy_logo.png';
 import styles from '../css/BankButton.module.css';
 import BankType from '../components/BankType';
 import PopUpWarningModal from '../components/PopUpWarningModal';
+import { useTranslation } from 'react-i18next';
 
 const RentProcessPage = () => {
   const countdownDuration = 20 * 60 * 1000;
+
   const [activeStep, setActiveStep] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 820);
   const [showWarningModal, setShowWarningModal] = useState(false);
@@ -34,6 +36,8 @@ const RentProcessPage = () => {
   const [reservationDeadline, setReservationDeadline] = useState(
     calculateReservationDeadline(),
   );
+
+  const { t } = useTranslation();
 
   function calculateReservationDeadline() {
     return new Date().getTime() + countdownDuration;
@@ -75,18 +79,21 @@ const RentProcessPage = () => {
 
   const steps = [
     {
-      label: isMobile ? '' : 'Valitse asemat',
+      label: isMobile ? '' : `${t('Valitse asemat')}`,
       onClick: () => setActiveStep(0),
     },
     {
-      label: isMobile ? '' : 'Tuotevalinta & Päivämäärä',
+      label: isMobile ? '' : `${t('Tuotevalinta & Päivämäärä')}`,
       onClick: () => setActiveStep(1),
     },
     {
-      label: isMobile ? '' : 'Käyttäjän tiedot',
+      label: isMobile ? '' : `${t('Käyttäjän tiedot')}`,
       onClick: () => setActiveStep(2),
     },
-    { label: isMobile ? '' : 'Maksaminen', onClick: () => setActiveStep(3) },
+    {
+      label: isMobile ? '' : `${t('Maksaminen')}`,
+      onClick: () => setActiveStep(3),
+    },
   ];
 
   const mobileBanks = [{ logo: MobilePay, bankName: 'mobilepay' }];
@@ -197,9 +204,9 @@ const RentProcessPage = () => {
   const popUpWarningBody = () => {
     switch (activeStep) {
       case 0:
-        return 'Valitse vähintään yksi asema ennen kuin jatkat.';
+        return `${t('Valitse vähintään yksi asema ennen kuin jatkat.')}`;
       case 1:
-        return 'Valitse tuote, ajankohta ja asema ennen kuin jatkat.';
+        return `${t('Valitse tuote, ajankohta ja asema ennen kuin jatkat.')}`;
       default:
         return '';
     }
@@ -225,7 +232,7 @@ const RentProcessPage = () => {
             show={showWarningModal}
             onHide={() => setShowWarningModal(false)}
             body={popUpWarningBody()}
-            acceptButton="Takaisin"
+            acceptButton={t('Takaisin')}
             acceptButtonVariant="primary"
             onPrimaryButtonClick={() => setShowWarningModal(false)}
           />

@@ -10,8 +10,16 @@ const RentInfoBoxList = ({ items }) => {
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
+        pattern: /€5/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
         pattern:
           /vain henkilöasiakkaille jätteen kuljettamiseen Sortti-asemille\./g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern: /for private customers only./g,
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {

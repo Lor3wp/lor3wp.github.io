@@ -1,3 +1,62 @@
 {
-  "Jätteet ja kierrätys": "Jätteet ja kierrätys"
+  "Sorttiasemat": "Sorttiasemat",
+  "Jäteopas": "Jäteopas",
+  "Asiakaspalvelu": "Asiakaspalvelu",
+
+  "Jätteet ja kierrätys": "Jätteet ja kierrätys",
+  "Sortti-peräkärryn vuokraus": "Sortti-peräkärryn vuokraus",
+
+  "Varaukset": "Varaukset",
+  "Sortti-peräkärryn vuokrasopimus tehdään joko sähköisen varauksen yhteydessä tai Sortti-asemalla. Tarkastamme asemalla vuokraajan henkilöllisyyden.": "Sortti-peräkärryn vuokrasopimus tehdään joko sähköisen varauksen yhteydessä tai Sortti-asemalla. Tarkastamme asemalla vuokraajan henkilöllisyyden.",
+
+  "Vaihtoehtoiset tavat varata Sortti-peräkärry:": "Vaihtoehtoiset tavat varata Sortti-peräkärry:",
+  "Täytä sähköinen varauslomake.": "Täytä sähköinen varauslomake.",
+  "Tee varaus Sortti-aseman infossa.": "Tee varaus Sortti-aseman infossa.",
+  "Soita asiakaspalveluumme.": "Soita asiakaspalveluumme.",
+  "Huomioithan, että kello 17 alkavissa varauksissa peräkärry pitää noutaa Sortti-asemalta viimeistään klo 17.30.": "Huomioithan, että kello 17 alkavissa varauksissa peräkärry pitää noutaa Sortti-asemalta viimeistään klo 17.30.",
+  "Vuokraa tästä": "Vuokraa tästä",
+
+  "Säännöt Sortti-peräkärryn vuokraukseen ja käyttöön": "Säännöt Sortti-peräkärryn vuokraukseen ja käyttöön",
+  "Peräkärryn vuokraus maksaa 5 € kolmelta tunnilta.": "Peräkärryn vuokraus maksaa 5 € kolmelta tunnilta.",
+  "Peräkärry on tarkoitettu vain henkilöasiakkaille jätteen kuljettamiseen Sortti-asemille.": "Peräkärry on tarkoitettu vain henkilöasiakkaille jätteen kuljettamiseen Sortti-asemille.",
+  "Yksi asiakas saa vuokrata peräkärryn vain yhdeksi kolmen tunnin vuoroksi päivässä.": "Yksi asiakas saa vuokrata peräkärryn vain yhdeksi kolmen tunnin vuoroksi päivässä.",
+  "Jos vuokra-aikasi ylittää kolme tuntia tai et tuo jätettä kärryllä Sortti-asemalle, peritään vuokrauksesta 40 euroa.": "Jos vuokra-aikasi ylittää kolme tuntia tai et tuo jätettä kärryllä Sortti-asemalle, peritään vuokrauksesta 40 euroa.",
+  "Peräkärryä ei voi vuokrata Kivikon ja Ämmässuon Sortti-asemalla myytävän mullan kuljettamiseen.": "Peräkärryä ei voi vuokrata Kivikon ja Ämmässuon Sortti-asemalla myytävän mullan kuljettamiseen.",
+  "Jos maksat paikan päällä, käy vahvistamassa peräkärrynvuokrauksen aloitus Sortti-aseman INFOssa näyttämällä henkilöllisyystodistuksesi. Henkilökuntamme opastaa, mistä kärry asemalla noudetaan.": "Jos maksat paikan päällä, käy vahvistamassa peräkärrynvuokrauksen aloitus Sortti-aseman INFOssa näyttämällä henkilöllisyystodistuksesi. Henkilökuntamme opastaa, mistä kärry asemalla noudetaan.",
+  "Perimme jätteiden vastaanotosta Sortti-asemien hinnaston mukaisen maksun. Vuokran voi maksaa INFOssa kuorman tuonnin yhteydessä.": "Perimme jätteiden vastaanotosta Sortti-asemien hinnaston mukaisen maksun. Vuokran voi maksaa INFOssa kuorman tuonnin yhteydessä.",
+
+  "Seuraa HSY:tä sosiaalisessa mediassa": "Seuraa HSY:tä sosiaalisessa mediassa",
+  "Helsingin seudun ympäristöpalvelut HSY": "Helsingin seudun ympäristöpalvelut HSY",
+  "Asiakaspalvelun palveluajat puhelimitse": "Asiakaspalvelun palveluajat puhelimitse",
+  "ma, ke ja pe klo 8.30–15.30": "ma, ke ja pe klo 8.30–15.30",
+  "ti klo 8.30–11.00": "ti klo 8.30–11.00",
+  "to klo 13.00–15.30": "to klo 13.00–15.30",
+  "Yhteystiedot": "Yhteystiedot",
+  "Puh.": "Puh.",
+
+  "Olen lukenut ja ymmärtänyt säännöt": "Olen lukenut ja ymmärtänyt säännöt",
+  "Vuokraamaan": "Vuokraamaan",
+
+  "Peräkärryn vuokraus": "Peräkärryn vuokraus",
+  "Varauksen tiedot": "Varauksen tiedot",
+  "Palaute": "Palaute",
+
+  "Valitse asemat": "Valitse asemat",
+  "Tuotevalinta & Päivämäärä": "Tuotevalinta & Päivämäärä",
+  "Käyttäjän tiedot": "Käyttäjän tiedot",
+  "Maksaminen": "Maksaminen",
+
+  "Peruuta varaus": "Peruuta varaus",
+  "Oletko varma, että haluat peruuttaa varauksen?": "Oletko varma, että haluat peruuttaa varauksen?",
+  "Takaisin": "Takaisin",
+  "Kyllä": "Kyllä",
+  "Peruuta": "Peruuta",
+  "Edellinen": "Edellinen",
+  "Valitse päivämäärä": "Valitse päivämäärä",
+  "Täytä henkilötiedot": "Täytä henkilötiedot",
+  "Valitse vähintään yksi asema ennen kuin jatkat.": "Valitse vähintään yksi asema ennen kuin jatkat.",
+  "Valitse tuote, ajankohta ja asema ennen kuin jatkat.": "Valitse tuote, ajankohta ja asema ennen kuin jatkat.",
+  "Valitse tuote": "Valitse tuote",
+  "Tarvitsen adapterin": "Tarvitsen adapterin",
+  "Valitse päivä": "Valitse päivä"
 }
