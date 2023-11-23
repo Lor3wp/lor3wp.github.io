@@ -10,6 +10,7 @@ import { ChevronCompactRight } from 'react-bootstrap-icons';
 import { useStepper } from '../hooks/useStepper';
 import PopUpWarningModal from './PopUpWarningModal';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const StationList = ({ onStationSelected, handleWarningModal }) => {
   const stations = [
@@ -47,6 +48,7 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
   const [showWarningModal, setShowWarningModal] = useState(false);
 
   const { selectedStations, setSelectedStations } = useStepper();
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -79,10 +81,10 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
       <PopUpWarningModal
         show={showWarningModal}
         onHide={() => setShowWarningModal(false)}
-        title="Peruuta varaus"
-        body="Oletko varma, että haluat peruuttaa varauksen?"
-        backButton="Takaisin"
-        acceptButton="Kyllä"
+        title={t('Peruuta varaus')}
+        body={t('Oletko varma, että haluat peruuttaa varauksen?')}
+        backButton={t('Takaisin')}
+        acceptButton={t('Kyllä')}
         acceptButtonVariant="danger"
         onPrimaryButtonClick={frontPage}
       />
@@ -109,7 +111,7 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
                   >
                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
                   </svg>
-                  <p id={styles.kilometers}>10km</p>
+                  <p id={styles.kilometers}>10 km</p>
                   {station.cargoBike && (
                     <img
                       src={Bike}
@@ -141,10 +143,10 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
         </ListGroup>
         <div className={styles.buttonsContainer}>
           <Button variant="outline-danger" onClick={handleOpenWarningModal}>
-            Peruuta
+            {t('Peruuta')}
           </Button>
           <Button size="lg" id="date-button" onClick={handleSubmit}>
-            Valitse päivämäärä
+            {t('Valitse päivämäärä')}
             <ChevronCompactRight />
           </Button>
         </div>

@@ -5,6 +5,7 @@ import Bike from '../Icons/cargobike.svg';
 import Trailer from '../Icons/trailer.svg';
 import { useStepper } from '../hooks/useStepper';
 import Checkbox from './Checkbox';
+import { useTranslation } from 'react-i18next';
 
 const SelectProduct = () => {
   const {
@@ -14,9 +15,11 @@ const SelectProduct = () => {
     setSelectAdaptor,
   } = useStepper();
 
+  const { t } = useTranslation();
+
   return (
     <>
-      <h2 className={timeStyle.header}>Valitse tuote</h2>
+      <h2 className={timeStyle.header}>{t('Valitse tuote')}</h2>
       <div className={productStyle.selectProductBox}>
         <Button
           className={
@@ -40,7 +43,7 @@ const SelectProduct = () => {
         </Button>
         <Form className={productStyle.adapterCheckBox}>
           <Checkbox
-            label="Tarvitsen adapterin"
+            label={t('Tarvitsen adapterin')}
             checked={selectAdaptor}
             onChange={() => setSelectAdaptor(!selectAdaptor)}
           />
