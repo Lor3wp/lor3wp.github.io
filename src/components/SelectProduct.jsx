@@ -1,8 +1,8 @@
 import { Button, Form } from 'react-bootstrap';
 import productStyle from '../css/SelectProduct.module.css';
 import timeStyle from '../css/SelectTime.module.css';
-import Bike from '../Icons/cargobike.svg';
-import Trailer from '../Icons/trailer.svg';
+import Bike from '../assets/cargobike.svg';
+import Trailer from '../assets/trailer.svg';
 import { useStepper } from '../hooks/useStepper';
 import Checkbox from './Checkbox';
 import { useTranslation } from 'react-i18next';
