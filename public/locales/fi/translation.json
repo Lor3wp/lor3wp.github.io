@@ -142,8 +142,8 @@
   "päivän päästä": "päivän päästä",
   "Varauksesi alkaa pian": "Varauksesi alkaa pian",
   "tunnin päästä": "tunnin päästä",
-  "Tuote palautettu": "Tuote palautettu",
-  "Varaus peruutettu": "Varaus peruutettu",
+  "Tuote palautettu!": "Tuote palautettu!",
+  "Varaus peruutettu!": "Varaus peruutettu!",
   "Ennen palautusta": "Ennen palautusta",
   "late_cancel_warning_paragraph": "Tuotteen tulee olla Sortti-asemalla! Myöhästyneestä palautuksesta veloitetaan sopimusehtojen mukaisesti <1>40€</1> myöhästymismaksu.",
   "Varauksen peruutus ei onnistu, jos vuokran alkamiseen on 24 tuntia tai vähemmän.": "Varauksen peruutus ei onnistu, jos vuokran alkamiseen on 24 tuntia tai vähemmän.",
@@ -156,5 +156,10 @@
   "Jos peräkärry menee rikki tai joudut kolariin, soita asiakaspalveluun.": "Jos peräkärry menee rikki tai joudut kolariin, soita asiakaspalveluun.",
   "Varauksesi tiedot": "Varauksesi tiedot",
   "Palauta peräkärry": "Palauta peräkärry",
-  "Peru peräkärryn varaus": "Peru peräkärryn varaus"
+  "Peru peräkärryn varaus": "Peru peräkärryn varaus",
+
+  "Peräkärry on nyt palautettu!": "Peräkärry on nyt palautettu!",
+  "Anna palautetta": "Anna palautetta",
+  "Palaute lähetetty!": "Palaute lähetetty!",
+  "Lähetä": "Lähetä"
 }
