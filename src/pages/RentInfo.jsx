@@ -97,13 +97,13 @@ const RentInfoPage = ({ handleItemReturned }) => {
   }, []);
 
   const rateItemPage = () => {
-    toast.success(`${t('Tuote palautettu')}!`);
+    toast.success(t('Tuote palautettu!'));
     handleItemReturned();
     navigate('/rate-item', { replace: true });
   };
 
   const frontPage = () => {
-    toast.success(`${t('Varaus peruutettu')}!`);
+    toast.success(t('Varaus peruutettu!'));
     navigate('/', { replace: true });
   };
 

@@ -8,12 +8,15 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import HsyLogo from '../assets/hsy-drops.svg';
 import styles from '../css/RateItem.module.css';
+import { useTranslation } from 'react-i18next';
 
 const RateItemPage = () => {
   const navigate = useNavigate();
 
+  const { t } = useTranslation();
+
   const handleClick = () => {
-    toast.success('Palaute lähetetty!');
+    toast.success(t('Palaute lähetetty!'));
     navigate('/', { replace: true });
   };
 
@@ -28,14 +31,16 @@ const RateItemPage = () => {
   return (
     <div className={styles.container}>
       <div>
-        <h1 className={styles.returnTitle}>Peräkärry on nyt palautettu!</h1>
+        <h1 className={styles.returnTitle}>
+          {t('Peräkärry on nyt palautettu!')}
+        </h1>
         <div className={styles.checkMark}>
           <i className="bi bi-check-lg" id={styles.checkIcon}></i>
         </div>
         <StarRating className={styles.starRatingContainer} />
         <InputGroup className={styles.inputGroupContainer}>
           <div>
-            <label>Anna palautetta</label>
+            <label>{t('Anna palautetta')}</label>
             <Form.Control
               className={styles.textArea}
               as="textarea"
@@ -50,7 +55,7 @@ const RateItemPage = () => {
             size="lg"
             onClick={handleClick}
           >
-            Lähetä
+            {t('Lähetä')}
           </Button>
         </div>
       </div>
