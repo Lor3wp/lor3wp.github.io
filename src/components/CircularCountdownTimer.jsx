@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import { DEFAULT_TIME_DURATION } from '../utils/constants';
 import styles from '../css/CircularCountdownTimer.module.css';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 // Formats remaining time to hours:minutes or seconds if hours and minutes are 0
 const formatRemainingTime = (remainingTime) => {
@@ -22,11 +23,15 @@ export const CircularCountdownTimer = ({
   isPlaying = false,
   timerInfoText,
   duration = DEFAULT_TIME_DURATION,
-  timerText = 'Jäljellä',
+  timerText,
 }) => {
+  const { t } = useTranslation();
+
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
-      return <div className={styles.timerInfoText}>Varaus aika päättyi!</div>;
+      return (
+        <div className={styles.timerInfoText}>{t('Varaus aika päättyi')}!</div>
+      );
     }
 
     return (
