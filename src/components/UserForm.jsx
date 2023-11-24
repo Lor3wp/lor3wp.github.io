@@ -38,9 +38,9 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
 
   const navigate = useNavigate();
 
-  const tosInfoTitle = 'Yleiset sopimusehdot';
-  const leaseInfoTitle = 'Vuokrasopimus';
-  const confirmInfoTitle = 'Vahvista vuokraus';
+  const tosInfoTitle = `${t('Yleiset sopimusehdot')}`;
+  const leaseInfoTitle = `${t('Vuokrasopimus')}`;
+  const confirmInfoTitle = `${t('Vahvista vuokraus')}`;
 
   const stations = [
     'Ruskeasanta',
@@ -63,54 +63,17 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
 
   const tosInfoBody = (
     <div>
-      <h3>Peräkärryn vuokrauksen sopimusehdot</h3>
+      <h3>{t('Peräkärryn vuokrauksen sopimusehdot')}</h3>
       <ol>
-        <li>PERÄKÄRRYN KÄYTTÖ</li>
-        <p>
-          HSY on vuokrannut peräkärryn asiakkaalle jätteiden kuljettamiseksi
-          Sortti-asemalle. Peräkärryä saa käyttää ainoastaan asiakas omaan
-          lukuunsa eikä asiakas saa luovuttaa peräkärryä tai tätä sopimusta
-          kolmannelle osapuolelle. Asiakkaan tulee käyttää peräkärryä
-          huolellisesti ja palauttaa peräkärry samassa kunnossa kuin se oli
-          vuokrahetkellä. Asiakkaan tulee huomioida peräkärryn kantavuus ja
-          kuorman sidonta, ettei mahdollisesti liikkuva kuorma aiheuta
-          peräkärrylle vahinkoa.
-        </p>
-        <li>PERÄKÄRRYN VUOKRAAJAN VASTUU </li>
-        <p>
-          Asiakkaalla tulee olla ajoneuvoyhdistelmän kuljettamiseen oikeuttava
-          ajokortti. Asiakas vastaa siitä, että vuokrattua peräkärryä ja sen
-          käyttöä koskevia säännöksiä, mukaan lukien pysäköintiä koskevia
-          säännöksiä, noudatetaan. Asiakas vastaa mahdollisista rikemaksuista,
-          pysäköintivirhemaksuista ja sakoista tai ylikuormamaksuista, jotka hän
-          on saanut vuokraperäkärryä käyttäessään.
-        </p>
-        <p>
-          Asiakas on velvollinen korvaamaan vahingon, joka on aiheutunut
-          tahallisen tai huolimattoman käsittelyn, ylikuorman, puutteellisen
-          kuorman sidonnan tai muun vastaavan syyn johdosta tai vuokra-ajan
-          ylittymisen johdosta. Asiakas on velvollinen korvaamaan vuokra-aikana
-          tuhoutuneen tai kadonneen peräkärryn sen uushankinta-arvoon.
-          Peräkärryn vakavasta vaurioitumisesta, katoamisesta tai kolarista on
-          viipymättä ilmoitettava HSY:lle.
-        </p>
-        <p>
-          Peräkärry on vakuutettu HSY:n toimesta liikennevakuutuksella.
-          Asiakkaan omavastuu vahinkotapauksessa on 350 euroa.
-        </p>
-        <li>PERÄKÄRRYN VUOKRA-AIKA JA PALAUTTAMINEN</li>
-        <p>
-          Peräkärryn vuokra-aika on kolme tuntia. Peräkärry luovutetaan
-          asiakkaalle HSY:n toimipisteestä. Peräkärry tulee palauttaa
-          vuokra-ajan päätyttyä samaan toimipisteeseen, ellei muusta paikasta
-          ole sovittu.
-        </p>
-        <p>
-          Mikäli vuokraperäkärry palautetaan sovittua palautusajankohtaa
-          myöhemmin tai sitä on käytetty muuhun tarkoitukseen kuin jätteiden
-          kuljettamiseen Sortti-asemalle, HSY:llä on oikeus veloittaa
-          myöhästymismaksu 40 € /alkava vuorokausi.
-        </p>
+        <li>{t('PERÄKÄRRYN KÄYTTÖ')}</li>
+        <p>{t('tos_info_paragraph_1')}</p>
+        <li> {t('PERÄKÄRRYN VUOKRAAJAN VASTUU')}</li>
+        <p>{t('tos_info_paragraph_2')}</p>
+        <p>{t('tos_info_paragraph_3')}</p>
+        <p>{t('tos_info_paragraph_4')}</p>
+        <li>{t('PERÄKÄRRYN VUOKRA-AIKA JA PALAUTTAMINEN')}</li>
+        <p>{t('tos_info_paragraph_5')}</p>
+        <p>{t('tos_info_paragraph_6')}</p>
       </ol>
     </div>
   );
@@ -122,24 +85,25 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
     selectedTime[3]
   }${selectedTime[4]}:00`;
 
-  // TODO: Station location missing.
+  // TODO: Station address missing.
   const leaseInfoBody = (
     <div>
       <img className={styles.frontPagePicture} src={hsyLogo} />
       <p />
-      <h1>Vuokrasopimus</h1>
-      <h2>Vuokralleantaja</h2>
+      <h1>{t('Vuokrasopimus')}</h1>
+      <h2>{t('Vuokralleantaja')}</h2>
       <p>
-        Helsingin seudun ympäristöpalvelut -kuntayhtymä <br />
+        {t('Helsingin seudun ympäristöpalvelut -kuntayhtymä')}
+        <br />
         PL 100 <br />
         00066 HSY
       </p>
-      <h2>Vuokrauspaikka</h2>
+      <h2>{t('Vuokrauspaikka')}</h2>
       <p>
-        Asema: {selectedStationNames.join(', ')} <br />
-        **aseman paikka**
+        {t('Asema')}: {selectedStationNames.join(', ')} <br />
+        **station address**
       </p>
-      <h2>Vuokralleottajan tiedot</h2>
+      <h2>{t('Vuokralleottajan tiedot')}</h2>
       <p>
         {userData.firstName} {userData.lastName}
         <br />
@@ -147,36 +111,44 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
         {userData.postalCode} {userData.cityName}
       </p>
       <p>
-        Puhelin: {userData.phoneNumber}
-        <br /> Sähköposti: {userData.emailAddress}
+        {t('Puhelin')}: {userData.phoneNumber}
+        <br />
+        {t('Sähköposti')}: {userData.emailAddress}
       </p>
-      <h2>Vuokraesine</h2>
+      <h2>{t('Vuokraesine')}</h2>
       <p>
-        Vuokralleantaja vuokraa vuokralleottajalle seuraavan vuokraesineen
-        seuraavassa säädetyin ehdoin.
+        {t(
+          'Vuokralleantaja vuokraa vuokralleottajalle seuraavan vuokraesineen seuraavassa säädetyin ehdoin.',
+        )}
       </p>
-      <h3>Perävaunu</h3>
+      <h3>{t('Perävaunu')}</h3>
       <p>
-        Vuokra-aika: 3 tuntia
-        <br /> Nouto: {rentStart}
-        <br /> Palautus: {rentEnd}
+        {t('Vuokra-aika')}: 3 tuntia
+        <br />
+        {t('Nouto')}: {rentStart}
+        <br />
+        {t('Palautus')}: {rentEnd}
       </p>
-      <p>Vuokrauksen hinta 5 €</p>
+      <p>{t('Vuokrauksen hinta 5 €')}</p>
       <p>
-        Jos peräkärryllä ei tuoda jätettä Sortti-asemalle tai peräkärry
-        palautetaan myöhässä, hinta on 40 €.
+        {t(
+          'Jos peräkärryllä ei tuoda jätettä Sortti-asemalle tai peräkärry palautetaan myöhässä, hinta on 40 €.',
+        )}
       </p>
-      <h2>Muut ehdot</h2>
+      <h2>{t('Muut ehdot')}</h2>
       <p>
-        Edellä ilmoitettujen ehtojen lisäksi ovat voimassa liitteenä olevat
-        Yleiset sopimusehdot.
+        {t(
+          'Edellä ilmoitettujen ehtojen lisäksi ovat voimassa liitteenä olevat yleiset sopimusehdot.',
+        )}
       </p>
-      <p>Jos kärry hajoaa vuokrauksen aikana, ota yhteyttä:</p>
+      <p>{t('Jos kärry hajoaa vuokrauksen aikana, ota yhteyttä')}:</p>
       <ul>
-        <li>ma-pe kello 8.30-15.30 HSY:n asiakaspalveluun 09 1561 2110</li>
         <li>
-          ma-pe kello 15.30-21.00, la-su kello 10-18.00 päivystysnumeroon 050
-          4766905.
+          {t('ma-pe kello 8.30-15.30 HSY:n asiakaspalveluun')} 09 1561 2110
+        </li>
+        <li>
+          {t('ma-pe kello 15.30-21.00, la-su kello 10-18.00 päivystysnumeroon')}{' '}
+          050 4766905.
         </li>
       </ul>
     </div>
@@ -184,24 +156,23 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
 
   const confirmInfoBody = (
     <div>
-      <p>
-        Ulkomitat: pituus 418 cm, leveys 167 cm Tavaratilan mitat: tilavuus 5 m3
-        pituus 265 cm, leveys 125 cm korkeus 50 cm, korkeus kuomun kanssa 150 cm
-        Peräkärryn omapaino 195 kg Kantavuus 555 kg Kokonaispaino 750 kg
-        Peräkärryssä ei ole jarruja eikä talvirenkaita.
-      </p>
-      <p>
-        Vahvista peräkärrynvuokraus Sortti-aseman INFO:ssa näyttämällä
-        henkilöllisyystodistuksesi. Henkilökuntamme opastaa, mistä kärry
-        asemalla noudetaan.
-      </p>
+      <p>{t('confirm_info_paragraph_1')}</p>
+      <p>{t('confirm_info_paragraph_2')}</p>
       <ul>
         <li>
-          Varauksen päivämäärä: {new Date(selectedDate).toLocaleDateString()}
+          {t('Varauksen päivämäärä')}:{' '}
+          {new Date(selectedDate).toLocaleDateString()}
         </li>
-        <li>Aika: {selectedTime}</li>
-        <li>Tuote: {selectedProduct}</li>
-        <li>Asema: {selectedStationNames.join(', ')}</li>
+        <li>
+          {' '}
+          {t('Aika')}: {selectedTime}
+        </li>
+        <li>
+          {t('Tuote')}: {selectedProduct}
+        </li>
+        <li>
+          {t('Asema')}: {selectedStationNames.join(', ')}
+        </li>
       </ul>
     </div>
   );
@@ -276,18 +247,18 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
         title={infoModalTitle}
         body={infoModalBody}
         size="xl"
-        backButtonTxt={rentConfirmation && 'Takaisin'}
-        buttonTxt={rentConfirmation ? 'Vahvista' : 'Sulje'}
+        backButtonTxt={rentConfirmation && `${t('Takaisin')}`}
+        buttonTxt={rentConfirmation ? `${t('Vahvista')}` : `${t('Sulje')}`}
         rentConfirmation={rentConfirmation}
         onPrimaryButtonClick={handleConfirmRentInfo}
       />
       <PopUpWarningModal
         show={showWarningModal}
         onHide={() => setShowWarningModal(false)}
-        title="Peruuta varaus"
-        body="Oletko varma, että haluat peruuttaa varauksen?"
-        backButton="Takaisin"
-        acceptButton="Kyllä"
+        title={t('Peruuta varaus')}
+        body={t('Oletko varma, että haluat peruuttaa varauksen?')}
+        backButton={t('Takaisin')}
+        acceptButton={t('Kyllä')}
         acceptButtonVariant="danger"
         onPrimaryButtonClick={frontPage}
       />
@@ -296,63 +267,63 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
         <div className={styles.fieldContainer}>
           <FormField
             controlId="firstName"
-            label="Etunimi"
+            label={t('Etunimi')}
             type="text"
-            feedbackText="Syötä etunimi"
+            feedbackText={t('Syötä etunimi')}
             value={userData.firstName}
             onChange={(e) => handleFieldChange('firstName', e.target.value)}
           />
           <FormField
             controlId="lastName"
-            label="Sukunimi"
+            label={t('Sukunimi')}
             type="text"
-            feedbackText="Syötä sukunimi"
+            feedbackText={t('Syötä sukunimi')}
             value={userData.lastName}
             onChange={(e) => handleFieldChange('lastName', e.target.value)}
           />
           <FormField
             controlId="phoneNumber"
-            label="Puhelinnumero"
+            label={t('Puhelinnumero')}
             type="text"
-            feedbackText="Syötä puhelinnumero"
+            feedbackText={t('Syötä puhelinnumero')}
             value={userData.phoneNumber}
             onChange={(e) => handleFieldChange('phoneNumber', e.target.value)}
           />
           <FormField
             controlId="emailAddress"
-            label="Sähköposti"
+            label={t('Sähköposti')}
             type="email"
-            feedbackText="Kirjoita sähköposti muodossa nimi@esimerkki.com"
+            feedbackText={t('Kirjoita sähköposti muodossa nimi@esimerkki.com')}
             value={userData.emailAddress}
             onChange={(e) => handleFieldChange('emailAddress', e.target.value)}
           />
           <FormField
             controlId="streetName"
-            label="Katuosoite"
+            label={t('Katuosoite')}
             type="text"
-            feedbackText="Syötä katuosoite"
+            feedbackText={t('Syötä katuosoite')}
             value={userData.streetName}
             onChange={(e) => handleFieldChange('streetName', e.target.value)}
           />
           <FormField
             controlId="postalCode"
-            label="Postinumero"
+            label={t('Postinumero')}
             type="text"
-            feedbackText="Syötä postinumero"
+            feedbackText={t('Syötä postinumero')}
             value={userData.postalCode}
             onChange={(e) => handleFieldChange('postalCode', e.target.value)}
           />
           <FormField
             controlId="cityName"
-            label="Postitoimipaikka"
+            label={t('Postitoimipaikka')}
             type="text"
-            feedbackText="Syötä postitoimipaikka"
+            feedbackText={t('Syötä postitoimipaikka')}
             value={userData.cityName}
             onChange={(e) => handleFieldChange('cityName', e.target.value)}
           />
           <Checkbox
-            label="Hyväksyn"
-            linkText="yleiset sopimusehdot"
+            label={t('Hyväksyn')}
+            linkText={t('yleiset sopimusehdot')}
             isRequired={true}
             onClick={handleOpenTosModal}
             id={styles.acceptTermsCheckbox}
@@ -366,10 +337,10 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
             }
           />
           <Checkbox
-            label="Olen lukenut"
-            onClick={handleOpenLeaseModal}
-            linkText="vuokrasopimuksen"
+            label={t('Olen lukenut')}
+            linkText={t('vuokrasopimuksen')}
             isRequired={true}
+            onClick={handleOpenLeaseModal}
             id={styles.acceptTermsCheckbox}
             className={styles.checkboxContainer}
             checked={acceptTerms.lease}
@@ -385,14 +356,14 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
             <div className={styles.leftButtons}>
               <Button variant="outline-primary" onClick={onPrevStep}>
                 <ChevronCompactLeft />
-                Edellinen
+                {t('Edellinen')}
               </Button>
               <Button variant="outline-danger" onClick={handleOpenWarningModal}>
                 Peruuta
               </Button>
             </div>
             <Button type="submit" id="proceedToPaymentButton" size="lg">
-              Siirry maksamaan
+              {t('Siirry maksamaan')}
               <ChevronCompactRight />
             </Button>
           </div>

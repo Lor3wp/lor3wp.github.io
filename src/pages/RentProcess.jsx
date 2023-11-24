@@ -134,25 +134,25 @@ const RentProcessPage = () => {
       <div className={styles.bankContainer}>
         <BankType
           gridName={styles.mobileGrid}
-          title="Mobiilimaksutavat"
+          title={t('Mobiilimaksutavat')}
           arrayName={mobileBanks}
           paymentName={styles.mobilePayment}
         />
         <BankType
           gridName={styles.cardGrid}
-          title="Korttimaksutavat"
+          title={t('Korttimaksutavat')}
           arrayName={cardPayments}
           paymentName={styles.cardPayment}
         />
         <BankType
           gridName={styles.bankGrid}
-          title="Pankkimaksutavat"
+          title={t('Pankkimaksutavat')}
           arrayName={bankPayments}
           paymentName={styles.bankPayment}
         />
         <BankType
           gridName={styles.irlGrid}
-          title="Maksu paikan päällä"
+          title={t('Maksu paikan päällä')}
           arrayName={irlPayments}
           paymentName={styles.irlPayment}
         />
@@ -191,7 +191,7 @@ const RentProcessPage = () => {
           <>
             {renderPaymentComponents()}
             <Button className={styles.cancelButton} onClick={handlePrevStep}>
-              Peruuta maksu
+              {t('Peruuta maksu')}
             </Button>
             <ReservationTimer reservationDeadline={reservationDeadline} />{' '}
           </>
