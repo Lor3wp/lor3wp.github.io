@@ -23,6 +23,7 @@ form {
 .customInput {
   margin: auto;
   border-color: #008782;
+  width: 35rem;
 }
 .formLabel {
   font-weight: 500;

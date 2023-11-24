@@ -128,5 +128,8 @@
   "Peruuta maksu": "Peruuta maksu",
 
   "pay_on_site_modal_paragraph": "Perimme jätteiden vastaanotosta Sortti-asemien hinnaston mukaisen maksun. Peräkärryvuokran maksuvälineenä käy ainoastaan <1>maksukortti.</1>. Vuokra maksetaan <2>INFOssa</2> kuorman tuonnin yhteydessä.",
-  "Vahvistan, että haluan maksaa varauksen paikan päällä.": "Vahvistan, että haluan maksaa varauksen paikan päällä."
+  "Vahvistan, että haluan maksaa varauksen paikan päällä.": "Vahvistan, että haluan maksaa varauksen paikan päällä.",
+
+  "successful_card_title": "Peräkärryn varaus <1>onnistui!</1>",
+  "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.": "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen."
 }
