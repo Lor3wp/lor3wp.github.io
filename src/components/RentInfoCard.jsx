@@ -12,6 +12,9 @@ import {
   GeoAltFill,
 } from 'react-bootstrap-icons';
 import { PopUpInfoModal } from './PopUpInfoModal';
+import cargo_bike_icon from '../assets/cargobike.svg';
+import trailer_icon from '../assets/trailer.svg';
+import { useTranslation } from 'react-i18next';
 
 //TODO: change icon depending on the item type
 export const RentInfoCard = ({
@@ -23,24 +26,29 @@ export const RentInfoCard = ({
 }) => {
   const [modalShow, setModalShow] = useState(false);
 
+  const { t } = useTranslation();
+
   //Rent-info modal
   const modalBodyContent = (
     <div>
       <p>
-        Vedenjakelun vikapäivystys ja automaattiset tiedotteet
-        häiriötilanteissa: p. 09 1561 3000, palvelee 24/7.
+        {t(
+          'Vedenjakelun vikapäivystys ja automaattiset tiedotteet häiriötilanteissa: p. 09 1561 3000, palvelee 24/7.',
+        )}
       </p>
-      <p>Asiakaspalvelu puhelimitse: p. 09 1561 2110. </p>
-      Asiakaspalvelun aukioloajat:
+      <p>{t('Asiakaspalvelu puhelimitse: p. 09 1561 2110')}</p>
+      {t('Asiakaspalvelun aukioloajat')}:
       <ul>
-        <li>Ma klo 8.30–15.30 </li>
-        <li>Ti klo 8.30–11.00 </li>
-        <li>Ke klo 8.30–15.30 </li>
-        <li>To klo 13.00–15.30 </li>
-        <li>Pe klo 8.30–15.30</li>
+        <li>{t('ma klo 8.30–15.30')}</li>
+        <li>{t('ti klo 8.30–11.00')}</li>
+        <li>{t('ke klo 8.30–15.30')}</li>
+        <li>{t('to klo 13.00–15.30')}</li>
+        <li>{t('pe klo 8.30–15.30')}</li>
       </ul>
       <p>
-        Jos peräkärry menee rikki tai joudut kolariin, soita asiakaspalveluun.{' '}
+        {t(
+          'Jos peräkärry menee rikki tai joudut kolariin, soita asiakaspalveluun.',
+        )}
       </p>
     </div>
   );
@@ -49,15 +57,15 @@ export const RentInfoCard = ({
     <>
       <PopUpInfoModal
         show={modalShow}
-        title="Asiakaspalvelu"
+        title={t('Asiakaspalvelu')}
         body={modalBodyContent}
-        buttonTxt="Sulje"
+        buttonTxt={t('Sulje')}
         onHide={() => setModalShow(false)}
       />
       <Card className={styles.card}>
         <Card.Header as="h5" className={styles.cardHeader}>
-          <InfoCircleFill className={styles.infoCircleIcon} /> Varauksesi
-          tiedot:
+          <InfoCircleFill className={styles.infoCircleIcon} />{' '}
+          {t('Varauksesi tiedot')}:
         </Card.Header>
         <ListGroup className="list-group-flush">
           <ListGroup.Item>
@@ -67,6 +75,12 @@ export const RentInfoCard = ({
             <ClockFill className={styles.icons} /> {rentStartTime}-{rentEndTime}
           </ListGroup.Item>
           <ListGroup.Item className={styles.rentItem}>
+            <img
+              style={{ width: '25px', height: '30px' }}
+              src={itemType === 'bike' ? cargo_bike_icon : trailer_icon}
+              alt="item icon"
+              className={styles.itemIcon}
+            />{' '}
             {itemType}
           </ListGroup.Item>
           <ListGroup.Item>
@@ -75,7 +89,7 @@ export const RentInfoCard = ({
         </ListGroup>
         <Card.Body className={styles.btn}>
           <Button variant="primary" onClick={() => setModalShow(true)}>
-            <TelephoneFill /> Asiakaspalvelu
+            <TelephoneFill /> {t('Asiakaspalvelu')}
           </Button>
         </Card.Body>
       </Card>

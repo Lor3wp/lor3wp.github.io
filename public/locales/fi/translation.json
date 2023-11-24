@@ -29,8 +29,11 @@
   "Helsingin seudun ympäristöpalvelut HSY": "Helsingin seudun ympäristöpalvelut HSY",
   "Asiakaspalvelun palveluajat puhelimitse": "Asiakaspalvelun palveluajat puhelimitse",
   "ma, ke ja pe klo 8.30–15.30": "ma, ke ja pe klo 8.30–15.30",
+  "ma klo 8.30–15.30": "ma klo 8.30–15.30",
   "ti klo 8.30–11.00": "ti klo 8.30–11.00",
+  "ke klo 8.30–15.30": "ke klo 8.30–15.30",
   "to klo 13.00–15.30": "to klo 13.00–15.30",
+  "pe klo 8.30–15.30": "pe klo 8.30–15.30",
   "Yhteystiedot": "Yhteystiedot",
   "Puh.": "Puh.",
 
@@ -62,6 +65,8 @@
   "Valitse päivä": "Valitse päivä",
   "Vahvista": "Vahvista",
   "Sulje": "Sulje",
+  "Ymmärrän": "Ymmärrän",
+  "Kyllä, poista varaus": "Kyllä, poista varaus",
 
   "Etunimi": "Etunimi",
   "Sukunimi": "Sukunimi",
@@ -131,5 +136,25 @@
   "Vahvistan, että haluan maksaa varauksen paikan päällä.": "Vahvistan, että haluan maksaa varauksen paikan päällä.",
 
   "successful_card_title": "Peräkärryn varaus <1>onnistui!</1>",
-  "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.": "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen."
+  "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.": "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.",
+
+  "Alkaa": "Alkaa",
+  "päivän päästä": "päivän päästä",
+  "Varauksesi alkaa pian": "Varauksesi alkaa pian",
+  "tunnin päästä": "tunnin päästä",
+  "Tuote palautettu": "Tuote palautettu",
+  "Varaus peruutettu": "Varaus peruutettu",
+  "Ennen palautusta": "Ennen palautusta",
+  "late_cancel_warning_paragraph": "Tuotteen tulee olla Sortti-asemalla! Myöhästyneestä palautuksesta veloitetaan sopimusehtojen mukaisesti <1>40€</1> myöhästymismaksu.",
+  "Varauksen peruutus ei onnistu, jos vuokran alkamiseen on 24 tuntia tai vähemmän.": "Varauksen peruutus ei onnistu, jos vuokran alkamiseen on 24 tuntia tai vähemmän.",
+  "Varauksen peruutus": "Varauksen peruutus",
+  "jäljellä": "jäljellä",
+  "Varaus aika päättyi": "Varaus aika päättyi",
+  "Vedenjakelun vikapäivystys ja automaattiset tiedotteet häiriötilanteissa: p. 09 1561 3000, palvelee 24/7.": "Vedenjakelun vikapäivystys ja automaattiset tiedotteet häiriötilanteissa: p. 09 1561 3000, palvelee 24/7.",
+  "Asiakaspalvelu puhelimitse: p. 09 1561 2110": "Asiakaspalvelu puhelimitse: p. 09 1561 2110",
+  "Asiakaspalvelun aukioloajat": "Asiakaspalvelun aukioloajat",
+  "Jos peräkärry menee rikki tai joudut kolariin, soita asiakaspalveluun.": "Jos peräkärry menee rikki tai joudut kolariin, soita asiakaspalveluun.",
+  "Varauksesi tiedot": "Varauksesi tiedot",
+  "Palauta peräkärry": "Palauta peräkärry",
+  "Peru peräkärryn varaus": "Peru peräkärryn varaus"
 }

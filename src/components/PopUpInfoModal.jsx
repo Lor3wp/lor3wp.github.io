@@ -28,6 +28,7 @@ export const PopUpInfoModal = (props) => {
         )}
         <Button
           onClick={
+            props.rentConfirmation === undefined ||
             props.rentConfirmation === false
               ? props.onHide
               : props.onPrimaryButtonClick

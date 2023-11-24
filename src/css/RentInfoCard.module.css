@@ -27,22 +27,15 @@
   color: #008782;
 }
 
-.rentItem {
-  padding-left: 45px;
-}
-
 .btn {
+  align-self: center;
   text-align: center;
+  width: 30em;
 }
 
 .infoContainer {
   align-self: center !important;
   margin-top: 4rem;
-}
-
-.btn {
-  align-self: center;
-  width: 40%;
 }
 
 .headerInfo {

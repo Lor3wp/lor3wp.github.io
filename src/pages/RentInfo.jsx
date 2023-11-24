@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import styles from '../css/RentInfoCard.module.css';
 import PropTypes from 'prop-types';
 import { PopUpInfoModal } from '../components/PopUpInfoModal';
+import { Trans, useTranslation } from 'react-i18next';
 
 // TODO: Timer circle restarting from the beginning if page refreshed
 const RentInfoPage = ({ handleItemReturned }) => {
@@ -29,6 +30,8 @@ const RentInfoPage = ({ handleItemReturned }) => {
   const [timerInfoText, setTimerInfoText] = useState('');
 
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const currentTime = new Date();
   const rentEndTime = new Date(rentInfo.rentEndTime);
@@ -58,12 +61,12 @@ const RentInfoPage = ({ handleItemReturned }) => {
 
       let timerInfoText;
       if (differenceInDaysUntilRentStart >= 1) {
-        timerInfoText = `Alkaa ${dayUntil} päivän päästä!`;
+        timerInfoText = `${t('Alkaa')} ${dayUntil} ${t('päivän päästä')}!`;
       } else {
         timerInfoText =
           hoursUntil == 0
-            ? 'Varauksesi alkaa pian!'
-            : `Alkaa ${hoursUntil} tunnin päästä!`;
+            ? `${t('Varauksesi alkaa pian')}!`
+            : `${t('Alkaa')} ${hoursUntil}  ${t('tunnin päästä')}!`;
       }
 
       setCanCancelRent(!(remainingHoursUntilRentStart <= 24));
@@ -94,32 +97,35 @@ const RentInfoPage = ({ handleItemReturned }) => {
   }, []);
 
   const rateItemPage = () => {
-    toast.success('Tuote palautettu!');
+    toast.success(`${t('Tuote palautettu')}!`);
     handleItemReturned();
     navigate('/rate-item', { replace: true });
   };
 
   const frontPage = () => {
-    toast.success('Varaus peruutettu!');
+    toast.success(`${t('Varaus peruutettu')}!`);
     navigate('/', { replace: true });
   };
 
   // Warning popup modal
   const modalBodyContent = timeStarted ? (
     <p>
-      Tuotteen tulee olla Sortti-asemalla! Myöhästyneestä palautuksesta
-      veloitetaan sopimusehtojen mukaisesti
-      <span style={{ color: '#008782' }}> 40€</span> myöhästymismaksu.
+      <Trans i18nKey="late_cancel_warning_paragraph">
+        Tuotteen tulee olla Sortti-asemalla! Myöhästyneestä palautuksesta
+        veloitetaan sopimusehtojen mukaisesti
+        <span style={{ color: '#008782' }}> 40€</span> myöhästymismaksu.
+      </Trans>
     </p>
   ) : (
-    <p>Oletko varma, että haluat peruuttaa varauksen?</p>
+    <p>{t('Oletko varma, että haluat peruuttaa varauksen?')}</p>
   );
 
   // TODO: Change the text to be more informative
   const infoModalBodyContent = (
     <p>
-      Varauksen peruutus ei onnistu, jos vuokran alkamiseen on 24 tuntia tai
-      vähemmän.
+      {t(
+        'Varauksen peruutus ei onnistu, jos vuokran alkamiseen on 24 tuntia tai vähemmän.',
+      )}
     </p>
   );
 
@@ -128,19 +134,23 @@ const RentInfoPage = ({ handleItemReturned }) => {
       <PopUpWarningModal
         show={showModal}
         onHide={() => setShowModal(false)}
-        title={timeStarted ? 'Ennen palautusta' : 'Peruuta varaus'}
+        title={
+          timeStarted ? `${t('Ennen palautusta')}` : `${t('Peruuta varaus')}`
+        }
         body={modalBodyContent}
-        backButton="Takaisin"
-        acceptButton={timeStarted ? 'Ymmärrän' : 'Kyllä, poista varaus'}
+        backButton={t('Takaisin')}
+        acceptButton={
+          timeStarted ? `${t('Ymmärrän')}` : `${t('Kyllä, poista varaus')}`
+        }
         acceptButtonVariant={timeStarted ? 'success' : 'danger'}
         onPrimaryButtonClick={timeStarted ? rateItemPage : frontPage}
       />
       <PopUpInfoModal
         show={showInfoModal}
         onHide={() => setShowInfoModal(false)}
-        title="Varauksen peruutus"
+        title={t('Varauksen peruutus')}
         body={infoModalBodyContent}
-        buttonTxt="Sulje"
+        buttonTxt={t('Sulje')}
       />
       <Container className={styles.rentInfoContainer}>
         <h1 className={styles.headerInfo}>Varauksesi</h1>
@@ -155,6 +165,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
                 isPlaying={timeStarted}
                 timerInfoText={timerInfoText}
                 duration={differenceInMillisecondsUntilRentEnd / 1000}
+                timerText={t('jäljellä')}
               />
             </div>
             <div>
@@ -173,7 +184,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
               variant="success"
               onClick={handleOpenModal}
             >
-              Palauta peräkärry
+              {t('Palauta peräkärry')}
             </Button>
           ) : (
             <Button
@@ -181,7 +192,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
               className={styles.btn}
               onClick={handleOpenModal}
             >
-              Peru peräkärryn varaus
+              {t('Peru peräkärryn varaus')}
             </Button>
           )}
         </Stack>
