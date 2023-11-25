@@ -1,4 +1,4 @@
-import { useEffect, useTransition } from 'react';
+import { useEffect } from 'react';
 import SuccessIllustration from '../assets/SuccessIllustration.svg';
 import { applyVersionClass2, removeVersionClass2 } from '../utils/BodyVersion';
 import Card from 'react-bootstrap/Card';
@@ -41,7 +41,7 @@ const SuccessfulRentalPage = () => {
           <Card.Body>
             <Card.Title>
               <Trans i18nKey="successful_card_title">
-                Peräkärryn varaus{' '}
+                Peräkärryn varaus
                 <span style={{ color: '#469C56' }}>onnistui!</span>
               </Trans>
             </Card.Title>

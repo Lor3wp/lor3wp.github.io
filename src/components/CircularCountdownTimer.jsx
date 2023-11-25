@@ -30,7 +30,7 @@ export const CircularCountdownTimer = ({
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
       return (
-        <div className={styles.timerInfoText}>{t('Varaus aika päättyi')}!</div>
+        <div className={styles.timerInfoText}>{t('Varaus aika päättyi!')}</div>
       );
     }
 
