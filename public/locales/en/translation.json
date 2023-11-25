@@ -161,5 +161,8 @@
   "Peräkärry on nyt palautettu!": "The trailer has now been returned!",
   "Anna palautetta": "Give feedback",
   "Palaute lähetetty!": "Feedback sent!",
-  "Lähetä": "Send"
+  "Lähetä": "Send",
+
+  "Aloita varaus uudelleen.": "Start the booking again.",
+  "rent_process_timer": "Time left to rent: {{minutes}}:{{seconds}}"
 }

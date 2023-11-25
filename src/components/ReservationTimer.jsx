@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import styles from '../css/ReservationTimer.module.css';
+import { useTranslation } from 'react-i18next';
 
 /* Reservation timer component */
 const ReservationTimer = ({ reservationDeadline }) => {
   const [remainingTime, setRemainingTime] = useState(calculateRemainingTime());
+
+  const { t } = useTranslation();
 
   useEffect(
     () => {
@@ -33,11 +36,9 @@ const ReservationTimer = ({ reservationDeadline }) => {
   return (
     <div className={styles.timerContainer}>
       {remainingTime <= 0 ? (
-        <p>Aloita varaus uudelleen.</p>
+        <p>{t('Aloita varaus uudelleen.')}</p>
       ) : (
-        <p>
-          Varausaikaa jäljellä: {minutes}:{seconds}
-        </p>
+        <p>{t('rent_process_timer', { minutes: minutes, seconds: seconds })}</p>
       )}
     </div>
   );

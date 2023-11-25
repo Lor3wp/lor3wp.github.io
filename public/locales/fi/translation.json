@@ -161,5 +161,8 @@
   "Peräkärry on nyt palautettu!": "Peräkärry on nyt palautettu!",
   "Anna palautetta": "Anna palautetta",
   "Palaute lähetetty!": "Palaute lähetetty!",
-  "Lähetä": "Lähetä"
+  "Lähetä": "Lähetä",
+
+  "Aloita varaus uudelleen.": "Aloita varaus uudelleen.",
+  "rent_process_timer": "Varausaikaa jäljellä: {{minutes}}:{{seconds}}"
 }
