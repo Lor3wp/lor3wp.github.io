@@ -27,7 +27,15 @@ const RentInfoBoxList = ({ items }) => {
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
+        pattern: /three-hour shift/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
         pattern: /40 euroa\./g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern: /40 euros\./g,
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
@@ -35,7 +43,15 @@ const RentInfoBoxList = ({ items }) => {
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
+        pattern: /trailer cannot/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
         pattern: /henkilöllisyystodistuksesi/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern: /your ID/g,
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
     ];

@@ -17,8 +17,8 @@ const RentInfoPage = ({ handleItemReturned }) => {
   const rentInfo = {
     rentDate: '2023-09-17',
     //rentStartTime: new Date(),
-    rentStartTime: '2023-11-19T23:26:00',
-    rentEndTime: '2023-11-19T23:28:00',
+    rentStartTime: '2023-11-25T02:00:00',
+    rentEndTime: '2023-11-25T07:00:00',
     itemType: 'Peräkärry',
     stationLocation: 'Kivikon Sortti-asema',
   };
@@ -56,17 +56,17 @@ const RentInfoPage = ({ handleItemReturned }) => {
       const differenceInDaysUntilRentStart =
         differenceInMillisecondsUntilRentStart / (1000 * 60 * 60 * 24);
 
-      const hoursUntil = Math.round(remainingHoursUntilRentStart).toString();
-      const dayUntil = Math.round(differenceInDaysUntilRentStart).toString();
+      const hoursUntil = Math.round(remainingHoursUntilRentStart);
+      const daysUntil = Math.round(differenceInDaysUntilRentStart);
 
       let timerInfoText;
       if (differenceInDaysUntilRentStart >= 1) {
-        timerInfoText = `${t('Alkaa')} ${dayUntil} ${t('päivän päästä')}!`;
+        timerInfoText = t('days_until', { daysUntil: daysUntil });
       } else {
         timerInfoText =
           hoursUntil == 0
-            ? `${t('Varauksesi alkaa pian')}!`
-            : `${t('Alkaa')} ${hoursUntil}  ${t('tunnin päästä')}!`;
+            ? t('Varauksesi alkaa pian!')
+            : t('hours_until', { hoursUntil: hoursUntil });
       }
 
       setCanCancelRent(!(remainingHoursUntilRentStart <= 24));

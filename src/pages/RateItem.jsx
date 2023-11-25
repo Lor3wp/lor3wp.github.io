@@ -48,16 +48,15 @@ const RateItemPage = () => {
             />
           </div>
         </InputGroup>
-        <div className={styles.sendButton}>
-          <Button
-            type="submit"
-            id="proceedToPaymentButton"
-            size="lg"
-            onClick={handleClick}
-          >
-            {t('Lähetä')}
-          </Button>
-        </div>
+        <Button
+          className={styles.sendButton}
+          type="submit"
+          id="proceedToPaymentButton"
+          size="lg"
+          onClick={handleClick}
+        >
+          {t('Lähetä')}
+        </Button>
       </div>
 
       <div className={styles.logoBackgroundContainer}>
