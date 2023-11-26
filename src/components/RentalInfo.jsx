@@ -23,11 +23,20 @@ const RentInfoBoxList = ({ items }) => {
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
+        pattern:
+          /endast avsedd för transport av avfall till sorteringsstationer för privatkunder\./g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
         pattern: /kolmen tunnin/g,
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
         pattern: /three-hour shift/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern: /för ett tretimmarsskift/g,
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
@@ -39,6 +48,10 @@ const RentInfoBoxList = ({ items }) => {
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
+        pattern: /40 euro\./g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
         pattern: /Peräkärryä ei voi/g,
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
@@ -47,11 +60,19 @@ const RentInfoBoxList = ({ items }) => {
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
+        pattern: /Det går inte/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
         pattern: /henkilöllisyystodistuksesi/g,
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
         pattern: /your ID/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern: /genom att visa ditt ID/g,
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
     ];

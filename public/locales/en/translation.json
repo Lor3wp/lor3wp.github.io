@@ -27,7 +27,7 @@
 
   "Seuraa HSY:tä sosiaalisessa mediassa": "Follow HSY on social media",
   "Helsingin seudun ympäristöpalvelut HSY": "Helsinki Region Environmental Services HSY",
-  "Asiakaspalvelun palveluajat puhelimitse": "Customer service hours by phone",
+  "Asiakaspalvelun palveluajat puhelimitse": "Customer service and telephone service hours",
   "ma, ke ja pe klo 8.30–15.30": "Mon, Wed and Fri from 8.30 a.m. to 3.30 p.m.",
   "ma klo 8.30–15.30": "ma klo 8.30–15.30",
   "ti klo 8.30–11.00": "Tue from 8.30 a.m. to 11.00 a.m.",
@@ -91,7 +91,7 @@
   "Vuokrasopimus": "Rental agreement",
   "Vahvista vuokraus": "Confirm your rental",
   "Peräkärryn vuokrauksen sopimusehdot": "Terms and conditions for trailer rental",
-  "PERÄKÄRRYN KÄYTTÖ": "PUSE OF THE TRAILER",
+  "PERÄKÄRRYN KÄYTTÖ": "USE OF THE TRAILER",
   "tos_info_paragraph_1": "HSY has hired out the trailer to the customer for the purpose of transporting waste to the Sortti station. The trailer may only be used by the customer on the customer’s own account, and the customer must not hand over the trailer or transfer this agreement to a third party. The customer must use the trailer with care and return the trailer in the same condition as it was when it was hired. The customer must take into account the carrying capacity of the trailer and the binding of the load so that any shifting load does not damage the trailer.",
   "PERÄKÄRRYN VUOKRAAJAN VASTUU": "LIABILITY OF THE TRAILER HIRER",
   "tos_info_paragraph_2": "The customer must have the appropriate driving licence for driving a combination of vehicles. The customer is liable for ensuring compliance with the regulations, including parking regulations, which apply to the hired trailer and its use. The customer is liable for any administrative fixed penalties, parking tickets and fines or overload fines that the customer receives while using the hired trailer.",
@@ -101,7 +101,7 @@
   "tos_info_paragraph_5": "The hire period of the trailer is three hours. The trailer is handed over to the customer at a HSY office. Unless agreed otherwise, the trailer must be returned to the same office at the end of the hire period.",
   "tos_info_paragraph_6": "If the hired trailer is returned later than agreed or used for any purpose other than transporting waste to the Sortti station, HSY has the right to charge a late fee of €40 per day or part thereof.",
 
-  "Vuokralleantaja": "VuokralleanLessortaja",
+  "Vuokralleantaja": "For the lessor",
   "Helsingin seudun ympäristöpalvelut -kuntayhtymä": "Helsinki Region Environmental Services Association",
   "Vuokrauspaikka": "Rental site",
   "Asema": "Station",
@@ -121,7 +121,7 @@
   "ma-pe kello 8.30-15.30 HSY:n asiakaspalveluun": "Mon-Fri from 8.30 a.m. to 3.30 p.m. HSY customer service",
   "ma-pe kello 15.30-21.00, la-su kello 10-18.00 päivystysnumeroon": "Mon-Fri from 3.30 p.m. to 21.00 p.m., Sat-Sun from 10.00 a.m. 6.00 p.m. emergency number",
   "confirm_info_paragraph_1": "External dimensions: length 418 cm, width 167 cm Luggage compartment dimensions: volume 5 m3 length 265 cm, width 125 cm height 50 cm, height with canopy 150 cm Trailer tare weight 195 kg Load capacity 555 kg Total weight 750 kg The trailer has neither brakes nor winter tyres.",
-  "confirm_info_paragraph_2": "Confirm your trailer rental at the Sortti station INFO by showing your ID. Our staff will show you where to pick up the trolley at the station..",
+  "confirm_info_paragraph_2": "Confirm your trailer rental at the Sortti station INFO by showing your ID. Our staff will show you where to pick up the trolley at the station.",
   "Varauksen päivämäärä": "Date of reservation",
   "Aika": "Time",
   "Tuote": "Product",
@@ -138,6 +138,7 @@
   "successful_card_title": "Trailer booking <1>successful!</1>",
   "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.": "We will send you instructions and a booking confirmation by email.",
 
+  "Varauksesi": "Your reservation",
   "Alkaa": "Starts at",
   "Varauksesi alkaa pian!": "Your rent will start soon!",
   "days_until": "Starts in {{daysUntil}} days",
@@ -146,7 +147,8 @@
   "Varaus peruutettu!": "Rent cancelled!",
   "Ennen palautusta": "Before returning",
   "late_cancel_warning_paragraph": "The product must be at the Sortti-station! Late returns will be charged a <1>€40</1> late fee according to the terms of the contract.",
-  "Varauksen peruutus ei onnistu, jos vuokran alkamiseen on 24 tuntia tai vähemmän.": "Cancellation is not possible if there are 24 hours or less until the rental starts.",
+  "Palvelun peruuttaminen ei ole mahdollista, jos vuokra-ajan alkamiseen on jäljellä 24 tuntia tai vähemmän.": "Cancellation of the service is not possible if there are 24 hours or less remaining until the start of the rental period.",
+  "Erityistilanteissa suosittelemme ottamaan suoraan yhteyttä asiakaspalveluumme:": "for special situations, we recommend that you contact our customer service directly:",
   "Varauksen peruutus": "Cancellation of a reservation",
   "jäljellä": "left",
   "Varaus aika päättyi!": "Rent time expired!",
@@ -160,6 +162,7 @@
 
   "Peräkärry on nyt palautettu!": "The trailer has now been returned!",
   "Anna palautetta": "Give feedback",
+  "Ole hyvä ja kirjoita palautetta ennen lähettämistä!": "Please write a feedback before sending it!",
   "Palaute lähetetty!": "Feedback sent!",
   "Lähetä": "Send",
 

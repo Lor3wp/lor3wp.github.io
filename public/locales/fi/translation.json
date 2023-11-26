@@ -138,6 +138,7 @@
   "successful_card_title": "Peräkärryn varaus <1>onnistui!</1>",
   "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.": "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.",
 
+  "Varauksesi": "Varauksesi",
   "Alkaa": "Alkaa",
   "Varauksesi alkaa pian!": "Varauksesi alkaa pian!",
   "days_until": "Alkaa {{daysUntil}} päivän päästä",
@@ -146,7 +147,8 @@
   "Varaus peruutettu!": "Varaus peruutettu!",
   "Ennen palautusta": "Ennen palautusta",
   "late_cancel_warning_paragraph": "Tuotteen tulee olla Sortti-asemalla! Myöhästyneestä palautuksesta veloitetaan sopimusehtojen mukaisesti <1>40 €</1> myöhästymismaksu.",
-  "Varauksen peruutus ei onnistu, jos vuokran alkamiseen on 24 tuntia tai vähemmän.": "Varauksen peruutus ei onnistu, jos vuokran alkamiseen on 24 tuntia tai vähemmän.",
+  "Palvelun peruuttaminen ei ole mahdollista, jos vuokra-ajan alkamiseen on jäljellä 24 tuntia tai vähemmän.": "Palvelun peruuttaminen ei ole mahdollista, jos vuokra-ajan alkamiseen on jäljellä 24 tuntia tai vähemmän.",
+  "Erityistilanteissa suosittelemme ottamaan suoraan yhteyttä asiakaspalveluumme:": "Erityistilanteissa suosittelemme ottamaan suoraan yhteyttä asiakaspalveluumme:",
   "Varauksen peruutus": "Varauksen peruutus",
   "jäljellä": "jäljellä",
   "Varaus aika päättyi!": "Varaus aika päättyi!",
@@ -160,6 +162,7 @@
 
   "Peräkärry on nyt palautettu!": "Peräkärry on nyt palautettu!",
   "Anna palautetta": "Anna palautetta",
+  "Ole hyvä ja kirjoita palautetta ennen lähettämistä!": "Ole hyvä ja kirjoita palautetta ennen lähettämistä!",
   "Palaute lähetetty!": "Palaute lähetetty!",
   "Lähetä": "Lähetä",
 
