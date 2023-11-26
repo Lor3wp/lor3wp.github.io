@@ -17,8 +17,8 @@ const RentInfoPage = ({ handleItemReturned }) => {
   const rentInfo = {
     rentDate: '2023-09-17',
     //rentStartTime: new Date(),
-    rentStartTime: '2023-11-25T02:00:00',
-    rentEndTime: '2023-11-25T07:00:00',
+    rentStartTime: '2023-11-26T22:00:00',
+    rentEndTime: '2023-11-26T07:00:00',
     itemType: 'Peräkärry',
     stationLocation: 'Kivikon Sortti-asema',
   };
@@ -122,11 +122,31 @@ const RentInfoPage = ({ handleItemReturned }) => {
 
   // TODO: Change the text to be more informative
   const infoModalBodyContent = (
-    <p>
-      {t(
-        'Varauksen peruutus ei onnistu, jos vuokran alkamiseen on 24 tuntia tai vähemmän.',
-      )}
-    </p>
+    <div>
+      <p>
+        {t(
+          'Palvelun peruuttaminen ei ole mahdollista, jos vuokra-ajan alkamiseen on jäljellä 24 tuntia tai vähemmän.',
+        )}
+      </p>
+      <p>
+        {t(
+          'Erityistilanteissa suosittelemme ottamaan suoraan yhteyttä asiakaspalveluumme:',
+        )}
+      </p>
+      <div>
+        <h5>{t('Asiakaspalvelun palveluajat puhelimitse')}</h5>
+        <p>
+          {t('ma, ke ja pe klo 8.30–15.30')}
+          <br></br> {t('ti klo 8.30–11.00')}
+          <br></br> {t('to klo 13.00–15.30')}
+        </p>
+        <h5>{t('Yhteystiedot')}</h5>
+        <p>
+          {t('Puh.')} 09 1561 2110<br></br>Ilmalantori 1, 00240 Helsinki PL 100,
+          <br></br> 00066 HSY
+        </p>
+      </div>
+    </div>
   );
 
   return (
@@ -153,7 +173,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
         buttonTxt={t('Sulje')}
       />
       <Container className={styles.rentInfoContainer}>
-        <h1 className={styles.headerInfo}>Varauksesi</h1>
+        <h1 className={styles.headerInfo}>{t('Varauksesi')}</h1>
         <Stack gap={5}>
           <Stack
             direction="horizontal"

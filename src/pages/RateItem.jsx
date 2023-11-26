@@ -16,6 +16,10 @@ const RateItemPage = () => {
   const { t } = useTranslation();
 
   const handleClick = () => {
+    if (document.querySelector('textarea').value === '') {
+      toast.info(t('Ole hyvä ja kirjoita palautetta ennen lähettämistä!'));
+      return;
+    }
     toast.success(t('Palaute lähetetty!'));
     navigate('/', { replace: true });
   };
