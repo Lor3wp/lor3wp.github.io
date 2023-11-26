@@ -8,12 +8,19 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import HsyLogo from '../assets/hsy-drops.svg';
 import styles from '../css/RateItem.module.css';
+import { useTranslation } from 'react-i18next';
 
 const RateItemPage = () => {
   const navigate = useNavigate();
 
+  const { t } = useTranslation();
+
   const handleClick = () => {
-    toast.success('Palaute lähetetty!');
+    if (document.querySelector('textarea').value === '') {
+      toast.info(t('Ole hyvä ja kirjoita palautetta ennen lähettämistä!'));
+      return;
+    }
+    toast.success(t('Palaute lähetetty!'));
     navigate('/', { replace: true });
   };
 
@@ -28,14 +35,16 @@ const RateItemPage = () => {
   return (
     <div className={styles.container}>
       <div>
-        <h1 className={styles.returnTitle}>Peräkärry on nyt palautettu!</h1>
+        <h1 className={styles.returnTitle}>
+          {t('Peräkärry on nyt palautettu!')}
+        </h1>
         <div className={styles.checkMark}>
           <i className="bi bi-check-lg" id={styles.checkIcon}></i>
         </div>
         <StarRating className={styles.starRatingContainer} />
         <InputGroup className={styles.inputGroupContainer}>
           <div>
-            <label>Anna palautetta</label>
+            <label>{t('Anna palautetta')}</label>
             <Form.Control
               className={styles.textArea}
               as="textarea"
@@ -43,16 +52,15 @@ const RateItemPage = () => {
             />
           </div>
         </InputGroup>
-        <div className={styles.sendButton}>
-          <Button
-            type="submit"
-            id="proceedToPaymentButton"
-            size="lg"
-            onClick={handleClick}
-          >
-            Lähetä
-          </Button>
-        </div>
+        <Button
+          className={styles.sendButton}
+          type="submit"
+          id="proceedToPaymentButton"
+          size="lg"
+          onClick={handleClick}
+        >
+          {t('Lähetä')}
+        </Button>
       </div>
 
       <div className={styles.logoBackgroundContainer}>

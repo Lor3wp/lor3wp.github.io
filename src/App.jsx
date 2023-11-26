@@ -11,11 +11,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import './theme.css';
 import { StepperProvider } from './context/StepperContext';
+import { useTranslation } from 'react-i18next';
 
 function App() {
   // TODO: Set to false when backend is ready
   const [rentSuccessful, setRentSuccessful] = useState(true);
   const [itemReturned, setItemReturned] = useState(true);
+
+  const { t } = useTranslation();
 
   // TODO: Pass this down when the backend is ready
   const handleSuccessfulRent = () => {
@@ -31,11 +34,10 @@ function App() {
       <Route path="/" element={<FrontPage />} />
       <Route
         path="/rent-process"
-        title="Test"
         element={
           <>
             <StepperProvider>
-              <Header title="Peräkärryn vuokraus" />
+              <Header title={t('Peräkärryn vuokraus')} />
               <RentProcessPage />
             </StepperProvider>
           </>
@@ -46,7 +48,7 @@ function App() {
           path="/rent-successful"
           element={
             <>
-              <Header title="Peräkärryn vuokraus" />
+              <Header title={t('Peräkärryn vuokraus')} />
               <SuccessfulRentalPage />
             </>
           }
@@ -59,7 +61,7 @@ function App() {
           path="/rent-info"
           element={
             <>
-              <Header title="Varauksen tiedot" />
+              <Header title={t('Varauksen tiedot')} />
               <RentInfoPage handleItemReturned={handleItemReturned} />
             </>
           }
@@ -72,7 +74,7 @@ function App() {
           path="/rate-item"
           element={
             <>
-              <Header title="Palaute" />
+              <Header title={t('Palaute')} />
               <RateItemPage />
             </>
           }

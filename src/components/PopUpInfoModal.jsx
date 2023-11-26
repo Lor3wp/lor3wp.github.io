@@ -21,7 +21,21 @@ export const PopUpInfoModal = (props) => {
       </Modal.Header>
       <Modal.Body>{props.body}</Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>{props.buttonTxt}</Button>
+        {props.backButtonTxt && (
+          <Button variant="outline-primary" onClick={props.onHide}>
+            {props.backButtonTxt}
+          </Button>
+        )}
+        <Button
+          onClick={
+            props.rentConfirmation === undefined ||
+            props.rentConfirmation === false
+              ? props.onHide
+              : props.onPrimaryButtonClick
+          }
+        >
+          {props.buttonTxt}
+        </Button>
       </Modal.Footer>
     </Modal>
   );
@@ -31,6 +45,9 @@ PopUpInfoModal.propTypes = {
   show: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.element.isRequired,
+  backButtonTxt: PropTypes.string,
   buttonTxt: PropTypes.string.isRequired,
   onHide: PropTypes.func.isRequired,
+  onPrimaryButtonClick: PropTypes.func,
+  rentConfirmation: PropTypes.bool,
 };

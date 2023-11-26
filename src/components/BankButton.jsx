@@ -3,10 +3,13 @@ import styles from '../css/BankButton.module.css';
 import { useState } from 'react';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 import { useNavigate } from 'react-router-dom';
+import { Trans, useTranslation } from 'react-i18next';
 
 const BankButton = ({ logo, bankName }) => {
   const [showWarningModal, setShowWarningModal] = useState(false);
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const handleClick = (bankName) => {
     if (bankName === 'HSY') {
@@ -23,13 +26,18 @@ const BankButton = ({ logo, bankName }) => {
   const modalBodyContent = (
     <div>
       <p>
-        Perimme jätteiden vastaanotosta Sortti-asemien hinnaston mukaisen
-        maksun. Peräkärryvuokran maksuvälineenä käy ainoastaan
-        <span style={{ color: '#028882' }}> maksukortti. </span>
-        Vuokra maksetaan <span style={{ color: '#028882' }}>INFOssa</span>{' '}
-        kuorman tuonnin yhteydessä.
+        <Trans i18nKey="pay_on_site_modal_paragraph">
+          Perimme jätteiden vastaanotosta Sortti-asemien hinnaston mukaisen
+          maksun. Peräkärryvuokran maksuvälineenä käy ainoastaan
+          <span style={{ color: '#028882' }}> maksukortti. </span>
+          Vuokra maksetaan <span style={{ color: '#028882' }}>
+            {' '}
+            INFOssa{' '}
+          </span>{' '}
+          kuorman tuonnin yhteydessä.
+        </Trans>
       </p>
-      <p>Vahvistan, että haluan maksaa varauksen paikan päällä.</p>
+      <p>{t('Vahvistan, että haluan maksaa varauksen paikan päällä.')}</p>
     </div>
   );
 
@@ -38,15 +46,12 @@ const BankButton = ({ logo, bankName }) => {
       <PopUpWarningModal
         show={showWarningModal}
         onHide={() => setShowWarningModal(false)}
-        title="Maksu paikan päällä"
+        title={t('Maksu paikan päällä')}
         body={modalBodyContent}
-        backButton="Takaisin"
-        acceptButton="Kyllä"
-        acceptButtonVariant="danger"
-        onPrimaryButtonClick={() => {
-          setShowWarningModal(false);
-          handleClick();
-        }}
+        backButton={t('Takaisin')}
+        acceptButton={t('Kyllä')}
+        acceptButtonVariant="primary"
+        onPrimaryButtonClick={handleClick}
       />
       <div className={styles.buttonContainer}>
         <button

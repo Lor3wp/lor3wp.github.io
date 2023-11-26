@@ -1,3 +1,9 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .successIllustration,
 .card,
 .btn {
@@ -11,6 +17,8 @@
 .card {
   box-shadow: 0px 0px 8px 0px rgba(46, 46, 46, 0.212);
   border: none;
+  width: 30em;
+  height: 10em;
 }
 
 .cardTitle {

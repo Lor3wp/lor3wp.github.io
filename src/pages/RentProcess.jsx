@@ -24,16 +24,20 @@ import HSY from '../assets/hsy_logo.png';
 import styles from '../css/BankButton.module.css';
 import BankType from '../components/BankType';
 import PopUpWarningModal from '../components/PopUpWarningModal';
+import { useTranslation } from 'react-i18next';
 
 const RentProcessPage = () => {
   const countdownDuration = 20 * 60 * 1000;
+
   const [activeStep, setActiveStep] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 820);
-  const [showInfoModal, setShowInfoModal] = useState(false);
+  const [showWarningModal, setShowWarningModal] = useState(false);
 
   const [reservationDeadline, setReservationDeadline] = useState(
     calculateReservationDeadline(),
   );
+
+  const { t } = useTranslation();
 
   function calculateReservationDeadline() {
     return new Date().getTime() + countdownDuration;
@@ -57,7 +61,7 @@ const RentProcessPage = () => {
   };
 
   const handleWarningModal = () => {
-    setShowInfoModal(true);
+    setShowWarningModal(true);
   };
 
   // when window gets smaller than 820, setIsMobile is set
@@ -75,18 +79,21 @@ const RentProcessPage = () => {
 
   const steps = [
     {
-      label: isMobile ? '' : 'Valitse asemat',
+      label: isMobile ? '' : `${t('Valitse asemat')}`,
       onClick: () => setActiveStep(0),
     },
     {
-      label: isMobile ? '' : 'Tuotevalinta & Päivämäärä',
+      label: isMobile ? '' : `${t('Tuotevalinta & Päivämäärä')}`,
       onClick: () => setActiveStep(1),
     },
     {
-      label: isMobile ? '' : 'Käyttäjän tiedot',
+      label: isMobile ? '' : `${t('Käyttäjän tiedot')}`,
       onClick: () => setActiveStep(2),
     },
-    { label: isMobile ? '' : 'Maksaminen', onClick: () => setActiveStep(3) },
+    {
+      label: isMobile ? '' : `${t('Maksaminen')}`,
+      onClick: () => setActiveStep(3),
+    },
   ];
 
   const mobileBanks = [{ logo: MobilePay, bankName: 'mobilepay' }];
@@ -109,6 +116,7 @@ const RentProcessPage = () => {
   ];
   const irlPayments = [{ logo: HSY, bankName: 'HSY' }];
 
+  // Warns the user from leaving the page
   useEffect(() => {
     window.addEventListener('beforeunload', alertUser);
     return () => {
@@ -126,25 +134,25 @@ const RentProcessPage = () => {
       <div className={styles.bankContainer}>
         <BankType
           gridName={styles.mobileGrid}
-          title="Mobiilimaksutavat"
+          title={t('Mobiilimaksutavat')}
           arrayName={mobileBanks}
           paymentName={styles.mobilePayment}
         />
         <BankType
           gridName={styles.cardGrid}
-          title="Korttimaksutavat"
+          title={t('Korttimaksutavat')}
           arrayName={cardPayments}
           paymentName={styles.cardPayment}
         />
         <BankType
           gridName={styles.bankGrid}
-          title="Pankkimaksutavat"
+          title={t('Pankkimaksutavat')}
           arrayName={bankPayments}
           paymentName={styles.bankPayment}
         />
         <BankType
           gridName={styles.irlGrid}
-          title="Maksu paikan päällä"
+          title={t('Maksu paikan päällä')}
           arrayName={irlPayments}
           paymentName={styles.irlPayment}
         />
@@ -183,7 +191,7 @@ const RentProcessPage = () => {
           <>
             {renderPaymentComponents()}
             <Button className={styles.cancelButton} onClick={handlePrevStep}>
-              Peruuta maksu
+              {t('Peruuta maksu')}
             </Button>
             <ReservationTimer reservationDeadline={reservationDeadline} />{' '}
           </>
@@ -193,12 +201,12 @@ const RentProcessPage = () => {
     }
   };
 
-  const PopUpWarningBody = () => {
+  const popUpWarningBody = () => {
     switch (activeStep) {
       case 0:
-        return 'Valitse vähintään yksi asema ennen kuin jatkat.';
+        return `${t('Valitse vähintään yksi asema ennen kuin jatkat.')}`;
       case 1:
-        return 'Valitse tuote, ajankohta ja asema ennen kuin jatkat.';
+        return `${t('Valitse tuote, ajankohta ja asema ennen kuin jatkat.')}`;
       default:
         return '';
     }
@@ -221,12 +229,12 @@ const RentProcessPage = () => {
           }
         >
           <PopUpWarningModal
-            show={showInfoModal}
-            onHide={() => setShowInfoModal(false)}
-            body={PopUpWarningBody()}
-            acceptButton="Takaisin"
+            show={showWarningModal}
+            onHide={() => setShowWarningModal(false)}
+            body={popUpWarningBody()}
+            acceptButton={t('Takaisin')}
             acceptButtonVariant="primary"
-            onPrimaryButtonClick={() => setShowInfoModal(false)}
+            onPrimaryButtonClick={() => setShowWarningModal(false)}
           />
           <CustomStepper steps={steps} activeStep={activeStep} />
           {renderSectionComponent()}
