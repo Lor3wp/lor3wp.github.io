@@ -40,7 +40,7 @@ PopUpWarningModal.propTypes = {
   show: PropTypes.bool,
   onHide: PropTypes.func,
   title: PropTypes.string,
-  body: PropTypes.string,
+  body: PropTypes.obj,
   backButton: PropTypes.string,
   acceptButton: PropTypes.string,
   acceptButtonVariant: PropTypes.string,

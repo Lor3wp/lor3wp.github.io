@@ -23,10 +23,11 @@ const ProductAndTime = ({
   const { t } = useTranslation();
 
   const {
+    stationsData,
     selectedDate,
     setSelectedDate,
-    selectedTime,
-    setSelectedTime,
+    selectedStationAndTime,
+    setSelectedStationAndTime,
     selectedProduct,
   } = useStepper();
 
@@ -48,7 +49,7 @@ const ProductAndTime = ({
   // handling the button click for selecting a time and date
   const handleSubmit = () => {
     if (
-      selectedTime === '' ||
+      Object.keys(selectedStationAndTime).length === 0 ||
       selectedDate === null ||
       selectedProduct === ''
     ) {
@@ -92,46 +93,19 @@ const ProductAndTime = ({
         </div>
         <hr className={rentStyle.hr} />
         <div className={rentStyle.selectTimeBox}>
-          <SelectTime
-            setSelectedTime={setSelectedTime}
-            selectedTime={selectedTime}
-            stationName={'Kivikko'}
-          />
-          {/* <SelectTime
-            selectedTime={selectedTime}
-            setSelectedStation={setSelectedStation}
-            selectedStation={selectedStation}
-            setSelectedTime={setSelectedTime}
-            stationName={'Konala'}
-          ></SelectTime>
-          <SelectTime
-            selectedTime={selectedTimeSlot}
-            setSelectedStation={setSelectedStation}
-            setSelectedTime={setSelectedTimeSlot}
-            selectedStation={selectedStation}
-            stationName={'Ruskeasanta'}
-          ></SelectTime>
-          <SelectTime
-            selectedTime={selectedTimeSlot}
-            setSelectedStation={setSelectedStation}
-            setSelectedTime={setSelectedTimeSlot}
-            selectedStation={selectedStation}
-            stationName={'Jorvas'}
-          ></SelectTime>
-          <SelectTime
-            selectedTime={selectedTimeSlot}
-            setSelectedStation={setSelectedStation}
-            setSelectedTime={setSelectedTimeSlot}
-            selectedStation={selectedStation}
-            stationName={'Ämmässuo'}
-          ></SelectTime>
-          <SelectTime
-            selectedTime={selectedTimeSlot}
-            setSelectedStation={setSelectedStation}
-            setSelectedTime={setSelectedTimeSlot}
-            selectedStation={selectedStation}
-            stationName={'Koivukylä'}
-          ></SelectTime> */}
+          {stationsData.map((station) => {
+            if (station.selected) {
+              return (
+                <SelectTime
+                  timeSlots={station.timeSlots}
+                  setSelectedStationAndTime={setSelectedStationAndTime}
+                  selectedStationAndTime={selectedStationAndTime}
+                  stationName={station.stationName}
+                  key={station.stationName}
+                />
+              );
+            }
+          })}
         </div>
         <div className={rentStyle.buttonsContainer}>
           <div className={rentStyle.leftButtons}>

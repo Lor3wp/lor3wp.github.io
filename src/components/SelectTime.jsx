@@ -2,17 +2,26 @@ import TimePeriodButton from './TimePeriodButton';
 import style from '../css/SelectTime.module.css';
 import PropTypes from 'prop-types';
 
-function SelectTime({ selectedTime, setSelectedTime, stationName }) {
-  const timeOptions = ['10-13', '11-14', '12-15', '13-16', '14-17', '15-18'];
+function SelectTime({
+  selectedStationAndTime,
+  setSelectedStationAndTime,
+  stationName,
+  timeSlots,
+}) {
+  const handleClick = (stationName, timeSlot) => {
+    setSelectedStationAndTime({
+      [stationName]: timeSlot,
+    });
+  };
 
-  const itemElements = timeOptions.map((item, index) => (
+  const itemElements = timeSlots.map((item, index) => (
     <TimePeriodButton
       buttonText={item}
-      setSelectedTime={setSelectedTime}
+      setSelectedTime={handleClick}
       key={index}
-      selectedTime={selectedTime}
+      selectedTime={selectedStationAndTime[stationName]}
       stationName={stationName}
-    ></TimePeriodButton>
+    />
   ));
 
   return (
@@ -26,11 +35,12 @@ function SelectTime({ selectedTime, setSelectedTime, stationName }) {
 }
 
 SelectTime.propTypes = {
-  setSelectedTime: PropTypes.func.isRequired, // Expect a string prop, and it's required
-  setSelectedStation: PropTypes.func.isRequired, // Expect a string prop, and it's required
+  selectedStationAndTime: PropTypes.obj,
+  setSelectedStationAndTime: PropTypes.func,
+  setSelectedStation: PropTypes.func,
   stationName: PropTypes.string.isRequired, // Expect a string prop, and it's required
-  selectedStation: PropTypes.string.isRequired, // Expect a string prop, and it's required
-  selectedTime: PropTypes.string.isRequired, // Expect a string prop, and it's required
+  selectedTime: PropTypes.string,
+  timeSlots: PropTypes.array.isRequired,
 };
 
 export default SelectTime;

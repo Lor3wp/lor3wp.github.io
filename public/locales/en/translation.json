@@ -41,7 +41,7 @@
   "Vuokraamaan": "To rent",
 
   "Peräkärryn vuokraus": "Trailer rental",
-  "Varauksen tiedot": "rent details",
+  "Varauksen tiedot": "Rent details",
   "Palaute": "Feedback",
 
   "Valitse asemat": "Select stations",
@@ -59,7 +59,7 @@
   "Täytä henkilötiedot": "Fill your info",
   "Siirry maksamaan": "Go to payment",
   "Valitse vähintään yksi asema ennen kuin jatkat.": "Select at least one station before proceeding.",
-  "Valitse tuote, ajankohta ja asema ennen kuin jatkat.": "Choose your product, time and position before proceeding.",
+  "Valitse tuote, päivämäärä ja ajankohta ennen kuin jatkat.": "Choose a product, date, and time before proceeding.",
   "Valitse tuote": "Select a product",
   "Tarvitsen adapterin": "I need an adapter",
   "Valitse päivä": "Choose a day",
@@ -110,7 +110,7 @@
   "Vuokraesine": "Rental property",
   "Vuokralleantaja vuokraa vuokralleottajalle seuraavan vuokraesineen seuraavassa säädetyin ehdoin.": "The Lessor shall lease to the Lessee the next hire item on the following terms and conditions.",
   "Perävaunu": "Trailer",
-  "Vuokra-aika": "Rental period",
+  "Vuokra-aika: 3 tuntia": "Rental period: 3 hours",
   "Nouto": "Pick up",
   "Palautus": "Return",
   "Vuokrauksen hinta 5 €": "Rental price €5",

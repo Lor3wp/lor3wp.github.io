@@ -4,9 +4,11 @@ import 'react-calendar/dist/Calendar.css';
 import '../css/CustomCalendar.css';
 import PropTypes from 'prop-types';
 import { useStepper } from '../hooks/useStepper';
+import { useTranslation } from 'react-i18next';
 
 const RentCalendar = ({ futureDates, setSelectedDate }) => {
   const { selectedDate } = useStepper();
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     const calendar = document.querySelector('.react-calendar');
@@ -46,6 +48,7 @@ const RentCalendar = ({ futureDates, setSelectedDate }) => {
       minDate={new Date()}
       tileDisabled={tileDisabled}
       tileClassName={tileClassName}
+      locale={i18n.language}
     />
   );
 };
