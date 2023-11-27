@@ -41,7 +41,7 @@
   "Vuokraamaan": "Att hyra",
 
   "Peräkärryn vuokraus": "Uthyrning av släpvagnar",
-  "Varauksen tiedot": "hyresuppgifter",
+  "Varauksen tiedot": "Hyresuppgifter",
   "Palaute": "Återkoppling",
 
   "Valitse asemat": "Välj stationer",
@@ -59,7 +59,7 @@
   "Täytä henkilötiedot": "Fyll i din information",
   "Siirry maksamaan": "Gå till betalning",
   "Valitse vähintään yksi asema ennen kuin jatkat.": "Välj minst en station innan du fortsätter.",
-  "Valitse tuote, ajankohta ja asema ennen kuin jatkat.": "Välj produkt, tid och position innan du fortsätter.",
+  "Valitse tuote, päivämäärä ja ajankohta ennen kuin jatkat.": "Välj produkt, datum och tid innan du fortsätter.",
   "Valitse tuote": "Välj en produkt",
   "Tarvitsen adapterin": "Jag behöver en adapter",
   "Valitse päivä": "Välj en dag",
@@ -110,7 +110,7 @@
   "Vuokraesine": "Hyresfastigheter",
   "Vuokralleantaja vuokraa vuokralleottajalle seuraavan vuokraesineen seuraavassa säädetyin ehdoin.": "Hyresvärden skall hyra ut nästa hyresobjekt till hyresgästen på följande villkor.",
   "Perävaunu": "Trailer",
-  "Vuokra-aika": "Hyresperiod",
+  "Vuokra-aika: 3 tuntia": "Uthyrningsperiod: 3 timmar",
   "Nouto": "Plocka upp",
   "Palautus": "Återgång",
   "Vuokrauksen hinta 5 €": "Hyrespris 5 €",
