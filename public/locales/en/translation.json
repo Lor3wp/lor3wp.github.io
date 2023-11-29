@@ -51,6 +51,8 @@
 
   "Peruuta varaus": "Cancel your rent",
   "Oletko varma, että haluat peruuttaa varauksen?": "Are you sure you want to cancel your rent?",
+  "Haluatko varmasti poistua sivustolta?": "Are you sure you want to leave site?",
+  "Tekemiäsi muutoksia ei tallenneta.": "Any changes you made will not be saved.",
   "Takaisin": "Back",
   "Kyllä": "Yes",
   "Peruuta": "Cancel",
@@ -63,6 +65,9 @@
   "Valitse tuote": "Select a product",
   "Tarvitsen adapterin": "I need an adapter",
   "Valitse päivä": "Choose a day",
+  "*harmaalla merkattuina päivinä ei ole vuokrattavia aikoja": "*there are no available times to rent on the days marked in gray",
+  "Valitse sinulle sopiva 3 tunnin vuokraus ajankohta tästä:": "Choose a 3-hour time slot that suits you:",
+
   "Vahvista": "Confirm",
   "Sulje": "Close",
   "Ymmärrän": "I understand",
