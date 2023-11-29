@@ -43,9 +43,9 @@ export const PopUpInfoModal = (props) => {
 
 PopUpInfoModal.propTypes = {
   show: PropTypes.bool.isRequired,
-  title: PropTypes.string.isRequired,
-  body: PropTypes.element.isRequired,
-  backButtonTxt: PropTypes.string,
+  title: PropTypes.string,
+  body: PropTypes.element,
+  backButtonTxt: PropTypes.bool,
   buttonTxt: PropTypes.string.isRequired,
   onHide: PropTypes.func.isRequired,
   onPrimaryButtonClick: PropTypes.func,

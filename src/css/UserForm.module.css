@@ -43,10 +43,8 @@ form {
 .buttonsContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 1em 0 1em 0;
-  margin-left: auto;
-  margin-right: auto;
 }
 .leftButtons {
   display: flex;

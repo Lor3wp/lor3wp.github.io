@@ -204,15 +204,14 @@ const RentProcessPage = () => {
   const popUpWarningBody = () => {
     switch (activeStep) {
       case 0:
-        return `${t('Valitse vähintään yksi asema ennen kuin jatkat.')}`;
+        return t('Valitse vähintään yksi asema ennen kuin jatkat.');
       case 1:
-        return `${t('Valitse tuote, ajankohta ja asema ennen kuin jatkat.')}`;
+        return t('Valitse tuote, päivämäärä ja ajankohta ennen kuin jatkat.');
       default:
         return '';
     }
   };
 
-  // TODO: Minor bug: when the form errors are shown, the images change size
   return (
     <>
       <div className={PageStyles.rentProcessContainer}>

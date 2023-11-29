@@ -25,9 +25,8 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
 
   const {
     selectedDate,
-    selectedTime,
+    selectedStationAndTime,
     selectedProduct,
-    selectedStations,
     userData,
     setUserData,
     acceptTerms,
@@ -41,25 +40,6 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
   const tosInfoTitle = `${t('Yleiset sopimusehdot')}`;
   const leaseInfoTitle = `${t('Vuokrasopimus')}`;
   const confirmInfoTitle = `${t('Vahvista vuokraus')}`;
-
-  const stations = [
-    'Ruskeasanta',
-    'Konala',
-    'Kivikko',
-    'Jorvas',
-    'Ämmässuo',
-    'Koivusuo',
-  ];
-
-  // Maps selected stations to their names, filters out unselected stations.
-  const selectedStationNames = selectedStations
-    .map((isSelected, index) => {
-      if (isSelected) {
-        const station = stations[index];
-        return station;
-      }
-    })
-    .filter(Boolean);
 
   const tosInfoBody = (
     <div>
@@ -79,11 +59,11 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
   );
 
   const rentStart = `${new Date(selectedDate).toLocaleDateString()} ${
-    selectedTime[0]
-  }${selectedTime[1]}:00`;
+    selectedStationAndTime[Object.keys(selectedStationAndTime)[0]][0]
+  }${selectedStationAndTime[Object.keys(selectedStationAndTime)[0]][1]}:00`;
   const rentEnd = `${new Date(selectedDate).toLocaleDateString()} ${
-    selectedTime[3]
-  }${selectedTime[4]}:00`;
+    selectedStationAndTime[Object.keys(selectedStationAndTime)[0]][3]
+  }${selectedStationAndTime[Object.keys(selectedStationAndTime)[0]][4]}:00`;
 
   // TODO: Station address missing.
   const leaseInfoBody = (
@@ -100,7 +80,7 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
       </p>
       <h2>{t('Vuokrauspaikka')}</h2>
       <p>
-        {t('Asema')}: {selectedStationNames.join(', ')} <br />
+        {t('Asema')}: {Object.keys(selectedStationAndTime)} <br />
         **station address**
       </p>
       <h2>{t('Vuokralleottajan tiedot')}</h2>
@@ -123,7 +103,7 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
       </p>
       <h3>{t('Perävaunu')}</h3>
       <p>
-        {t('Vuokra-aika')}: 3 tuntia
+        {t('Vuokra-aika: 3 tuntia')}
         <br />
         {t('Nouto')}: {rentStart}
         <br />
@@ -164,14 +144,14 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
           {new Date(selectedDate).toLocaleDateString()}
         </li>
         <li>
-          {' '}
-          {t('Aika')}: {selectedTime}
+          {t('Aika')}:{' '}
+          {selectedStationAndTime[Object.keys(selectedStationAndTime)[0]]}
         </li>
         <li>
           {t('Tuote')}: {selectedProduct}
         </li>
         <li>
-          {t('Asema')}: {selectedStationNames.join(', ')}
+          {t('Asema')}: {Object.keys(selectedStationAndTime)}
         </li>
       </ul>
     </div>
@@ -255,8 +235,8 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
       <PopUpWarningModal
         show={showWarningModal}
         onHide={() => setShowWarningModal(false)}
-        title={t('Peruuta varaus')}
-        body={t('Oletko varma, että haluat peruuttaa varauksen?')}
+        title={t('Haluatko varmasti poistua sivustolta?')}
+        body={t('Tekemiäsi muutoksia ei tallenneta.')}
         backButton={t('Takaisin')}
         acceptButton={t('Kyllä')}
         acceptButtonVariant="danger"
@@ -359,7 +339,7 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
                 {t('Edellinen')}
               </Button>
               <Button variant="outline-danger" onClick={handleOpenWarningModal}>
-                Peruuta
+                {t('Peruuta')}
               </Button>
             </div>
             <Button type="submit" id="proceedToPaymentButton" size="lg">

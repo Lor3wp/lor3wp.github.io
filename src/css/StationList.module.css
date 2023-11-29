@@ -1,12 +1,13 @@
 /* CSS Rules for station list */
 
 .listContainer {
-  width: 50vh;
+  width: 60vh;
   margin: auto;
 }
 .rowContainer {
   display: flex;
   flex-direction: row;
+  margin-bottom: 0.5rem;
 }
 #kilometers {
   margin: 0 2rem 0 0;
@@ -29,8 +30,21 @@
 #stationCheckbox {
   margin-left: auto;
 }
+
+.allCheckboxContainer {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  margin-right: 1rem;
+}
+
+.allCheckbox {
+  margin-left: 1rem;
+}
+
 .list-group-flush {
   margin-bottom: 2em !important;
+  margin: 10rem;
 }
 .stationCheckboxContainer {
   margin-left: auto;

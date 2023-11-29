@@ -23,10 +23,11 @@ const ProductAndTime = ({
   const { t } = useTranslation();
 
   const {
+    stationsData,
     selectedDate,
     setSelectedDate,
-    selectedTime,
-    setSelectedTime,
+    selectedStationAndTime,
+    setSelectedStationAndTime,
     selectedProduct,
   } = useStepper();
 
@@ -48,7 +49,7 @@ const ProductAndTime = ({
   // handling the button click for selecting a time and date
   const handleSubmit = () => {
     if (
-      selectedTime === '' ||
+      Object.keys(selectedStationAndTime).length === 0 ||
       selectedDate === null ||
       selectedProduct === ''
     ) {
@@ -71,8 +72,8 @@ const ProductAndTime = ({
       <PopUpWarningModal
         show={showWarningModal}
         onHide={() => setShowWarningModal(false)}
-        title={t('Peruuta varaus')}
-        body={t('Oletko varma, että haluat peruuttaa varauksen?')}
+        title={t('Haluatko varmasti poistua sivustolta?')}
+        body={t('Tekemiäsi muutoksia ei tallenneta.')}
         backButton={t('Takaisin')}
         acceptButton={t('Kyllä')}
         acceptButtonVariant="danger"
@@ -89,49 +90,26 @@ const ProductAndTime = ({
             futureDates={futureDates}
             setSelectedDate={setSelectedDate}
           />
+          <span className={rentStyle.calendarNote}>
+            {t('*harmaalla merkattuina päivinä ei ole vuokrattavia aikoja')}
+          </span>
         </div>
         <hr className={rentStyle.hr} />
+        <p>{t('Valitse sinulle sopiva 3 tunnin vuokraus ajankohta tästä:')}</p>
         <div className={rentStyle.selectTimeBox}>
-          <SelectTime
-            setSelectedTime={setSelectedTime}
-            selectedTime={selectedTime}
-            stationName={'Kivikko'}
-          />
-          {/* <SelectTime
-            selectedTime={selectedTime}
-            setSelectedStation={setSelectedStation}
-            selectedStation={selectedStation}
-            setSelectedTime={setSelectedTime}
-            stationName={'Konala'}
-          ></SelectTime>
-          <SelectTime
-            selectedTime={selectedTimeSlot}
-            setSelectedStation={setSelectedStation}
-            setSelectedTime={setSelectedTimeSlot}
-            selectedStation={selectedStation}
-            stationName={'Ruskeasanta'}
-          ></SelectTime>
-          <SelectTime
-            selectedTime={selectedTimeSlot}
-            setSelectedStation={setSelectedStation}
-            setSelectedTime={setSelectedTimeSlot}
-            selectedStation={selectedStation}
-            stationName={'Jorvas'}
-          ></SelectTime>
-          <SelectTime
-            selectedTime={selectedTimeSlot}
-            setSelectedStation={setSelectedStation}
-            setSelectedTime={setSelectedTimeSlot}
-            selectedStation={selectedStation}
-            stationName={'Ämmässuo'}
-          ></SelectTime>
-          <SelectTime
-            selectedTime={selectedTimeSlot}
-            setSelectedStation={setSelectedStation}
-            setSelectedTime={setSelectedTimeSlot}
-            selectedStation={selectedStation}
-            stationName={'Koivukylä'}
-          ></SelectTime> */}
+          {stationsData.map((station) => {
+            if (station.selected) {
+              return (
+                <SelectTime
+                  timeSlots={station.timeSlots}
+                  setSelectedStationAndTime={setSelectedStationAndTime}
+                  selectedStationAndTime={selectedStationAndTime}
+                  stationName={station.stationName}
+                  key={station.stationName}
+                />
+              );
+            }
+          })}
         </div>
         <div className={rentStyle.buttonsContainer}>
           <div className={rentStyle.leftButtons}>

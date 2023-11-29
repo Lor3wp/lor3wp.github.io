@@ -9,11 +9,9 @@ function TimePeriodButton({
   stationName,
 }) {
   const handleClick = () => {
-    setSelectedTime(buttonText);
-    console.log(buttonText);
-    console.log(selectedTime);
-    console.log(stationName);
+    setSelectedTime(stationName, buttonText);
   };
+
   return (
     <>
       <Button
@@ -33,11 +31,10 @@ function TimePeriodButton({
 
 TimePeriodButton.propTypes = {
   buttonText: PropTypes.string.isRequired,
-  selectedStation: PropTypes.string.isRequired,
-  selectedTime: PropTypes.string.isRequired,
+  selectedTime: PropTypes.string,
   stationName: PropTypes.string.isRequired,
   setSelectedTime: PropTypes.func.isRequired,
-  setSelectedStation: PropTypes.func.isRequired,
+  setSelectedStation: PropTypes.func,
 };
 
 export default TimePeriodButton;

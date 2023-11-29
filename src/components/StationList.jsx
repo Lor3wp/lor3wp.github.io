@@ -13,48 +13,19 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const StationList = ({ onStationSelected, handleWarningModal }) => {
-  const stations = [
-    {
-      stationName: 'Ruskeasanta',
-      cargoBike: true,
-      trailer: true,
-    },
-    {
-      stationName: 'Konala',
-      cargoBike: false,
-      trailer: true,
-    },
-    {
-      stationName: 'Kivikko',
-      cargoBike: true,
-      trailer: false,
-    },
-    {
-      stationName: 'Jorvas',
-      cargoBike: false,
-      trailer: true,
-    },
-    {
-      stationName: 'Ämmässuo',
-      cargoBike: true,
-      trailer: true,
-    },
-    {
-      stationName: 'Koivusuo',
-      cargoBike: true,
-      trailer: false,
-    },
-  ];
   const [showWarningModal, setShowWarningModal] = useState(false);
+  const [allSelected, setAllSelected] = useState(false);
 
-  const { selectedStations, setSelectedStations } = useStepper();
+  const { stationsData, setStationsData } = useStepper();
   const { t } = useTranslation();
 
   const navigate = useNavigate();
 
   // handle the button click for selecting a station
   const handleSubmit = () => {
-    if (selectedStations.some((checked) => checked)) {
+    if (
+      stationsData.map((station) => station.selected).some((checked) => checked)
+    ) {
       onStationSelected();
     } else {
       handleWarningModal();
@@ -69,11 +40,24 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
     setShowWarningModal(true);
   };
 
+  const handleSelectAll = () => {
+    setAllSelected(!allSelected);
+    const updatedStations = stationsData.map((station) => ({
+      ...station,
+      selected: !allSelected,
+    }));
+    setStationsData(updatedStations);
+  };
+
   // handling the checkbox changes for a specific station
   const handleCheckbox = (index) => {
-    const updatedChecked = [...selectedStations];
-    updatedChecked[index] = !updatedChecked[index];
-    setSelectedStations(updatedChecked);
+    if (allSelected) {
+      return;
+    }
+
+    const updatedStations = [...stationsData];
+    updatedStations[index].selected = !updatedStations[index].selected;
+    setStationsData(updatedStations);
   };
 
   return (
@@ -81,16 +65,17 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
       <PopUpWarningModal
         show={showWarningModal}
         onHide={() => setShowWarningModal(false)}
-        title={t('Peruuta varaus')}
-        body={t('Oletko varma, että haluat peruuttaa varauksen?')}
+        title={t('Haluatko varmasti poistua sivustolta?')}
+        body={t('Tekemiäsi muutoksia ei tallenneta.')}
         backButton={t('Takaisin')}
         acceptButton={t('Kyllä')}
         acceptButtonVariant="danger"
         onPrimaryButtonClick={frontPage}
       />
+
       <div className={styles.listContainer}>
         <ListGroup variant="flush" className={styles.listElement}>
-          {stations.map((station, index) => (
+          {stationsData.map((station, index) => (
             <ListGroup.Item
               key={station.stationName}
               className={styles.customBorder}
@@ -112,14 +97,6 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
                   </svg>
                   <p id={styles.kilometers}>10 km</p>
-                  {station.cargoBike && (
-                    <img
-                      src={Bike}
-                      alt="cargo bike icon"
-                      id={styles.cargobike}
-                      draggable={false}
-                    />
-                  )}
                   {station.trailer && (
                     <img
                       src={Trailer}
@@ -128,10 +105,18 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
                       draggable={false}
                     />
                   )}
+                  {station.cargoBike && (
+                    <img
+                      src={Bike}
+                      alt="cargo bike icon"
+                      id={styles.cargobike}
+                      draggable={false}
+                    />
+                  )}
                   <Checkbox
                     onChange={() => handleCheckbox(index)}
                     value="station"
-                    checked={selectedStations[index]}
+                    checked={stationsData[index].selected}
                     isRequired={false}
                     id={styles.stationCheckbox}
                     className={styles.stationCheckboxContainer}
@@ -141,6 +126,17 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
             </ListGroup.Item>
           ))}
         </ListGroup>
+        <dev className={styles.allCheckboxContainer}>
+          <p>Valitse kaikki asemat</p>
+          <Checkbox
+            onChange={handleSelectAll}
+            value="all"
+            checked={allSelected}
+            isRequired={false}
+            id={styles.allCheckbox}
+            className={styles.allCheckbox}
+          />
+        </dev>
         <div className={styles.buttonsContainer}>
           <Button variant="outline-danger" onClick={handleOpenWarningModal}>
             {t('Peruuta')}
