@@ -72,8 +72,8 @@ const ProductAndTime = ({
       <PopUpWarningModal
         show={showWarningModal}
         onHide={() => setShowWarningModal(false)}
-        title={t('Peruuta varaus')}
-        body={t('Oletko varma, että haluat peruuttaa varauksen?')}
+        title={t('Haluatko varmasti poistua sivustolta?')}
+        body={t('Tekemiäsi muutoksia ei tallenneta.')}
         backButton={t('Takaisin')}
         acceptButton={t('Kyllä')}
         acceptButtonVariant="danger"
@@ -90,8 +90,12 @@ const ProductAndTime = ({
             futureDates={futureDates}
             setSelectedDate={setSelectedDate}
           />
+          <span className={rentStyle.calendarNote}>
+            {t('*harmaalla merkattuina päivinä ei ole vuokrattavia aikoja')}
+          </span>
         </div>
         <hr className={rentStyle.hr} />
+        <p>{t('Valitse sinulle sopiva 3 tunnin vuokraus ajankohta tästä:')}</p>
         <div className={rentStyle.selectTimeBox}>
           {stationsData.map((station) => {
             if (station.selected) {

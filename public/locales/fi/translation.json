@@ -51,6 +51,8 @@
 
   "Peruuta varaus": "Peruuta varaus",
   "Oletko varma, että haluat peruuttaa varauksen?": "Oletko varma, että haluat peruuttaa varauksen?",
+  "Haluatko varmasti poistua sivustolta?": "Haluatko varmasti poistua sivustolta?",
+  "Tekemiäsi muutoksia ei tallenneta.": "Tekemiäsi muutoksia ei tallenneta.",
   "Takaisin": "Takaisin",
   "Kyllä": "Kyllä",
   "Peruuta": "Peruuta",
@@ -63,6 +65,8 @@
   "Valitse tuote": "Valitse tuote",
   "Tarvitsen adapterin": "Tarvitsen adapterin",
   "Valitse päivä": "Valitse päivä",
+  "*harmaalla merkittyinä päivinä ei ole vuokrattavia aikoja": "*harmaalla merkittyinä päivinä ei ole vuokrattavia aikoja",
+  "Valitse sinulle sopiva 3 tunnin vuokraus ajankohta tästä:": "Valitse sinulle sopiva 3 tunnin vuokraus ajankohta tästä:",
   "Vahvista": "Vahvista",
   "Sulje": "Sulje",
   "Ymmärrän": "Ymmärrän",

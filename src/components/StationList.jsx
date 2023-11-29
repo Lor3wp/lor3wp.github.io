@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 
 const StationList = ({ onStationSelected, handleWarningModal }) => {
   const [showWarningModal, setShowWarningModal] = useState(false);
+  const [allSelected, setAllSelected] = useState(false);
 
   const { stationsData, setStationsData } = useStepper();
   const { t } = useTranslation();
@@ -39,8 +40,21 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
     setShowWarningModal(true);
   };
 
+  const handleSelectAll = () => {
+    setAllSelected(!allSelected);
+    const updatedStations = stationsData.map((station) => ({
+      ...station,
+      selected: !allSelected,
+    }));
+    setStationsData(updatedStations);
+  };
+
   // handling the checkbox changes for a specific station
   const handleCheckbox = (index) => {
+    if (allSelected) {
+      return;
+    }
+
     const updatedStations = [...stationsData];
     updatedStations[index].selected = !updatedStations[index].selected;
     setStationsData(updatedStations);
@@ -51,13 +65,14 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
       <PopUpWarningModal
         show={showWarningModal}
         onHide={() => setShowWarningModal(false)}
-        title={t('Peruuta varaus')}
-        body={t('Oletko varma, että haluat peruuttaa varauksen?')}
+        title={t('Haluatko varmasti poistua sivustolta?')}
+        body={t('Tekemiäsi muutoksia ei tallenneta.')}
         backButton={t('Takaisin')}
         acceptButton={t('Kyllä')}
         acceptButtonVariant="danger"
         onPrimaryButtonClick={frontPage}
       />
+
       <div className={styles.listContainer}>
         <ListGroup variant="flush" className={styles.listElement}>
           {stationsData.map((station, index) => (
@@ -111,6 +126,17 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
             </ListGroup.Item>
           ))}
         </ListGroup>
+        <dev className={styles.allCheckboxContainer}>
+          <p>Valitse kaikki asemat</p>
+          <Checkbox
+            onChange={handleSelectAll}
+            value="all"
+            checked={allSelected}
+            isRequired={false}
+            id={styles.allCheckbox}
+            className={styles.allCheckbox}
+          />
+        </dev>
         <div className={styles.buttonsContainer}>
           <Button variant="outline-danger" onClick={handleOpenWarningModal}>
             {t('Peruuta')}
