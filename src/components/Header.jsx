@@ -6,7 +6,6 @@ import { applyVersionClass, removeVersionClass } from '../utils/BodyVersion';
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-// TODO: make the header title dynamic
 const Header = ({ title }) => {
   // use body version 2
   useEffect(() => {

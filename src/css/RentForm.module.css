@@ -14,6 +14,14 @@
   flex-direction: column;
   align-items: center;
 }
+
+.calendarNote {
+  color: gray;
+  font-size: 0.9rem;
+  font-family: sans-serif;
+  font-style: italic;
+}
+
 .selectTimeBox {
   flex: 0 0 auto;
   width: 100%;
@@ -45,7 +53,8 @@ hr {
 .buttonsContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  text-align: center;
   margin: 1em 2em 1em 2em;
   width: 100%;
 }
@@ -56,10 +65,10 @@ hr {
   gap: 20px;
 }
 @media screen and (max-width: 600px) {
-  .rentBox, .calendarBox {
+  .rentBox,
+  .calendarBox {
     margin: 1rem auto;
     width: 90vw;
-
   }
   .buttonsContainer {
     margin: 0;
@@ -69,6 +78,5 @@ hr {
   .buttonsContainer button {
     font-size: 0.9rem;
     margin-left: 0.3rem;
-    
   }
 }

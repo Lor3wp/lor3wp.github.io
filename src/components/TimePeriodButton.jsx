@@ -6,27 +6,21 @@ function TimePeriodButton({
   buttonText,
   setSelectedTime,
   selectedTime,
-  setSelectedStation,
   stationName,
-  selectedStation,
 }) {
   const handleClick = () => {
-    setSelectedTime(buttonText);
-    setSelectedStation(stationName);
-    console.log(buttonText);
-    console.log(selectedStation);
-    console.log(selectedTime);
-    console.log(stationName);
+    setSelectedTime(stationName, buttonText);
   };
+
   return (
     <>
       <Button
         variant="flat"
-        className={`${
-          selectedTime == buttonText && selectedStation == stationName
+        className={
+          selectedTime == buttonText
             ? style.selectedButton
             : style.unselectedButton
-        }`}
+        }
         onClick={handleClick}
       >
         {buttonText}
@@ -37,11 +31,10 @@ function TimePeriodButton({
 
 TimePeriodButton.propTypes = {
   buttonText: PropTypes.string.isRequired,
-  selectedStation: PropTypes.string.isRequired,
-  selectedTime: PropTypes.string.isRequired,
+  selectedTime: PropTypes.string,
   stationName: PropTypes.string.isRequired,
   setSelectedTime: PropTypes.func.isRequired,
-  setSelectedStation: PropTypes.func.isRequired,
+  setSelectedStation: PropTypes.func,
 };
 
 export default TimePeriodButton;

@@ -10,8 +10,21 @@ const RentInfoBoxList = ({ items }) => {
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
+        pattern: /€5/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
         pattern:
           /vain henkilöasiakkaille jätteen kuljettamiseen Sortti-asemille\./g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern: /for private customers only./g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern:
+          /endast avsedd för transport av avfall till sorteringsstationer för privatkunder\./g,
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
@@ -19,7 +32,23 @@ const RentInfoBoxList = ({ items }) => {
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
+        pattern: /three-hour shift/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern: /för ett tretimmarsskift/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
         pattern: /40 euroa\./g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern: /40 euros\./g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern: /40 euro\./g,
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
@@ -27,7 +56,23 @@ const RentInfoBoxList = ({ items }) => {
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
       {
+        pattern: /trailer cannot/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern: /Det går inte/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
         pattern: /henkilöllisyystodistuksesi/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern: /your ID/g,
+        replacement: `<span class="${styles.highlightedText}">$&</span>`,
+      },
+      {
+        pattern: /genom att visa ditt ID/g,
         replacement: `<span class="${styles.highlightedText}">$&</span>`,
       },
     ];

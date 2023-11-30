@@ -1,57 +1,56 @@
-import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import productStyle from '../css/SelectProduct.module.css';
 import timeStyle from '../css/SelectTime.module.css';
-import Bike from '../Icons/cargobike.svg';
-import Trailer from '../Icons/trailer.svg';
+import Bike from '../assets/cargobike.svg';
+import Trailer from '../assets/trailer.svg';
+import { useStepper } from '../hooks/useStepper';
+import Checkbox from './Checkbox';
+import { useTranslation } from 'react-i18next';
 
-/* Select product component */
+const SelectProduct = () => {
+  const {
+    selectedProduct,
+    setSelectedProduct,
+    selectAdaptor,
+    setSelectAdaptor,
+  } = useStepper();
 
-function SelectProduct() {
-  const [product, setProduct] = useState('');
-
-  const handleButtonClick = (prd) => {
-    setProduct(prd);
-  };
+  const { t } = useTranslation();
 
   return (
     <>
-      <h2 className={timeStyle.header}>Valitse tuote</h2>
+      <h2 className={timeStyle.header}>{t('Valitse tuote')}</h2>
       <div className={productStyle.selectProductBox}>
         <Button
-          className={`${
-            product === 'trailer'
+          className={
+            selectedProduct === 'trailer'
               ? productStyle.activeProductButton
               : productStyle.productButton
-          }`}
-          onClick={() => handleButtonClick('trailer')}
+          }
+          onClick={() => setSelectedProduct('trailer')}
         >
           <img src={Trailer} alt="trailer icon" />
         </Button>
         <Button
-          className={`${
-            product === 'bike'
+          className={
+            selectedProduct === 'bike'
               ? productStyle.activeProductButton
               : productStyle.productButton
-          }`}
-          onClick={() => handleButtonClick('bike')}
+          }
+          onClick={() => setSelectedProduct('bike')}
         >
           <img src={Bike} alt="cargobike icon" />
         </Button>
         <Form className={productStyle.adapterCheckBox}>
-          {['checkbox'].map((type) => (
-            <div key={`default-${type}`}>
-              <Form.Check // prettier-ignore
-                type={type}
-                id={`default-${type}`}
-                label={`Tarvitsen adapterin`}
-              />
-            </div>
-          ))}
+          <Checkbox
+            label={t('Tarvitsen adapterin')}
+            checked={selectAdaptor}
+            onChange={() => setSelectAdaptor(!selectAdaptor)}
+          />
         </Form>
       </div>
     </>
   );
-}
+};
 
 export default SelectProduct;

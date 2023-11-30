@@ -1,16 +1,16 @@
 /* CSS Rules for station list */
 
 .listContainer {
-  width: 50vh;
+  width: 60vh;
   margin: auto;
 }
 .rowContainer {
   display: flex;
   flex-direction: row;
+  margin-bottom: 0.5rem;
 }
 #kilometers {
-  margin: 0 8px 0 0;
-  flex: 0;
+  margin: 0 2rem 0 0;
   color: #009688;
 }
 .stationName {
@@ -23,15 +23,34 @@
 #trailer {
   margin: 0 4px 0 4px;
   height: 24px;
-  margin: 0 4px 0 4px;
   width: 33px;
   filter: drop-shadow(3px 2px 3px rgb(0 0 0 / 0.2));
 }
 #stationCheckbox {
   margin-left: auto;
 }
+
+.stationListNote {
+  width: 50%;
+  color: gray;
+  font-size: 0.8rem;
+  font-family: sans-serif;
+  font-style: italic;
+}
+.allCheckboxContainer {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  margin-right: 1rem;
+}
+
+.allCheckbox {
+  margin-left: 1rem;
+}
+
 .list-group-flush {
   margin-bottom: 2em !important;
+  margin: 10rem;
 }
 .stationCheckboxContainer {
   margin-left: auto;

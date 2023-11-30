@@ -1,8 +1,14 @@
-/* CSS Rules for rate/feedback on trailer*/
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6rem;
+}
 
 .checkMark {
-  width: 125px;
-  height: 125px;
+  width: 160px;
+  height: 160px;
   border-radius: 100%;
   background-color: #008782;
   display: flex;
@@ -10,36 +16,28 @@
   align-items: center;
   margin: auto;
 }
+
 #checkIcon {
-  color: white !important;
-  font-size: 5rem;
+  color: white;
+  font-size: 7rem;
 }
-.ratingInput {
-  width: 100%;
-}
+
 .inputGroupContainer {
   display: flex;
   justify-content: center;
 }
-.inputContainer {
-  display: flex;
-  flex-direction: column;
-  width: 100vh;
-  margin: auto;
-  max-width: 400px;
-  align-items: center;
-}
+
 .textArea {
-  height: 120px;
+  height: 10rem;
+  width: 30rem;
   border-color: #c3dedc;
 }
+
 .sendButton {
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  width: 15rem;
 }
-.sendFeedbackBtn {
-  margin-bottom: 10px;
-}
+
 .starRatingContainer {
   text-align: center;
   margin-top: 37px;
@@ -59,11 +57,28 @@
 .starRatingButton {
   margin-top: 10px;
 }
+
 .returnTitle {
-  font-size: 20px;
-  margin-top: -65px;
+  font-size: 25px;
+  /* margin-top: -65px; */
   margin-bottom: 30px;
   color: #025f56;
+}
+
+/* Background */
+
+.logoBackgroundContainer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 256px;
+  height: 245px;
+  z-index: -1;
+}
+
+.backgroundLogo {
+  transform: scale(2);
+  opacity: 0.28;
 }
 
 /* Mobile rules */
@@ -72,6 +87,9 @@
   .checkMark {
     width: 105px;
     height: 105px;
+  }
+  #checkIcon {
+    font-size: 5rem;
   }
   .textArea {
     width: 285px;

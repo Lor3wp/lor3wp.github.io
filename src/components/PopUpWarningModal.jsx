@@ -1,17 +1,8 @@
 import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 import styles from '../css/PopUpWarningModal.module.css';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 const PopUpWarningModal = (props) => {
-  const navigate = useNavigate();
-
-  const frontPage = () => {
-    navigate('/', { replace: true });
-    toast.success('Varaus peruutettu!');
-  };
-
   return (
     <Modal
       {...props}
@@ -20,18 +11,24 @@ const PopUpWarningModal = (props) => {
       centered
     >
       <Modal.Header className={styles.modalHeader} closeButton>
-        <Modal.Title>{props.title}</Modal.Title>
+        <Modal.Title className={styles.modalTitle}>{props.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>{props.body}</Modal.Body>
       <Modal.Footer>
+        {props.backButton && (
+          <Button
+            className={styles.btn}
+            variant="outline-primary"
+            onClick={props.onHide}
+          >
+            {props.backButton}
+          </Button>
+        )}
         <Button
           className={styles.btn}
-          variant="outline-primary"
-          onClick={props.onHide}
+          variant={props.acceptButtonVariant}
+          onClick={props.onPrimaryButtonClick}
         >
-          {props.backButton}
-        </Button>
-        <Button className={styles.btn} variant="danger" onClick={frontPage}>
           {props.acceptButton}
         </Button>
       </Modal.Footer>
@@ -41,11 +38,13 @@ const PopUpWarningModal = (props) => {
 
 PopUpWarningModal.propTypes = {
   show: PropTypes.bool,
-  onHide: PropTypes.bool,
+  onHide: PropTypes.func,
   title: PropTypes.string,
-  body: PropTypes.string,
+  body: PropTypes.obj,
   backButton: PropTypes.string,
   acceptButton: PropTypes.string,
+  acceptButtonVariant: PropTypes.string,
+  onPrimaryButtonClick: PropTypes.func,
 };
 
 export default PopUpWarningModal;

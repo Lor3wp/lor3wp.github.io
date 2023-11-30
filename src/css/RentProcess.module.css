@@ -20,16 +20,18 @@
 }
 
 .contentContainerLastStep {
-  width: 60vw;
-  background-color: #f7f7f8;
+  width: 100vw;
+  background-color: #b5d2d60a;
+  background-image: linear-gradient(
+    118deg,
+    #95c1c60a 0%,
+    #e4fffe17 50%,
+    #0a8b7f30 100%
+  );
 }
 
 .bgImage2 {
   background-image: url('../assets/bg_image2.png');
-}
-
-.colorBg {
-  background-color: #f7f7f8;
 }
 
 @media screen and (max-width: 600px) {
@@ -64,4 +66,3 @@
     width: 100vw;
   }
 }
-

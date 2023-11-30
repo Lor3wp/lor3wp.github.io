@@ -1,44 +1,47 @@
 /* CSS Rules for rent info view */
 
-.infoCardContainer {
+.rentInfoContainer {
   margin-top: 3rem;
 }
+
 .cardHeader {
   text-align: center;
   background-color: #008782;
   color: white;
 }
+
 .infoCircleIcon {
   margin-bottom: 2px;
   margin-right: 3px;
 }
+
 .card {
   width: 20rem;
   text-align: left;
   box-shadow: 0px 0px 8px 0px rgba(46, 46, 46, 0.212);
   border: none;
 }
+
 .icons {
   margin-right: 9px;
   color: #008782;
 }
-.rentItem {
-  padding-left: 45px;
-}
+
 .btn {
+  align-self: center;
   text-align: center;
+  width: 30em;
 }
+
 .infoContainer {
   align-self: center !important;
   margin-top: 4rem;
 }
-.cancelRentButton {
-  align-self: center;
-  width: 30%;
-}
+
 .headerInfo {
   color: #008782;
 }
+
 iFrame {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -54,7 +57,7 @@ iFrame {
     flex-direction: column;
     margin-top: 1rem;
   }
-  .infoCardContainer {
+  .rentInfoContainer {
     margin-top: 1rem;
   }
   .headerInfo {
