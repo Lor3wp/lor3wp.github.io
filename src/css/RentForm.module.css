@@ -73,10 +73,6 @@ hr {
   .buttonsContainer {
     margin: 0;
     width: 90vw;
-    justify-content: center;
-  }
-  .buttonsContainer button {
-    font-size: 0.9rem;
     margin-left: 0.3rem;
   }
 }

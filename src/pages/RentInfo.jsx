@@ -12,13 +12,12 @@ import PropTypes from 'prop-types';
 import { PopUpInfoModal } from '../components/PopUpInfoModal';
 import { Trans, useTranslation } from 'react-i18next';
 
-// TODO: Timer circle restarting from the beginning if page refreshed
 const RentInfoPage = ({ handleItemReturned }) => {
   const rentInfo = {
     rentDate: '2023-09-17',
     //rentStartTime: new Date(),
-    rentStartTime: '2023-11-26T22:00:00',
-    rentEndTime: '2023-11-26T07:00:00',
+    rentStartTime: '2023-12-01T21:07:00',
+    rentEndTime: '2023-11-30T22:01:00',
     itemType: 'Peräkärry',
     stationLocation: 'Kivikon Sortti-asema',
   };
@@ -44,34 +43,38 @@ const RentInfoPage = ({ handleItemReturned }) => {
   const endTimeHours = new Date(rentInfo.rentEndTime).getHours();
   const endTimeMins = new Date(rentInfo.rentEndTime).getMinutes();
 
+  const calculateTimerInfo = () => {
+    const currentTime = new Date();
+    const rentStartTime = new Date(rentInfo.rentStartTime);
+
+    const differenceInMillisecondsUntilRentStart = rentStartTime - currentTime;
+    const remainingHoursUntilRentStart =
+      differenceInMillisecondsUntilRentStart / (1000 * 60 * 60);
+    const differenceInDaysUntilRentStart =
+      differenceInMillisecondsUntilRentStart / (1000 * 60 * 60 * 24);
+
+    const hoursUntil = Math.round(remainingHoursUntilRentStart);
+    const daysUntil = Math.round(differenceInDaysUntilRentStart);
+
+    let timerInfoText;
+    if (differenceInDaysUntilRentStart >= 1) {
+      timerInfoText = t('days_until', { daysUntil: daysUntil });
+    } else {
+      timerInfoText =
+        hoursUntil == 0
+          ? t('Varauksesi alkaa pian!')
+          : t('hours_until', { hoursUntil: hoursUntil });
+    }
+
+    setCanCancelRent(!(remainingHoursUntilRentStart <= 24));
+    setTimeStarted(currentTime.getTime() >= rentStartTime.getTime());
+    setTimerInfoText(timerInfoText);
+  };
+
   useEffect(() => {
+    calculateTimerInfo();
     const interval = setInterval(() => {
-      const currentTime = new Date();
-      const rentStartTime = new Date(rentInfo.rentStartTime);
-
-      const differenceInMillisecondsUntilRentStart =
-        rentStartTime - currentTime;
-      const remainingHoursUntilRentStart =
-        differenceInMillisecondsUntilRentStart / (1000 * 60 * 60);
-      const differenceInDaysUntilRentStart =
-        differenceInMillisecondsUntilRentStart / (1000 * 60 * 60 * 24);
-
-      const hoursUntil = Math.round(remainingHoursUntilRentStart);
-      const daysUntil = Math.round(differenceInDaysUntilRentStart);
-
-      let timerInfoText;
-      if (differenceInDaysUntilRentStart >= 1) {
-        timerInfoText = t('days_until', { daysUntil: daysUntil });
-      } else {
-        timerInfoText =
-          hoursUntil == 0
-            ? t('Varauksesi alkaa pian!')
-            : t('hours_until', { hoursUntil: hoursUntil });
-      }
-
-      setCanCancelRent(!(remainingHoursUntilRentStart <= 24));
-      setTimeStarted(currentTime.getTime() >= rentStartTime.getTime());
-      setTimerInfoText(timerInfoText);
+      calculateTimerInfo();
     }, 1000);
 
     return () => {
@@ -120,7 +123,6 @@ const RentInfoPage = ({ handleItemReturned }) => {
     <p>{t('Oletko varma, että haluat peruuttaa varauksen?')}</p>
   );
 
-  // TODO: Change the text to be more informative
   const infoModalBodyContent = (
     <div>
       <p>
