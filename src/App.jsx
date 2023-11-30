@@ -13,6 +13,7 @@ import './theme.css';
 import { StepperProvider } from './context/StepperContext';
 import { useTranslation } from 'react-i18next';
 
+
 function App() {
   // TODO: Set to false when backend is ready
   const [rentSuccessful, setRentSuccessful] = useState(true);

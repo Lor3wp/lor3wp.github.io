@@ -12,7 +12,11 @@ import { ChevronCompactLeft } from 'react-bootstrap-icons';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
 import { useStepper } from '../hooks/useStepper';
 import { useTranslation } from 'react-i18next';
-
+import { v4 as uuidv4 } from 'uuid';
+// create random uuid for user identification in temporary reservation
+const randomUUID = uuidv4();
+// fill with Date values to disable those dates from caledar
+const futureDates = [];
 const ProductAndTime = ({
   onProductAndTimeSelected,
   onPrevStep,
@@ -31,20 +35,7 @@ const ProductAndTime = ({
     selectedProduct,
   } = useStepper();
 
-  // values will be used in future
-  const currentDate = new Date();
-  const currentMonth = currentDate.getMonth();
-  const currentYear = currentDate.getFullYear();
-  const currentDay = currentDate.getDate();
-  const futureDates = [];
-
   const navigate = useNavigate();
-
-  // TODO: Where do we need that? Seems unnecessary.
-  for (let i = 1; i < 4; i++) {
-    const randomDate = new Date(currentYear, currentMonth, currentDay + i);
-    futureDates.push(randomDate);
-  }
 
   // handling the button click for selecting a time and date
   const handleSubmit = () => {
@@ -97,6 +88,7 @@ const ProductAndTime = ({
             if (station.selected) {
               return (
                 <SelectTime
+                  randomUUID={randomUUID}
                   timeSlots={station.timeSlots}
                   setSelectedStationAndTime={setSelectedStationAndTime}
                   selectedStationAndTime={selectedStationAndTime}
