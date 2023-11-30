@@ -44,7 +44,9 @@
   "Varauksen tiedot": "Hyresuppgifter",
   "Palaute": "Återkoppling",
 
+  "Jos haluat nähdä, kuinka kaukana asemat ovat sijainnistasi, ota sijaintilupa käyttöön selaimessasi.": "För att se hur långt stationerna är från din plats, vänligen aktivera platsbehörighet i din webbläsare.",
   "Valitse asemat": "Välj stationer",
+  "Valitse kaikki asemat": "Välj alla stationer",
   "Tuotevalinta & Päivämäärä": "Val av produkt och datum",
   "Käyttäjän tiedot": "Användarinformation",
   "Maksaminen": "Betalning",

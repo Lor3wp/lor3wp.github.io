@@ -12,6 +12,8 @@ export const StepperProvider = ({ children }) => {
       cargoBike: true,
       trailer: true,
       selected: false,
+      latitude: 60.32061898389687,
+      longitude: 24.993732557209405,
     },
     {
       stationName: 'Konala',
@@ -19,6 +21,8 @@ export const StepperProvider = ({ children }) => {
       cargoBike: false,
       trailer: true,
       selected: false,
+      latitude: 60.25360884865695,
+      longitude: 24.836624427068696,
     },
     {
       stationName: 'Kivikko',
@@ -26,6 +30,8 @@ export const StepperProvider = ({ children }) => {
       cargoBike: true,
       trailer: false,
       selected: false,
+      latitude: 60.23686341263375,
+      longitude: 25.05107185536083,
     },
     {
       stationName: 'Jorvas',
@@ -33,6 +39,8 @@ export const StepperProvider = ({ children }) => {
       cargoBike: false,
       trailer: true,
       selected: false,
+      latitude: 60.13714913277058,
+      longitude: 24.523249868537707,
     },
     {
       stationName: 'Ämmässuo',
@@ -40,13 +48,17 @@ export const StepperProvider = ({ children }) => {
       cargoBike: true,
       trailer: true,
       selected: false,
+      latitude: 60.24107750488621,
+      longitude: 24.540993611186675,
     },
     {
-      stationName: 'Koivusuo',
+      stationName: 'Koivukylä',
       timeSlots: ['15-16', '11-14', '12-15', '13-16', '14-17', '15-18'],
       cargoBike: true,
       trailer: false,
       selected: false,
+      latitude: 60.31712294344029,
+      longitude: 25.061342971463368,
     },
   ]);
   const [selectedProduct, setSelectedProduct] = useState('');

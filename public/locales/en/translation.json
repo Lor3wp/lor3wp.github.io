@@ -44,7 +44,9 @@
   "Varauksen tiedot": "Rent details",
   "Palaute": "Feedback",
 
+  "Jos haluat nähdä, kuinka kaukana asemat ovat sijainnistasi, ota sijaintilupa käyttöön selaimessasi.": "To view how far the stations are from your location, please enable location permission in your browser.",
   "Valitse asemat": "Select stations",
+  "Valitse kaikki asemat": "Select all stations",
   "Tuotevalinta & Päivämäärä": "Product & Date Selection",
   "Käyttäjän tiedot": "User information",
   "Maksaminen": "Payment",
