@@ -52,6 +52,7 @@
   "Maksaminen": "Payment",
 
   "Peruuta varaus": "Cancel your rent",
+  "Varauksen peruutus epäonnistui!": "Rent cancellation failed!",
   "Oletko varma, että haluat peruuttaa varauksen?": "Are you sure you want to cancel your rent?",
   "Haluatko varmasti poistua sivustolta?": "Are you sure you want to leave site?",
   "Tekemiäsi muutoksia ei tallenneta.": "Any changes you made will not be saved.",
@@ -153,7 +154,7 @@
   "days_until": "Starts in {{daysUntil}} days",
   "hours_until": "Starts in {{hoursUntil}} hours",
   "Tuote palautettu!": "Item returned!",
-  "Varaus peruutettu!": "Rent cancelled!",
+  "Varaus peruutettu!": "Item rent cancelled!",
   "Ennen palautusta": "Before returning",
   "late_cancel_warning_paragraph": "The product must be at the Sortti-station! Late returns will be charged a <1>€40</1> late fee according to the terms of the contract.",
   "Palvelun peruuttaminen ei ole mahdollista, jos vuokra-ajan alkamiseen on jäljellä 24 tuntia tai vähemmän.": "Cancellation of the service is not possible if there are 24 hours or less remaining until the start of the rental period.",

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import FrontPage from './pages/FrontPage';
 import RentInfoPage from './pages/RentInfo';
 import NotFoundPage from './pages/NotFound';
@@ -11,8 +11,15 @@ import './App.css';
 import './theme.css';
 import { StepperProvider } from './context/StepperContext';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 function App() {
+  const [itemReturned, setItemReturned] = useState(true);
+
+  const handleItemReturned = () => {
+    setItemReturned(true);
+  };
+
   const { t } = useTranslation();
 
   return (
@@ -43,19 +50,23 @@ function App() {
         element={
           <>
             <Header title={t('Varauksen tiedot')} />
-            <RentInfoPage />
+            <RentInfoPage handleItemReturned={handleItemReturned} />
           </>
         }
       />
-      <Route
-        path="/rate-item/:id"
-        element={
-          <>
-            <Header title={t('Palaute')} />
-            <RateItemPage />
-          </>
-        }
-      />
+      {itemReturned ? (
+        <Route
+          path="/rate-item"
+          element={
+            <>
+              <Header title={t('Palaute')} />
+              <RateItemPage />
+            </>
+          }
+        />
+      ) : (
+        <Route path="*" element={<Navigate to="/" />} />
+      )}
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

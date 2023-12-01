@@ -13,7 +13,15 @@ const useApi = () => {
     return await errorHandling(fetchRent, (err) => setError(err));
   };
 
-  return { getRentById, error };
+  const deleteRent = async (rentId) => {
+    const deleteRent = async () => {
+      return await API.delete(`delete-reservation/${rentId}`);
+    };
+
+    return await errorHandling(deleteRent, (err) => setError(err));
+  };
+
+  return { getRentById, deleteRent, error };
 };
 
 export default useApi;
