@@ -5,7 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import StarRating from '../components/StarRating';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import HsyLogo from '../assets/hsy-drops.svg';
 import styles from '../css/RateItem.module.css';
 import { useTranslation } from 'react-i18next';
@@ -14,6 +14,7 @@ const RateItemPage = () => {
   const navigate = useNavigate();
 
   const { t } = useTranslation();
+  const { id } = useParams(); // Use this id to handle item rating
 
   const handleClick = () => {
     if (document.querySelector('textarea').value === '') {
