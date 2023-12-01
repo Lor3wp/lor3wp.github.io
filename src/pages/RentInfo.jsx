@@ -13,7 +13,7 @@ import { PopUpInfoModal } from '../components/PopUpInfoModal';
 import { Trans, useTranslation } from 'react-i18next';
 import useApi from '../hooks/useApi';
 
-const RentInfoPage = () => {
+const RentInfoPage = ({ handleItemReturned }) => {
   const mockRentInfo = {
     rentDate: '2023-09-17',
     //rentStartTime: new Date(),
@@ -28,13 +28,17 @@ const RentInfoPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [timerInfoText, setTimerInfoText] = useState('');
-  const [rentInfo, setRentInfo] = useState({});
+  const [rentInfo, setRentInfo] = useState({
+    timeSlot: 'Loading...',
+    product: 'Loading...',
+    station: 'Loading...',
+  });
 
   const navigate = useNavigate();
 
   const { t } = useTranslation();
   const { id } = useParams();
-  const { getRentById, error } = useApi();
+  const { getRentById, deleteRent, error } = useApi();
 
   // Get rent date and apply the time slot to it
   const rentStartDate = new Date(rentInfo.date);
@@ -77,7 +81,6 @@ const RentInfoPage = () => {
 
   const getRentInfo = async () => {
     const { data } = await getRentById(id);
-    console.log('Rent info from API:', data);
     setRentInfo(data);
   };
 
@@ -115,12 +118,19 @@ const RentInfoPage = () => {
 
   const rateItemPage = () => {
     toast.success(t('Tuote palautettu!'));
+    handleItemReturned();
     navigate(`/rate-item/${id}`, { replace: true });
   };
 
-  const frontPage = () => {
-    toast.success(t('Varaus peruutettu!'));
-    navigate('/', { replace: true });
+  const cancelRent = async () => {
+    try {
+      await deleteRent(id);
+      toast.success(t('Varaus peruutettu!'));
+      navigate('/', { replace: true });
+    } catch (err) {
+      console.log(err);
+      toast.error(t('Varauksen peruutus epäonnistui!'));
+    }
   };
 
   // Warning popup modal
@@ -180,7 +190,7 @@ const RentInfoPage = () => {
           timeStarted ? `${t('Ymmärrän')}` : `${t('Kyllä, poista varaus')}`
         }
         acceptButtonVariant={timeStarted ? 'success' : 'danger'}
-        onPrimaryButtonClick={timeStarted ? rateItemPage : frontPage}
+        onPrimaryButtonClick={timeStarted ? rateItemPage : cancelRent}
       />
       <PopUpInfoModal
         show={showInfoModal}
@@ -207,7 +217,10 @@ const RentInfoPage = () => {
             </div>
             <div>
               <RentInfoCard
-                rentDate={rentStartDate.toDateString()}
+                rentDate={
+                  (!isNaN(rentStartDate) && rentStartDate.toDateString()) ||
+                  'Loading...'
+                }
                 timeSlot={rentInfo.timeSlot}
                 itemType={rentInfo.product}
                 stationLocation={rentInfo.station}
