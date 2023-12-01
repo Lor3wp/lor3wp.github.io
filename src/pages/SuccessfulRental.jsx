@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import styles from '../css/SuccessfulRental.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { Trans, useTranslation } from 'react-i18next';
 
@@ -13,9 +13,10 @@ const SuccessfulRentalPage = () => {
   const navigate = useNavigate();
 
   const { t } = useTranslation();
+  const { id } = useParams();
 
   const handleClick = () => {
-    navigate('/rent-info');
+    navigate(`/rent-info/${id}`, { replace: true });
   };
 
   // Use the "useEffect" hook to apply and remove body version class

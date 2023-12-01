@@ -1,4 +1,4 @@
-export const errorHandling = async (func) => {
+export const errorHandling = async (func, onError) => {
   try {
     const result = await func();
     return result;
@@ -9,6 +9,10 @@ export const errorHandling = async (func) => {
       console.log(err.response.headers);
     } else {
       console.log(`Error: ${err.message}`);
+    }
+
+    if (onError) {
+      onError(err);
     }
   }
 };

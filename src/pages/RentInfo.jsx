@@ -5,7 +5,7 @@ import { RentInfoCard } from '../components/RentInfoCard';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 import { applyVersionClass2, removeVersionClass2 } from '../utils/BodyVersion';
 import GoogleMap from '../components/GoogleMaps';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import styles from '../css/RentInfoCard.module.css';
 import PropTypes from 'prop-types';
@@ -13,41 +13,42 @@ import { PopUpInfoModal } from '../components/PopUpInfoModal';
 import { Trans, useTranslation } from 'react-i18next';
 import useApi from '../hooks/useApi';
 
-const RentInfoPage = ({ handleItemReturned }) => {
-  const rentInfo = {
+const RentInfoPage = () => {
+  const mockRentInfo = {
     rentDate: '2023-09-17',
     //rentStartTime: new Date(),
-    rentStartTime: '2023-12-01T21:07:00',
-    rentEndTime: '2023-11-30T22:01:00',
+    rentStartTime: '2023-12-01T18:07:00',
+    rentEndTime: '2023-12-01T23:01:00',
     itemType: 'Peräkärry',
     stationLocation: 'Kivikon Sortti-asema',
   };
-  const { getRentById } = useApi();
 
   const [timeStarted, setTimeStarted] = useState(false);
   const [canCancelRent, setCanCancelRent] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [timerInfoText, setTimerInfoText] = useState('');
+  const [rentInfo, setRentInfo] = useState({});
 
   const navigate = useNavigate();
 
   const { t } = useTranslation();
+  const { id } = useParams();
+  const { getRentById, error } = useApi();
+
+  // Get rent date and apply the time slot to it
+  const rentStartDate = new Date(rentInfo.date);
+  const [startHour, endHour] = rentInfo.timeSlot?.split('-') || [];
+  const rentEndTime = new Date(rentStartDate.setHours(endHour));
 
   const currentTime = new Date();
-  const rentEndTime = new Date(rentInfo.rentEndTime);
 
   const differenceInMillisecondsUntilRentEnd = rentEndTime - currentTime;
 
-  // Rent start and end time in hours and minutes
-  const startTimeHours = new Date(rentInfo.rentStartTime).getHours();
-  const startTimeMins = new Date(rentInfo.rentStartTime).getMinutes();
-  const endTimeHours = new Date(rentInfo.rentEndTime).getHours();
-  const endTimeMins = new Date(rentInfo.rentEndTime).getMinutes();
-
   const calculateTimerInfo = () => {
+    // Calculate the time until the rent starts
     const currentTime = new Date();
-    const rentStartTime = new Date(rentInfo.rentStartTime);
+    const rentStartTime = new Date(rentStartDate.setHours(startHour));
 
     const differenceInMillisecondsUntilRentStart = rentStartTime - currentTime;
     const remainingHoursUntilRentStart =
@@ -58,6 +59,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
     const hoursUntil = Math.round(remainingHoursUntilRentStart);
     const daysUntil = Math.round(differenceInDaysUntilRentStart);
 
+    // Set the timer info text
     let timerInfoText;
     if (differenceInDaysUntilRentStart >= 1) {
       timerInfoText = t('days_until', { daysUntil: daysUntil });
@@ -73,8 +75,17 @@ const RentInfoPage = ({ handleItemReturned }) => {
     setTimerInfoText(timerInfoText);
   };
 
+  const getRentInfo = async () => {
+    const { data } = await getRentById(id);
+    console.log('Rent info from API:', data);
+    setRentInfo(data);
+  };
+
   useEffect(() => {
-    getRentById('6567a6d129f728387bb27635');
+    getRentInfo();
+  }, []);
+
+  useEffect(() => {
     calculateTimerInfo();
     const interval = setInterval(() => {
       calculateTimerInfo();
@@ -83,7 +94,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [getRentById]);
 
   // Handles opening and closing modals
   const handleOpenModal = () => {
@@ -104,8 +115,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
 
   const rateItemPage = () => {
     toast.success(t('Tuote palautettu!'));
-    handleItemReturned();
-    navigate('/rate-item', { replace: true });
+    navigate(`/rate-item/${id}`, { replace: true });
   };
 
   const frontPage = () => {
@@ -154,6 +164,8 @@ const RentInfoPage = ({ handleItemReturned }) => {
     </div>
   );
 
+  if (error) return <h5>FETCH ERROR</h5>;
+
   return (
     <>
       <PopUpWarningModal
@@ -195,11 +207,10 @@ const RentInfoPage = ({ handleItemReturned }) => {
             </div>
             <div>
               <RentInfoCard
-                rentDate={rentInfo.rentDate}
-                rentStartTime={`${startTimeHours}:${startTimeMins}`}
-                rentEndTime={`${endTimeHours}:${endTimeMins}`}
-                itemType={rentInfo.itemType}
-                stationLocation={rentInfo.stationLocation}
+                rentDate={rentStartDate.toDateString()}
+                timeSlot={rentInfo.timeSlot}
+                itemType={rentInfo.product}
+                stationLocation={rentInfo.station}
               />
             </div>
           </Stack>
@@ -222,7 +233,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
           )}
         </Stack>
       </Container>
-      <GoogleMap stationLocation={rentInfo.stationLocation} />
+      <GoogleMap stationLocation={mockRentInfo.stationLocation} />
     </>
   );
 };
