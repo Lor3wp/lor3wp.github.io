@@ -11,6 +11,7 @@ import styles from '../css/RentInfoCard.module.css';
 import PropTypes from 'prop-types';
 import { PopUpInfoModal } from '../components/PopUpInfoModal';
 import { Trans, useTranslation } from 'react-i18next';
+import useApi from '../hooks/useApi';
 
 const RentInfoPage = ({ handleItemReturned }) => {
   const rentInfo = {
@@ -21,6 +22,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
     itemType: 'Peräkärry',
     stationLocation: 'Kivikon Sortti-asema',
   };
+  const { getRentById } = useApi();
 
   const [timeStarted, setTimeStarted] = useState(false);
   const [canCancelRent, setCanCancelRent] = useState(true);
@@ -72,6 +74,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
   };
 
   useEffect(() => {
+    getRentById('6567a6d129f728387bb27635');
     calculateTimerInfo();
     const interval = setInterval(() => {
       calculateTimerInfo();
