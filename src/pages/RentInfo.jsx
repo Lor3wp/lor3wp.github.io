@@ -42,7 +42,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
 
   const { t } = useTranslation();
   const { id } = useParams();
-  const { getRentById, deleteRent, error } = useApi();
+  const { getRentById, updateRent, deleteRent, error } = useApi();
 
   // Get rent date and apply the time slot to it
   const rentStartDate = new Date(rentInfo.date);
@@ -87,6 +87,12 @@ const RentInfoPage = ({ handleItemReturned }) => {
     try {
       setLoading(true);
       const { data } = await getRentById(id);
+      console.log('data', data);
+      if (data.isItemReturned === true) {
+        navigate('/', { replace: true });
+        return;
+      }
+
       setRentInfo(data);
       setLoading(false);
     } catch (err) {
@@ -127,13 +133,18 @@ const RentInfoPage = ({ handleItemReturned }) => {
     };
   }, []);
 
-  const rateItemPage = () => {
-    toast.success(t('Tuote palautettu!'));
-    handleItemReturned();
-    navigate(`/rate-item/${id}`, { replace: true });
+  const handleItemReturn = async () => {
+    try {
+      await updateRent(id, { isItemReturned: true });
+      handleItemReturned();
+      toast.success(t('Tuote palautettu!'));
+      navigate(`/rate-item/${id}`, { replace: true });
+    } catch (err) {
+      console.error('Rent status update error', err);
+    }
   };
 
-  const cancelRent = async () => {
+  const handleCancelRent = async () => {
     try {
       await deleteRent(id);
       toast.success(t('Varaus peruutettu!'));
@@ -210,7 +221,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
           timeStarted ? `${t('Ymmärrän')}` : `${t('Kyllä, poista varaus')}`
         }
         acceptButtonVariant={timeStarted ? 'success' : 'danger'}
-        onPrimaryButtonClick={timeStarted ? rateItemPage : cancelRent}
+        onPrimaryButtonClick={timeStarted ? handleItemReturn : handleCancelRent}
       />
       <PopUpInfoModal
         show={showInfoModal}
