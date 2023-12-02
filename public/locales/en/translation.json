@@ -175,6 +175,7 @@
   "Ole hyvä ja kirjoita palautetta ennen lähettämistä!": "Please write a feedback before sending it!",
   "Palaute lähetetty!": "Feedback sent!",
   "Lähetä": "Send",
+  "Palautteen lähettäminen epäonnistui!": "Failed to send feedback!",
 
   "Aloita varaus uudelleen.": "Start the booking again.",
   "rent_process_timer": "Time left to rent: {{minutes}}:{{seconds}}"

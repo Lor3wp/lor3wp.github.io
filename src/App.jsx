@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 
 function App() {
-  const [itemReturned, setItemReturned] = useState(true);
+  const [itemReturned, setItemReturned] = useState(false);
 
   const handleItemReturned = () => {
     setItemReturned(true);
@@ -56,7 +56,7 @@ function App() {
       />
       {itemReturned ? (
         <Route
-          path="/rate-item"
+          path="/rate-item/:id"
           element={
             <>
               <Header title={t('Palaute')} />

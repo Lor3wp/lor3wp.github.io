@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { CircularCountdownTimer } from '../components/CircularCountdownTimer';
-import { Container, Button, Stack } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/Stack';
 import { RentInfoCard } from '../components/RentInfoCard';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 import { applyVersionClass2, removeVersionClass2 } from '../utils/BodyVersion';
@@ -12,6 +14,7 @@ import PropTypes from 'prop-types';
 import { PopUpInfoModal } from '../components/PopUpInfoModal';
 import { Trans, useTranslation } from 'react-i18next';
 import useApi from '../hooks/useApi';
+import Spinner from 'react-bootstrap/Spinner';
 
 const RentInfoPage = ({ handleItemReturned }) => {
   const mockRentInfo = {
@@ -28,6 +31,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
   const [showModal, setShowModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [timerInfoText, setTimerInfoText] = useState('');
+  const [loading, setLoading] = useState(true);
   const [rentInfo, setRentInfo] = useState({
     timeSlot: 'Loading...',
     product: 'Loading...',
@@ -80,8 +84,15 @@ const RentInfoPage = ({ handleItemReturned }) => {
   };
 
   const getRentInfo = async () => {
-    const { data } = await getRentById(id);
-    setRentInfo(data);
+    try {
+      setLoading(true);
+      const { data } = await getRentById(id);
+      setRentInfo(data);
+      setLoading(false);
+    } catch (err) {
+      console.log('get rent info error:', err);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -128,7 +139,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
       toast.success(t('Varaus peruutettu!'));
       navigate('/', { replace: true });
     } catch (err) {
-      console.log(err);
+      console.log('cancel rent err:', err);
       toast.error(t('Varauksen peruutus epäonnistui!'));
     }
   };
@@ -174,7 +185,16 @@ const RentInfoPage = ({ handleItemReturned }) => {
     </div>
   );
 
-  if (error) return <h5>FETCH ERROR</h5>;
+  if (loading)
+    return (
+      <Spinner
+        style={{ marginTop: '5rem', color: '#008782' }}
+        animation="grow"
+      />
+    );
+
+  if (error)
+    return <h5 style={{ marginTop: '5rem' }}>{error.response.data.message}</h5>;
 
   return (
     <>
