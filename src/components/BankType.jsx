@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import BankButton from './BankButton';
 import styles from '../css/BankButton.module.css';
 
-const BankType = ({ gridName, title, arrayName, paymentName }) => {
+const BankType = ({ gridName, title, arrayName, paymentName, rentId }) => {
   return (
     <div className={styles.titleButtonContainer}>
       <h3>{title}</h3>
@@ -13,6 +13,7 @@ const BankType = ({ gridName, title, arrayName, paymentName }) => {
               logo={item.logo}
               bankName={item.bankName}
               key={item.bankName}
+              rentId={rentId}
             ></BankButton>
           </div>
         ))}
@@ -26,5 +27,6 @@ BankType.propTypes = {
   title: PropTypes.string,
   arrayName: PropTypes.array,
   paymentName: PropTypes.string,
+  rentId: PropTypes.string.isRequired,
 };
 export default BankType;
