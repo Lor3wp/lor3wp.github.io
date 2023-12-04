@@ -4,7 +4,7 @@ This is innovation project at Metropolia University Of Applied Sciences made for
 
 In this project we have improved usability, user interface and solved problems for exsisting trailer service.
 
-Made by: Pavel Kozyar, Henna Koli, Karoliina Multas and Ramiz Widad.
+Made by: [Lor3wp](https://github.com/Lor3wp), [HennaK1](https://github.com/HennaK1), [karoliam](https://github.com/karoliam), [ramizwd](https://github.com/ramizwd).
 
 ## Built with technologies
 
@@ -31,4 +31,4 @@ MongoDB.
 
 ## Authors
 
-Pavel Kozyar, Henna Koli, Karoliina Multas and Ramiz Widad.
+[Lor3wp](https://github.com/Lor3wp), [HennaK1](https://github.com/HennaK1), [karoliam](https://github.com/karoliam), [ramizwd](https://github.com/ramizwd).
