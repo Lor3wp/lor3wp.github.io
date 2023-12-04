@@ -32,3 +32,7 @@ MongoDB.
 ## Authors
 
 [Lor3wp](https://github.com/Lor3wp), [HennaK1](https://github.com/HennaK1), [karoliam](https://github.com/karoliam), [ramizwd](https://github.com/ramizwd).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/Lor3wp/lor3wp.github.io/blob/main/LICENSE) file for details.
