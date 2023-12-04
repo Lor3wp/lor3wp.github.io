@@ -6,6 +6,17 @@ In this project we have improved usability, user interface and solved problems f
 
 Made by: Pavel Kozyar, Henna Koli, Karoliina Multas and Ramiz Widad.
 
+## Built with technologies
+
+React, 
+Node.js, Express.js,
+Vite,
+Bootstrap,
+Html/Css,
+Npm,
+MongoDB.
+
+
 ## Screenshots of the web app
 
 
@@ -17,3 +28,7 @@ Made by: Pavel Kozyar, Henna Koli, Karoliina Multas and Ramiz Widad.
 
 
 <img width="981" alt="Näyttökuva 2023-12-4 kello 14 17 25" src="https://github.com/Lor3wp/lor3wp.github.io/assets/79135671/9c72fd1d-409c-4d8c-95d8-040191d84a80">
+
+## Authors
+
+Pavel Kozyar, Henna Koli, Karoliina Multas and Ramiz Widad.
