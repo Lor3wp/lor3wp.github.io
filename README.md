@@ -6,4 +6,4 @@ In this project we have improved usability, user interface and solved problems f
 
 Made by: Pavel Kozyar, Henna Koli, Karoliina Multas and Ramiz Widad.
 
-![My Image](../assets/hsy_logo.png)
+![My Image](..src/assets/hsy_logo.png)
