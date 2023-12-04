@@ -73,7 +73,10 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
   };
 
   const handleOpenWarningModal = () => {
-    setShowWarningModal(true);
+    // if a station is not selected and user clicks cancel, nav to front page
+    stationsData.map((station) => station.selected).some((checked) => checked)
+      ? setShowWarningModal(true)
+      : frontPage();
   };
 
   const handleSelectAll = () => {
@@ -87,8 +90,6 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
 
   // handling the checkbox changes for a specific station
   const handleCheckbox = (index) => {
-    if (allSelected) return;
-
     const updatedStations = [...stationsData];
     updatedStations[index].selected = !updatedStations[index].selected;
     setStationsData(updatedStations);

@@ -40,7 +40,6 @@ const ProductAndTime = ({
 
   const navigate = useNavigate();
 
-  // TODO: Where do we need that? Seems unnecessary.
   for (let i = 1; i < 4; i++) {
     const randomDate = new Date(currentYear, currentMonth, currentDay + i);
     futureDates.push(randomDate);

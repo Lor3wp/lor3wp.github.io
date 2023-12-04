@@ -16,11 +16,9 @@ import cargo_bike_icon from '../assets/cargobike.svg';
 import trailer_icon from '../assets/trailer.svg';
 import { useTranslation } from 'react-i18next';
 
-//TODO: change icon depending on the item type
 export const RentInfoCard = ({
   rentDate,
-  rentStartTime,
-  rentEndTime,
+  timeSlot,
   itemType,
   stationLocation,
 }) => {
@@ -72,7 +70,7 @@ export const RentInfoCard = ({
             <Calendar2Event className={styles.icons} /> {rentDate}
           </ListGroup.Item>
           <ListGroup.Item>
-            <ClockFill className={styles.icons} /> {rentStartTime}-{rentEndTime}
+            <ClockFill className={styles.icons} /> {timeSlot}
           </ListGroup.Item>
           <ListGroup.Item className={styles.rentItem}>
             <img
@@ -81,7 +79,7 @@ export const RentInfoCard = ({
               alt="item icon"
               className={styles.itemIcon}
             />{' '}
-            {itemType}
+            {itemType === 'bike' ? t('Laatikkopyörä') : t('Peräkärry')}
           </ListGroup.Item>
           <ListGroup.Item>
             <GeoAltFill className={styles.icons} /> {stationLocation}
@@ -99,8 +97,7 @@ export const RentInfoCard = ({
 
 RentInfoCard.propTypes = {
   rentDate: PropTypes.instanceOf(Date).isRequired,
-  rentStartTime: PropTypes.instanceOf(Date).isRequired,
-  rentEndTime: PropTypes.instanceOf(Date).isRequired,
+  timeSlot: PropTypes.string.isRequired,
   itemType: PropTypes.string.isRequired,
   stationLocation: PropTypes.string.isRequired,
 };

@@ -5,7 +5,7 @@ import PopUpWarningModal from '../components/PopUpWarningModal';
 import { useNavigate } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 
-const BankButton = ({ logo, bankName }) => {
+const BankButton = ({ logo, bankName, rentId }) => {
   const [showWarningModal, setShowWarningModal] = useState(false);
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const BankButton = ({ logo, bankName }) => {
     if (bankName === 'HSY') {
       handleOpenWarningModal();
     } else {
-      navigate('/rent-successful');
+      navigate(`/rent-successful/${rentId}`);
     }
   };
 
@@ -68,6 +68,7 @@ const BankButton = ({ logo, bankName }) => {
 BankButton.propTypes = {
   logo: PropTypes.any.isRequired,
   bankName: PropTypes.string,
+  rentId: PropTypes.string.isRequired,
 };
 
 export default BankButton;

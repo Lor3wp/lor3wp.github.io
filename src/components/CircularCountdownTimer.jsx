@@ -1,6 +1,5 @@
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import Container from 'react-bootstrap/Container';
-import { DEFAULT_TIME_DURATION } from '../utils/constants';
 import styles from '../css/CircularCountdownTimer.module.css';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
@@ -22,7 +21,7 @@ const formatRemainingTime = (remainingTime) => {
 export const CircularCountdownTimer = ({
   isPlaying = false,
   timerInfoText,
-  duration = DEFAULT_TIME_DURATION,
+  duration,
   timerText,
 }) => {
   const { t } = useTranslation();

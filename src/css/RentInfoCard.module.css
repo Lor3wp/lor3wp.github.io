@@ -30,7 +30,7 @@
 .btn {
   align-self: center;
   text-align: center;
-  width: 30em;
+  width: 30rem;
 }
 
 .infoContainer {
@@ -65,6 +65,9 @@ iFrame {
   }
   .cancelRentButton {
     width: 40%;
+  }
+  .btn {
+    width: 100%;
   }
   iFrame {
     width: 90%;

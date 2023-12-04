@@ -92,6 +92,7 @@ form {
   }
   .buttonsContainer {
     width: 100vw;
+    justify-content: space-around;
   }
   .leftButtons {
     margin-right: 0;

@@ -33,6 +33,11 @@ const RentProcessPage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 820);
   const [showWarningModal, setShowWarningModal] = useState(false);
 
+  // TODO: get the id from the response when the user has made a reservation
+  const mockRentData = {
+    id: '656b748c53fce92af70b34f4',
+  };
+
   const [reservationDeadline, setReservationDeadline] = useState(
     calculateReservationDeadline(),
   );
@@ -133,24 +138,28 @@ const RentProcessPage = () => {
     return (
       <div className={styles.bankContainer}>
         <BankType
+          rentId={mockRentData.id}
           gridName={styles.mobileGrid}
           title={t('Mobiilimaksutavat')}
           arrayName={mobileBanks}
           paymentName={styles.mobilePayment}
         />
         <BankType
+          rentId={mockRentData.id}
           gridName={styles.cardGrid}
           title={t('Korttimaksutavat')}
           arrayName={cardPayments}
           paymentName={styles.cardPayment}
         />
         <BankType
+          rentId={mockRentData.id}
           gridName={styles.bankGrid}
           title={t('Pankkimaksutavat')}
           arrayName={bankPayments}
           paymentName={styles.bankPayment}
         />
         <BankType
+          rentId={mockRentData.id}
           gridName={styles.irlGrid}
           title={t('Maksu paikan päällä')}
           arrayName={irlPayments}

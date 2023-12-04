@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import FrontPage from './pages/FrontPage';
 import RentInfoPage from './pages/RentInfo';
 import NotFoundPage from './pages/NotFound';
@@ -12,22 +11,16 @@ import './App.css';
 import './theme.css';
 import { StepperProvider } from './context/StepperContext';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 function App() {
-  // TODO: Set to false when backend is ready
-  const [rentSuccessful, setRentSuccessful] = useState(true);
-  const [itemReturned, setItemReturned] = useState(true);
-
-  const { t } = useTranslation();
-
-  // TODO: Pass this down when the backend is ready
-  const handleSuccessfulRent = () => {
-    setRentSuccessful(true);
-  };
+  const [itemReturned, setItemReturned] = useState(false);
 
   const handleItemReturned = () => {
     setItemReturned(true);
   };
+
+  const { t } = useTranslation();
 
   return (
     <Routes>
@@ -43,35 +36,27 @@ function App() {
           </>
         }
       />
-      {rentSuccessful ? (
-        <Route
-          path="/rent-successful"
-          element={
-            <>
-              <Header title={t('Peräkärryn vuokraus')} />
-              <SuccessfulRentalPage />
-            </>
-          }
-        />
-      ) : (
-        <Route path="*" element={<Navigate to="/" />} />
-      )}
+      <Route
+        path="/rent-successful/:id"
+        element={
+          <>
+            <Header title={t('Peräkärryn vuokraus')} />
+            <SuccessfulRentalPage />
+          </>
+        }
+      />
+      <Route
+        path="/rent-info/:id"
+        element={
+          <>
+            <Header title={t('Varauksen tiedot')} />
+            <RentInfoPage handleItemReturned={handleItemReturned} />
+          </>
+        }
+      />
       {itemReturned ? (
         <Route
-          path="/rent-info"
-          element={
-            <>
-              <Header title={t('Varauksen tiedot')} />
-              <RentInfoPage handleItemReturned={handleItemReturned} />
-            </>
-          }
-        />
-      ) : (
-        <Route path="*" element={<Navigate to="/" />} />
-      )}
-      {itemReturned ? (
-        <Route
-          path="/rate-item"
+          path="/rate-item/:id"
           element={
             <>
               <Header title={t('Palaute')} />
@@ -82,6 +67,7 @@ function App() {
       ) : (
         <Route path="*" element={<Navigate to="/" />} />
       )}
+
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

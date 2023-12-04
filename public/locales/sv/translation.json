@@ -52,6 +52,7 @@
   "Maksaminen": "Betalning",
 
   "Peruuta varaus": "Säga upp din hyra",
+  "Varauksen peruutus epäonnistui!": "Hyressättningen misslyckades!",
   "Oletko varma, että haluat peruuttaa varauksen?": "Är du säker på att du vill säga upp din hyra?",
   "Haluatko varmasti poistua sivustolta?": "Är du säker på att du vill lämna sidan?",
   "Tekemiäsi muutoksia ei tallenneta.": "Dina ändringar kommer inte att sparas.",
@@ -144,6 +145,8 @@
   "successful_card_title": "Trailerbokning <1>framgångsrik!</1>",
   "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.": "Vi skickar instruktioner och en bokningsbekräftelse till dig via e-post.",
 
+  "Laatikkopyörä": "Lastcykel",
+  "Peräkärry": "Trailer",
   "Varauksesi": "Din bokning",
   "Alkaa": "Börjar vid",
   "Varauksesi alkaa pian!": "Din hyra kommer att börja snart!",
@@ -171,6 +174,7 @@
   "Ole hyvä ja kirjoita palautetta ennen lähettämistä!": "Vänligen skriv en feedback innan du skickar den!",
   "Palaute lähetetty!": "Feedback skickad!",
   "Lähetä": "Skicka",
+  "Palautteen lähettäminen epäonnistui!": "Misslyckades med att skicka feedback!",
 
   "Aloita varaus uudelleen.": "Starta bokningen igen.",
   "rent_process_timer": "Tid kvar till uthyrning: {{minutes}}:{{seconds}}"

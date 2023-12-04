@@ -52,6 +52,7 @@
   "Maksaminen": "Maksaminen",
 
   "Peruuta varaus": "Peruuta varaus",
+  "Varauksen peruutus epäonnistui!": "Varauksen peruutus epäonnistui!",
   "Oletko varma, että haluat peruuttaa varauksen?": "Oletko varma, että haluat peruuttaa varauksen?",
   "Haluatko varmasti poistua sivustolta?": "Haluatko varmasti poistua sivustolta?",
   "Tekemiäsi muutoksia ei tallenneta.": "Tekemiäsi muutoksia ei tallenneta.",
@@ -144,6 +145,8 @@
   "successful_card_title": "Peräkärryn varaus <1>onnistui!</1>",
   "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.": "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.",
 
+  "Laatikkopyörä": "Laatikkopyörä",
+  "Peräkärry": "Peräkärry",
   "Varauksesi": "Varauksesi",
   "Alkaa": "Alkaa",
   "Varauksesi alkaa pian!": "Varauksesi alkaa pian!",
@@ -171,6 +174,7 @@
   "Ole hyvä ja kirjoita palautetta ennen lähettämistä!": "Ole hyvä ja kirjoita palautetta ennen lähettämistä!",
   "Palaute lähetetty!": "Palaute lähetetty!",
   "Lähetä": "Lähetä",
+  "Palautteen lähettäminen epäonnistui!": "Palautteen lähettäminen epäonnistui!",
 
   "Aloita varaus uudelleen.": "Aloita varaus uudelleen.",
   "rent_process_timer": "Varausaikaa jäljellä: {{minutes}}:{{seconds}}"
