@@ -66,3 +66,21 @@
 .show > .btn-outline-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 135, 130, 0.5);
 }
+
+/* Checkbox */
+.form-check-input {
+  width: 19px;
+  height: 19px;
+  margin: 0px;
+  border: none;
+}
+.form-check-input:checked {
+  border-color: #008782;
+  background-color: #008782;
+}
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 135, 130, 0.5);
+}
+.form-check-input:not(:checked) {
+  border: 2px solid rgb(182, 182, 182);
+}

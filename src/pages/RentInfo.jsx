@@ -87,7 +87,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
     try {
       setLoading(true);
       const { data } = await getRentById(id);
-      console.log('data', data);
+
       if (data.isItemReturned === true) {
         navigate('/', { replace: true });
         return;
