@@ -35,7 +35,7 @@ const RentProcessPage = () => {
 
   // TODO: get the id from the response when the user has made a reservation
   const mockRentData = {
-    id: '656b748c53fce92af70b34f4',
+    id: '656e0884162df1917d30e826',
   };
 
   const [reservationDeadline, setReservationDeadline] = useState(
