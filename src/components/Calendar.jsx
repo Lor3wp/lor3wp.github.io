@@ -28,7 +28,9 @@ const RentCalendar = ({ futureDates, setSelectedDate }) => {
   };
 
   const handleChange = (date) => {
-    setSelectedDate(date);
+      date.setHours(date.getHours() + 12);
+      setSelectedDate(date);
+      console.log(date.getHours());
   };
 
 const tileDisabled = ({ date }) => {

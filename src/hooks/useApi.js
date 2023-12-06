@@ -49,6 +49,7 @@ const useApi = () => {
     try {
       const response = await postRequest(endpoint, data);
       handleApiSuccess(response);
+      return response;
     } catch (error) {
       handleApiError(error);
     }
@@ -57,6 +58,7 @@ const useApi = () => {
     try {
       const response = await deleteRequest(endpoint, uuid);
       handleApiSuccess(response);
+      return response;
     } catch (error) {
       handleApiError(error);
     }

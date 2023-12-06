@@ -40,9 +40,9 @@ const RentProcessPage = () => {
     calculateReservationDeadline(),
   );
 
-   const mockRentData = {
-     id: '656e0884162df1917d30e826',
-   };
+  const mockRentData = {
+    id: '656e0884162df1917d30e826',
+  };
 
   const { t } = useTranslation();
 
@@ -145,6 +145,7 @@ const RentProcessPage = () => {
           title={t('Mobiilimaksutavat')}
           arrayName={mobileBanks}
           paymentName={styles.mobilePayment}
+          randomUUID={randomUUID}
         />
         <BankType
           rentId={mockRentData.id}
@@ -152,6 +153,7 @@ const RentProcessPage = () => {
           title={t('Korttimaksutavat')}
           arrayName={cardPayments}
           paymentName={styles.cardPayment}
+          randomUUID={randomUUID}
         />
         <BankType
           rentId={mockRentData.id}
@@ -159,6 +161,7 @@ const RentProcessPage = () => {
           title={t('Pankkimaksutavat')}
           arrayName={bankPayments}
           paymentName={styles.bankPayment}
+          randomUUID={randomUUID}
         />
         <BankType
           rentId={mockRentData.id}
@@ -166,6 +169,7 @@ const RentProcessPage = () => {
           title={t('Maksu paikan päällä')}
           arrayName={irlPayments}
           paymentName={styles.irlPayment}
+          randomUUID={randomUUID}
         />
       </div>
     );
@@ -196,7 +200,6 @@ const RentProcessPage = () => {
             handleWarningModal={handleWarningModal}
             onSubmit={handleFormSubmit}
             onPrevStep={handlePrevStep}
-            randomUUID={randomUUID}
           />
         );
       case 3:
