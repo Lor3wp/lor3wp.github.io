@@ -8,6 +8,7 @@ import useApi from '../hooks/useApi';
 import { useStepper } from '../hooks/useStepper';
 const BankButton = ({ logo, bankName, rentId, randomUUID }) => {
   const [showWarningModal, setShowWarningModal] = useState(false);
+
   const navigate = useNavigate();
 
   const { t } = useTranslation();
@@ -33,11 +34,11 @@ const BankButton = ({ logo, bankName, rentId, randomUUID }) => {
         };
 
         const responce = await postRequest('add-reservation', bodyData);
-        console.log('BankButton.jsx 36', responce);
+        console.log('BankButton.jsx 36', responce.updatedReservation._id);
+        navigate(`/rent-successful/${responce.updatedReservation._id}`);
       } catch (error) {
         console.log(error);
       }
-      navigate(`/rent-successful/${rentId}`);
     }
   };
 
