@@ -4,8 +4,6 @@ import { errorHandling } from '../utils/errorHandling';
 import { postRequest, deleteRequest } from '../services/ApiServices';
 import { useNavigate } from 'react-router-dom';
 const useApi = () => {
-// TODO use ApiService.js 
-  /** 
   const [error, setError] = useState(null);
 
   const getRentById = async (rentId) => {
@@ -32,7 +30,6 @@ const useApi = () => {
     return await errorHandling(deleteRent, (err) => setError(err));
   };
 
-
   const navigate = useNavigate();
 
   const handleApiError = (error) => {
@@ -43,7 +40,6 @@ const useApi = () => {
   const handleApiSuccess = (response) => {
     console.log('API Response:', response);
   };
-  */
 
   const postApiRequest = async (endpoint, data) => {
     try {
@@ -65,8 +61,11 @@ const useApi = () => {
   return {
     postRequest: postApiRequest,
     deleteRequest: deleteApiRequest,
+    getRentById,
+    updateRent,
+    deleteRent,
+    error,
   };
-
-  // return {    getRentById, updateRent, deleteRent}
-
 };
+
+export default useApi;

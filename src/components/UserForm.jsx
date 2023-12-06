@@ -13,7 +13,7 @@ import PopUpWarningModal from '../components/PopUpWarningModal';
 import hsyLogo from '../assets/hsy_logo_dark.png';
 import { useStepper } from '../hooks/useStepper';
 import { useTranslation } from 'react-i18next';
-import { useApi } from '../hooks/useApi';
+import useApi from '../hooks/useApi';
 const UserForm = ({ onSubmit, onPrevStep }) => {
   const [validated, setValidated] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);

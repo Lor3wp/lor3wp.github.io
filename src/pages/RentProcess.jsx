@@ -40,6 +40,10 @@ const RentProcessPage = () => {
     calculateReservationDeadline(),
   );
 
+   const mockRentData = {
+     id: '656e0884162df1917d30e826',
+   };
+
   const { t } = useTranslation();
 
   function calculateReservationDeadline() {

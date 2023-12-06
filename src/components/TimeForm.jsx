@@ -12,7 +12,7 @@ import { ChevronCompactLeft } from 'react-bootstrap-icons';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
 import { useStepper } from '../hooks/useStepper';
 import { useTranslation } from 'react-i18next';
-import { useApi } from '../hooks/useApi';
+import useApi from '../hooks/useApi';
 // create random uuid for user identification in temporary reservation
 // fill with Date values to disable those dates from caledar
 const futureDates = [];

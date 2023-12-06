@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import style from '../css/TimeButton.module.css';
-import { useApi } from '../hooks/useApi';
+import useApi from '../hooks/useApi';
 import { useStepper } from '../hooks/useStepper';
 
 function TimePeriodButton({
