@@ -23,13 +23,32 @@
 #trailer {
   margin: 0 4px 0 4px;
   height: 24px;
-  margin: 0 4px 0 4px;
   width: 33px;
   filter: drop-shadow(3px 2px 3px rgb(0 0 0 / 0.2));
 }
 #stationCheckbox {
   margin-left: auto;
 }
+
+.stationListNote {
+  width: 50%;
+  color: gray;
+  font-size: 0.8rem;
+  font-family: sans-serif;
+  font-style: italic;
+}
+.allCheckboxContainer {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  margin-right: 1rem;
+  margin-top: 0.4rem;
+}
+
+.allCheckbox {
+  margin-left: 1rem;
+}
+
 .list-group-flush {
   margin-bottom: 2em !important;
   margin: 10rem;

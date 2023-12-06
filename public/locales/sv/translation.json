@@ -44,18 +44,25 @@
   "Varauksen tiedot": "Hyresuppgifter",
   "Palaute": "Återkoppling",
 
+  "Jos haluat nähdä, kuinka kaukana asemat ovat sijainnistasi, ota sijaintilupa käyttöön selaimessasi.": "För att se hur långt stationerna är från din plats, vänligen aktivera platsbehörighet i din webbläsare.",
   "Valitse asemat": "Välj stationer",
+  "Valitse kaikki asemat": "Välj alla stationer",
   "Tuotevalinta & Päivämäärä": "Val av produkt och datum",
   "Käyttäjän tiedot": "Användarinformation",
   "Maksaminen": "Betalning",
 
   "Peruuta varaus": "Säga upp din hyra",
+  "Varauksen peruutus epäonnistui!": "Hyressättningen misslyckades!",
   "Oletko varma, että haluat peruuttaa varauksen?": "Är du säker på att du vill säga upp din hyra?",
+  "Haluatko varmasti poistua sivustolta?": "Är du säker på att du vill lämna sidan?",
+  "Tekemiäsi muutoksia ei tallenneta.": "Dina ändringar kommer inte att sparas.",
   "Takaisin": "Tillbaka",
   "Kyllä": "Ja",
   "Peruuta": "Avbryt",
   "Edellinen": "Tidigare",
   "Valitse päivämäärä": "Välj ett datum",
+  "*harmaalla merkattuina päivinä ei ole vuokrattavia aikoja": "*det finns inga lediga tider att hyra de dagar markerade med grått",
+  "Valitse sinulle sopiva 3 tunnin vuokraus ajankohta tästä:": "Välj en 3-timmars tid som passar dig:",
   "Täytä henkilötiedot": "Fyll i din information",
   "Siirry maksamaan": "Gå till betalning",
   "Valitse vähintään yksi asema ennen kuin jatkat.": "Välj minst en station innan du fortsätter.",
@@ -138,6 +145,8 @@
   "successful_card_title": "Trailerbokning <1>framgångsrik!</1>",
   "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.": "Vi skickar instruktioner och en bokningsbekräftelse till dig via e-post.",
 
+  "Laatikkopyörä": "Lastcykel",
+  "Peräkärry": "Trailer",
   "Varauksesi": "Din bokning",
   "Alkaa": "Börjar vid",
   "Varauksesi alkaa pian!": "Din hyra kommer att börja snart!",
@@ -165,6 +174,7 @@
   "Ole hyvä ja kirjoita palautetta ennen lähettämistä!": "Vänligen skriv en feedback innan du skickar den!",
   "Palaute lähetetty!": "Feedback skickad!",
   "Lähetä": "Skicka",
+  "Palautteen lähettäminen epäonnistui!": "Misslyckades med att skicka feedback!",
 
   "Aloita varaus uudelleen.": "Starta bokningen igen.",
   "rent_process_timer": "Tid kvar till uthyrning: {{minutes}}:{{seconds}}"

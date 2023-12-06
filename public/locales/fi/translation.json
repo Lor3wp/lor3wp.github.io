@@ -44,13 +44,18 @@
   "Varauksen tiedot": "Varauksen tiedot",
   "Palaute": "Palaute",
 
+  "Jos haluat nähdä, kuinka kaukana asemat ovat sijainnistasi, ota sijaintilupa käyttöön selaimessasi.": "Jos haluat nähdä, kuinka kaukana asemat ovat sijainnistasi, ota sijaintilupa käyttöön selaimessasi.",
   "Valitse asemat": "Valitse asemat",
+  "Valitse kaikki asemat": "Valitse kaikki asemat",
   "Tuotevalinta & Päivämäärä": "Tuotevalinta & Päivämäärä",
   "Käyttäjän tiedot": "Käyttäjän tiedot",
   "Maksaminen": "Maksaminen",
 
   "Peruuta varaus": "Peruuta varaus",
+  "Varauksen peruutus epäonnistui!": "Varauksen peruutus epäonnistui!",
   "Oletko varma, että haluat peruuttaa varauksen?": "Oletko varma, että haluat peruuttaa varauksen?",
+  "Haluatko varmasti poistua sivustolta?": "Haluatko varmasti poistua sivustolta?",
+  "Tekemiäsi muutoksia ei tallenneta.": "Tekemiäsi muutoksia ei tallenneta.",
   "Takaisin": "Takaisin",
   "Kyllä": "Kyllä",
   "Peruuta": "Peruuta",
@@ -63,6 +68,8 @@
   "Valitse tuote": "Valitse tuote",
   "Tarvitsen adapterin": "Tarvitsen adapterin",
   "Valitse päivä": "Valitse päivä",
+  "*harmaalla merkittyinä päivinä ei ole vuokrattavia aikoja": "*harmaalla merkittyinä päivinä ei ole vuokrattavia aikoja",
+  "Valitse sinulle sopiva 3 tunnin vuokraus ajankohta tästä:": "Valitse sinulle sopiva 3 tunnin vuokraus ajankohta tästä:",
   "Vahvista": "Vahvista",
   "Sulje": "Sulje",
   "Ymmärrän": "Ymmärrän",
@@ -138,6 +145,8 @@
   "successful_card_title": "Peräkärryn varaus <1>onnistui!</1>",
   "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.": "Lähetimme sähköpostiisi ohjeet ja varausvahvistuksen.",
 
+  "Laatikkopyörä": "Laatikkopyörä",
+  "Peräkärry": "Peräkärry",
   "Varauksesi": "Varauksesi",
   "Alkaa": "Alkaa",
   "Varauksesi alkaa pian!": "Varauksesi alkaa pian!",
@@ -165,6 +174,7 @@
   "Ole hyvä ja kirjoita palautetta ennen lähettämistä!": "Ole hyvä ja kirjoita palautetta ennen lähettämistä!",
   "Palaute lähetetty!": "Palaute lähetetty!",
   "Lähetä": "Lähetä",
+  "Palautteen lähettäminen epäonnistui!": "Palautteen lähettäminen epäonnistui!",
 
   "Aloita varaus uudelleen.": "Aloita varaus uudelleen.",
   "rent_process_timer": "Varausaikaa jäljellä: {{minutes}}:{{seconds}}"

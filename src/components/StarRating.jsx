@@ -1,14 +1,7 @@
-import { useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 import PropTypes from 'prop-types';
 
-const StarRating = ({ className }) => {
-  const [setRating] = useState(0);
-
-  const handleRating = (rate) => {
-    setRating(rate);
-  };
-
+const StarRating = ({ className, handleRating }) => {
   return (
     <div className={className}>
       <Rating onClick={handleRating} />
@@ -18,6 +11,7 @@ const StarRating = ({ className }) => {
 
 StarRating.propTypes = {
   className: PropTypes.string,
+  handleRating: PropTypes.func,
 };
 
 export default StarRating;

@@ -258,8 +258,8 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
       <PopUpWarningModal
         show={showWarningModal}
         onHide={() => setShowWarningModal(false)}
-        title={t('Peruuta varaus')}
-        body={t('Oletko varma, että haluat peruuttaa varauksen?')}
+        title={t('Haluatko varmasti poistua sivustolta?')}
+        body={t('Tekemiäsi muutoksia ei tallenneta.')}
         backButton={t('Takaisin')}
         acceptButton={t('Kyllä')}
         acceptButtonVariant="danger"
@@ -362,7 +362,7 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
                 {t('Edellinen')}
               </Button>
               <Button variant="outline-danger" onClick={handleOpenWarningModal}>
-                Peruuta
+                {t('Peruuta')}
               </Button>
             </div>
             <Button type="submit" id="proceedToPaymentButton" size="lg">

@@ -136,24 +136,28 @@ const RentProcessPage = () => {
     return (
       <div className={styles.bankContainer}>
         <BankType
+          rentId={mockRentData.id}
           gridName={styles.mobileGrid}
           title={t('Mobiilimaksutavat')}
           arrayName={mobileBanks}
           paymentName={styles.mobilePayment}
         />
         <BankType
+          rentId={mockRentData.id}
           gridName={styles.cardGrid}
           title={t('Korttimaksutavat')}
           arrayName={cardPayments}
           paymentName={styles.cardPayment}
         />
         <BankType
+          rentId={mockRentData.id}
           gridName={styles.bankGrid}
           title={t('Pankkimaksutavat')}
           arrayName={bankPayments}
           paymentName={styles.bankPayment}
         />
         <BankType
+          rentId={mockRentData.id}
           gridName={styles.irlGrid}
           title={t('Maksu paikan päällä')}
           arrayName={irlPayments}

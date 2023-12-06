@@ -9,16 +9,53 @@ import { useNavigate } from 'react-router';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
 import { useStepper } from '../hooks/useStepper';
 import PopUpWarningModal from './PopUpWarningModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { getDistance } from 'geolib';
 
 const StationList = ({ onStationSelected, handleWarningModal }) => {
   const [showWarningModal, setShowWarningModal] = useState(false);
+  const [allSelected, setAllSelected] = useState(false);
+  const [userLocation, setUserLocation] = useState({});
+  const [distance, setDistance] = useState([]);
 
   const { stationsData, setStationsData } = useStepper();
   const { t } = useTranslation();
 
   const navigate = useNavigate();
+
+  // getting the user location and updating it every 5 seconds
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setUserLocation({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
+    });
+
+    const intervalId = setInterval(() => {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setUserLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      });
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  // calculating the distance between user and stations and converting it to km
+  useEffect(() => {
+    if (userLocation.latitude && userLocation.longitude) {
+      stationsData.forEach((location) => {
+        const distance = (getDistance(userLocation, location) / 1000).toFixed(
+          2,
+        );
+        setDistance((prev) => [...prev, distance]);
+      });
+    }
+  }, [userLocation]);
 
   // handle the button click for selecting a station
   const handleSubmit = () => {
@@ -36,7 +73,19 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
   };
 
   const handleOpenWarningModal = () => {
-    setShowWarningModal(true);
+    // if a station is not selected and user clicks cancel, nav to front page
+    stationsData.map((station) => station.selected).some((checked) => checked)
+      ? setShowWarningModal(true)
+      : frontPage();
+  };
+
+  const handleSelectAll = () => {
+    setAllSelected(!allSelected);
+    const updatedStations = stationsData.map((station) => ({
+      ...station,
+      selected: !allSelected,
+    }));
+    setStationsData(updatedStations);
   };
 
   // handling the checkbox changes for a specific station
@@ -51,14 +100,22 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
       <PopUpWarningModal
         show={showWarningModal}
         onHide={() => setShowWarningModal(false)}
-        title={t('Peruuta varaus')}
-        body={t('Oletko varma, että haluat peruuttaa varauksen?')}
+        title={t('Haluatko varmasti poistua sivustolta?')}
+        body={t('Tekemiäsi muutoksia ei tallenneta.')}
         backButton={t('Takaisin')}
         acceptButton={t('Kyllä')}
         acceptButtonVariant="danger"
         onPrimaryButtonClick={frontPage}
       />
+
       <div className={styles.listContainer}>
+        {!distance.length && (
+          <span className={styles.stationListNote}>
+            {t(
+              'Jos haluat nähdä, kuinka kaukana asemat ovat sijainnistasi, ota sijaintilupa käyttöön selaimessasi.',
+            )}
+          </span>
+        )}
         <ListGroup variant="flush" className={styles.listElement}>
           {stationsData.map((station, index) => (
             <ListGroup.Item
@@ -68,36 +125,43 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
               <div className={styles.listitemContainer}>
                 <p className={styles.stationName}>{station.stationName}</p>
                 <div className={styles.rowContainer}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="bi bi-geo-alt-fill"
-                    viewBox="0 0 16 16"
-                    style={{
-                      marginRight: '4px',
-                      width: '17px',
-                      height: '24px',
-                      fill: '#AF3F32',
-                    }}
-                  >
-                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-                  </svg>
-                  <p id={styles.kilometers}>10 km</p>
-                  {station.trailer && (
-                    <img
-                      src={Trailer}
-                      alt="trailer icon"
-                      id={styles.trailer}
-                      draggable={false}
-                    />
+                  {distance[index] && (
+                    <>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="bi bi-geo-alt-fill"
+                        viewBox="0 0 16 16"
+                        style={{
+                          marginRight: '4px',
+                          width: '17px',
+                          height: '24px',
+                          fill: '#AF3F32',
+                        }}
+                      >
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                      </svg>
+
+                      <p id={styles.kilometers}>{distance[index]} km</p>
+                    </>
                   )}
-                  {station.cargoBike && (
-                    <img
-                      src={Bike}
-                      alt="cargo bike icon"
-                      id={styles.cargobike}
-                      draggable={false}
-                    />
-                  )}
+                  <div>
+                    {station.trailer && (
+                      <img
+                        src={Trailer}
+                        alt="trailer icon"
+                        id={styles.trailer}
+                        draggable={false}
+                      />
+                    )}
+                    {station.cargoBike && (
+                      <img
+                        src={Bike}
+                        alt="cargo bike icon"
+                        id={styles.cargobike}
+                        draggable={false}
+                      />
+                    )}
+                  </div>
                   <Checkbox
                     onChange={() => handleCheckbox(index)}
                     value="station"
@@ -111,6 +175,17 @@ const StationList = ({ onStationSelected, handleWarningModal }) => {
             </ListGroup.Item>
           ))}
         </ListGroup>
+        <dev className={styles.allCheckboxContainer}>
+          <p>{t('Valitse kaikki asemat')}</p>
+          <Checkbox
+            onChange={handleSelectAll}
+            value="all"
+            checked={allSelected}
+            isRequired={false}
+            id={styles.allCheckbox}
+            className={styles.allCheckbox}
+          />
+        </dev>
         <div className={styles.buttonsContainer}>
           <Button variant="outline-danger" onClick={handleOpenWarningModal}>
             {t('Peruuta')}

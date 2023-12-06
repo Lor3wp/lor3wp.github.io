@@ -1,24 +1,27 @@
 import { useState, useEffect } from 'react';
 import { CircularCountdownTimer } from '../components/CircularCountdownTimer';
-import { Container, Button, Stack } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/Stack';
 import { RentInfoCard } from '../components/RentInfoCard';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 import { applyVersionClass2, removeVersionClass2 } from '../utils/BodyVersion';
 import GoogleMap from '../components/GoogleMaps';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import styles from '../css/RentInfoCard.module.css';
 import PropTypes from 'prop-types';
 import { PopUpInfoModal } from '../components/PopUpInfoModal';
 import { Trans, useTranslation } from 'react-i18next';
+import useApi from '../hooks/useApi';
+import Spinner from 'react-bootstrap/Spinner';
 
-// TODO: Timer circle restarting from the beginning if page refreshed
 const RentInfoPage = ({ handleItemReturned }) => {
-  const rentInfo = {
+  const mockRentInfo = {
     rentDate: '2023-09-17',
     //rentStartTime: new Date(),
-    rentStartTime: '2023-11-26T22:00:00',
-    rentEndTime: '2023-11-26T07:00:00',
+    rentStartTime: '2023-12-01T18:07:00',
+    rentEndTime: '2023-12-01T23:01:00',
     itemType: 'Peräkärry',
     stationLocation: 'Kivikon Sortti-asema',
   };
@@ -28,56 +31,90 @@ const RentInfoPage = ({ handleItemReturned }) => {
   const [showModal, setShowModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [timerInfoText, setTimerInfoText] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [rentInfo, setRentInfo] = useState({
+    timeSlot: 'Loading...',
+    product: 'Loading...',
+    station: 'Loading...',
+  });
 
   const navigate = useNavigate();
 
   const { t } = useTranslation();
+  const { id } = useParams();
+  const { getRentById, updateRent, deleteRent, error } = useApi();
+
+  // Get rent date and apply the time slot to it
+  const rentStartDate = new Date(rentInfo.date);
+  const [startHour, endHour] = rentInfo.timeSlot?.split('-') || [];
+  const rentEndTime = new Date(rentStartDate.setHours(endHour));
 
   const currentTime = new Date();
-  const rentEndTime = new Date(rentInfo.rentEndTime);
 
   const differenceInMillisecondsUntilRentEnd = rentEndTime - currentTime;
 
-  // Rent start and end time in hours and minutes
-  const startTimeHours = new Date(rentInfo.rentStartTime).getHours();
-  const startTimeMins = new Date(rentInfo.rentStartTime).getMinutes();
-  const endTimeHours = new Date(rentInfo.rentEndTime).getHours();
-  const endTimeMins = new Date(rentInfo.rentEndTime).getMinutes();
+  const calculateTimerInfo = () => {
+    // Calculate the time until the rent starts
+    const currentTime = new Date();
+    const rentStartTime = new Date(rentStartDate.setHours(startHour));
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const currentTime = new Date();
-      const rentStartTime = new Date(rentInfo.rentStartTime);
+    const differenceInMillisecondsUntilRentStart = rentStartTime - currentTime;
+    const remainingHoursUntilRentStart =
+      differenceInMillisecondsUntilRentStart / (1000 * 60 * 60);
+    const differenceInDaysUntilRentStart =
+      differenceInMillisecondsUntilRentStart / (1000 * 60 * 60 * 24);
 
-      const differenceInMillisecondsUntilRentStart =
-        rentStartTime - currentTime;
-      const remainingHoursUntilRentStart =
-        differenceInMillisecondsUntilRentStart / (1000 * 60 * 60);
-      const differenceInDaysUntilRentStart =
-        differenceInMillisecondsUntilRentStart / (1000 * 60 * 60 * 24);
+    const hoursUntil = Math.round(remainingHoursUntilRentStart);
+    const daysUntil = Math.round(differenceInDaysUntilRentStart);
 
-      const hoursUntil = Math.round(remainingHoursUntilRentStart);
-      const daysUntil = Math.round(differenceInDaysUntilRentStart);
+    // Set the timer info text
+    let timerInfoText;
+    if (differenceInDaysUntilRentStart >= 1) {
+      timerInfoText = t('days_until', { daysUntil: daysUntil });
+    } else {
+      timerInfoText =
+        hoursUntil == 0
+          ? t('Varauksesi alkaa pian!')
+          : t('hours_until', { hoursUntil: hoursUntil });
+    }
 
-      let timerInfoText;
-      if (differenceInDaysUntilRentStart >= 1) {
-        timerInfoText = t('days_until', { daysUntil: daysUntil });
-      } else {
-        timerInfoText =
-          hoursUntil == 0
-            ? t('Varauksesi alkaa pian!')
-            : t('hours_until', { hoursUntil: hoursUntil });
+    setCanCancelRent(!(remainingHoursUntilRentStart <= 24));
+    setTimeStarted(currentTime.getTime() >= rentStartTime.getTime());
+    setTimerInfoText(timerInfoText);
+  };
+
+  const getRentInfo = async () => {
+    try {
+      setLoading(true);
+      const { data } = await getRentById(id);
+
+      if (data.isItemReturned === true) {
+        navigate('/', { replace: true });
+        return;
       }
 
-      setCanCancelRent(!(remainingHoursUntilRentStart <= 24));
-      setTimeStarted(currentTime.getTime() >= rentStartTime.getTime());
-      setTimerInfoText(timerInfoText);
+      setRentInfo(data);
+      setLoading(false);
+    } catch (err) {
+      console.log('get rent info error:', err);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getRentInfo();
+  }, []);
+
+  useEffect(() => {
+    calculateTimerInfo();
+    const interval = setInterval(() => {
+      calculateTimerInfo();
     }, 1000);
 
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [getRentById]);
 
   // Handles opening and closing modals
   const handleOpenModal = () => {
@@ -96,15 +133,26 @@ const RentInfoPage = ({ handleItemReturned }) => {
     };
   }, []);
 
-  const rateItemPage = () => {
-    toast.success(t('Tuote palautettu!'));
-    handleItemReturned();
-    navigate('/rate-item', { replace: true });
+  const handleItemReturn = async () => {
+    try {
+      await updateRent(id, { isItemReturned: true });
+      handleItemReturned();
+      toast.success(t('Tuote palautettu!'));
+      navigate(`/rate-item/${id}`, { replace: true });
+    } catch (err) {
+      console.error('Rent status update error', err);
+    }
   };
 
-  const frontPage = () => {
-    toast.success(t('Varaus peruutettu!'));
-    navigate('/', { replace: true });
+  const handleCancelRent = async () => {
+    try {
+      await deleteRent(id);
+      toast.success(t('Varaus peruutettu!'));
+      navigate('/', { replace: true });
+    } catch (err) {
+      console.log('cancel rent err:', err);
+      toast.error(t('Varauksen peruutus epäonnistui!'));
+    }
   };
 
   // Warning popup modal
@@ -120,7 +168,6 @@ const RentInfoPage = ({ handleItemReturned }) => {
     <p>{t('Oletko varma, että haluat peruuttaa varauksen?')}</p>
   );
 
-  // TODO: Change the text to be more informative
   const infoModalBodyContent = (
     <div>
       <p>
@@ -149,6 +196,17 @@ const RentInfoPage = ({ handleItemReturned }) => {
     </div>
   );
 
+  if (loading)
+    return (
+      <Spinner
+        style={{ marginTop: '5rem', color: '#008782' }}
+        animation="grow"
+      />
+    );
+
+  if (error)
+    return <h5 style={{ marginTop: '5rem' }}>{error.response.data.message}</h5>;
+
   return (
     <>
       <PopUpWarningModal
@@ -163,7 +221,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
           timeStarted ? `${t('Ymmärrän')}` : `${t('Kyllä, poista varaus')}`
         }
         acceptButtonVariant={timeStarted ? 'success' : 'danger'}
-        onPrimaryButtonClick={timeStarted ? rateItemPage : frontPage}
+        onPrimaryButtonClick={timeStarted ? handleItemReturn : handleCancelRent}
       />
       <PopUpInfoModal
         show={showInfoModal}
@@ -190,11 +248,13 @@ const RentInfoPage = ({ handleItemReturned }) => {
             </div>
             <div>
               <RentInfoCard
-                rentDate={rentInfo.rentDate}
-                rentStartTime={`${startTimeHours}:${startTimeMins}`}
-                rentEndTime={`${endTimeHours}:${endTimeMins}`}
-                itemType={rentInfo.itemType}
-                stationLocation={rentInfo.stationLocation}
+                rentDate={
+                  (!isNaN(rentStartDate) && rentStartDate.toDateString()) ||
+                  'Loading...'
+                }
+                timeSlot={rentInfo.timeSlot}
+                itemType={rentInfo.product}
+                stationLocation={rentInfo.station}
               />
             </div>
           </Stack>
@@ -217,7 +277,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
           )}
         </Stack>
       </Container>
-      <GoogleMap stationLocation={rentInfo.stationLocation} />
+      <GoogleMap stationLocation={mockRentInfo.stationLocation} />
     </>
   );
 };

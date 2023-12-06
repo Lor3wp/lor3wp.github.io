@@ -1,7 +1,38 @@
+import API from '../utils/axios';
+import { useState } from 'react';
+import { errorHandling } from '../utils/errorHandling';
 import { postRequest, deleteRequest } from '../services/ApiServices';
 import { useNavigate } from 'react-router-dom';
+const useApi = () => {
+// TODO use ApiService.js 
+  /** 
+  const [error, setError] = useState(null);
 
-export const useApi = () => {
+  const getRentById = async (rentId) => {
+    const fetchRent = async () => {
+      return await API.get(`reservation-info-by-id/${rentId}`);
+    };
+
+    return await errorHandling(fetchRent, (err) => setError(err));
+  };
+
+  const updateRent = async (rentId, data) => {
+    const updateRent = async () => {
+      return await API.put(`update-reservation/${rentId}`, data);
+    };
+
+    return await errorHandling(updateRent, (err) => setError(err));
+  };
+
+  const deleteRent = async (rentId) => {
+    const deleteRent = async () => {
+      return await API.delete(`delete-reservation/${rentId}`);
+    };
+
+    return await errorHandling(deleteRent, (err) => setError(err));
+  };
+
+
   const navigate = useNavigate();
 
   const handleApiError = (error) => {
@@ -12,6 +43,7 @@ export const useApi = () => {
   const handleApiSuccess = (response) => {
     console.log('API Response:', response);
   };
+  */
 
   const postApiRequest = async (endpoint, data) => {
     try {
@@ -34,4 +66,7 @@ export const useApi = () => {
     postRequest: postApiRequest,
     deleteRequest: deleteApiRequest,
   };
+
+  // return {    getRentById, updateRent, deleteRent}
+
 };
