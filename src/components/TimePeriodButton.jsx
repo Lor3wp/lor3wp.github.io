@@ -26,7 +26,7 @@ function TimePeriodButton({
         isAdapter: selectAdaptor,
       };
       const isEmptyField = Object.values(bodyData).some((value) => !value);
-      if (!isEmptyField) {
+      if (isEmptyField) {
         const response = await postRequest('add-temp-reservation', bodyData);
         console.log('TimePeriodButton.jsx 30 ', response);
       }
