@@ -4,17 +4,39 @@ import { useState } from 'react';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 import { useNavigate } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
-
-const BankButton = ({ logo, bankName, rentId }) => {
+import useApi from '../hooks/useApi';
+// import { useStepper } from '../hooks/useStepper';
+const BankButton = ({ logo, bankName, rentId, randomUUID }) => {
   const [showWarningModal, setShowWarningModal] = useState(false);
   const navigate = useNavigate();
 
   const { t } = useTranslation();
+  // const { userData } = useStepper();
+  // const { postRequest } = useApi();
 
-  const handleClick = (bankName) => {
+  const handleClick = async (bankName) => {
     if (bankName === 'HSY') {
       handleOpenWarningModal();
     } else {
+      // try {
+      //   const bodyData = {
+      //     customerInfo: {
+      //       name: userData.firstName,
+      //       lastName: userData.lastName,
+      //       phoneNumber: userData.phoneNumber,
+      //       email: userData.emailAddress,
+      //       address: userData.streetName,
+      //       zipCode: userData.postalCode,
+      //       city: userData.cityName,
+      //     },
+      //     uuid: randomUUID,
+      //   };
+
+      //   const responce = await postRequest('add-reservation', bodyData);
+      //   console.log('BankButton.jsx 36', responce);
+      // } catch (error) {
+      //   console.log(error);
+      // }
       navigate(`/rent-successful/${rentId}`);
     }
   };
@@ -69,6 +91,7 @@ BankButton.propTypes = {
   logo: PropTypes.any.isRequired,
   bankName: PropTypes.string,
   rentId: PropTypes.string.isRequired,
+  randomUUID: PropTypes.string.isRequired,
 };
 
 export default BankButton;

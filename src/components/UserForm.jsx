@@ -13,7 +13,6 @@ import PopUpWarningModal from '../components/PopUpWarningModal';
 import hsyLogo from '../assets/hsy_logo_dark.png';
 import { useStepper } from '../hooks/useStepper';
 import { useTranslation } from 'react-i18next';
-import useApi from '../hooks/useApi';
 const UserForm = ({ onSubmit, onPrevStep }) => {
   const [validated, setValidated] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
@@ -31,10 +30,8 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
     setUserData,
     acceptTerms,
     setAcceptTerms,
-    randomUUID,
   } = useStepper();
 
-  const { postRequest } = useApi();
   const { t } = useTranslation();
 
   const navigate = useNavigate();
@@ -187,27 +184,6 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
       postalCode: submitEvent.elements.postalCode.value,
       cityName: submitEvent.elements.cityName.value,
     });
-
-    try {
-      const bodyData = {
-        customerInfo: {
-          name: submitEvent.elements.firstName.value,
-          lastName: submitEvent.elements.lastName.value,
-          phoneNumber: submitEvent.elements.phoneNumber.value,
-          email: submitEvent.elements.emailAddress.value,
-          addres: submitEvent.elements.streetName.value,
-          zipCode: submitEvent.elements.postalCode.value,
-          city: submitEvent.elements.cityName.value,
-        },
-        idPrepaid: false,
-        uuid: randomUUID,
-      };
-
-      const responce = await postRequest('add-reservation', bodyData);
-      console.log('UserForm.jsx 209', responce);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const handleOpenTosModal = () => {
@@ -380,7 +356,6 @@ UserForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   handleInfoModal: PropTypes.func,
   onPrevStep: PropTypes.func.isRequired,
-  randomUUID: PropTypes.string.isRequired,
 };
 
 export default UserForm;
