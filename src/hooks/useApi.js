@@ -1,4 +1,4 @@
-import { postRequest } from '../services/ApiServices';
+import { postRequest, deleteRequest } from '../services/ApiServices';
 import { useNavigate } from 'react-router-dom';
 
 export const useApi = () => {
@@ -21,8 +21,17 @@ export const useApi = () => {
       handleApiError(error);
     }
   };
+  const deleteApiRequest = async (endpoint, uuid) => {
+    try {
+      const response = await deleteRequest(endpoint, uuid);
+      handleApiSuccess(response);
+    } catch (error) {
+      handleApiError(error);
+    }
+  };
 
   return {
     postRequest: postApiRequest,
+    deleteRequest: deleteApiRequest,
   };
 };

@@ -12,23 +12,23 @@ function TimePeriodButton({
   randomUUID,
 }) {
   const { postRequest } = useApi();
-  const { selectedDate, selectedProduct, isAdapter } = useStepper();
+  const { selectedDate, selectedProduct, selectAdaptor } = useStepper();
 
   const handleClick = async () => {
     setSelectedTime(stationName, buttonText);
     try {
       const bodyData = {
-        isAdapter: false,
         uuid: randomUUID,
         station: stationName,
         timeSlot: buttonText,
         product: selectedProduct,
         date: selectedDate,
+        isAdapter: selectAdaptor,
       };
       const isEmptyField = Object.values(bodyData).some((value) => !value);
       if (!isEmptyField) {
         const response = await postRequest('add-temp-reservation', bodyData);
-        console.log('api response: ', response);
+        console.log('TimePeriodButton.jsx 30 ', response);
       }
     } catch (error) {
       console.error('api error: ', error);

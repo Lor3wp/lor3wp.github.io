@@ -25,14 +25,17 @@ import styles from '../css/BankButton.module.css';
 import BankType from '../components/BankType';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 import { useTranslation } from 'react-i18next';
-
+import { v4 as uuidv4 } from 'uuid';
 const RentProcessPage = () => {
   const countdownDuration = 20 * 60 * 1000;
 
   const [activeStep, setActiveStep] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 820);
   const [showWarningModal, setShowWarningModal] = useState(false);
-
+  const [randomUUID, setRandomUUID] = useState('');
+  useEffect(() => {
+    setRandomUUID(uuidv4());
+  }, []);
   const [reservationDeadline, setReservationDeadline] = useState(
     calculateReservationDeadline(),
   );
@@ -176,6 +179,7 @@ const RentProcessPage = () => {
             handleWarningModal={handleWarningModal}
             onProductAndTimeSelected={handleProductAndTimeSelected}
             onPrevStep={handlePrevStep}
+            randomUUID={randomUUID}
           />
         );
       case 2:
@@ -184,6 +188,7 @@ const RentProcessPage = () => {
             handleWarningModal={handleWarningModal}
             onSubmit={handleFormSubmit}
             onPrevStep={handlePrevStep}
+            randomUUID={randomUUID}
           />
         );
       case 3:
