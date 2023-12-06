@@ -26,7 +26,7 @@ import BankType from '../components/BankType';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
-const RentProcessPage = async () => {
+const RentProcessPage = () => {
   const countdownDuration = 20 * 60 * 1000;
 
   const [activeStep, setActiveStep] = useState(0);

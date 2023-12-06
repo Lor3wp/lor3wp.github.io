@@ -174,7 +174,7 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
     navigate('/', { replace: true });
   };
 
-  const handleConfirmRentInfo = async () => {
+  const handleConfirmRentInfo = () => {
     onSubmit({
       firstName: submitEvent.elements.firstName.value,
       lastName: submitEvent.elements.lastName.value,
