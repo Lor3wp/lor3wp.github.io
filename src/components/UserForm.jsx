@@ -14,7 +14,7 @@ import hsyLogo from '../assets/hsy_logo_dark.png';
 import { useStepper } from '../hooks/useStepper';
 import { useTranslation } from 'react-i18next';
 import useApi from '../hooks/useApi';
-const UserForm = ({ onSubmit, onPrevStep }) => {
+const UserForm = ({ onSubmit, onPrevStep, randomUUID }) => {
   const [validated, setValidated] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [showWarningModal, setShowWarningModal] = useState(false);
@@ -31,7 +31,6 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
     setUserData,
     acceptTerms,
     setAcceptTerms,
-    randomUUID,
   } = useStepper();
 
   const { postRequest } = useApi();
@@ -202,7 +201,7 @@ const UserForm = ({ onSubmit, onPrevStep }) => {
         idPrepaid: false,
         uuid: randomUUID,
       };
-
+      console.log(bodyData);
       const responce = await postRequest('add-reservation', bodyData);
       console.log('UserForm.jsx 209', responce);
     } catch (error) {

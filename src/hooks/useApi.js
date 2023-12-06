@@ -1,7 +1,11 @@
 import API from '../utils/axios';
 import { useState } from 'react';
 import { errorHandling } from '../utils/errorHandling';
-import { postRequest, deleteRequest } from '../services/ApiServices';
+import {
+  postRequest,
+  deleteRequest,
+  getRequest,
+} from '../services/ApiServices';
 import { useNavigate } from 'react-router-dom';
 const useApi = () => {
   const [error, setError] = useState(null);
@@ -58,9 +62,21 @@ const useApi = () => {
     }
   };
 
+  const getApiRequest = async (endpoint, queryParams) => {
+    try {
+      const response = await getRequest(endpoint, queryParams);
+      handleApiSuccess(response);
+      return response; // Return the response if needed in the calling code
+    } catch (error) {
+      handleApiError(error);
+      throw error; // Re-throw the error to propagate it to the calling code
+    }
+  };
+
   return {
     postRequest: postApiRequest,
     deleteRequest: deleteApiRequest,
+    getRequest: getApiRequest,
     getRentById,
     updateRent,
     deleteRent,

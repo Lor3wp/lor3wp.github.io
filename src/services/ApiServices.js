@@ -29,3 +29,25 @@ export const deleteRequest = async (endpoint, uuid) => {
 
   return response.json();
 };
+
+export const getRequest = async (endpoint, queryParams = {}) => {
+  const url = new URL(`${API_BASE_URL}${endpoint}`);
+
+  // Append query parameters to the URL
+  Object.keys(queryParams).forEach((key) =>
+    url.searchParams.append(key, queryParams[key]),
+  );
+
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  return response.json();
+};

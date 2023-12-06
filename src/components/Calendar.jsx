@@ -31,11 +31,13 @@ const RentCalendar = ({ futureDates, setSelectedDate }) => {
     setSelectedDate(date);
   };
 
-  const tileDisabled = ({ date }) => {
-    return futureDates.some(
-      (disabledDate) => date.toDateString() === disabledDate.toDateString(),
-    );
-  };
+const tileDisabled = ({ date }) => {
+  return futureDates.some((disabledDate) => {
+    const disabledDateObject = new Date(disabledDate);
+    return date.toDateString() === disabledDateObject.toDateString();
+  });
+};
+
 
   const tileClassName = ({ date }) => {
     return tileDisabled({ date }) ? 'disabled-tile' : '';
