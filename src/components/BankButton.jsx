@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import useApi from '../hooks/useApi';
 import { useStepper } from '../hooks/useStepper';
-const BankButton = ({ logo, bankName, rentId, randomUUID }) => {
+const BankButton = ({ logo, bankName, randomUUID }) => {
   const [showWarningModal, setShowWarningModal] = useState(false);
 
   const navigate = useNavigate();
@@ -91,7 +91,6 @@ const BankButton = ({ logo, bankName, rentId, randomUUID }) => {
 BankButton.propTypes = {
   logo: PropTypes.any.isRequired,
   bankName: PropTypes.string,
-  rentId: PropTypes.string.isRequired,
   randomUUID: PropTypes.string.isRequired,
 };
 
