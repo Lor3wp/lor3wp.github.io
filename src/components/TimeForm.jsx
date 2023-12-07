@@ -87,6 +87,10 @@ const ProductAndTime = ({
 
   useEffect(() => {
     setStationAndTimeSelected(Object.keys(selectedStationAndTime).length !== 0);
+    console.log(
+      'SELECTED STATION AND TIME TimeForm',
+      Object.keys(selectedStationAndTime).length === 0,
+    );
   }, [selectedStationAndTime]);
 
   return (
@@ -103,15 +107,8 @@ const ProductAndTime = ({
       />
       <div className={rentStyle.rentBox}>
         <div className={rentStyle.productBox}>
-          {stationAndTimeSelected ? (
-            <SelectProduct
-              selectedStationAndTime={selectedStationAndTime}
-              randomUUID={randomUUID}
-            />
-          ) : (
-            <h5 style={{ marginTop: '2rem' }}>
-              {t('Valitse päivämäärä ja aikaväli')}
-            </h5>
+          {stationAndTimeSelected && (
+            <SelectProduct selectedStationAndTime={selectedStationAndTime} />
           )}
         </div>
         <hr />
@@ -128,7 +125,7 @@ const ProductAndTime = ({
         <hr className={rentStyle.hr} />
         <p>{t('Valitse sinulle sopiva 3 tunnin vuokraus ajankohta tästä:')}</p>
         <div className={rentStyle.selectTimeBox}>
-          {selectedDate ? (
+          {selectedDate &&
             stationsData.map((station) => {
               if (station.selected) {
                 return (
@@ -142,10 +139,7 @@ const ProductAndTime = ({
                   />
                 );
               }
-            })
-          ) : (
-            <h5 style={{ marginTop: '2rem' }}>{t('Valitse päivämäärä')}</h5>
-          )}
+            })}
         </div>
         <div className={rentStyle.buttonsContainer}>
           <div className={rentStyle.leftButtons}>

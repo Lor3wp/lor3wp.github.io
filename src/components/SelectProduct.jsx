@@ -14,7 +14,6 @@ const SelectProduct = ({
   selectedStationAndTime,
   setFutureDates,
   futureDates,
-  randomUUID,
 }) => {
   const {
     selectedProduct,
@@ -22,34 +21,14 @@ const SelectProduct = ({
     selectAdaptor,
     setSelectAdaptor,
     stationsData,
-    selectedDate,
   } = useStepper();
   const { getRequest } = useApi();
   const { t } = useTranslation();
   const [localFutureDates, setLocalFutureDates] = useState(futureDates);
   const [selectedStation, setSelectedStation] = useState([]);
 
-  const { postRequest } = useApi();
-
   const handleProductClick = async (product) => {
-    try {
-      const bodyData = {
-        uuid: randomUUID,
-        station: Object.keys(selectedStationAndTime)[0],
-        timeSlot: Object.values(selectedStationAndTime)[0],
-        product: product,
-        date: selectedDate,
-        isAdapter: selectAdaptor,
-      };
-      const isEmptyField = Object.values(bodyData).some((value) => !value);
-      if (isEmptyField) {
-        const response = await postRequest('add-temp-reservation', bodyData);
-        console.log('TimePeriodButton.jsx 30 ', response);
-      }
-    } catch (error) {
-      console.error('api error: ', error);
-    }
-
+    console.log('stationsdata', stationsData);
     stationsData.map((station) => {
       if (station.selected) {
         console.log('stations', station.stationName);
@@ -124,8 +103,6 @@ SelectProduct.propTypes = {
   stationName: PropTypes.string.isRequired,
   setFutureDates: PropTypes.func.isRequired,
   futureDates: PropTypes.array.isRequired,
-  randomUUID: PropTypes.string,
-  selectedStationAndTime: PropTypes.object,
 };
 
 export default SelectProduct;
