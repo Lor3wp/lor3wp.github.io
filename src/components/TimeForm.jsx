@@ -95,19 +95,9 @@ const ProductAndTime = ({
       />
       <div className={rentStyle.rentBox}>
         <div className={rentStyle.productBox}>
-          {stationsData.map((station) => {
-            if (station.selected) {
-              return (
+         
                 <SelectProduct
-                  stationName={station.stationName}
-                  setFutureDates={setFutureDates}
-                  futureDates={futureDates}
-                  key={station.stationName}
                 />
-              );
-            }
-            return null;
-          })}{' '}
         </div>
         <hr />
         <div className={rentStyle.calendarBox}>

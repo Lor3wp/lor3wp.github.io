@@ -277,7 +277,7 @@ const RentInfoPage = ({ handleItemReturned }) => {
           )}
         </Stack>
       </Container>
-      <GoogleMap stationLocation={mockRentInfo.stationLocation} />
+      <GoogleMap stationLocation={rentInfo.station} />
     </>
   );
 };

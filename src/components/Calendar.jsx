@@ -28,7 +28,7 @@ const RentCalendar = ({ futureDates, setSelectedDate }) => {
   };
 
   const handleChange = (date) => {
-      date.setHours(date.getHours() + 12);
+      date.setHours(date.getHours() + 3);
       setSelectedDate(date);
       console.log(date.getHours());
   };
