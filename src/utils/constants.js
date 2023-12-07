@@ -1,5 +1,3 @@
-const NODE_ENV = import.meta.env.NODE_ENV;
-const PUBLIC_DOMAIN = import.meta.env.VITE_PUBLIC_DOMAIN;
-const PUBLIC_PORT = import.meta.env.VITE_PUBLIC_PORT;
+const API_BASE_URL = 'https://hsytrailerapi.azurewebsites.net/api/';
 
-export { NODE_ENV, PUBLIC_DOMAIN, PUBLIC_PORT };
+export { API_BASE_URL };

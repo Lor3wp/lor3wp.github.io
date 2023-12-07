@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://hsytrailerapi.azurewebsites.net/api/';
+import { API_BASE_URL } from '../utils/constants';
 
 export const postRequest = async (endpoint, data) => {
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {

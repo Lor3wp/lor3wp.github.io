@@ -2,14 +2,7 @@ import PropTypes from 'prop-types';
 import BankButton from './BankButton';
 import styles from '../css/BankButton.module.css';
 
-const BankType = ({
-  gridName,
-  title,
-  arrayName,
-  paymentName,
-  rentId,
-  randomUUID,
-}) => {
+const BankType = ({ gridName, title, arrayName, paymentName, randomUUID }) => {
   return (
     <div className={styles.titleButtonContainer}>
       <h3>{title}</h3>
@@ -20,9 +13,8 @@ const BankType = ({
               logo={item.logo}
               bankName={item.bankName}
               key={item.bankName}
-              rentId={rentId}
               randomUUID={randomUUID}
-            ></BankButton>
+            />
           </div>
         ))}
       </div>

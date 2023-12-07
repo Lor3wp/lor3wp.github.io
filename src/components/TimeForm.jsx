@@ -58,6 +58,8 @@ const ProductAndTime = ({
     setShowWarningModal(true);
   };
 
+  console.log('SELECTED STATIONS', stationsData);
+
   // TODO add before unload delete temp reservation with uuid
   useEffect(() => {
     const sendDeleteRequestOnUnload = async () => {
@@ -81,6 +83,7 @@ const ProductAndTime = ({
       window.removeEventListener('beforeunload', sendDeleteRequestOnUnload);
     };
   }, []);
+
   return (
     <>
       <PopUpWarningModal
@@ -95,9 +98,7 @@ const ProductAndTime = ({
       />
       <div className={rentStyle.rentBox}>
         <div className={rentStyle.productBox}>
-         
-                <SelectProduct
-                />
+          <SelectProduct />
         </div>
         <hr />
         <div className={rentStyle.calendarBox}>
@@ -113,20 +114,21 @@ const ProductAndTime = ({
         <hr className={rentStyle.hr} />
         <p>{t('Valitse sinulle sopiva 3 tunnin vuokraus ajankohta tästä:')}</p>
         <div className={rentStyle.selectTimeBox}>
-          {stationsData.map((station) => {
-            if (station.selected) {
-              return (
-                <SelectTime
-                  randomUUID={randomUUID}
-                  timeSlots={station.timeSlots}
-                  setSelectedStationAndTime={setSelectedStationAndTime}
-                  selectedStationAndTime={selectedStationAndTime}
-                  stationName={station.stationName}
-                  key={station.stationName}
-                />
-              );
-            }
-          })}
+          {selectedDate &&
+            stationsData.map((station) => {
+              if (station.selected) {
+                return (
+                  <SelectTime
+                    randomUUID={randomUUID}
+                    timeSlots={station.timeSlots}
+                    setSelectedStationAndTime={setSelectedStationAndTime}
+                    selectedStationAndTime={selectedStationAndTime}
+                    stationName={station.stationName}
+                    key={station.stationName}
+                  />
+                );
+              }
+            })}
         </div>
         <div className={rentStyle.buttonsContainer}>
           <div className={rentStyle.leftButtons}>

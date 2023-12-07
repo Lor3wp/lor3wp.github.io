@@ -17,15 +17,6 @@ import useApi from '../hooks/useApi';
 import Spinner from 'react-bootstrap/Spinner';
 
 const RentInfoPage = ({ handleItemReturned }) => {
-  const mockRentInfo = {
-    rentDate: '2023-09-17',
-    //rentStartTime: new Date(),
-    rentStartTime: '2023-12-01T18:07:00',
-    rentEndTime: '2023-12-01T23:01:00',
-    itemType: 'Peräkärry',
-    stationLocation: 'Kivikon Sortti-asema',
-  };
-
   const [timeStarted, setTimeStarted] = useState(false);
   const [canCancelRent, setCanCancelRent] = useState(true);
   const [showModal, setShowModal] = useState(false);

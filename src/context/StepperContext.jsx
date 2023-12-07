@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 export const StepperContext = createContext();
 
 export const StepperProvider = ({ children }) => {
-  // TODO: Probably stations needs to be fetched from the backend at some point
   const [stationsData, setStationsData] = useState([
     {
       stationName: 'Ruskeasanta',

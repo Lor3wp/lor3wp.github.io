@@ -7,6 +7,7 @@ import {
   getRequest,
 } from '../services/ApiServices';
 import { useNavigate } from 'react-router-dom';
+
 const useApi = () => {
   const [error, setError] = useState(null);
 
