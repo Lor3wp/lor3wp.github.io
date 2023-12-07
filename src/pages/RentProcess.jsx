@@ -25,22 +25,24 @@ import styles from '../css/BankButton.module.css';
 import BankType from '../components/BankType';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 import { useTranslation } from 'react-i18next';
-
+import { v4 as uuidv4 } from 'uuid';
 const RentProcessPage = () => {
   const countdownDuration = 20 * 60 * 1000;
 
   const [activeStep, setActiveStep] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 820);
   const [showWarningModal, setShowWarningModal] = useState(false);
-
-  // TODO: get the id from the response when the user has made a reservation
-  const mockRentData = {
-    id: '656e0884162df1917d30e826',
-  };
-
+  const [randomUUID, setRandomUUID] = useState('');
+  useEffect(() => {
+    setRandomUUID(uuidv4());
+  }, []);
   const [reservationDeadline, setReservationDeadline] = useState(
     calculateReservationDeadline(),
   );
+
+  const mockRentData = {
+    id: '656e0884162df1917d30e826',
+  };
 
   const { t } = useTranslation();
 
@@ -143,6 +145,7 @@ const RentProcessPage = () => {
           title={t('Mobiilimaksutavat')}
           arrayName={mobileBanks}
           paymentName={styles.mobilePayment}
+          randomUUID={randomUUID}
         />
         <BankType
           rentId={mockRentData.id}
@@ -150,6 +153,7 @@ const RentProcessPage = () => {
           title={t('Korttimaksutavat')}
           arrayName={cardPayments}
           paymentName={styles.cardPayment}
+          randomUUID={randomUUID}
         />
         <BankType
           rentId={mockRentData.id}
@@ -157,6 +161,7 @@ const RentProcessPage = () => {
           title={t('Pankkimaksutavat')}
           arrayName={bankPayments}
           paymentName={styles.bankPayment}
+          randomUUID={randomUUID}
         />
         <BankType
           rentId={mockRentData.id}
@@ -164,6 +169,7 @@ const RentProcessPage = () => {
           title={t('Maksu paikan päällä')}
           arrayName={irlPayments}
           paymentName={styles.irlPayment}
+          randomUUID={randomUUID}
         />
       </div>
     );
@@ -185,6 +191,7 @@ const RentProcessPage = () => {
             handleWarningModal={handleWarningModal}
             onProductAndTimeSelected={handleProductAndTimeSelected}
             onPrevStep={handlePrevStep}
+            randomUUID={randomUUID}
           />
         );
       case 2:

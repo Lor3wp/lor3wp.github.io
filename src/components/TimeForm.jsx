@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import RentCalendar from '../components/Calendar';
 import SelectTime from '../components/SelectTime';
 import timeStyle from '../css/SelectTime.module.css';
@@ -12,12 +12,17 @@ import { ChevronCompactLeft } from 'react-bootstrap-icons';
 import { ChevronCompactRight } from 'react-bootstrap-icons';
 import { useStepper } from '../hooks/useStepper';
 import { useTranslation } from 'react-i18next';
-
+import useApi from '../hooks/useApi';
+// create random uuid for user identification in temporary reservation
+// fill with Date values to disable those dates from caledar
+const futureDates = [];
 const ProductAndTime = ({
   onProductAndTimeSelected,
   onPrevStep,
   handleWarningModal,
+  randomUUID,
 }) => {
+  const { deleteRequest } = useApi();
   const [showWarningModal, setShowWarningModal] = useState(false);
 
   const { t } = useTranslation();
@@ -31,19 +36,7 @@ const ProductAndTime = ({
     selectedProduct,
   } = useStepper();
 
-  // values will be used in future
-  const currentDate = new Date();
-  const currentMonth = currentDate.getMonth();
-  const currentYear = currentDate.getFullYear();
-  const currentDay = currentDate.getDate();
-  const futureDates = [];
-
   const navigate = useNavigate();
-
-  for (let i = 1; i < 4; i++) {
-    const randomDate = new Date(currentYear, currentMonth, currentDay + i);
-    futureDates.push(randomDate);
-  }
 
   // handling the button click for selecting a time and date
   const handleSubmit = () => {
@@ -66,6 +59,29 @@ const ProductAndTime = ({
     setShowWarningModal(true);
   };
 
+  // TODO add before unload delete temp reservation with uuid
+  useEffect(() => {
+    const sendDeleteRequestOnUnload = async () => {
+      window.addEventListener('beforeunload', async () => {
+        try {
+          const responce = await deleteRequest(
+            'delete-temp-reservation/',
+            randomUUID,
+          );
+          console.log('TimeForm.jsx 72 ', responce);
+        } catch (error) {
+          console.error('Error sending DELETE request:', error);
+        }
+      });
+    };
+
+    sendDeleteRequestOnUnload();
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('beforeunload', sendDeleteRequestOnUnload);
+    };
+  }, []);
   return (
     <>
       <PopUpWarningModal
@@ -100,6 +116,7 @@ const ProductAndTime = ({
             if (station.selected) {
               return (
                 <SelectTime
+                  randomUUID={randomUUID}
                   timeSlots={station.timeSlots}
                   setSelectedStationAndTime={setSelectedStationAndTime}
                   selectedStationAndTime={selectedStationAndTime}
@@ -134,6 +151,7 @@ ProductAndTime.propTypes = {
   onProductAndTimeSelected: PropTypes.func.isRequired,
   onPrevStep: PropTypes.func.isRequired,
   handleWarningModal: PropTypes.func,
+  randomUUID: PropTypes.string.isRequired,
 };
 
 export default ProductAndTime;

@@ -7,6 +7,7 @@ function SelectTime({
   setSelectedStationAndTime,
   stationName,
   timeSlots,
+  randomUUID,
 }) {
   const handleClick = (stationName, timeSlot) => {
     setSelectedStationAndTime({
@@ -16,6 +17,7 @@ function SelectTime({
 
   const itemElements = timeSlots.map((item, index) => (
     <TimePeriodButton
+      randomUUID={randomUUID}
       buttonText={item}
       setSelectedTime={handleClick}
       key={index}
@@ -35,12 +37,13 @@ function SelectTime({
 }
 
 SelectTime.propTypes = {
-  selectedStationAndTime: PropTypes.obj,
+  selectedStationAndTime: PropTypes.object,
   setSelectedStationAndTime: PropTypes.func,
   setSelectedStation: PropTypes.func,
   stationName: PropTypes.string.isRequired, // Expect a string prop, and it's required
-  selectedTime: PropTypes.string,
   timeSlots: PropTypes.array.isRequired,
+  randomUUID: PropTypes.string,
 };
+
 
 export default SelectTime;
