@@ -1,7 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import style from '../css/TimeButton.module.css';
-import useApi from '../hooks/useApi';
 import { useStepper } from '../hooks/useStepper';
 
 function TimePeriodButton({
@@ -9,30 +8,12 @@ function TimePeriodButton({
   setSelectedTime,
   selectedTime,
   stationName,
-  randomUUID,
 }) {
-  const { postRequest } = useApi();
-  const { selectedDate, selectedProduct, selectAdaptor } = useStepper();
+  const { setSelectedProduct } = useStepper();
 
   const handleClick = async () => {
     setSelectedTime(stationName, buttonText);
-    try {
-      const bodyData = {
-        uuid: randomUUID,
-        station: stationName,
-        timeSlot: buttonText,
-        product: selectedProduct,
-        date: selectedDate,
-        isAdapter: selectAdaptor,
-      };
-      const isEmptyField = Object.values(bodyData).some((value) => !value);
-      if (isEmptyField) {
-        const response = await postRequest('add-temp-reservation', bodyData);
-        console.log('TimePeriodButton.jsx 30 ', response);
-      }
-    } catch (error) {
-      console.error('api error: ', error);
-    }
+    setSelectedProduct('');
   };
 
   return (
@@ -58,7 +39,6 @@ TimePeriodButton.propTypes = {
   stationName: PropTypes.string.isRequired,
   setSelectedTime: PropTypes.func.isRequired,
   setSelectedStation: PropTypes.func,
-  randomUUID: PropTypes.string,
 };
 
 export default TimePeriodButton;
