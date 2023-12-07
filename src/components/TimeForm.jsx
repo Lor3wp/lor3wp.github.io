@@ -15,7 +15,6 @@ import { useTranslation } from 'react-i18next';
 import useApi from '../hooks/useApi';
 // create random uuid for user identification in temporary reservation
 // fill with Date values to disable those dates from caledar
-const futureDates = [];
 const ProductAndTime = ({
   onProductAndTimeSelected,
   onPrevStep,
@@ -26,7 +25,7 @@ const ProductAndTime = ({
   const [showWarningModal, setShowWarningModal] = useState(false);
 
   const { t } = useTranslation();
-
+  const [futureDates, setFutureDates] = useState([]);
   const {
     stationsData,
     selectedDate,
@@ -96,7 +95,19 @@ const ProductAndTime = ({
       />
       <div className={rentStyle.rentBox}>
         <div className={rentStyle.productBox}>
-          <SelectProduct />
+          {stationsData.map((station) => {
+            if (station.selected) {
+              return (
+                <SelectProduct
+                  stationName={station.stationName}
+                  setFutureDates={setFutureDates}
+                  futureDates={futureDates}
+                  key={station.stationName}
+                />
+              );
+            }
+            return null;
+          })}{' '}
         </div>
         <hr />
         <div className={rentStyle.calendarBox}>
