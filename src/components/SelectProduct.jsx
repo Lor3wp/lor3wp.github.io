@@ -10,11 +10,7 @@ import { useTranslation } from 'react-i18next';
 import useApi from '../hooks/useApi';
 import PropTypes from 'prop-types';
 
-const SelectProduct = ({
-  selectedStationAndTime,
-  setFutureDates,
-  futureDates,
-}) => {
+const SelectProduct = ({ setFutureDates, futureDates }) => {
   const {
     selectedProduct,
     setSelectedProduct,
@@ -62,12 +58,6 @@ const SelectProduct = ({
               : productStyle.productButton
           }
           onClick={() => handleProductClick('trailer')}
-          disabled={
-            !stationsData.find(
-              (station) =>
-                station.stationName === Object.keys(selectedStationAndTime)[0],
-            ).cargoBike
-          }
         >
           <img src={Trailer} alt="trailer icon" />
         </Button>
@@ -78,12 +68,6 @@ const SelectProduct = ({
               : productStyle.productButton
           }
           onClick={() => handleProductClick('bike')}
-          disabled={
-            !stationsData.find(
-              (station) =>
-                station.stationName === Object.keys(selectedStationAndTime)[0],
-            ).trailer
-          }
         >
           <img src={Bike} alt="cargobike icon" />
         </Button>

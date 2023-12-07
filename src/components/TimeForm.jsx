@@ -23,7 +23,6 @@ const ProductAndTime = ({
 }) => {
   const { deleteRequest } = useApi();
   const [showWarningModal, setShowWarningModal] = useState(false);
-  const [stationAndTimeSelected, setStationAndTimeSelected] = useState(false);
 
   const { t } = useTranslation();
   const [futureDates, setFutureDates] = useState([]);
@@ -85,14 +84,6 @@ const ProductAndTime = ({
     };
   }, []);
 
-  useEffect(() => {
-    setStationAndTimeSelected(Object.keys(selectedStationAndTime).length !== 0);
-    console.log(
-      'SELECTED STATION AND TIME TimeForm',
-      Object.keys(selectedStationAndTime).length === 0,
-    );
-  }, [selectedStationAndTime]);
-
   return (
     <>
       <PopUpWarningModal
@@ -107,9 +98,7 @@ const ProductAndTime = ({
       />
       <div className={rentStyle.rentBox}>
         <div className={rentStyle.productBox}>
-          {stationAndTimeSelected && (
-            <SelectProduct selectedStationAndTime={selectedStationAndTime} />
-          )}
+          <SelectProduct />
         </div>
         <hr />
         <div className={rentStyle.calendarBox}>
