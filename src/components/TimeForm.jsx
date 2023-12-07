@@ -23,6 +23,7 @@ const ProductAndTime = ({
 }) => {
   const { deleteRequest } = useApi();
   const [showWarningModal, setShowWarningModal] = useState(false);
+  const [stationAndTimeSelected, setStationAndTimeSelected] = useState(false);
 
   const { t } = useTranslation();
   const [futureDates, setFutureDates] = useState([]);
@@ -58,6 +59,8 @@ const ProductAndTime = ({
     setShowWarningModal(true);
   };
 
+  console.log('SELECTED STATIONS', stationsData);
+
   // TODO add before unload delete temp reservation with uuid
   useEffect(() => {
     const sendDeleteRequestOnUnload = async () => {
@@ -81,6 +84,15 @@ const ProductAndTime = ({
       window.removeEventListener('beforeunload', sendDeleteRequestOnUnload);
     };
   }, []);
+
+  useEffect(() => {
+    setStationAndTimeSelected(Object.keys(selectedStationAndTime).length !== 0);
+    console.log(
+      'SELECTED STATION AND TIME TimeForm',
+      Object.keys(selectedStationAndTime).length === 0,
+    );
+  }, [selectedStationAndTime]);
+
   return (
     <>
       <PopUpWarningModal
@@ -95,9 +107,9 @@ const ProductAndTime = ({
       />
       <div className={rentStyle.rentBox}>
         <div className={rentStyle.productBox}>
-         
-                <SelectProduct
-                />
+          {stationAndTimeSelected && (
+            <SelectProduct selectedStationAndTime={selectedStationAndTime} />
+          )}
         </div>
         <hr />
         <div className={rentStyle.calendarBox}>
@@ -113,20 +125,21 @@ const ProductAndTime = ({
         <hr className={rentStyle.hr} />
         <p>{t('Valitse sinulle sopiva 3 tunnin vuokraus ajankohta tästä:')}</p>
         <div className={rentStyle.selectTimeBox}>
-          {stationsData.map((station) => {
-            if (station.selected) {
-              return (
-                <SelectTime
-                  randomUUID={randomUUID}
-                  timeSlots={station.timeSlots}
-                  setSelectedStationAndTime={setSelectedStationAndTime}
-                  selectedStationAndTime={selectedStationAndTime}
-                  stationName={station.stationName}
-                  key={station.stationName}
-                />
-              );
-            }
-          })}
+          {selectedDate &&
+            stationsData.map((station) => {
+              if (station.selected) {
+                return (
+                  <SelectTime
+                    randomUUID={randomUUID}
+                    timeSlots={station.timeSlots}
+                    setSelectedStationAndTime={setSelectedStationAndTime}
+                    selectedStationAndTime={selectedStationAndTime}
+                    stationName={station.stationName}
+                    key={station.stationName}
+                  />
+                );
+              }
+            })}
         </div>
         <div className={rentStyle.buttonsContainer}>
           <div className={rentStyle.leftButtons}>

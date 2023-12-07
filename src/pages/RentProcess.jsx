@@ -26,6 +26,7 @@ import BankType from '../components/BankType';
 import PopUpWarningModal from '../components/PopUpWarningModal';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
+
 const RentProcessPage = () => {
   const countdownDuration = 20 * 60 * 1000;
 
@@ -39,10 +40,6 @@ const RentProcessPage = () => {
   const [reservationDeadline, setReservationDeadline] = useState(
     calculateReservationDeadline(),
   );
-
-  const mockRentData = {
-    id: '656e0884162df1917d30e826',
-  };
 
   const { t } = useTranslation();
 
@@ -140,7 +137,6 @@ const RentProcessPage = () => {
     return (
       <div className={styles.bankContainer}>
         <BankType
-          rentId={mockRentData.id}
           gridName={styles.mobileGrid}
           title={t('Mobiilimaksutavat')}
           arrayName={mobileBanks}
@@ -148,7 +144,6 @@ const RentProcessPage = () => {
           randomUUID={randomUUID}
         />
         <BankType
-          rentId={mockRentData.id}
           gridName={styles.cardGrid}
           title={t('Korttimaksutavat')}
           arrayName={cardPayments}
@@ -156,7 +151,6 @@ const RentProcessPage = () => {
           randomUUID={randomUUID}
         />
         <BankType
-          rentId={mockRentData.id}
           gridName={styles.bankGrid}
           title={t('Pankkimaksutavat')}
           arrayName={bankPayments}
@@ -164,7 +158,6 @@ const RentProcessPage = () => {
           randomUUID={randomUUID}
         />
         <BankType
-          rentId={mockRentData.id}
           gridName={styles.irlGrid}
           title={t('Maksu paikan päällä')}
           arrayName={irlPayments}
@@ -184,7 +177,6 @@ const RentProcessPage = () => {
             onStationSelected={handleStationSelected}
           />
         );
-
       case 1:
         return (
           <ProductAndTime

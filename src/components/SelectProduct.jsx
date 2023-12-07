@@ -10,28 +10,31 @@ import { useTranslation } from 'react-i18next';
 import useApi from '../hooks/useApi';
 import PropTypes from 'prop-types';
 
-const SelectProduct = ({ stationName, setFutureDates, futureDates }) => {
+const SelectProduct = ({
+  selectedStationAndTime,
+  setFutureDates,
+  futureDates,
+}) => {
   const {
     selectedProduct,
     setSelectedProduct,
     selectAdaptor,
     setSelectAdaptor,
-    stationsData
+    stationsData,
   } = useStepper();
   const { getRequest } = useApi();
   const { t } = useTranslation();
   const [localFutureDates, setLocalFutureDates] = useState(futureDates);
   const [selectedStation, setSelectedStation] = useState([]);
 
-
   const handleProductClick = async (product) => {
     console.log('stationsdata', stationsData);
-      stationsData.map((station) => {
-        if(station.selected) {
-          console.log("stations", station.stationName);
-          setSelectedStation(station.stationName);
-        }
-      })
+    stationsData.map((station) => {
+      if (station.selected) {
+        console.log('stations', station.stationName);
+        setSelectedStation(station.stationName);
+      }
+    });
 
     setSelectedProduct(product);
     const response = await getRequest('/reserved-dates', {
@@ -59,6 +62,12 @@ const SelectProduct = ({ stationName, setFutureDates, futureDates }) => {
               : productStyle.productButton
           }
           onClick={() => handleProductClick('trailer')}
+          disabled={
+            !stationsData.find(
+              (station) =>
+                station.stationName === Object.keys(selectedStationAndTime)[0],
+            ).cargoBike
+          }
         >
           <img src={Trailer} alt="trailer icon" />
         </Button>
@@ -69,6 +78,12 @@ const SelectProduct = ({ stationName, setFutureDates, futureDates }) => {
               : productStyle.productButton
           }
           onClick={() => handleProductClick('bike')}
+          disabled={
+            !stationsData.find(
+              (station) =>
+                station.stationName === Object.keys(selectedStationAndTime)[0],
+            ).trailer
+          }
         >
           <img src={Bike} alt="cargobike icon" />
         </Button>
