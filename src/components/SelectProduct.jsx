@@ -16,18 +16,28 @@ const SelectProduct = ({ stationName, setFutureDates, futureDates }) => {
     setSelectedProduct,
     selectAdaptor,
     setSelectAdaptor,
+    stationsData
   } = useStepper();
   const { getRequest } = useApi();
   const { t } = useTranslation();
   const [localFutureDates, setLocalFutureDates] = useState(futureDates);
+  const [selectedStation, setSelectedStation] = useState([]);
+
 
   const handleProductClick = async (product) => {
+    console.log('stationsdata', stationsData);
+      stationsData.map((station) => {
+        if(station.selected) {
+          console.log("stations", station.stationName);
+          setSelectedStation(station.stationName);
+        }
+      })
+
     setSelectedProduct(product);
     const response = await getRequest('/reserved-dates', {
-      station: stationName,
+      station: selectedStation,
       product: selectedProduct,
     });
-
     // Extracting only the dates from the response arrays
     const newDates = response.map((item) => item.date);
     console.log(response);
