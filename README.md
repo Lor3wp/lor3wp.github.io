@@ -6,6 +6,10 @@ In this project we have improved usability, user interface and solved problems f
 
 Made by: [Lor3wp](https://github.com/Lor3wp), [HennaK1](https://github.com/HennaK1), [karoliam](https://github.com/karoliam), [ramizwd](https://github.com/ramizwd).
 
+## Backend
+
+https://github.com/Lor3wp/HsyTrailerBackend
+
 ## Built with technologies
 
 React, 
